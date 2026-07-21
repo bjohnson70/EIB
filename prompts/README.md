@@ -1,1 +1,1 @@
-.
+Create prompts folder.
