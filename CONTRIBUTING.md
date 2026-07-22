@@ -1,17 +1,17 @@
 ---
 Title: Contributing Guide
-Version: Foundation (v0.1)
+Version: Foundation (v1.0)
 Status: Active
-Date: 2026-07-21
+Date: 2026-07-22
 ---
 
 # Contributing to the Executive Intelligence Briefing (EIB)
 
 Thank you for contributing to the Executive Intelligence Briefing (EIB) project.
 
-The goal of EIB is to build a reusable framework for transforming knowledge into actionable intelligence through thoughtful architecture, disciplined documentation, and continuous improvement.
+EIB is more than a collection of documents. It is a governed knowledge system designed to transform information into reusable intelligence through thoughtful architecture, disciplined documentation, and continuous improvement.
 
-Whether you're contributing a single correction or a major enhancement, every contribution should make the project stronger.
+Whether you are correcting a typo, improving documentation, proposing an architectural enhancement, or introducing a new capability, every contribution should leave the repository stronger than it was before.
 
 ---
 
@@ -21,17 +21,33 @@ Whether you're contributing a single correction or a major enhancement, every co
 
 ---
 
+# Governance Hierarchy
+
+When guidance appears in multiple documents, precedence is determined in the following order:
+
+1. CONSTITUTION.md
+2. Architecture Decision Records (ADRs)
+3. ARCHITECTURE.md
+4. GOVERNANCE.md
+5. CONTRIBUTING.md
+6. Templates and Examples
+
+When uncertainty exists, follow the highest applicable authority.
+
+---
+
 # Before You Contribute
 
-Before making changes, ask:
+Before making changes, ask yourself:
 
 - Does this improve clarity?
 - Does this reduce duplication?
-- Does this preserve reasoning?
-- Is the change reusable?
-- Is the change documented?
+- Does this preserve the reasoning behind previous decisions?
+- Is this solution reusable?
+- Is the change appropriately documented?
+- Does this improve long-term maintainability?
 
-If the answer to any of these is **No**, consider refining the contribution before committing it.
+If the answer to any question is **No**, consider refining the contribution before committing it.
 
 ---
 
@@ -42,8 +58,10 @@ Contributors should:
 - Follow the documented architecture.
 - Respect governance decisions.
 - Read applicable ADRs before changing architectural behavior.
+- Prefer evolving existing content before creating new content.
+- Eliminate duplicate information whenever practical.
 - Keep documentation current.
-- Prefer improving existing documents over creating duplicates.
+- Preserve a single source of truth.
 
 ---
 
@@ -53,7 +71,7 @@ Documentation should be:
 
 - Clear
 - Concise
-- Well-organized
+- Well organized
 - Version controlled
 - Easy for future contributors to understand
 
@@ -65,21 +83,24 @@ Where appropriate, include:
 - Benefits
 - Trade-offs
 - Related documents
+- References to authoritative sources
+
+Whenever significant decisions are made, preserve the reasoning behind those decisions—not just the outcome.
 
 ---
 
 # Commit Messages
 
-Write concise, descriptive commit messages.
+Write concise, descriptive commit messages that clearly communicate intent.
 
 Examples:
 
 - Add ADR-0006 for automation strategy
-- Update roadmap for v0.2 milestones
+- Update roadmap for governance maturity
 - Improve README project overview
-- Fix architecture navigation links
+- Refine architecture navigation
 
-Avoid vague messages such as:
+Avoid vague commit messages such as:
 
 - Update files
 - Misc changes
@@ -93,20 +114,24 @@ When submitting a pull request:
 
 - Explain why the change is needed.
 - Reference related issues or ADRs.
-- Keep changes focused on a single topic where practical.
-- Update documentation when behavior changes.
+- Keep changes focused on a single topic whenever practical.
+- Update documentation whenever behavior changes.
+- Ensure the contribution aligns with the repository architecture.
 
 ---
 
 # Definition of Done
 
-Before considering work complete:
+Work is considered complete when:
 
 - Documentation is accurate.
-- Related files are updated.
+- Related files have been updated.
 - Naming conventions are followed.
 - Duplicate content has been removed or consolidated.
+- Internal links have been verified.
+- Governance references remain accurate.
 - The repository is easier to understand than before.
+- Long-term maintainability has improved.
 
 ---
 
@@ -116,23 +141,27 @@ Contributors are expected to:
 
 - Be respectful.
 - Assume positive intent.
-- Discuss ideas, not individuals.
+- Discuss ideas rather than individuals.
 - Support evidence-based decisions.
 - Value long-term maintainability over short-term convenience.
+- Leave the repository better than they found it.
 
 ---
 
 # Questions
 
-When in doubt:
+When uncertainty exists:
 
-1. Review the Architecture documentation.
-2. Review the relevant ADRs.
-3. Choose the option that best supports long-term maintainability.
-4. Document significant decisions.
+1. Review the Constitution.
+2. Review the Architecture documentation.
+3. Review applicable ADRs.
+4. Choose the solution that best supports long-term maintainability.
+5. Document significant architectural decisions.
 
 ---
 
 # Thank You
 
-Every thoughtful contribution strengthens the Executive Intelligence Briefing and helps build a framework that others can learn from and improve upon.
+Every thoughtful contribution strengthens the Executive Intelligence Briefing project.
+
+The goal is not merely to build documentation, but to build a governed body of knowledge that others can confidently understand, maintain, and improve for years to come.
