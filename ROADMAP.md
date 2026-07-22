@@ -151,3 +151,9 @@ The roadmap will be considered successful when:
 - Reusable frameworks replace one-off solutions.
 - Automation reduces manual effort without sacrificing quality.
 - Every release leaves the repository stronger than the one before it.
+
+## Roadmap Governance
+
+The Roadmap is a living document.
+
+Capabilities, priorities, and sequencing may evolve as the project matures, provided changes remain consistent with the EIB Constitution and documented architectural decisions.
