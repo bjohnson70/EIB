@@ -1,96 +1,140 @@
 ---
 title: Document Catalog
 document_id: GOV-005
-version: 1.2
-status: Accepted
-review_id: AR-0011
-review_status: Accepted
-governance_framework: 1.2
-repository_release: Governance Framework v1.2
-owner: Bryan Johnson
-role: Product Owner
-steward: ChatGPT
-steward_role: Chief Architect
-last_reviewed: 2026-07-22
-next_review: TBD
+version: 2.0
+status: Approved
+owner: BSJ
+author: BSJ & ChatGPT
+last_updated: 2026-07-23
+depends_on:
+  - README.md
+  - Architecture/ARCHITECTURE.md
 ---
 
 # Document Catalog
 
 ## Purpose
 
-The Document Catalog is the authoritative inventory of all governed documents within the Executive Intelligence Briefing (EIB) repository.
+The Document Catalog is the authoritative inventory of the Executive Intelligence Briefing (EIB) repository.
 
-It serves as the repository's configuration management database (CMDB) for governance documentation by tracking ownership, review history, versions, status, and relationships between documents.
-
----
-
-# Governance Lifecycle
-
-Every governed document progresses through the following lifecycle:
-
-- Draft
-- Under Review
-- Accepted
-- Superseded
-- Archived
+It provides a single location describing every governed document, its purpose, ownership, and repository location. The catalog serves as the repository's configuration management baseline and should be updated whenever governed documents are added, removed, or relocated.
 
 ---
 
-# Governed Documents
+# Repository Organization
 
-| GOV ID | Review ID | Document | Location | Version | Status | Last Review |
-|---------|-----------|----------|----------|---------|---------|-------------|
-| GOV-001 | AR-0006 | Repository Architecture | Architecture/ARCHITECTURE.md | 1.x | Accepted | 2026-07-22 |
-| GOV-002 | AR-0007 | Repository Governance | Architecture/GOVERNANCE.md | 1.0 | Accepted | 2026-07-22 |
-| GOV-003 | AR-0010 | Architecture Review Register | REVIEW_REGISTER.md | 1.2 | Accepted | 2026-07-22 |
-| GOV-004 | AR-0008 | Repository Workflow | REPOSITORY_WORKFLOW.md | 1.0 | Accepted | 2026-07-22 |
-| GOV-005 | AR-0011 | Document Catalog | DOCUMENT_CATALOG.md | 1.2 | Accepted | 2026-07-22 |
-
----
-
-# Core Repository Documents
-
-| Document | Governance Status | Purpose |
-|----------|-------------------|---------|
-| README.md | Reviewed | Repository introduction |
-| MANIFESTO.md | Reviewed | Repository vision |
-| CONSTITUTION.md | Reviewed | Governing principles |
-| ROADMAP.md | Reviewed | Repository roadmap |
-| CONTRIBUTING.md | Reviewed | Contributor guidance |
-| STATUS.md | Pending AR-0014 | Executive dashboard |
+```
+/
+├── Architecture/
+├── DATA/
+├── DEVELOPMENT/
+├── IMPLEMENTATION/
+├── OPERATIONS/
+└── ROADMAP/
+```
 
 ---
 
-# Architecture Documents
+# Root Documents
 
 | Document | Purpose |
 |----------|---------|
-| Architecture/ARCHITECTURE.md | Repository architecture |
-| Architecture/GOVERNANCE.md | Governance framework |
-| Architecture/ADR/ADR-0001.md | ADR Framework *(planned)* |
-
----
-
-# Governance Documents
-
-| Document | Purpose |
-|----------|---------|
-| REVIEW_REGISTER.md | Architecture Review audit trail |
+| README.md | Repository introduction |
+| MANIFESTO.md | Project vision |
+| CONSTITUTION.md | Governing principles |
+| ROADMAP.md | Strategic roadmap |
+| CONTRIBUTING.md | Contribution guidelines |
+| REVIEW_REGISTER.md | Architecture review history |
 | REPOSITORY_WORKFLOW.md | Repository operating procedures |
-| DOCUMENT_CATALOG.md | Governance inventory |
+| DOCUMENT_CATALOG.md | Repository inventory |
+| PRODUCT_REQUIREMENTS.md | Product requirements |
+| EXECUTIVE_PRINCIPLES.md | Executive decision principles |
+| REFERENCE_ARCHITECTURE.md | High-level architectural overview |
 
 ---
 
-# Planned Repository Artifacts
+# Architecture
 
-| Document | Purpose |
-|----------|---------|
-| CHANGELOG.md | Repository history |
-| RELEASE_NOTES.md | Release summaries |
-| STYLE_GUIDE.md | Documentation standards |
-| GLOSSARY.md | Repository terminology |
-| Architecture/ADR Index | ADR inventory |
+| Document |
+|----------|
+| ARCHITECTURE.md |
+| GOVERNANCE.md |
+| PRODUCT_ARCHITECTURE.md |
+| REPORT_SPECIFICATION.md |
+| INTELLIGENCE_ARCHITECTURE.md |
+| DATA_SOURCE_STRATEGY.md |
+| SCORING_MODEL.md |
+| PERSONALIZATION_MODEL.md |
+
+---
+
+# Development
+
+| Document |
+|----------|
+| REPOSITORY_STRUCTURE.md |
+| CODING_STANDARDS.md |
+| API_SPECIFICATION.md |
+| PLUGIN_ARCHITECTURE.md |
+| VERSIONING_STRATEGY.md |
+
+---
+
+# Data
+
+| Document |
+|----------|
+| STORAGE_ARCHITECTURE.md |
+| KNOWLEDGE_GRAPH.md |
+| EMBEDDING_STRATEGY.md |
+| HISTORICAL_INTELLIGENCE.md |
+| RETENTION_POLICY.md |
+
+---
+
+# Implementation
+
+| Document |
+|----------|
+| IMPLEMENTATION_ARCHITECTURE.md |
+| AGENT_ARCHITECTURE.md |
+| WORKFLOW_ORCHESTRATION.md |
+| PROMPT_ARCHITECTURE.md |
+| QUALITY_ASSURANCE_FRAMEWORK.md |
+| OBSERVABILITY_AND_TELEMETRY.md |
+| TESTING_STRATEGY.md |
+| CONFIGURATION_AND_PROFILE_MODEL.md |
+| EXECUTION_STATE_MODEL.md |
+| KNOWLEDGE_MODEL.md |
+| INTELLIGENCE_OBJECT_MODEL.md |
+| BRIEFING_ASSEMBLY_ENGINE.md |
+| SOURCE_CONNECTOR_FRAMEWORK.md |
+| DOMAIN_AGENT_SPECIFICATIONS.md |
+| INTELLIGENCE_PIPELINE_SPECIFICATION.md |
+
+---
+
+# Operations
+
+| Document |
+|----------|
+| DEPLOYMENT_ARCHITECTURE.md |
+| SCHEDULING.md |
+| SECURITY_MODEL.md |
+| BACKUP_AND_RECOVERY.md |
+| CHANGE_MANAGEMENT.md |
+
+---
+
+# Roadmap
+
+| Document |
+|----------|
+| IMPLEMENTATION_PLAN.md |
+| MVP_DEFINITION.md |
+| RELEASE_PLAN.md |
+| FEATURE_BACKLOG.md |
+| TECHNICAL_DEBT.md |
 
 ---
 
@@ -98,100 +142,22 @@ Every governed document progresses through the following lifecycle:
 
 Every governed document shall:
 
-- Have a unique GOV identifier.
-- Have a unique Architecture Review identifier.
-- Follow the governance metadata standard.
-- Identify the Product Owner.
-- Identify the Chief Architect.
-- Be verified after every GitHub commit.
-- Be listed in this catalog.
+- Have a unique document identifier.
+- Maintain version information.
+- Identify ownership.
+- Record the last update date.
+- Reference dependent documents where appropriate.
+- Remain consistent with the approved repository architecture.
 
 ---
 
-# Governance Metadata Standard
+# Repository Health Checklist
 
-Every governed document should include the following metadata:
+The repository is considered healthy when:
 
-```yaml
-document_id:
-title:
-version:
-status:
-
-review_id:
-review_status:
-
-governance_framework:
-repository_release:
-
-owner:
-role:
-
-steward:
-steward_role:
-
-last_reviewed:
-next_review:
-```
-
----
-
-# Repository Statistics
-
-Governed Documents
-
-**5**
-
-Architecture Documents
-
-**2**
-
-Governance Documents
-
-**3**
-
-Architecture Reviews
-
-**10**
-
-Governance Framework
-
-**Version 1.2**
-
-Repository Maturity
-
-**Governed Foundation**
-
----
-
-# Repository Relationships
-
-```text
-CONSTITUTION
-        │
-        ▼
-Architecture/GOVERNANCE
-        │
-        ▼
-REPOSITORY_WORKFLOW
-        │
-        ▼
-REVIEW_REGISTER
-        │
-        ▼
-DOCUMENT_CATALOG
-        │
-        ▼
-STATUS
-```
-
----
-
-# Related Documents
-
-- CONSTITUTION.md
-- Architecture/ARCHITECTURE.md
-- Architecture/GOVERNANCE.md
-- REPOSITORY_WORKFLOW.md
-- REVIEW_REGISTER.md
-- STATUS.md
+- All required architecture documents exist.
+- No duplicate governed documents exist.
+- Internal document references resolve correctly.
+- Metadata is consistent across documents.
+- Repository structure matches the approved architecture.
+- The Document Catalog accurately reflects repository contents.
