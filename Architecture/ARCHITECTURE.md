@@ -1,402 +1,310 @@
 ---
-Title: EIB Architecture
-Version: Foundation (v1.0)
-Status: Active
-Date: 2026-07-22
+title: Enterprise Architecture
+document_id: GOV-001
+version: 2.0
+status: Approved
+owner: BSJ
+author: BSJ & ChatGPT
+last_updated: 2026-07-23
+depends_on:
+  - CONSTITUTION.md
+  - DOCUMENT_CATALOG.md
 ---
 
-# Executive Intelligence Briefing (EIB) Architecture
+# Executive Intelligence Briefing (EIB)
+# Enterprise Architecture
 
 ## Purpose
 
-This document defines the architectural blueprint for the Executive Intelligence Briefing (EIB).
+This document defines the master architecture of the Executive Intelligence Briefing (EIB) platform.
 
-Its purpose is to ensure that the repository remains understandable, maintainable, scalable, and reusable while transforming information into actionable executive intelligence.
+It serves as the highest-level technical architecture document within the repository and establishes the logical organization, guiding principles, architectural domains, and relationships between all major components of the system.
 
-This document describes **what the architecture is**, **how it is organized**, and **how it evolves**.
-
-Implementation details belong elsewhere.
+Every architectural document in the repository either expands upon or derives from this document.
 
 ---
 
-# Scope
+# Architectural Vision
 
-The architecture governs two complementary domains.
+The Executive Intelligence Briefing is designed to function as an Executive Intelligence Platform rather than a traditional reporting application.
 
-## Repository Architecture
+Its objective is to continuously transform large amounts of structured and unstructured information into concise, actionable intelligence that enables executive decision-making.
 
-Defines how the GitHub repository is organized.
+The architecture emphasizes:
 
-This includes:
-
-- Repository organization
-- Directory structure
-- Document responsibilities
-- Governance relationships
-- Architectural boundaries
-- Versioning strategy
+- Intelligence over information.
+- Automation over manual effort.
+- Personalization over generic reporting.
+- Modularity over monolithic design.
+- Governance by design.
+- AI-assisted reasoning.
+- Continuous improvement through feedback.
 
 ---
+
+# Architectural Principles
+
+The architecture is governed by the following principles.
+
+## 1. Modular Design
+
+Capabilities are organized into independent architectural domains.
+
+Each domain owns a well-defined responsibility.
+
+---
+
+## 2. Single Source of Truth
+
+Every concept has one authoritative definition.
+
+Documents reference one another rather than duplicating content.
+
+---
+
+## 3. Separation of Concerns
+
+Product design, implementation, governance, operations, and data management remain logically independent while working together as a unified platform.
+
+---
+
+## 4. Intelligence First
+
+The platform exists to create intelligence—not merely aggregate data.
+
+Every processing stage should increase the value of information.
+
+---
+
+## 5. AI Collaboration
+
+The repository is intentionally structured so both humans and AI agents can navigate, understand, and extend the architecture.
+
+---
+
+# Architectural Domains
+
+The repository is organized into six major architectural domains.
 
 ## Product Architecture
 
-Defines how EIB transforms information into executive intelligence.
+Defines:
 
-This includes:
+- Product vision
+- Executive briefing format
+- Intelligence scoring
+- Personalization
+- Data acquisition strategy
 
-- Knowledge acquisition
-- Reasoning
-- Analysis
-- Executive recommendations
-- Decision support
-- Continuous improvement
+Primary audience:
 
-The repository exists to support the product architecture—not the other way around.
-
----
-
-# Architectural Authority
-
-Architectural guidance follows the repository governance hierarchy.
-
-1. CONSTITUTION.md
-2. Architecture Decision Records (ADRs)
-3. ARCHITECTURE.md
-4. GOVERNANCE.md
-5. CONTRIBUTING.md
-6. Templates and Examples
-
-Higher-level documents always take precedence.
+Product Owners and Executive Sponsors
 
 ---
 
-# Guiding Principle
+## Development Architecture
 
-> Every solution should leave behind a better starting point for the next person.
+Defines:
 
-Every architectural decision should improve one or more of the following:
+- Repository standards
+- Coding conventions
+- API specifications
+- Plugin model
+- Versioning strategy
 
-- Clarity
-- Consistency
-- Maintainability
-- Reusability
-- Long-term value
+Primary audience:
+
+Developers and Contributors
+
+---
+
+## Implementation Architecture
+
+Defines:
+
+- Agent framework
+- Prompt architecture
+- Workflow orchestration
+- Knowledge model
+- Intelligence pipeline
+- Briefing assembly engine
+
+Primary audience:
+
+Software Engineers and AI Engineers
+
+---
+
+## Data Architecture
+
+Defines:
+
+- Storage strategy
+- Knowledge graph
+- Embedding strategy
+- Historical intelligence
+- Retention policies
+
+Primary audience:
+
+Data Engineers
+
+---
+
+## Operations Architecture
+
+Defines:
+
+- Deployment
+- Scheduling
+- Security
+- Backup
+- Change management
+
+Primary audience:
+
+Operations and Platform Engineers
+
+---
+
+## Roadmap
+
+Defines:
+
+- MVP
+- Releases
+- Future capabilities
+- Technical debt
+- Long-term planning
+
+Primary audience:
+
+Product Leadership
+
+---
+
+# Logical Architecture
+
+```
+                Executive Intelligence Briefing
+
+                         Executive User
+                               │
+                               ▼
+                     Briefing Assembly Engine
+                               │
+         ┌─────────────────────┼──────────────────────┐
+         ▼                     ▼                      ▼
+
+ Intelligence Pipeline   Knowledge Model      Personalization
+
+         │                     │                      │
+
+         ▼                     ▼                      ▼
+
+ Domain Agents          Historical Store      User Profile
+
+         │
+
+         ▼
+
+ Data Sources
+```
 
 ---
 
 # Repository Architecture
 
-The repository is intentionally separated into two complementary implementations.
+```
+Repository
 
-## Public Repository
+│
 
-The public repository contains reusable intellectual property.
-
-Examples include:
-
-- Architecture
-- Governance
-- ADRs
-- Templates
-- Prompt Library
-- Playbooks
-- Documentation
-- Sample Implementations
-
-The public repository must never contain confidential or personally identifiable information.
-
----
-
-## Private Repository
-
-The private repository applies the public framework to real-world implementations.
-
-Examples include:
-
-- Executive Briefings
-- Personal Knowledge
-- Family Information
-- Financial Planning
-- Health Information
-- Work Products
-- Personalized Automations
-
-The private repository depends on the public repository.
-
-The public repository must never depend on the private repository.
-
----
-
-# Public / Private Synchronization
-
-Knowledge flows in two directions.
-
-Public → Private
-
-Reusable frameworks are implemented within private environments.
-
-Private → Public
-
-When improvements are generalizable and contain no confidential information, they should be contributed back to the public framework.
-
-Confidential information must never migrate into the public repository.
-
----
-
-# Architectural Layers
-
-The EIB consists of six logical layers.
-
-## 1. Governance
-
-Defines principles, policies, and decision authority.
-
-Examples:
-
-- Constitution
-- Manifesto
-- Governance
-- ADRs
-
----
-
-## 2. Architecture
-
-Defines how the repository is organized.
-
-Examples:
-
-- Repository Structure
-- Folder Organization
-- Document Responsibilities
-- Naming Standards
-- Versioning
-
----
-
-## 3. Reusable Framework
-
-Defines reusable building blocks.
-
-Examples:
-
-- Templates
-- Prompts
-- Playbooks
-- Schemas
-- Workflows
-- Briefing Structures
-
----
-
-## 4. Knowledge
-
-Stores trusted information.
-
-Knowledge should be:
-
-- Durable
-- Organized
-- Traceable
-- Attributable
-
-Knowledge answers:
-
-"What is true?"
-
----
-
-## 5. Intelligence
-
-Transforms knowledge into executive understanding.
-
-Examples:
-
-- Executive Briefings
-- Recommendations
-- Risk Assessments
-- Decision Support
-- Strategic Analysis
-
-Intelligence answers:
-
-"What does it mean?"
-
----
-
-## 6. Action
-
-Supports execution.
-
-Examples:
-
-- Tasks
-- Projects
-- Operational Plans
-- Follow-up Activities
-
-Action answers:
-
-"What should we do?"
-
----
-
-# Architectural Flow
-
-Every layer builds upon the one above it.
-
-```text
-Governance
-      ↓
-Architecture
-      ↓
-Reusable Framework
-      ↓
-Knowledge
-      ↓
-Intelligence
-      ↓
-Action
-      ↓
-Learning
+├── Governance
+│
+├── Product
+│
+├── Development
+│
+├── Implementation
+│
+├── Data
+│
+├── Operations
+│
+└── Roadmap
 ```
 
-Lower layers may implement higher-layer guidance.
-
-Lower layers may never redefine higher-layer governance.
+Each domain owns its own documentation while remaining consistent with this master architecture.
 
 ---
 
-# Information Lifecycle
+# Dependency Model
 
-The EIB converts information into intelligence through a repeatable process.
+Architectural dependencies flow downward.
 
-```text
-Capture
-    ↓
-Organize
-    ↓
-Analyze
-    ↓
-Recommend
-    ↓
-Decide
-    ↓
-Execute
-    ↓
-Learn
-    ↓
-Improve
+```
+Constitution
+
+↓
+
+Enterprise Architecture
+
+↓
+
+Domain Architecture
+
+↓
+
+Implementation Specifications
+
+↓
+
+Operational Procedures
 ```
 
-Every iteration should strengthen both the framework and future decision-making.
+Lower-level documents may reference higher-level architecture.
+
+Higher-level architecture should never depend upon implementation details.
 
 ---
 
-# Traceability
+# Architecture Governance
 
-Significant executive recommendations should remain traceable.
+Architectural changes should satisfy the following questions:
 
-Whenever practical:
+- Does the change improve executive intelligence?
+- Does it reduce complexity?
+- Does it maintain modularity?
+- Does it avoid duplication?
+- Does it improve automation?
+- Does it remain understandable by both humans and AI?
 
-```text
-Source
-    ↓
-Knowledge
-    ↓
-Analysis
-    ↓
-Recommendation
-    ↓
-Decision
-    ↓
-Action
-    ↓
-Outcome
-```
-
-This preserves confidence in how conclusions were reached.
+Changes failing these principles should be reconsidered.
 
 ---
 
-# Architectural Invariants
+# Relationship to Other Documents
 
-The following principles should remain true regardless of future implementation.
-
-- GitHub is the authoritative source for governed artifacts.
-- Every document has one authoritative home.
-- Major architectural decisions require an ADR.
-- Examples never override standards.
-- Templates should be reused before creating new structures.
-- Derived intelligence should remain traceable to supporting knowledge.
-- Confidential information does not belong in the public repository.
-- Automation supports governance but never replaces it.
-
----
-
-# Continuous Improvement
-
-The architecture is intentionally evolutionary.
-
-Contributors should:
-
-- Improve clarity.
-- Reduce duplication.
-- Preserve reasoning.
-- Increase reuse.
-- Document architectural decisions.
-- Leave the repository stronger than they found it.
-
-Architecture evolves through deliberate improvement—not accidental growth.
+| Document | Relationship |
+|-----------|--------------|
+| CONSTITUTION.md | Governing principles |
+| DOCUMENT_CATALOG.md | Repository inventory |
+| REPOSITORY_STRUCTURE.md | Physical organization |
+| GOVERNANCE.md | Architecture governance |
+| PRODUCT_ARCHITECTURE.md | Product design |
+| IMPLEMENTATION_ARCHITECTURE.md | Technical realization |
+| REFERENCE_ARCHITECTURE.md | Executive overview |
 
 ---
 
-# Definition of Success
+# Success Criteria
 
-The architecture is successful when:
+The enterprise architecture succeeds when:
 
-- Contributors immediately understand where new work belongs.
-- Governance documents remain consistent.
-- Architectural decisions are traceable.
-- Information is easy to locate.
-- Knowledge becomes reusable.
-- Intelligence supports executive decisions.
-- Repository growth does not increase complexity unnecessarily.
-- Future contributors can confidently extend the framework.
-
----
-
-# Related Documents
-
-Repository Governance
-
-- README.md
-- MANIFESTO.md
-- CONSTITUTION.md
-- ROADMAP.md
-- CONTRIBUTING.md
-
-Architecture
-
-- Architecture/README.md
-- Architecture/GOVERNANCE.md
-- Architecture/ADR-0001 through ADR-0005
-
----
-
-# Evolution
-
-The Executive Intelligence Briefing is designed as a living architecture.
-
-Future enhancements may include:
-
-- AI-assisted reasoning
-- Automated intelligence generation
-- Executive dashboards
-- Workflow orchestration
-- Knowledge graph integration
-- External system integrations
-
-These capabilities should extend the architecture while preserving its foundational principles.
-
-Every architectural change should improve the repository's long-term clarity, maintainability, and usefulness
+- Every document has a clear architectural home.
+- Responsibilities are clearly separated.
+- Architectural decisions are easy to understand.
+- AI agents can reason across the repository.
+- New capabilities integrate without redesign.
+- The architecture remains stable as implementation evolves.
