@@ -1,452 +1,237 @@
 ---
-title: Executive Intelligence Briefing Repository Structure
-document_id: IA-0016
-version: 1.0
+title: Repository Structure
+document_id: DEV-001
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - CONSTITUTION.md
-  - ARCHITECTURE/PRODUCT_ARCHITECTURE.md
-  - IMPLEMENTATION/IMPLEMENTATION_ARCHITECTURE.md
+  - DOCUMENT_CATALOG.md
+  - Architecture/ARCHITECTURE.md
 ---
 
-# Executive Intelligence Briefing Repository Structure
+# Repository Structure
 
 ## Purpose
 
-This document defines the canonical organization of the Executive Intelligence Briefing (EIB) repository.
+This document defines the approved organizational structure of the Executive Intelligence Briefing (EIB) repository.
 
-A consistent repository structure improves discoverability, maintainability, onboarding, automation, and long-term evolution. Every document, prompt, connector, workflow, test, and implementation artifact should have a clearly defined location.
-
----
-
-# Design Philosophy
-
-The repository is organized around **capabilities**, not technologies.
-
-This allows the implementation language, framework, orchestration engine, or AI model to evolve without requiring significant reorganization.
-
-The repository should be understandable by:
-
-- Human developers
-- AI coding agents
-- Architects
-- Contributors
-- Future maintainers
+Rather than serving as a simple directory listing, this document establishes the architectural rules governing where documents belong, how new capabilities are introduced, and how the repository scales while remaining understandable and maintainable.
 
 ---
 
-# Repository Principles
+# Design Goals
 
-The repository shall be:
+The repository is organized to achieve the following objectives:
 
-- Predictable
-- Self-documenting
-- Modular
-- Version controlled
-- AI-friendly
-- Easy to navigate
-- Easy to extend
+- Separate governance from implementation.
+- Group related knowledge together.
+- Minimize duplication.
+- Support future automation.
+- Enable AI agents to reason about repository contents.
+- Make information easy to discover.
+- Scale without requiring structural redesign.
+
+Every structural decision should support one or more of these goals.
 
 ---
 
-# High-Level Repository Layout
+# Repository Layout
 
-```text
+```
 /
 ├── README.md
 ├── MANIFESTO.md
 ├── CONSTITUTION.md
-├── REFERENCE_ARCHITECTURE.md
+├── ROADMAP.md
+├── CONTRIBUTING.md
+├── REVIEW_REGISTER.md
+├── REPOSITORY_WORKFLOW.md
+├── DOCUMENT_CATALOG.md
 ├── PRODUCT_REQUIREMENTS.md
+├── EXECUTIVE_PRINCIPLES.md
+├── REFERENCE_ARCHITECTURE.md
 │
 ├── Architecture/
-│
-├── IMPLEMENTATION/
-│
-├── DEVELOPMENT/
-│
 ├── DATA/
-│
+├── DEVELOPMENT/
+├── IMPLEMENTATION/
 ├── OPERATIONS/
-│
-├── ROADMAP/
-│
-├── prompts/
-│
-├── agents/
-│
-├── connectors/
-│
-├── workflows/
-│
-├── templates/
-│
-├── schemas/
-│
-├── configuration/
-│
-├── examples/
-│
-├── tests/
-│
-├── scripts/
-│
-├── docs/
-│
-└── archive/
+└── ROADMAP/
 ```
+
+The complete governed inventory is maintained in `DOCUMENT_CATALOG.md`.
 
 ---
 
 # Directory Responsibilities
 
-## Architecture/
+## Root
 
-Contains product architecture.
+Contains repository-wide governance and executive documents.
 
-Examples:
-
-- Vision
-- Product Architecture
-- Intelligence Architecture
-- Scoring Model
-- Report Specification
-
-This directory answers:
-
-**"What are we building?"**
+No implementation-specific documents should reside at the repository root unless they intentionally serve the entire repository.
 
 ---
 
-## IMPLEMENTATION/
+## Architecture/
 
-Contains implementation architecture.
+Defines the logical architecture of the EIB platform.
 
-Examples:
+Examples include:
 
-- Agent Architecture
-- Workflow Orchestration
-- Assembly Engine
-- Knowledge Model
-- Connector Framework
+- Product architecture
+- Intelligence architecture
+- Governance
+- Report specification
+- Scoring
+- Personalization
 
-This directory answers:
+Architecture answers:
 
-**"How does it work?"**
+> What is the system?
 
 ---
 
 ## DEVELOPMENT/
 
-Contains engineering standards.
+Defines standards used to build and maintain the repository.
 
-Examples:
+Examples include:
 
-- Coding Standards
-- Repository Structure
-- API Specifications
-- Plugin Architecture
-- Versioning Strategy
+- Repository structure
+- Coding standards
+- API specifications
+- Versioning
+- Plugin architecture
 
-This directory answers:
+Development answers:
 
-**"How do developers contribute?"**
+> How do we build it?
+
+---
+
+## IMPLEMENTATION/
+
+Defines how the architecture is realized.
+
+Examples include:
+
+- Agents
+- Prompt architecture
+- Workflow orchestration
+- Knowledge model
+- Assembly engine
+- Execution state
+- Pipeline
+
+Implementation answers:
+
+> How does it work?
 
 ---
 
 ## DATA/
 
-Defines data architecture.
+Defines how information is stored, retained, represented, and retrieved.
 
-Examples:
+Examples include:
 
 - Storage
-- Knowledge Graph
 - Embeddings
+- Knowledge graph
+- Historical intelligence
 - Retention
-- Historical Intelligence
 
-This directory answers:
+Data answers:
 
-**"How is information managed?"**
+> How is knowledge managed?
 
 ---
 
 ## OPERATIONS/
 
-Defines runtime operations.
+Defines how the platform is operated after deployment.
 
-Examples:
+Examples include:
 
 - Deployment
-- Scheduling
 - Security
-- Monitoring
+- Scheduling
 - Backup
-- Recovery
+- Change management
 
-This directory answers:
+Operations answers:
 
-**"How does the platform operate?"**
+> How is the system run?
 
 ---
 
 ## ROADMAP/
 
-Planning documentation.
+Defines future work.
 
-Examples:
+Examples include:
 
 - MVP
-- Release Plan
-- Feature Backlog
-- Technical Debt
-- Implementation Plan
+- Release plans
+- Feature backlog
+- Technical debt
+- Implementation planning
+
+Roadmap answers:
+
+> Where is the project going?
 
 ---
 
-## prompts/
+# Placement Rules
 
-Version-controlled prompt assets.
+Every new governed document shall belong to exactly one primary directory.
 
-Examples:
+Documents should not be duplicated across directories.
 
-- System prompts
-- Agent prompts
-- Editorial prompts
-- QA prompts
-
-Prompts are treated as software assets.
+If multiple documents require the same information, they should reference the authoritative source rather than copying content.
 
 ---
 
-## agents/
+# Naming Standards
 
-Agent definitions.
+Governed documents use:
 
-Each agent should contain:
-
-- configuration
-- prompt
-- metadata
-- tests
-
-One directory per agent.
-
----
-
-## connectors/
-
-External integrations.
-
-Examples:
-
-- Weather
-- News
-- Cyber
-- Calendar
-- Email
-- Financial Markets
-
-Each connector should be independently testable.
-
----
-
-## workflows/
-
-Workflow definitions.
-
-Examples:
-
-- Morning Briefing
-- Weekly Review
-- Breaking News
-- Executive Alert
-
----
-
-## templates/
-
-Reusable report templates.
-
-Examples:
-
-- Daily Briefing
-- Weekly Briefing
-- Executive Summary
-- Watch List
-
----
-
-## schemas/
-
-Canonical schemas.
-
-Examples:
-
-- Intelligence Object
-- Executive Score
-- Recommendation
-- Configuration
-
-Schemas should remain backward compatible whenever practical.
-
----
-
-## configuration/
-
-Configuration profiles.
-
-Examples:
-
-- Executive Profiles
-- Runtime Settings
-- Feature Flags
-- Connector Configuration
-
-Configuration should never contain secrets.
-
----
-
-## examples/
-
-Reference examples.
-
-Include:
-
-- Sample reports
-- Example intelligence
-- Test datasets
-- Demonstration workflows
-
----
-
-## tests/
-
-Automated validation.
-
-Examples:
-
-- Unit Tests
-- Integration Tests
-- Prompt Tests
-- Quality Tests
-- Regression Tests
-
-Testing should mirror repository organization.
-
----
-
-## scripts/
-
-Automation utilities.
-
-Examples:
-
-- Build
-- Validation
-- Deployment
-- Report generation
-- Maintenance
-
-Scripts should be deterministic and idempotent where practical.
-
----
-
-## docs/
-
-Supporting documentation not considered part of the formal architecture.
-
-Examples:
-
-- Tutorials
-- FAQs
-- User Guides
-- Migration Guides
-
----
-
-## archive/
-
-Historical materials.
-
-Examples:
-
-- Deprecated specifications
-- Superseded documents
-- Legacy prompts
-- Previous report formats
-
-Archived content remains read-only.
-
----
-
-# Naming Conventions
-
-Repository names should be:
-
-- Descriptive
-- Consistent
-- Lowercase where applicable
-- Free of abbreviations unless widely understood
+- Uppercase filenames
+- Underscores instead of spaces
+- Markdown (`.md`) format
+- Descriptive names
 
 Examples:
 
 ```
-agent_architecture.md
-
-weather_connector.md
-
-executive_summary_template.md
-```
-
-Avoid names such as:
-
-```
-new_doc.md
-
-test2.md
-
-temp.md
-
-misc.md
+PRODUCT_REQUIREMENTS.md
+QUALITY_ASSURANCE_FRAMEWORK.md
+INTELLIGENCE_PIPELINE_SPECIFICATION.md
 ```
 
 ---
 
-# Directory Independence
+# Repository Evolution
 
-Each top-level directory should represent a distinct architectural concern.
+New capabilities should extend the existing structure whenever practical.
 
-Cross-directory dependencies should be minimized and documented explicitly.
-
----
-
-# Version Control
-
-All repository content shall be managed through Git.
-
-Every meaningful change should include:
-
-- Clear commit message
-- Traceable history
-- Review where appropriate
-- Updated document version when applicable
+Creating new top-level directories should be considered an architectural change and should occur only when the existing organization can no longer accommodate future growth.
 
 ---
 
-# Repository Growth
+# Relationship to Other Documents
 
-As the platform evolves:
+This document defines **where** information belongs.
 
-- Add new directories only when a new architectural concern emerges.
-- Prefer extending existing structures before creating parallel hierarchies.
-- Avoid duplicate responsibilities across directories.
+`DOCUMENT_CATALOG.md` defines **what** exists.
 
-The repository should remain intuitive even as it grows.
+`ARCHITECTURE.md` defines **how** the repository is organized logically.
+
+Together, these documents form the governance foundation of the repository.
 
 ---
 
@@ -454,28 +239,9 @@ The repository should remain intuitive even as it grows.
 
 The repository structure succeeds when:
 
-- New contributors can quickly locate relevant content.
-- AI coding agents can navigate the repository with minimal guidance.
-- Architectural boundaries remain clear.
-- Related artifacts are grouped logically.
-- The repository scales without requiring major reorganization.
-
----
-
-# Guiding Principle
-
-A well-organized repository is an architectural asset.
-
-Its structure should communicate the design of the platform as clearly as the documents it contains, enabling humans and AI systems alike to understand, extend, and maintain the Executive Intelligence Briefing with confidence.
-
----
-
-# Related Documents
-
-- README.md
-- REFERENCE_ARCHITECTURE.md
-- PRODUCT_REQUIREMENTS.md
-- Architecture/PRODUCT_ARCHITECTURE.md
-- IMPLEMENTATION/IMPLEMENTATION_ARCHITECTURE.md
-- DEVELOPMENT/CODING_STANDARDS.md
-- DEVELOPMENT/API_SPECIFICATION.md
+- Documents are easy to locate.
+- Responsibilities are clearly separated.
+- New contributors can quickly understand the organization.
+- AI agents can reliably navigate the repository.
+- Growth occurs without structural rework.
+- The repository remains internally consistent over time.
