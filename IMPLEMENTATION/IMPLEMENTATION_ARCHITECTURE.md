@@ -3,8 +3,8 @@ title: Executive Intelligence Briefing Implementation Architecture
 document_id: IA-0001
 version: 1.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
   - VISION.md
