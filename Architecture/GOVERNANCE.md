@@ -1,273 +1,235 @@
 ---
-title: Repository Governance
+title: Enterprise Architecture Governance
 document_id: GOV-002
-version: 1.0
-status: Accepted
-repository_release: Foundation v1.1
-owner: Product Owner
-steward: Chief Architect
-last_reviewed: 2026-07-22
-next_review: TBD
+version: 2.0
+status: Approved
+owner: BSJ
+author: BSJ & ChatGPT
+last_updated: 2026-07-23
+depends_on:
+  - ARCHITECTURE.md
+  - CONSTITUTION.md
+  - REPOSITORY_WORKFLOW.md
 ---
 
-# Repository Governance
+# Enterprise Architecture Governance
 
 ## Purpose
 
-This document defines how the Executive Intelligence Briefing (EIB) repository is governed.
+This document defines how the Executive Intelligence Briefing (EIB) architecture is governed.
 
-Governance establishes the policies, responsibilities, and processes that ensure the repository remains consistent, maintainable, and trustworthy as it evolves.
+It establishes the decision-making framework, architectural review process, document ownership model, and lifecycle management used to ensure the repository remains internally consistent as it evolves.
 
-This document governs **how work is performed**, while the Architecture defines **how the repository is organized** and the Constitution defines **the rules under which all contributors operate**.
-
----
-
-# Governance Principles
-
-The EIB repository follows these principles.
-
-1. Governance before implementation.
-2. Architecture before automation.
-3. Reuse before duplication.
-4. Traceability before convenience.
-5. Documentation is part of the product.
-6. Continuous improvement over perfection.
+Architecture governance protects the long-term integrity of the platform by ensuring that change is intentional, documented, and aligned with the project's vision.
 
 ---
 
 # Governance Objectives
 
-The governance process exists to:
+Architecture governance exists to:
 
-- Maintain architectural consistency.
-- Preserve repository quality.
-- Ensure decisions are documented.
-- Minimize architectural debt.
-- Encourage reusable solutions.
-- Support long-term sustainability.
+- Preserve architectural consistency.
+- Reduce unnecessary complexity.
+- Encourage modular design.
+- Prevent duplication.
+- Promote reuse.
+- Support automation.
+- Ensure AI-friendly documentation.
+- Enable sustainable long-term growth.
+
+---
+
+# Guiding Principles
+
+All architectural decisions should reinforce the following principles.
+
+## Simplicity
+
+Prefer the simplest design that satisfies the requirements.
+
+---
+
+## Modularity
+
+Each architectural domain owns a clearly defined responsibility.
+
+---
+
+## Consistency
+
+Standards apply uniformly across the repository.
+
+---
+
+## Traceability
+
+Architectural decisions should be explainable and documented.
+
+---
+
+## Evolution
+
+The architecture should evolve through incremental improvements rather than disruptive redesigns.
+
+---
+
+## Automation
+
+Repository organization should support validation, tooling, and AI-assisted workflows wherever practical.
 
 ---
 
 # Governance Roles
 
-## Product Owner
+## Repository Owner
 
 Responsible for:
 
-- Repository vision
-- Prioritization
-- Acceptance of architectural recommendations
-- Final approval of governed documents
-- Strategic direction
+- Strategic direction.
+- Final architectural approval.
+- Repository standards.
+- Long-term vision.
 
-Current Product Owner:
+Current Owner:
 
-**Bryan Johnson**
-
----
-
-## Chief Architect
-
-Responsible for:
-
-- Repository architecture
-- Governance recommendations
-- Architecture reviews
-- Standards
-- Repository health
-- Architectural consistency
+**BSJ**
 
 ---
 
 ## Contributors
 
-Contributors are expected to:
+Responsible for:
 
-- Follow repository standards.
-- Preserve architectural integrity.
-- Document significant decisions.
-- Improve documentation when appropriate.
-- Submit changes consistent with governance.
-
----
-
-# Repository Lifecycle
-
-Every governed change follows the same lifecycle.
-
-```
-Proposal
-
-↓
-
-Architecture Review
-
-↓
-
-Recommendations
-
-↓
-
-Product Owner Approval
-
-↓
-
-Document Update
-
-↓
-
-GitHub Commit
-
-↓
-
-Verification
-
-↓
-
-Repository Updated
-```
+- Following repository standards.
+- Maintaining documentation quality.
+- Submitting improvements.
+- Respecting architectural boundaries.
 
 ---
 
-# Architecture Reviews
+## AI Assistants
 
-Every significant document is reviewed before acceptance.
+AI assistants act as architectural collaborators.
 
-Architecture Reviews evaluate:
+Responsibilities include:
 
-- Accuracy
-- Consistency
-- Completeness
-- Maintainability
-- Reusability
-- Alignment with repository architecture
+- Identifying inconsistencies.
+- Recommending improvements.
+- Drafting documentation.
+- Detecting duplication.
+- Preserving repository standards.
 
-Architecture Reviews receive a unique identifier.
-
-Example:
-
-```
-AR-0007
-```
-
-The complete review history is maintained in:
-
-```
-REVIEW_REGISTER.md
-```
+AI assistants do not establish repository policy independently; all architectural authority remains with the repository owner.
 
 ---
 
-# Architecture Decision Records
+# Architectural Decision Process
 
-Significant architectural decisions are documented using Architecture Decision Records (ADRs).
+Major architectural changes should follow this workflow.
 
-ADRs preserve:
+1. Identify the problem.
+2. Evaluate alternatives.
+3. Assess impacts.
+4. Select the preferred approach.
+5. Update affected documents.
+6. Validate consistency.
+7. Record the change through Git history.
 
-- Context
-- Decision
-- Alternatives
-- Consequences
-
-Architectural decisions should never rely solely upon Git history.
-
----
-
-# Governed Documents
-
-Governed documents include:
-
-- README
-- MANIFESTO
-- CONSTITUTION
-- ROADMAP
-- CONTRIBUTING
-- ARCHITECTURE
-- GOVERNANCE
-- STATUS
-- REVIEW_REGISTER
-- DOCUMENT_CATALOG
-- ADRs
-
-Each governed document should contain standardized governance metadata.
+This lightweight process provides traceability without unnecessary bureaucracy.
 
 ---
 
-# Repository Standards
+# Change Categories
 
-Governed documents should:
+## Editorial
 
-- Have a unique document identifier.
-- Identify the owner.
-- Identify the steward.
-- Include version information.
-- Record review dates.
-- Be written in Markdown.
-- Follow repository naming conventions.
+Examples:
 
----
+- Grammar.
+- Formatting.
+- Clarifications.
 
-# Change Management
+Review:
 
-Repository changes should be:
-
-- Incremental
-- Traceable
-- Reviewed
-- Approved before implementation
-
-Large architectural changes should be divided into smaller, reviewable increments whenever practical.
+Repository Owner.
 
 ---
 
-# Repository Maturity
+## Architectural
 
-The repository uses the following maturity model.
+Examples:
 
-| Level | Description |
-|--------|-------------|
-| Foundation | Core governance established |
-| Emerging | Repository structure stabilized |
-| Operational | Frameworks reusable |
-| Managed | Intelligence workflows standardized |
-| Optimized | Automation and continuous improvement |
+- New architectural domains.
+- Changes to system organization.
+- Repository restructuring.
+- Dependency changes.
 
-Current Repository Maturity:
+Review:
 
-**Foundation**
+Repository Owner with architecture review.
 
 ---
 
-# Success Measures
+## Implementation
 
-Repository governance is successful when:
+Examples:
 
-- Every significant decision is traceable.
-- Repository organization remains consistent.
-- Architectural debt is visible.
-- Documentation remains current.
-- Contributors can understand the repository quickly.
-- Improvements strengthen the framework rather than create isolated solutions.
+- New agents.
+- Pipeline enhancements.
+- Prompt refinements.
+- Connector improvements.
 
----
+Review:
 
-# Continuous Improvement
-
-Governance is intended to evolve.
-
-Recommendations for improving governance are encouraged and should follow the standard Architecture Review process before adoption.
+Repository Owner.
 
 ---
 
-# Related Documents
+# Architectural Boundaries
 
-- README.md
-- MANIFESTO.md
-- CONSTITUTION.md
-- ROADMAP.md
-- CONTRIBUTING.md
-- ARCHITECTURE.md
-- REVIEW_REGISTER.md
-- DOCUMENT_CATALOG.md
-- STATUS.md
-- Architecture Decision Records (ADRs)
+Each architectural domain has a single primary responsibility.
+
+| Domain | Responsibility |
+|---------|----------------|
+| Product | What the platform delivers |
+| Development | How the repository is built |
+| Implementation | How the platform operates |
+| Data | How knowledge is managed |
+| Operations | How the platform is run |
+| Roadmap | Where the platform is going |
+
+Cross-domain duplication should be avoided.
+
+---
+
+# Documentation Standards
+
+Governed documents should include:
+
+- Metadata header.
+- Stable document identifier.
+- Version.
+- Status.
+- Ownership.
+- Dependencies.
+
+Documents should reference authoritative sources rather than duplicate information.
+
+---
+
+# Review Cycle
+
+Architecture should be reviewed:
+
+- After major capability additions.
+- Before significant repository restructuring.
+- During major releases.
+- When technical debt becomes significant.
+
+Routine editorial changes do not require formal architecture review.
+
+---
+
+# Compliance Checklist
+
+Architectural changes should answer
