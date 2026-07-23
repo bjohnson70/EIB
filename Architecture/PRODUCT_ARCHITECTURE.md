@@ -1,310 +1,237 @@
 ---
 title: Product Architecture
-document_id: PA-0001
-version: 1.0
+document_id: PA-003
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - VISION.md
+  - ARCHITECTURE.md
+  - PRODUCT_REQUIREMENTS.md
+  - REPORT_SPECIFICATION.md
 ---
 
-# Executive Intelligence Briefing Product Architecture
+# Executive Intelligence Briefing (EIB)
+# Product Architecture
 
 ## Purpose
 
-This document defines the architecture of the Executive Intelligence Briefing (EIB) product.
+This document defines the product architecture of the Executive Intelligence Briefing (EIB) platform.
 
-While the Repository Architecture defines how the project is managed, the Product Architecture defines how EIB delivers executive intelligence.
+It explains what the product delivers, who it serves, the business capabilities it provides, and how those capabilities are organized into a cohesive executive intelligence platform.
 
-The Morning Briefing is the first implementation of this architecture.
+This document intentionally avoids implementation details, which are defined within the Implementation Architecture.
 
 ---
 
-# Product Mission
+# Product Vision
 
-Transform trusted information into prioritized, personalized, and actionable executive intelligence.
+The Executive Intelligence Briefing transforms fragmented information into timely, personalized executive intelligence.
 
-Every feature within EIB shall support one or more of the following objectives:
+Rather than presenting large volumes of data, the platform identifies what matters most, explains why it matters, and recommends where executive attention should be focused.
 
+The product is designed to become an executive's trusted daily decision-support companion.
+
+---
+
+# Product Goals
+
+The platform exists to:
+
+- Reduce information overload.
 - Improve executive awareness.
-- Improve executive judgment.
-- Reduce cognitive load.
-- Reduce time spent gathering information.
-- Increase confidence in decision making.
+- Highlight emerging risks and opportunities.
+- Consolidate intelligence from multiple sources.
+- Provide personalized executive briefings.
+- Enable informed decision making.
+- Preserve historical context for trend analysis.
 
 ---
 
-# Product Philosophy
+# Target Users
 
-EIB is not a news reader.
+Primary users include:
 
-EIB is not a search engine.
+- Chief Information Officers (CIO)
+- Chief Information Security Officers (CISO)
+- Executive Directors
+- Deputy Directors
+- Division Chiefs
+- Program Managers
+- Technical Leaders
 
-EIB is not an RSS feed.
-
-EIB is an Executive Intelligence System.
-
-Its purpose is not to collect information.
-
-Its purpose is to transform information into executive advantage.
-
----
-
-# Architectural Layers
-
-```
-Executive Intelligence Briefing
-
-├── Repository Architecture
-│
-├── Product Architecture
-│
-├── Intelligence Architecture
-│
-└── Delivery Architecture
-```
-
-Each layer has an independent responsibility while contributing to the overall mission.
+Future editions may support additional executive personas through configurable briefing profiles.
 
 ---
 
-# Executive Intelligence Model
+# Core Product Capabilities
 
-Every briefing shall answer four executive questions.
+## Intelligence Collection
 
-## What happened?
-
-Situational awareness.
-
-## Why does it matter?
-
-Executive interpretation.
-
-## Why does it matter to me?
-
-Personalized intelligence.
-
-## What should I do?
-
-Actionable recommendations.
-
----
-
-# Core Capabilities
-
-## Awareness
-
-Provide concise awareness of significant developments.
-
-Examples:
-
-- Calendar
-- Weather
-- Markets
-- Cybersecurity
-- Government
-- Technology
-- World Events
-
----
-
-## Understanding
-
-Every major item shall include executive context explaining why it matters.
-
-Facts without interpretation are incomplete.
-
----
-
-## Decisions
-
-Whenever practical, EIB shall recommend actions, preparation, or monitoring activities.
-
----
-
-## Executive Memory
-
-The platform shall continuously learn executive preferences, priorities, operating principles, and historical decisions.
-
-Future products shall leverage this knowledge to improve personalization.
-
----
-
-# Product Design Principles
-
-Every enhancement should satisfy one or more of these principles.
-
-1. Decision First
-2. Executive Focus
-3. Trusted Information
-4. Actionable Intelligence
-5. Personal Relevance
-6. Operational Awareness
-7. Simplicity
-8. Consistency
-9. Explainability
-10. Continuous Improvement
-
----
-
-# Product Requirements
-
-The system shall:
-
-- Prioritize quality over quantity.
-- Present concise summaries.
-- Avoid unnecessary repetition.
-- Highlight changes from previous briefings.
-- Recommend actions where appropriate.
-- Clearly separate verified information from developing information.
-- Personalize content without sacrificing consistency.
-- Explain significant impacts.
-
----
-
-# Coverage Assurance
-
-Coverage Assurance is a mandatory product capability.
-
-Before publication the system shall validate that each intelligence domain has been evaluated.
+Acquire information from multiple internal and external sources.
 
 Examples include:
 
-- Cybersecurity
-- Government
-- Markets
-- Technology
-- Weather
-- Calendar
+- News
+- Threat intelligence
+- Financial information
+- Government publications
+- Internal reports
+- Calendar events
+- Email summaries
+- Organizational metrics
+
+---
+
+## Intelligence Processing
+
+Normalize, classify, enrich, and score collected information.
+
+Outputs include:
+
+- Risk indicators
+- Opportunity indicators
+- Priority rankings
+- Topic classifications
+- Trend analysis
+
+---
+
+## Personalization
+
+Customize intelligence based on:
+
+- Executive role
 - Organizational priorities
-
-The goal is minimizing high-impact omissions.
-
----
-
-# Executive Time Equation
-
-Executives possess three scarce resources.
-
-- Time
-- Attention
-- Judgment
-
-Most software improves time.
-
-Some software improves attention.
-
-EIB is designed to improve judgment.
+- Areas of responsibility
+- User preferences
+- Historical interactions
 
 ---
 
-# Information Hierarchy
+## Briefing Assembly
 
-Information progresses through defined stages.
+Generate a concise, structured executive briefing that includes:
+
+- Executive Summary
+- Priority Topics
+- Risks
+- Opportunities
+- Recommended Actions
+- Supporting Context
+- Historical Trends
+
+---
+
+## Continuous Learning
+
+Improve future briefings through:
+
+- User feedback
+- Usage patterns
+- Preference adjustments
+- Scoring refinement
+- Source evaluation
+
+---
+
+# Product Capability Model
 
 ```
-Raw Information
-
-↓
-
-Validated Information
-
-↓
-
-Executive Context
-
-↓
-
-Personalized Intelligence
-
-↓
-
-Decision Support
-
-↓
-
-Executive Intelligence
+Data Sources
+      │
+      ▼
+Collection
+      │
+      ▼
+Normalization
+      │
+      ▼
+Intelligence Analysis
+      │
+      ▼
+Scoring
+      │
+      ▼
+Personalization
+      │
+      ▼
+Briefing Assembly
+      │
+      ▼
+Executive Briefing
 ```
 
 ---
 
-# Product Characteristics
+# Product Principles
 
-The EIB shall be:
+## Intelligence Before Information
 
-- Trusted
-- Timely
-- Personalized
-- Concise
-- Explainable
-- Actionable
-- Repeatable
-- Consistent
+Only information that improves executive understanding should appear in a briefing.
 
 ---
 
-# Success Metrics
+## Executive Time is Valuable
 
-The product succeeds when executives:
+Every section should justify the reader's attention.
 
-- Read the briefing daily.
-- Spend less time gathering information.
-- Miss fewer important developments.
-- Make better informed decisions.
-- Require fewer external information sources.
-- Trust the briefing as their primary executive summary.
+Brevity and clarity are essential.
 
 ---
 
-# Future Product Evolution
+## Explain Before Recommending
 
-Future capabilities include:
-
-- Morning Briefing
-- Evening Briefing
-- Weekly Executive Review
-- Monthly Strategic Review
-- Quarterly Planning Review
-- Executive Memory
-- Predictive Intelligence
-- AI Decision Support
-- Organizational Dashboards
+Recommendations should be supported by sufficient context to explain why they matter.
 
 ---
 
-# Architecture Principles
+## Personalized by Default
 
-The architecture shall remain:
-
-- Modular
-- Extensible
-- Measurable
-- Explainable
-- Secure
-- Personal
-- Source-driven
-- Executive-focused
+Every briefing should reflect the executive's responsibilities and priorities.
 
 ---
 
-# Product North Star
+## Trust Through Transparency
 
-Every feature shall answer one question.
-
-> Does this improve executive judgment while reducing executive effort?
-
-If not, it should not become part of EIB.
+Important conclusions should be traceable to supporting evidence and source material.
 
 ---
 
-# Related Documents
+# Major Product Components
 
-- ../VISION.md
-- REPORT_SPECIFICATION.md
-- INTELLIGENCE_ARCHITECTURE.md
-- DATA_SOURCE_STRATEGY.md
-- SCORING_MODEL.md
-- PERSONALIZATION_MODEL.md
-- ../EXECUTIVE_PRINCIPLES.md
+| Component | Responsibility |
+|----------|----------------|
+| Collection Engine | Gather information |
+| Intelligence Engine | Analyze and enrich data |
+| Scoring Engine | Prioritize content |
+| Personalization Engine | Tailor output |
+| Briefing Assembly Engine | Produce executive briefing |
+| Historical Repository | Preserve trends and context |
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|----------|--------------|
+| PRODUCT_REQUIREMENTS.md | Functional requirements |
+| REPORT_SPECIFICATION.md | Briefing structure |
+| INTELLIGENCE_ARCHITECTURE.md | Intelligence processing model |
+| PERSONALIZATION_MODEL.md | Personalization rules |
+| SCORING_MODEL.md | Prioritization methodology |
+| DATA_SOURCE_STRATEGY.md | Source acquisition strategy |
+| IMPLEMENTATION_ARCHITECTURE.md | Technical implementation |
+
+---
+
+# Success Criteria
+
+The product architecture succeeds when:
+
+- Executives receive concise, relevant, and actionable intelligence.
+- Information from diverse sources is unified into a coherent briefing.
+- Personalization reflects each executive's role and priorities.
+- Product capabilities evolve without disrupting the overall architecture.
+- The architecture remains independent of implementation technologies.
