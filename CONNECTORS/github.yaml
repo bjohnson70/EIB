@@ -1,0 +1,121 @@
+# ==========================================================
+# Executive Intelligence Briefing (EIB)
+# GitHub Connector Definition
+# ==========================================================
+
+metadata:
+  connector_id: "github"
+  version: "1.0"
+  status: "active"
+  last_updated: "2026-07-24"
+
+connector:
+
+  name: "GitHub"
+
+  description: >
+    Retrieves repository information, documentation, issues,
+    pull requests, releases, and commits used by the Executive
+    Intelligence Briefing.
+
+authentication:
+
+  required: true
+
+  method: "ChatGPT GitHub Connector"
+
+configuration:
+
+  enabled: true
+
+  timeout_seconds: 30
+
+  retry_attempts: 2
+
+  continue_on_failure: true
+
+repositories:
+
+  default:
+
+    owner: "bjohnson70"
+
+    repository: "EIB"
+
+supported_operations:
+
+  - read_repository
+
+  - read_file
+
+  - list_files
+
+  - list_branches
+
+  - list_commits
+
+  - list_tags
+
+  - list_releases
+
+  - list_pull_requests
+
+  - list_issues
+
+  - search_repository
+
+  - retrieve_readme
+
+  - retrieve_directory_tree
+
+data_collection:
+
+  include:
+
+    - README.md
+
+    - documentation
+
+    - roadmap
+
+    - implementation
+
+    - prompts
+
+    - workflows
+
+    - configuration
+
+  exclude:
+
+    - binary_files
+
+    - temporary_files
+
+normalization:
+
+  source: "GitHub"
+
+  confidence: 1.00
+
+  citation_required: true
+
+error_handling:
+
+  continue_on_failure: true
+
+  log_errors: true
+
+  retry_failed_requests: true
+
+future:
+
+  write_support: true
+
+  create_issue: true
+
+  create_pull_request: true
+
+  repository_statistics: true
+
+  dependency_analysis: true
