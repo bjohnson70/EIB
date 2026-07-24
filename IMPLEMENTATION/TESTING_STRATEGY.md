@@ -1,239 +1,322 @@
 ---
-title: Executive Intelligence Briefing Testing Strategy
-document_id: IA-0007
-version: 1.0
+title: Testing Strategy
+document_id: IA-0012
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - IMPLEMENTATION_ARCHITECTURE.md
-  - AGENT_ARCHITECTURE.md
-  - WORKFLOW_ORCHESTRATION.md
-  - PROMPT_ARCHITECTURE.md
   - QUALITY_ASSURANCE_FRAMEWORK.md
+  - IMPLEMENTATION_ARCHITECTURE.md
+  - WORKFLOW_ORCHESTRATION.md
 ---
 
-# Executive Intelligence Briefing Testing Strategy
+# Executive Intelligence Briefing (EIB)
+# Testing Strategy
 
 ## Purpose
 
 This document defines the testing strategy for the Executive Intelligence Briefing (EIB) platform.
 
-The objective is to ensure every component of the platform can be validated independently and that the complete workflow consistently produces accurate, trustworthy, and executive-ready intelligence.
+Testing verifies that the platform functions correctly, maintains architectural integrity, and consistently produces trustworthy executive intelligence. The strategy spans software correctness, workflow execution, intelligence quality, operational resilience, and user acceptance.
 
 ---
 
-# Philosophy
+# Testing Principles
 
-Testing is continuous.
+Testing shall be:
 
-Every change to prompts, agents, workflows, scoring, or report formatting should be validated before deployment.
+- Risk-based
+- Automated whenever practical
+- Repeatable
+- Independent
+- Deterministic
+- Traceable
+- Continuously executed
 
-Testing is intended to prevent regressions while encouraging rapid improvement.
-
----
-
-# Testing Objectives
-
-The testing framework shall verify:
-
-- Functional correctness
-- Report completeness
-- Coverage Assurance
-- Prompt quality
-- Agent reliability
-- Workflow integrity
-- Recommendation quality
-- Executive readability
-- System performance
+Every significant capability should have one or more corresponding automated tests.
 
 ---
 
 # Testing Pyramid
 
 ```
-Unit Tests
-
-↓
-
-Agent Tests
-
-↓
-
-Workflow Tests
-
-↓
-
-Integration Tests
-
-↓
-
-End-to-End Tests
-
-↓
-
-Executive Acceptance Tests
+             Acceptance Tests
+                   ▲
+            End-to-End Tests
+                   ▲
+         Integration Tests
+                   ▲
+             Component Tests
+                   ▲
+               Unit Tests
 ```
 
-Testing should emphasize lower-level automated validation while reserving executive review for high-value scenarios.
+The majority of tests should exist at the lower levels to provide rapid feedback.
 
 ---
 
 # Unit Testing
 
-Each individual function or rule shall be tested independently.
+Unit tests verify individual components in isolation.
+
+Examples include:
+
+- Scoring calculations
+- Personalization rules
+- Validation logic
+- Configuration parsing
+- Utility functions
+
+Objectives:
+
+- Fast execution
+- High coverage
+- Deterministic results
+
+---
+
+# Component Testing
+
+Component tests verify individual services or agents.
 
 Examples:
 
-- Score calculations
-- Ranking logic
-- Reading time estimation
-- Metadata generation
-- Date handling
+- Collection Agent
+- Validation Agent
+- Scoring Agent
+- Assembly Engine
+- Knowledge Repository
 
----
-
-# Agent Testing
-
-Each agent shall be validated independently.
-
-Verify:
-
-- Inputs accepted
-- Outputs produced
-- Error handling
-- Performance
-- Deterministic behavior
-
-Agents should be testable without requiring the entire workflow.
-
----
-
-# Workflow Testing
-
-The orchestration layer shall be tested to verify:
-
-- Correct execution order
-- Proper dependency handling
-- Failure recovery
-- Retry behavior
-- Quality gate enforcement
+Dependencies should be mocked or simulated where appropriate.
 
 ---
 
 # Integration Testing
 
-Validate interactions between agents.
+Integration tests verify interactions between components.
 
 Examples:
 
-- Collection → Validation
-- Validation → Scoring
+- Connector → Pipeline
+- Pipeline → Scoring
 - Scoring → Personalization
-- Editorial → QA
-- QA → Publication
+- Assembly → Rendering
+- Workflow → Knowledge Model
 
-Interfaces shall remain stable as individual agents evolve.
+Integration testing validates interface contracts and data exchange.
 
 ---
 
 # End-to-End Testing
 
-Simulate a complete morning briefing.
+End-to-end tests validate complete workflow execution.
 
-Verify:
+Typical scenario:
 
-- All required domains evaluated
-- Executive Summary generated
-- Recommendations produced
-- Report published
-- Audit information recorded
+```
+Trigger Workflow
 
-The published briefing should satisfy all quality standards.
+↓
 
----
+Collect Data
 
-# Coverage Testing
+↓
 
-Coverage Assurance shall verify that each required intelligence domain is represented.
+Validate
 
-Missing required domains shall result in a failed test.
+↓
 
-Coverage testing is mandatory before publication.
+Score
 
----
+↓
 
-# Prompt Testing
+Personalize
 
-Prompt updates shall be evaluated for:
+↓
 
-- Accuracy
-- Consistency
-- Hallucination resistance
-- Executive tone
-- Compliance with report standards
+Assemble
 
-Prompt regressions should be detected before deployment.
+↓
+
+Deliver Briefing
+```
+
+The objective is to verify complete system behavior under realistic conditions.
 
 ---
 
-# Scoring Validation
+# Intelligence Validation Testing
 
-Representative intelligence samples shall be used to verify:
+The platform shall verify:
 
-- Ranking consistency
-- Priority bands
-- Personalization adjustments
-- Explainability
+- Source attribution
+- Duplicate detection
+- Confidence calculation
+- Classification accuracy
+- Correlation quality
+- Recommendation generation
 
-Expected rankings should remain stable unless intentionally changed.
-
----
-
-# Recommendation Validation
-
-Recommendations shall be evaluated for:
-
-- Supporting evidence
-- Executive relevance
-- Clarity
-- Actionability
-
-Recommendations shall not contradict source intelligence.
-
----
-
-# Editorial Validation
-
-Validate:
-
-- Formatting
-- Section order
-- Grammar
-- Reading flow
-- Reading time
-- Consistent terminology
-
-Editorial improvements should never modify factual content.
+Testing focuses on the correctness of executive intelligence rather than software behavior alone.
 
 ---
 
 # Performance Testing
 
-Measure:
+Performance testing evaluates:
 
-- Total execution time
+- Workflow throughput
 - Agent latency
-- Collection performance
-- Publication duration
+- Connector scalability
+- Concurrent workflow execution
+- Report generation time
+- Resource utilization
 
-Performance targets should be periodically reviewed.
+Performance objectives should align with defined Service Level Objectives (SLOs).
+
+---
+
+# Load Testing
+
+The platform should be tested under expected operational loads.
+
+Scenarios include:
+
+- Multiple simultaneous executive briefings
+- High-volume connector activity
+- Large intelligence datasets
+- Peak organizational usage
+
+Load testing verifies stable performance under normal conditions.
+
+---
+
+# Stress Testing
+
+Stress testing evaluates behavior beyond expected operating limits.
+
+Examples:
+
+- Connector failures
+- Queue saturation
+- Resource exhaustion
+- Network interruptions
+- High retry volumes
+
+The objective is graceful degradation rather than uninterrupted operation.
+
+---
+
+# Security Testing
+
+Security testing includes:
+
+- Authentication
+- Authorization
+- Secrets management
+- Input validation
+- Dependency scanning
+- Vulnerability assessment
+
+Security testing should be integrated into the development lifecycle.
 
 ---
 
 # Regression Testing
 
-Every significant change shall trigger regression testing.
+Regression tests ensure that changes do not unintentionally affect existing functionality.
 
-Regression tests shall verify
+Regression suites should execute automatically for:
+
+- Code changes
+- Configuration updates
+- Connector modifications
+- Scoring model revisions
+
+---
+
+# Acceptance Testing
+
+Acceptance testing verifies that the platform satisfies executive and organizational requirements.
+
+Acceptance criteria include:
+
+- Accurate briefing content
+- Correct prioritization
+- Readable presentation
+- Explainable recommendations
+- Reliable delivery
+
+Acceptance testing should involve representative executive users whenever practical.
+
+---
+
+# Test Data Management
+
+Test data should be:
+
+- Representative
+- Version controlled
+- Repeatable
+- Sanitized
+- Secure
+
+Sensitive production information should never be used without appropriate protection.
+
+---
+
+# Continuous Testing
+
+Testing should be integrated into continuous integration and deployment workflows.
+
+Recommended stages:
+
+1. Static analysis
+2. Unit tests
+3. Component tests
+4. Integration tests
+5. End-to-end tests
+6. Security testing
+7. Performance testing (scheduled)
+
+---
+
+# Test Reporting
+
+Every test execution should produce:
+
+- Test identifier
+- Execution timestamp
+- Result
+- Duration
+- Failure details
+- Environment
+- Software version
+
+Results should support historical trend analysis.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| IMPLEMENTATION_ARCHITECTURE.md | Overall implementation blueprint |
+| QUALITY_ASSURANCE_FRAMEWORK.md | Defines quality objectives verified through testing |
+| WORKFLOW_ORCHESTRATION.md | Workflow execution scenarios |
+| OBSERVABILITY_AND_TELEMETRY.md | Test monitoring and diagnostics |
+| DEVELOPMENT/CODING_STANDARDS.md | Development practices supporting testability |
+
+---
+
+# Success Criteria
+
+The Testing Strategy succeeds when:
+
+- Every architectural capability is verified through appropriate tests.
+- Defects are detected early in the development lifecycle.
+- Regression risk is minimized through automation.
+- Executive intelligence remains accurate and trustworthy after changes.
+- Test results are repeatable, traceable, and auditable.
+- The platform can be released with measurable confidence in its quality and reliability.
