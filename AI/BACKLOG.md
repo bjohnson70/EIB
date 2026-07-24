@@ -111,7 +111,7 @@ Potential future capabilities.
 - Microsoft Teams integration
 - Slack integration
 - Email distribution
-- Calendar awareness
+- Calendar awareness.
 - Knowledge graph visualization
 - Plugin ecosystem
 
