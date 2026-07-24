@@ -1,316 +1,320 @@
 ---
-title: Executive Intelligence Briefing Security Model
-document_id: IA-0028
-version: 1.0
+title: Security Model
+document_id: OPS-002
+version: 2.0
 status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - OPERATIONS/DEPLOYMENT_ARCHITECTURE.md
-  - DEVELOPMENT/API_SPECIFICATION.md
-  - IMPLEMENTATION/OBSERVABILITY_AND_TELEMETRY.md
+  - DEPLOYMENT_ARCHITECTURE.md
+  - ../IMPLEMENTATION/INTELLIGENCE_OBJECT_MODEL.md
+  - ../IMPLEMENTATION/WORKFLOW_ORCHESTRATION.md
 ---
 
-# Executive Intelligence Briefing Security Model
+# Executive Intelligence Briefing (EIB)
+# Security Model
 
 ## Purpose
 
-This document defines the security architecture for the Executive Intelligence Briefing (EIB) platform.
+This document defines the enterprise security architecture for the Executive Intelligence Briefing (EIB) platform.
 
-The Security Model establishes the principles, controls, and trust boundaries that protect platform data, system integrity, external integrations, and executive information while maintaining operational simplicity.
+Security is treated as an architectural property that spans every component, workflow, intelligence object, connector, and operational process.
 
-Security is not a feature—it is a foundational characteristic of every platform component.
-
----
-
-# Philosophy
-
-Trust must be earned.
-
-Every request, user, connector, workflow, and component should be authenticated, authorized, validated, and auditable.
-
-Security should enable executive confidence without creating unnecessary operational friction.
-
----
-
-# Objectives
-
-The Security Model shall:
-
-- Protect executive information
-- Protect credentials
-- Secure external integrations
-- Prevent unauthorized access
-- Support auditing
-- Enable secure automation
-- Remain implementation independent
+The objective is to ensure the confidentiality, integrity, availability, authenticity, and traceability of executive intelligence throughout its lifecycle.
 
 ---
 
 # Security Principles
 
-The platform shall follow these principles:
+The EIB platform shall implement:
 
+- Zero Trust
 - Least Privilege
 - Defense in Depth
 - Secure by Default
-- Fail Securely
-- Zero Trust
-- Separation of Duties
+- Privacy by Design
+- Continuous Verification
 - Complete Auditability
+- Separation of Duties
+
+Security controls shall be applied consistently across the platform.
 
 ---
 
-# Security Domains
+# Security Objectives
 
-The platform protects five primary domains:
+The platform protects:
 
-## Identity
+- Executive intelligence
+- Organizational knowledge
+- Source credentials
+- Executive profiles
+- Workflow execution
+- Operational telemetry
+- Configuration
+- Audit history
 
-Who is requesting access?
-
----
-
-## Data
-
-What information is being protected?
-
----
-
-## Platform
-
-How are workflows and services protected?
+Protection extends from data collection through final report delivery.
 
 ---
 
-## Integrations
+# Zero Trust Architecture
 
-How are external systems trusted?
+The platform assumes:
+
+- No implicit trust
+- Every request is authenticated
+- Every request is authorized
+- Every component validates identity
+- Every communication is encrypted
+
+Trust is continuously evaluated rather than permanently granted.
 
 ---
 
-## Operations
+# Identity and Access Management
 
-How are security events monitored and managed?
+Every actor is uniquely identified.
 
----
+Supported identities include:
 
-# Identity and Authentication
+- Human users
+- Service accounts
+- Connectors
+- Agents
+- Workflow services
+- External APIs
 
-All users, services, and automated processes should authenticate before accessing protected resources.
-
-Supported authentication mechanisms may include:
-
-- OAuth
-- API Keys
-- Service Accounts
-- Enterprise Identity Providers
-- Multi-Factor Authentication (where applicable)
-
-The logical architecture does not mandate a specific identity provider.
+Access decisions are based on authenticated identity and assigned authorization.
 
 ---
 
 # Authorization
 
-Authorization should follow Role-Based Access Control (RBAC).
+Access should follow Role-Based Access Control (RBAC).
 
-Example roles include:
+Typical roles include:
 
 - Executive
 - Administrator
 - Operator
 - Developer
-- Read-Only User
-- Automation Service
+- Auditor
+- Connector Service
+- Agent Service
 
-Permissions should be granted based on business need.
-
----
-
-# Least Privilege
-
-Every component should receive only the permissions required to perform its responsibilities.
-
-Examples:
-
-- Connectors should access only their assigned external services.
-- Agents should process only the intelligence required for their domain.
-- Administrative capabilities should remain restricted.
+Organizations may extend the authorization model as needed.
 
 ---
 
 # Secrets Management
 
-Sensitive information shall never be stored within:
+Sensitive information includes:
 
-- Source code
-- Prompt files
-- Configuration committed to version control
-- Documentation
+- API keys
+- OAuth tokens
+- Certificates
+- Encryption keys
+- Service credentials
 
-Examples of protected secrets include:
+Requirements:
 
-- API Keys
-- OAuth Tokens
-- Database Credentials
-- Encryption Keys
-- Service Account Credentials
-
-Secrets should support secure rotation.
+- Never store secrets in source code.
+- Never expose secrets in logs.
+- Rotate secrets regularly.
+- Encrypt secrets at rest.
+- Restrict access using least privilege.
 
 ---
 
 # Data Protection
 
-Sensitive information should support:
+The platform protects intelligence in three states.
 
-- Encryption in transit
-- Encryption at rest
-- Access controls
-- Audit logging
-- Secure backup
+## Data in Transit
 
-Protection requirements should align with organizational policies.
+- Encrypted communication
+- Mutual authentication where appropriate
+- Secure API protocols
+
+---
+
+## Data at Rest
+
+- Encryption
+- Access control
+- Backup protection
+- Integrity verification
+
+---
+
+## Data in Processing
+
+- Minimize exposure
+- Protect temporary storage
+- Secure memory handling
+- Controlled execution environments
+
+---
+
+# Intelligence Object Security
+
+Every Intelligence Object should support:
+
+- Provenance
+- Integrity validation
+- Version history
+- Access restrictions
+- Audit references
+
+Intelligence should remain traceable throughout its lifecycle.
 
 ---
 
 # Connector Security
 
-Every connector should:
+Every connector shall:
 
 - Authenticate securely
-- Validate remote endpoints
-- Verify certificates
-- Protect credentials
-- Respect provider rate limits
+- Validate remote identity
+- Respect source authorization
+- Limit requested permissions
+- Encrypt communications
+- Record audit information
 
-Compromised connectors should not compromise the remainder of the platform.
-
----
-
-# API Security
-
-Internal APIs should support:
-
-- Authentication
-- Authorization
-- Input validation
-- Output validation
-- Request logging
-- Rate limiting (where appropriate)
-
-APIs should reject malformed or unauthorized requests.
+Connector credentials should remain isolated from application code.
 
 ---
 
 # Workflow Security
 
-Workflow execution should validate:
+Workflow execution shall support:
 
-- Authorized initiator
-- Workflow integrity
-- Configuration validity
-- Dependency availability
+- Authenticated triggers
+- Authorized execution
+- Protected execution state
+- Tamper-resistant audit logs
+- Secure checkpoint storage
 
-Only approved workflows should execute in production.
+Workflow integrity is essential for trustworthy executive intelligence.
 
 ---
 
-# Audit Logging
+# Logging and Audit
 
-Security-relevant events should be logged, including:
+Security-relevant events include:
 
-- Authentication attempts
-- Authorization failures
+- Authentication
+- Authorization
 - Configuration changes
-- Secret rotation
-- Administrative actions
 - Connector failures
-- Publication events
+- Administrative actions
+- Workflow execution
+- Report delivery
 
-Audit logs should be tamper-evident and retained according to policy.
+Audit records shall be immutable and retained according to organizational policy.
 
 ---
 
-# Monitoring
+# Privacy
 
-Security monitoring should include:
+The platform shall minimize collection of personal information.
+
+Privacy principles include:
+
+- Data minimization
+- Purpose limitation
+- Appropriate retention
+- Access control
+- Regulatory compliance
+
+Personalization features shall not collect unnecessary behavioral information.
+
+---
+
+# Threat Model
+
+Representative threats include:
+
+- Credential compromise
+- Unauthorized access
+- Data tampering
+- Malicious connectors
+- Insider misuse
+- Supply chain attacks
+- Denial of service
+- Data exfiltration
+
+Controls should be periodically reviewed against the evolving threat landscape.
+
+---
+
+# Security Monitoring
+
+Operational monitoring shall include:
 
 - Authentication failures
-- Unusual execution patterns
+- Authorization failures
+- Privilege escalation attempts
 - Connector anomalies
-- Unexpected configuration changes
+- Configuration changes
+- Unusual workflow activity
 - Excessive retries
-- Failed publications
+- Report delivery failures
 
-Monitoring supports rapid detection and response.
+Security events should integrate with enterprise monitoring and alerting.
 
 ---
 
 # Incident Response
 
-Security incidents should support the following lifecycle:
+Security incidents should support:
 
-```
-Detect
+1. Detection
+2. Analysis
+3. Containment
+4. Eradication
+5. Recovery
+6. Lessons Learned
 
-↓
-
-Assess
-
-↓
-
-Contain
-
-↓
-
-Investigate
-
-↓
-
-Recover
-
-↓
-
-Lessons Learned
-```
-
-Every incident should generate an auditable record.
+The platform should preserve evidence necessary for investigation and audit.
 
 ---
 
-# Supply Chain Security
+# Compliance
 
-Third-party components should be evaluated before production use.
+The platform should support organizational compliance requirements, including:
 
-Examples include:
+- Auditability
+- Data governance
+- Privacy obligations
+- Records retention
+- Security policy enforcement
 
-- Open-source libraries
-- AI models
-- Connector dependencies
-- External APIs
-- Plugins
-
-Dependencies should be reviewed periodically for known vulnerabilities.
+Compliance requirements should be configurable where appropriate.
 
 ---
 
-# Data Classification
+# Relationship to Other Documents
 
-Information may be classified according to organizational requirements.
+| Document | Relationship |
+|-----------|--------------|
+| DEPLOYMENT_ARCHITECTURE.md | Secure deployment topology |
+| SOURCE_CONNECTOR_FRAMEWORK.md | Connector security requirements |
+| EXECUTION_STATE_MODEL.md | Secure workflow execution |
+| OBSERVABILITY_AND_TELEMETRY.md | Security monitoring |
+| BACKUP_AND_RECOVERY.md | Protection of operational data |
 
-Example classifications:
+---
 
-- Public
-- Internal
-- Confidential
-- Restricted
+# Success Criteria
 
-Classification should influence:
+The Security Model succeeds when:
 
-- Storage
-- Access
-- Publication
-- Ret
+- Every platform component participates in a consistent security architecture.
+- Executive intelligence remains confidential, accurate, and available.
+- Identity and authorization are continuously verified.
+- Security events are fully auditable.
+- Secrets and sensitive data are appropriately protected.
+- The platform supports enterprise security governance without impeding operational effectiveness.
