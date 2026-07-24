@@ -1,249 +1,182 @@
 ---
-title: Executive Intelligence Briefing Feature Backlog
-document_id: IA-0034
+title: Feature Backlog
+document_id: ROADMAP-004
 version: 1.0
 status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-07-24
 depends_on:
-  - PRODUCT_REQUIREMENTS.md
   - ROADMAP/IMPLEMENTATION_PLAN.md
-  - ROADMAP/MVP_DEFINITION.md
   - ROADMAP/RELEASE_PLAN.md
 ---
 
-# Executive Intelligence Briefing Feature Backlog
+# Executive Intelligence Briefing (EIB)
+# Feature Backlog
 
 ## Purpose
 
-This document defines the long-term capability backlog for the Executive Intelligence Briefing (EIB) platform.
+This document is the master inventory of planned capabilities for the Executive Intelligence Briefing (EIB).
 
-The Feature Backlog serves as the strategic inventory of future enhancements, ensuring that platform growth remains deliberate, prioritized, and aligned with executive value rather than feature quantity.
-
----
-
-# Philosophy
-
-Not every good idea should be built immediately.
-
-Every feature competes for development effort, operational complexity, and executive attention.
-
-The backlog exists to preserve ideas while ensuring that implementation follows strategic priorities.
+Unlike `AI/BACKLOG.md`, which tracks repository work, this document tracks product features. It provides a long-term view of the platform's evolution and helps prioritize development based on business value.
 
 ---
 
-# Objectives
+# Feature Status
 
-The Feature Backlog shall:
+Each feature is assigned one of the following states:
 
-- Capture future capabilities
-- Prioritize executive value
-- Prevent scope creep
-- Guide release planning
-- Encourage architectural consistency
-- Preserve implementation ideas
-- Support continuous improvement
-
----
-
-# Prioritization Framework
-
-Features should be evaluated using the following criteria:
-
-- Executive value
-- Operational impact
-- Architectural alignment
-- Implementation complexity
-- Security implications
-- Long-term maintainability
-
-Priority should reflect overall business value rather than technical interest.
+- Proposed
+- Planned
+- In Development
+- Implemented
+- Deferred
+- Retired
 
 ---
 
-# Priority Levels
+# Epic 1 — Executive Briefing
 
-## P1 — Critical
+### Goal
 
-Capabilities essential to achieving the platform vision.
+Generate concise, actionable executive briefings.
 
-Examples:
+### Features
 
-- Reliable daily briefing generation
-- Executive recommendations
-- Coverage assurance
-- Workflow reliability
-- Historical intelligence
-
-These features should receive the highest implementation priority.
-
----
-
-## P2 — High Value
-
-Capabilities that significantly improve executive usefulness.
-
-Examples:
-
-- Expanded cyber intelligence
-- Personalized executive profiles
-- Trend analysis
-- Improved scoring models
-- Additional trusted connectors
-
-These features should follow shortly after the MVP.
+| Feature | Status | Priority |
+|----------|---------|----------|
+| Manual "Run EIB" | Planned | High |
+| Markdown briefing output | Planned | High |
+| Executive summary | Planned | High |
+| Source citations | Planned | High |
+| Reading time estimation | Planned | Medium |
+| Confidence indicators | Planned | Medium |
 
 ---
 
-## P3 — Enhancement
+# Epic 2 — Source Connectors
 
-Capabilities that improve usability and efficiency.
+### Goal
 
-Examples:
+Collect intelligence from trusted information sources.
 
-- Dashboard customization
-- Advanced filtering
-- Report templates
-- Mobile-friendly layouts
-- Enhanced visualizations
+### Features
 
-These features increase user satisfaction without changing core platform value.
+| Feature | Status | Priority |
+|----------|---------|----------|
+| GitHub connector | Planned | High |
+| Gmail connector | Planned | High |
+| Google Calendar connector | Planned | High |
+| RSS connector | Planned | Medium |
+| Microsoft 365 connector | Proposed | Medium |
+| Teams connector | Proposed | Low |
+| Slack connector | Proposed | Low |
 
 ---
 
-## P4 — Future Innovation
+# Epic 3 — Intelligence Processing
 
-Long-term strategic capabilities.
+### Goal
 
-Examples:
+Transform raw information into useful executive intelligence.
 
-- Predictive analytics
-- AI-assisted briefing refinement
-- Natural language querying
+### Features
+
+| Feature | Status | Priority |
+|----------|---------|----------|
+| Deduplication | Planned | High |
+| Topic classification | Planned | High |
+| Risk scoring | Planned | High |
+| Opportunity scoring | Planned | Medium |
+| Trend analysis | Planned | Medium |
+| Confidence scoring | Planned | Medium |
+
+---
+
+# Epic 4 — Personalization
+
+### Goal
+
+Tailor briefings to each executive.
+
+### Features
+
+| Feature | Status | Priority |
+|----------|---------|----------|
+| Executive profiles | Planned | High |
+| Topic preferences | Planned | Medium |
+| Reading preferences | Planned | Medium |
+| Custom weighting | Proposed | Medium |
+| Favorite sources | Proposed | Low |
+
+---
+
+# Epic 5 — Automation
+
+### Goal
+
+Reduce manual effort.
+
+### Features
+
+| Feature | Status | Priority |
+|----------|---------|----------|
+| Scheduled execution | Planned | High |
+| Incremental refresh | Planned | Medium |
+| Historical archive | Planned | Medium |
+| Execution logging | Planned | High |
+| Health monitoring | Planned | High |
+
+---
+
+# Epic 6 — AI Operations
+
+### Goal
+
+Support AI-assisted development and maintenance.
+
+### Features
+
+| Feature | Status | Priority |
+|----------|---------|----------|
+| AI Workspace | Implemented | High |
+| Repository status dashboard | Planned | Medium |
+| Repository validation | Planned | Medium |
+| Prompt library | Planned | Medium |
+| AI session continuity | Implemented | High |
+
+---
+
+# Future Ideas
+
+Potential future capabilities include:
+
 - Voice briefings
-- Cross-organization intelligence sharing
-
-These capabilities should be explored only after core platform maturity.
-
----
-
-# Functional Backlog
-
-## Intelligence Collection
-
-Potential enhancements include:
-
-- Additional news providers
-- Industry-specific intelligence
-- Regulatory monitoring
-- Supply chain monitoring
-- Geopolitical intelligence
+- Mobile application
+- Web dashboard
+- Knowledge graph visualization
+- Multi-executive collaboration
+- AI-generated presentation slides
+- Predictive intelligence
+- Natural language querying
+- Organizational intelligence metrics
 
 ---
 
-## Executive Analysis
+# Backlog Management
 
-Potential enhancements include:
+When adding new features:
 
-- Improved prioritization algorithms
-- Decision impact scoring
-- Recommendation confidence ratings
-- Automated executive summaries
-- Historical comparison analysis
-
----
-
-## Personalization
-
-Potential enhancements include:
-
-- Executive preference profiles
-- Reading time optimization
-- Adaptive report ordering
-- Favorite intelligence domains
-- Personalized alert thresholds
+1. Assign the feature to an Epic.
+2. Set an initial priority.
+3. Record its current status.
+4. Update related roadmap documents if necessary.
+5. Review priorities during milestone planning.
 
 ---
 
-## Knowledge Management
+# Guiding Principle
 
-Potential enhancements include:
+The feature backlog is intentionally ambitious.
 
-- Expanded Knowledge Graph
-- Semantic relationship discovery
-- Organizational memory analysis
-- Historical decision tracking
-- AI-assisted knowledge curation
-
----
-
-## Reporting
-
-Potential enhancements include:
-
-- Multiple report formats
-- Interactive reports
-- Printable executive packets
-- Presentation-ready summaries
-- Executive dashboard integration
-
----
-
-## Operations
-
-Potential enhancements include:
-
-- Self-healing workflows
-- Automated connector health monitoring
-- Intelligent scheduling optimization
-- Capacity forecasting
-- Operational analytics
-
----
-
-## Administration
-
-Potential enhancements include:
-
-- Administrative dashboards
-- Configuration management interface
-- User management
-- Workflow designer
-- Connector management console
-
----
-
-## Security
-
-Potential enhancements include:
-
-- Risk scoring
-- Automated threat detection
-- Behavioral anomaly detection
-- Enhanced audit analytics
-- Continuous compliance reporting
-
----
-
-# Feature Evaluation
-
-Before implementation, every feature should answer:
-
-- Does it solve a real executive problem?
-- Does it improve decision-making?
-- Does it preserve architectural integrity?
-- Can it be supported operationally?
-- Is the benefit greater than the complexity it introduces?
-
-Features failing these questions should remain in the backlog until re-evaluated.
-
----
-
-# Backlog Maintenance
-
-The backlog should be reviewed regularly to:
-
-- Reprioritize features
-- Remove obsolete ideas
-- Merge
+It captures the long-term vision of the Executive Intelligence Briefing platform while allowing implementation to proceed incrementally, one valuable capability at a time.
