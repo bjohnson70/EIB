@@ -1,302 +1,264 @@
 ---
-title: Executive Intelligence Briefing Prompt Architecture
-document_id: IA-0004
+title: Prompt Architecture
+document_id: IMP-014
 version: 1.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
-last_updated: 2026-07-23
+owner: BSJ
+author: BSJ & ChatGPT
+last_updated: 2026-07-24
 depends_on:
-  - IMPLEMENTATION_ARCHITECTURE.md
-  - AGENT_ARCHITECTURE.md
-  - WORKFLOW_ORCHESTRATION.md
+  - IMPLEMENTATION/AGENT_ARCHITECTURE.md
+  - IMPLEMENTATION/WORKFLOW_ORCHESTRATION.md
+  - IMPLEMENTATION/KNOWLEDGE_MODEL.md
 ---
 
-# Executive Intelligence Briefing Prompt Architecture
+# Executive Intelligence Briefing (EIB)
+# Prompt Architecture
 
 ## Purpose
 
-This document defines how prompts are designed, organized, versioned, and executed within the Executive Intelligence Briefing (EIB) platform.
+This document defines how prompts are designed, organized, versioned, executed, and maintained within the Executive Intelligence Briefing (EIB) platform.
 
-Prompts are treated as software assets—not ad hoc instructions. They are modular, reusable, testable, and independently version controlled.
-
----
-
-# Design Principles
-
-Prompts shall be:
-
-- Modular
-- Single-purpose
-- Deterministic
-- Explainable
-- Version controlled
-- Independently testable
-- Reusable
+Prompts are treated as governed software assets rather than static text. They are modular, reusable, version-controlled, testable, and independently maintainable.
 
 ---
 
-# Prompt Hierarchy
+# Guiding Principles
 
-```
-System Prompt
+Prompt engineering within EIB follows these principles:
 
-↓
-
-Platform Prompt
-
-↓
-
-Agent Prompt
-
-↓
-
-Task Prompt
-
-↓
-
-Output Template
-```
-
-Each layer provides additional context without duplicating responsibilities.
+- One responsibility per prompt.
+- Reusable whenever practical.
+- Human-readable.
+- Version controlled.
+- Testable.
+- Replaceable without changing application logic.
+- Independent of a specific AI model whenever possible.
 
 ---
 
-# System Prompt
+# Prompt Categories
 
-Defines global platform behavior.
+## System Prompts
 
-Responsibilities include:
-
-- Executive-first philosophy
-- Writing standards
-- Safety requirements
-- Reasoning boundaries
-- Global formatting conventions
-
-The System Prompt is shared by every agent.
-
----
-
-# Platform Prompt
-
-Defines EIB-specific behavior.
-
-Examples include:
-
-- Report objectives
-- Executive audience
-- Coverage Assurance
-- Report Specification
-- Executive Principles
-- Product terminology
-
-Every agent inherits the Platform Prompt.
-
----
-
-# Agent Prompt
-
-Each agent owns its own operational prompt.
+Establish permanent behavioral rules.
 
 Examples:
 
-- Cyber Intelligence Agent
-- Weather Agent
-- California Government Agent
-- Editorial Agent
-- Quality Assurance Agent
-
-Each prompt contains only information relevant to that agent's responsibilities.
+- Executive Briefing
+- Repository Operations
+- Domain Agent Behavior
 
 ---
 
-# Task Prompt
+## Workflow Prompts
 
-Task prompts provide execution-specific instructions.
+Coordinate multi-step execution.
 
 Examples:
 
+- Run EIB
 - Generate Executive Summary
-- Evaluate cybersecurity events
-- Produce weather commentary
-- Create Action List
-- Build Watch List
-
-Task prompts are short-lived and context-specific.
+- Risk Prioritization
+- Daily Briefing
 
 ---
 
-# Output Templates
+## Domain Prompts
 
-Output formatting shall be separated from reasoning.
+Perform specialized analysis.
 
-Templates define:
+Examples:
 
-- Headings
-- Tables
-- Lists
-- Callouts
-- Executive summaries
-- Recommendation formatting
+- Cybersecurity
+- Privacy
+- Finance
+- Technology
+- Regulatory
+- Healthcare
 
-Changing presentation should not require modifying reasoning prompts.
+---
+
+## Formatting Prompts
+
+Control output presentation.
+
+Examples:
+
+- Markdown
+- HTML
+- Email
+- PDF
+- Executive Summary
+
+---
+
+## Validation Prompts
+
+Evaluate generated content.
+
+Examples:
+
+- Citation validation
+- Duplicate detection
+- Hallucination review
+- Completeness review
+- Executive readability
+
+---
+
+# Prompt Lifecycle
+
+Each prompt progresses through:
+
+Draft
+
+↓
+
+Review
+
+↓
+
+Approved
+
+↓
+
+Production
+
+↓
+
+Retired
+
+Every production prompt should have an owner, version, and revision history.
+
+---
+
+# Prompt Metadata
+
+Each governed prompt should include:
+
+- Title
+- Identifier
+- Version
+- Owner
+- Status
+- Purpose
+- Inputs
+- Outputs
+- Dependencies
+- Last Updated
+
+---
+
+# Prompt Repository Structure
+
+Example organization:
+
+```
+PROMPTS/
+
+    SYSTEM/
+    WORKFLOWS/
+    DOMAIN/
+    FORMATTING/
+    VALIDATION/
+    TESTS/
+```
+
+Each directory contains prompts for a single responsibility.
+
+---
+
+# Prompt Selection
+
+During execution:
+
+1. Load system prompts.
+2. Load workflow prompts.
+3. Load domain prompts.
+4. Load formatting prompts.
+5. Load validation prompts.
+
+The orchestration engine determines which prompts are required for each execution.
 
 ---
 
 # Prompt Composition
 
-Each execution constructs prompts dynamically.
-
-Example:
-
-```
-System Prompt
-+
-Platform Prompt
-+
-Cyber Agent Prompt
-+
-Today's Intelligence
-+
-Executive Context
-+
-Task Prompt
-+
-Output Template
-```
-
-This layered approach minimizes duplication and improves maintainability.
-
----
-
-# Prompt Responsibilities
-
-Each prompt should define:
-
-- Objective
-- Inputs
-- Constraints
-- Required outputs
-- Success criteria
-- Failure conditions
-
-Prompts should avoid describing implementation details outside their scope.
-
----
-
-# Prompt Versioning
-
-Every prompt shall include metadata:
-
-- Prompt ID
-- Version
-- Author
-- Last Updated
-- Status
-- Related Documents
-
-Changes to prompts should be traceable through version control.
-
----
-
-# Prompt Testing
-
-Each prompt should be validated for:
-
-- Accuracy
-- Completeness
-- Consistency
-- Hallucination resistance
-- Executive readability
-- Compliance with Report Specification
-
-Prompt changes should be tested before production use.
-
----
-
-# Prompt Reuse
-
-Shared logic should exist in common prompts rather than being copied across multiple agents.
+Large prompts should be assembled from reusable components rather than duplicated.
 
 Benefits include:
 
 - Easier maintenance
 - Reduced inconsistency
-- Faster enhancements
-- Simpler testing
+- Shared governance
+- Smaller updates
+- Better testing
 
 ---
 
-# Context Management
+# Prompt Versioning
 
-Each prompt should receive only the information required to complete its task.
+Breaking prompt changes require a version increment.
 
-Excessive context should be avoided to:
+Minor wording improvements should increment the minor version.
 
-- Improve performance
-- Reduce ambiguity
-- Increase determinism
-- Lower execution cost
+Experimental prompts should be clearly identified.
 
 ---
 
-# Prompt Security
+# Testing
 
-Prompts shall never expose:
+Every production prompt should be evaluated for:
 
-- Internal reasoning
-- Hidden system instructions
-- Sensitive executive information
-- Authentication details
-- Confidential implementation logic
+- Accuracy
+- Consistency
+- Hallucination resistance
+- Citation quality
+- Executive readability
+- Response length
+- Repeatability
 
----
-
-# Prompt Quality Standards
-
-Every production prompt should be:
-
-✓ Clear
-
-✓ Concise
-
-✓ Unambiguous
-
-✓ Testable
-
-✓ Maintainable
-
-✓ Explainable
-
-✓ Versioned
+Regression testing should occur whenever prompts are significantly modified.
 
 ---
 
-# Future Enhancements
+# Security
 
-Future versions may support:
+Prompts should never contain:
 
-- Automatic prompt optimization
-- A/B prompt testing
+- Credentials
+- Secrets
+- API keys
+- Sensitive personal information
+- Organization-specific confidential information
+
+Dynamic runtime data should be injected during execution rather than embedded within prompts.
+
+---
+
+# Future Direction
+
+Future releases may include:
+
 - Prompt performance metrics
-- Domain-specific prompt libraries
-- Prompt dependency analysis
-- Prompt linting and validation
+- Automated prompt evaluation
+- A/B testing
+- Adaptive prompt selection
+- Model-specific optimization layers
+- Prompt dependency visualization
 
 ---
 
-# Guiding Principle
+# Success Criteria
 
-Prompts are executable specifications that encode institutional knowledge. They should be engineered with the same rigor, discipline, testing, and version control applied to software source code.
+The prompt architecture is successful when:
 
----
+- Prompts are reusable.
+- Prompts are independently maintainable.
+- Changes are version controlled.
+- Prompt behavior is predictable.
+- AI models can be updated without rewriting the entire system.
+- Prompt quality improves through continuous testing and refinement.
 
-# Related Documents
-
-- IMPLEMENTATION_ARCHITECTURE.md
-- AGENT_ARCHITECTURE.md
-- WORKFLOW_ORCHESTRATION.md
-- ../PRODUCT_REQUIREMENTS.md
-- ../Architecture/REPORT_SPECIFICATION.md
-- ../EXECUTIVE_PRINCIPLES.md
+The prompt architecture should provide a stable foundation for all AI-driven capabilities within the Executive Intelligence Briefing platform.
