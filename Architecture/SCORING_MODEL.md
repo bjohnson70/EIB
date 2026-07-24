@@ -1,275 +1,257 @@
 ---
 title: Executive Intelligence Scoring Model
-document_id: PA-0005
-version: 1.0
+document_id: PA-007
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - ../VISION.md
-  - PRODUCT_ARCHITECTURE.md
   - INTELLIGENCE_ARCHITECTURE.md
+  - REPORT_SPECIFICATION.md
 ---
 
 # Executive Intelligence Scoring Model
 
 ## Purpose
 
-This document defines the scoring methodology used by the Executive Intelligence Briefing (EIB) to determine which information is included, how it is prioritized, and how it is presented.
+This document defines how the Executive Intelligence Briefing (EIB) evaluates, prioritizes, and ranks intelligence.
 
-The objective is to consistently identify the information that provides the greatest executive value.
+The objective is not to determine what is *true*—validation performs that function—but rather to determine what deserves executive attention.
 
----
-
-# Design Goals
-
-The scoring model shall:
-
-- Prioritize executive decision-making.
-- Reduce cognitive load.
-- Promote consistency.
-- Support explainable rankings.
-- Minimize omission of high-impact events.
-- Continuously improve through feedback.
+The scoring model provides a transparent, explainable, and extensible framework for ranking intelligence before personalization and briefing assembly.
 
 ---
 
-# Executive Intelligence Equation
+# Design Objectives
 
-Every intelligence item receives an Executive Intelligence Score (EIS).
+The scoring model should:
 
-The score represents the combined executive value of an intelligence item.
+- Prioritize executive value.
+- Remain explainable.
+- Produce consistent results.
+- Adapt to changing priorities.
+- Support multiple executive profiles.
+- Encourage evidence-based decision making.
 
-Higher scores indicate greater briefing priority.
+Scoring should never rely on a single attribute.
 
 ---
 
-# Scoring Dimensions
+# Multi-Factor Scoring Framework
 
-Each item is evaluated across the following dimensions.
+Each intelligence item is evaluated across several independent dimensions.
 
-## Importance
+| Factor | Purpose |
+|---------|---------|
+| Business Impact | Measures organizational significance |
+| Executive Relevance | Measures alignment with executive responsibilities |
+| Urgency | Measures required response time |
+| Confidence | Measures reliability of supporting evidence |
+| Timeliness | Measures freshness of information |
+| Strategic Alignment | Measures support of organizational priorities |
+| Source Credibility | Measures trustworthiness of the originating source |
+| Novelty | Rewards genuinely new information while reducing repetition |
 
-How significant is the event?
+Each factor contributes independently to the overall priority score.
 
-Scale:
+---
 
-1–10
+# Scoring Philosophy
+
+No single characteristic should dominate the overall score.
+
+For example:
+
+- A highly urgent rumor with low confidence should not outrank a verified strategic issue.
+- A trusted source alone does not guarantee executive importance.
+- Repeated information should gradually lose prominence unless its significance changes.
+
+Balanced scoring produces more reliable executive intelligence.
+
+---
+
+# Example Conceptual Formula
+
+```
+Priority Score =
+Business Impact
++ Executive Relevance
++ Urgency
++ Confidence
++ Timeliness
++ Strategic Alignment
++ Source Credibility
++ Novelty
+```
+
+Actual implementation may use weighted values, normalization, or machine-assisted ranking.
+
+---
+
+# Factor Definitions
+
+## Business Impact
+
+Evaluates the potential effect on the organization.
 
 Examples:
 
-- Local outage = 3
-- State legislation = 7
-- Global cyber campaign = 10
+- Financial loss
+- Service disruption
+- Regulatory exposure
+- Reputation
+- Public trust
+- Mission delivery
+
+---
+
+## Executive Relevance
+
+Measures whether the information aligns with the recipient's responsibilities.
+
+Examples:
+
+- CIO
+- CISO
+- Deputy Director
+- Division Chief
+- Program Manager
+
+The same event may receive different relevance scores for different executives.
 
 ---
 
 ## Urgency
 
-How quickly must an executive respond?
+Measures how quickly executive awareness or action is required.
 
-Scale:
+Typical categories:
 
-1–10
-
-Examples:
-
-- Informational article = 2
-- Active ransomware campaign = 10
-
----
-
-## Executive Impact
-
-How much could this influence executive decisions?
-
-Scale:
-
-1–10
-
----
-
-## Organizational Impact
-
-Does the event affect the executive's organization?
-
-Scale:
-
-1–10
-
----
-
-## Personal Relevance
-
-Does this directly affect the executive?
-
-Examples:
-
-- Calendar
-- Travel
-- Projects
-- Retirement
-- Weather
-- Health (if enabled)
-
-Scale:
-
-1–10
-
----
-
-## Geographic Relevance
-
-Priority order:
-
-1. Local
-2. California
-3. United States
-4. International
-
-Scores should reflect the executive's operating environment.
-
----
-
-## Decision Value
-
-Will this information likely change an executive decision?
-
-Scale:
-
-1–10
-
-This is one of the highest weighted dimensions.
-
----
-
-## Operational Impact
-
-Does this influence today's operations?
-
-Examples:
-
-- Major outage
-- Travel disruption
-- Security incident
-- Legislative deadline
-
-Scale:
-
-1–10
+- Immediate
+- Today
+- This Week
+- Monitor
+- Informational
 
 ---
 
 ## Confidence
 
-How reliable is the information?
+Represents confidence in the intelligence.
 
-Confidence levels:
+Confidence considers:
 
-- Verified
-- High
-- Moderate
-- Developing
-- Unverified
+- Number of independent sources
+- Source quality
+- Internal consistency
+- Validation results
 
-Lower confidence reduces ranking.
-
----
-
-## Time Sensitivity
-
-How quickly does the value of the information decline?
-
-Examples:
-
-Breaking events receive higher scores than historical analysis.
+Confidence affects ranking but does not replace human judgment.
 
 ---
 
-# Priority Bands
+## Timeliness
 
-## Critical
+Newer information generally receives higher priority.
 
-Immediate executive attention.
-
-Displayed first.
+However, historical information may remain important if it establishes trends or context.
 
 ---
 
-## High
+## Strategic Alignment
 
-Likely requires awareness today.
+Rewards information directly supporting organizational priorities.
 
----
+Examples include:
 
-## Medium
-
-Useful executive context.
-
----
-
-## Low
-
-Optional awareness.
-
-May be omitted if briefing length constraints require.
+- Legislative initiatives
+- Strategic programs
+- Enterprise risks
+- Executive initiatives
 
 ---
 
-# Coverage Override
+## Source Credibility
 
-Coverage Assurance may elevate an item regardless of score.
+Different sources have different historical reliability.
 
-Examples:
-
-- Major cybersecurity incident
-- Governor's emergency declaration
-- Critical vulnerability
-- Significant AI announcement
-- Major financial disruption
-
-Coverage completeness always takes precedence over algorithmic optimization.
+Credibility may evolve over time based on observed performance.
 
 ---
 
-# Personalization Adjustment
+## Novelty
 
-The base score may be adjusted based upon:
+Repeated information gradually decreases in priority unless:
 
-- Executive role
-- Organization
-- Calendar
-- Projects
-- Geographic location
-- Standing interests
+- Circumstances materially change.
+- Risk increases.
+- New evidence becomes available.
+- Executive action is still required.
 
-Personalization affects ranking—not factual accuracy.
+This helps prevent briefing fatigue.
 
 ---
 
-# Diversity Adjustment
+# Priority Categories
 
-The briefing should avoid overrepresentation of a single topic.
+The resulting score maps into qualitative categories.
 
-If numerous items have similar scores, diversity should be favored.
+| Category | Meaning |
+|----------|---------|
+| Critical | Immediate executive attention |
+| High | Review today |
+| Medium | Include in briefing |
+| Low | Include if space permits |
+| Background | Retain for historical context |
 
-Example:
-
-Instead of ten cybersecurity stories, provide:
-
-- Three cybersecurity
-- Two technology
-- Two government
-- Two markets
-- One leadership
-
-unless a major event justifies otherwise.
+The thresholds are configurable.
 
 ---
 
 # Explainability
 
-Every intelligence item should be explainable.
+Every ranked item should be explainable.
 
-The platform should
+The system should be capable of identifying which scoring factors most influenced an item's ranking.
+
+Explainability promotes executive trust and simplifies future refinement.
+
+---
+
+# Continuous Improvement
+
+The scoring model should evolve using:
+
+- Executive feedback
+- Reading behavior
+- User preferences
+- Historical outcomes
+- Source performance
+- Organizational priorities
+
+Model improvements should preserve consistency while adapting to changing needs.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| INTELLIGENCE_ARCHITECTURE.md | Defines the intelligence lifecycle |
+| PERSONALIZATION_MODEL.md | Uses scoring results for tailoring |
+| DATA_SOURCE_STRATEGY.md | Provides scored inputs |
+| REPORT_SPECIFICATION.md | Consumes prioritized intelligence |
+| IMPLEMENTATION/INTELLIGENCE_PIPELINE_SPECIFICATION.md | Implements scoring workflow |
+
+---
+
+# Success Criteria
+
+The scoring model succeeds when:
+
+- Important intelligence consistently rises to the top.
+- Rankings remain understandable and explainable.
+- Executive trust increases through predictable prioritization.
+- The model adapts without becoming unstable.
+- Different executive roles receive appropriately prioritized intelligence while preserving architectural consistency.
