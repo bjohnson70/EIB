@@ -1,294 +1,282 @@
 ---
-title: Executive Intelligence Briefing Configuration and Executive Profile Model
+title: Configuration and Profile Model
 document_id: IA-0008
-version: 1.0
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
   - IMPLEMENTATION_ARCHITECTURE.md
   - AGENT_ARCHITECTURE.md
-  - WORKFLOW_ORCHESTRATION.md
+  - KNOWLEDGE_MODEL.md
   - ../Architecture/PERSONALIZATION_MODEL.md
 ---
 
-# Executive Intelligence Briefing Configuration and Executive Profile Model
+# Executive Intelligence Briefing (EIB)
+# Configuration and Profile Model
 
 ## Purpose
 
-This document defines how the Executive Intelligence Briefing (EIB) stores and manages configuration, executive profiles, personalization settings, and operational preferences.
+This document defines how the Executive Intelligence Briefing (EIB) platform is configured at runtime.
 
-The objective is to separate configuration from implementation so that the platform can adapt to new executives without modifying prompts, workflows, or source code.
-
----
-
-# Philosophy
-
-Behavior should be driven by configuration whenever practical.
-
-The platform should be customized by changing configuration—not by editing prompts.
+The objective is to ensure that platform behavior is driven through configuration rather than source code, allowing organizations to adapt workflows, profiles, policies, connectors, scoring, and presentation without requiring software modifications.
 
 ---
 
-# Configuration Layers
+# Guiding Principles
 
-Configuration is organized into five layers.
+Configuration should be:
+
+- Declarative
+- Version controlled
+- Auditable
+- Environment independent
+- Secure
+- Extensible
+- Backward compatible
+
+Business rules belong in configuration whenever practical.
+
+---
+
+# Configuration Hierarchy
+
+Configuration is applied in the following order of precedence:
 
 ```
 Platform Defaults
-
-↓
-
+        │
+Environment Configuration
+        │
 Organization Configuration
-
-↓
-
+        │
 Executive Profile
-
-↓
-
-Daily Context
-
-↓
-
-Runtime Overrides
+        │
+Workflow Overrides
+        │
+Runtime Parameters
 ```
 
-Each layer overrides only the layer immediately above it.
-
----
-
-# Platform Defaults
-
-Platform defaults establish global behavior.
-
-Examples include:
-
-- Reading time target
-- Report structure
-- Quality thresholds
-- Coverage requirements
-- Scoring weights
-- Prompt versions
-- Workflow configuration
-
-These values apply to every executive unless overridden.
-
----
-
-# Organization Configuration
-
-Defines organization-specific behavior.
-
-Examples:
-
-- Organization name
-- Industry
-- Regulatory environment
-- Geographic footprint
-- Business priorities
-- Standard intelligence sources
-
-This layer enables reuse across multiple executives within the same organization.
-
----
-
-# Executive Profile
-
-The Executive Profile contains relatively stable information.
-
-Examples include:
-
-- Name
-- Position
-- Organization
-- Responsibilities
-- Reporting relationships
-- Geographic location
-- Time zone
-- Preferred briefing schedule
-
-The Executive Profile changes infrequently.
-
----
-
-# Personalization Profile
-
-Defines long-term personalization.
-
-Examples:
-
-- Standing interests
-- Preferred report length
-- Preferred writing style
-- Weather detail level
-- Market detail level
-- Leadership topics
-- Favorite intelligence domains
-
-Personalization influences ranking and presentation.
-
----
-
-# Daily Context
-
-Daily context contains dynamic information.
-
-Examples:
-
-- Calendar
-- Travel status
-- Active projects
-- Current initiatives
-- Deadlines
-- Meetings
-- Vacation status
-
-Daily context is refreshed for each execution.
-
----
-
-# Runtime Overrides
-
-Temporary settings may override normal behavior.
-
-Examples:
-
-- Expanded cybersecurity coverage
-- Executive travel mode
-- Crisis response mode
-- Legislative session mode
-- Weather emergency mode
-
-Overrides automatically expire when no longer applicable.
+More specific configuration overrides more general configuration.
 
 ---
 
 # Configuration Categories
 
-Configuration shall be grouped into:
+## Platform
 
-## Executive
+Examples include:
 
-Executive-specific settings.
+- Platform version
+- Feature availability
+- Global defaults
+- Logging configuration
+- Telemetry settings
 
-## Organization
+---
 
-Organization-wide settings.
+## Environment
 
-## Workflow
+Examples:
 
-Execution behavior.
+- Development
+- Test
+- Staging
+- Production
 
-## Personalization
+Environment configuration includes:
 
-Ranking preferences.
+- Service endpoints
+- Authentication settings
+- Storage locations
+- Queue configuration
+- API limits
 
-## Quality
+---
 
-Quality thresholds.
+## Connector Configuration
 
-## Publication
+Each connector defines:
 
-Output configuration.
+- Connector ID
+- Source name
+- Authentication method
+- Polling frequency
+- Timeout values
+- Retry policy
+- Rate limits
+- Enable/disable status
 
-## Security
+Connectors should remain configurable without code changes.
 
-Access and privacy controls.
+---
+
+## Workflow Configuration
+
+Workflow settings include:
+
+- Execution schedule
+- Enabled pipeline stages
+- Retry limits
+- Checkpoint policy
+- Parallel execution limits
+- Timeout thresholds
+
+---
+
+## Scoring Configuration
+
+Runtime scoring parameters include:
+
+- Weight assignments
+- Priority thresholds
+- Mandatory categories
+- Confidence adjustments
+- Organization-specific rules
+
+Scoring logic remains consistent while weighting remains configurable.
+
+---
+
+## Personalization Configuration
+
+Personalization settings include:
+
+- Executive interests
+- Preferred report length
+- Reading format
+- Notification preferences
+- Required briefing sections
+- Optional briefing sections
+
+Critical enterprise intelligence may not be disabled through personalization.
+
+---
+
+# Executive Profile
+
+Every executive profile includes:
+
+- Executive ID
+- Name
+- Title
+- Organization
+- Business Unit
+- Responsibilities
+- Strategic Priorities
+- Geographic Scope
+- Preferred Topics
+- Delivery Preferences
+- Accessibility Preferences
+
+Profiles may inherit common organizational settings.
+
+---
+
+# Feature Flags
+
+Feature flags enable controlled rollout of new capabilities.
+
+Examples:
+
+- AI-generated summaries
+- Experimental scoring models
+- New connectors
+- Beta report sections
+- Enhanced analytics
+
+Feature flags should support enablement by environment, organization, or executive profile.
+
+---
+
+# Security Configuration
+
+Sensitive configuration includes:
+
+- API credentials
+- Authentication secrets
+- Encryption keys
+- Service accounts
+
+Secrets shall never be stored in plaintext configuration files and should be managed through an approved secrets management solution.
 
 ---
 
 # Versioning
 
-Every configuration shall include:
+Every configuration change should include:
 
-- Configuration ID
-- Version
-- Effective Date
-- Last Modified
-- Owner
-- Change History
+- Configuration version
+- Effective date
+- Author
+- Change description
+- Approval status
 
-Configuration changes shall be auditable.
+Version history supports auditing and rollback.
 
 ---
 
 # Validation
 
-Configuration shall be validated before execution.
+Configuration changes should be validated before activation.
 
 Validation includes:
 
-- Required fields present
-- Valid values
-- Compatible versions
-- No conflicting settings
-- Supported workflow options
+- Schema validation
+- Required fields
+- Dependency checks
+- Range validation
+- Reference integrity
+- Security validation
 
-Invalid configuration prevents execution.
-
----
-
-# Security
-
-Executive profiles may contain sensitive information.
-
-Configuration shall support:
-
-- Least privilege access
-- Encryption at rest
-- Audit logging
-- Change tracking
-- Administrative approval where appropriate
+Invalid configurations shall not be promoted to production.
 
 ---
 
-# Future Expansion
+# Change Management
 
-The model should support:
+Configuration changes should follow an approved governance process.
 
-- Multiple executives
-- Executive assistants
-- Teams
-- Departments
-- Business units
-- Multiple organizations
-- Multi-region deployments
+Recommended lifecycle:
 
-No redesign should be required to add additional executives.
+1. Draft
+2. Review
+3. Approval
+4. Validation
+5. Deployment
+6. Monitoring
+7. Rollback (if necessary)
+
+---
+
+# Extensibility
+
+The configuration model shall support future additions without breaking existing deployments.
+
+New configuration sections should be optional and default to platform-defined behavior.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| IMPLEMENTATION_ARCHITECTURE.md | Overall implementation blueprint |
+| AGENT_ARCHITECTURE.md | Agent behavior is configuration-driven |
+| WORKFLOW_ORCHESTRATION.md | Workflow execution uses runtime configuration |
+| KNOWLEDGE_MODEL.md | Executive profiles reference persistent knowledge |
+| Architecture/PERSONALIZATION_MODEL.md | Defines personalization concepts implemented here |
 
 ---
 
 # Success Criteria
 
-The configuration model succeeds when:
+The Configuration and Profile Model succeeds when:
 
-- New executives can be onboarded without changing prompts.
-- Personalization remains consistent.
-- Configuration changes are traceable.
-- Workflow behavior is predictable.
-- Platform administration is simplified.
-
----
-
-# Guiding Principle
-
-Executive intelligence should adapt through configuration rather than customization.
-
-A well-designed configuration model allows one platform to serve many executives while preserving a consistent architecture.
-
----
-
-# Related Documents
-
-- IMPLEMENTATION_ARCHITECTURE.md
-- AGENT_ARCHITECTURE.md
-- WORKFLOW_ORCHESTRATION.md
-- PROMPT_ARCHITECTURE.md
-- QUALITY_ASSURANCE_FRAMEWORK.md
-- OBSERVABILITY_AND_TELEMETRY.md
-- TESTING_STRATEGY.md
-- ../Architecture/PERSONALIZATION_MODEL.md
-- ../PRODUCT_REQUIREMENTS.md
-```
+- Platform behavior can be adapted without code changes.
+- Executive profiles are flexible, reusable, and auditable.
+- Configuration changes are versioned and governed.
+- Sensitive settings are securely managed.
+- Runtime behavior remains deterministic and traceable.
+- New capabilities can be introduced primarily through configuration rather than implementation changes.
