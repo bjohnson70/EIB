@@ -1,381 +1,307 @@
 ---
-title: Executive Intelligence Briefing Agent Architecture
+title: Agent Architecture
 document_id: IA-0002
-version: 1.0
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - ../IMPLEMENTATION_ARCHITECTURE.md
+  - IMPLEMENTATION_ARCHITECTURE.md
   - ../Architecture/INTELLIGENCE_ARCHITECTURE.md
-  - ../Architecture/SCORING_MODEL.md
 ---
 
-# Executive Intelligence Briefing Agent Architecture
+# Executive Intelligence Briefing (EIB)
+# Agent Architecture
 
 ## Purpose
 
-This document defines the logical agent architecture for the Executive Intelligence Briefing (EIB).
+This document defines the multi-agent architecture used by the Executive Intelligence Briefing (EIB) platform.
 
-Each agent performs a single responsibility exceptionally well. Agents are composable, independently testable, and replaceable without affecting the remainder of the system.
+Agents are autonomous components that perform specialized tasks while collaborating through well-defined interfaces. Each agent owns a single responsibility and contributes to transforming raw information into executive intelligence.
 
----
-
-# Architectural Philosophy
-
-The EIB is not a single AI prompt.
-
-It is an intelligence production system composed of specialized agents coordinated through a structured workflow.
-
-Each agent has:
-
-- Defined responsibilities
-- Well-defined inputs
-- Well-defined outputs
-- Success criteria
-- Quality checks
+The architecture is intentionally technology-independent so that individual agents may evolve without requiring changes to the overall system.
 
 ---
 
-# Executive Workflow
+# Architectural Principles
+
+The agent ecosystem follows these principles:
+
+- Single responsibility.
+- Loose coupling.
+- Stateless execution where practical.
+- Explainable decisions.
+- Observable behavior.
+- Configuration-driven execution.
+- Human oversight for governance decisions.
+
+---
+
+# Agent Ecosystem
 
 ```
-Scheduler
+                   Executive Request
+                           │
+                           ▼
+                 Workflow Orchestrator
+                           │
+      ┌────────────────────┼────────────────────┐
+      ▼                    ▼                    ▼
 
-↓
+ Collection           Intelligence        Personalization
 
-Collection Agents
+      │                    │                    │
 
-↓
+      ▼                    ▼                    ▼
 
-Validation Agent
+ Validation          Scoring Agent      Assembly Agent
 
-↓
+      │
 
-Normalization Agent
+      ▼
 
-↓
-
-Scoring Agent
-
-↓
-
-Personalization Agent
-
-↓
-
-Analysis Agents
-
-↓
-
-Recommendation Agent
-
-↓
-
-Editorial Agent
-
-↓
-
-Quality Assurance Agent
-
-↓
-
-Publisher
+ Knowledge Repository
 ```
 
 ---
 
-# Agent 1 — Scheduler
+# Core Agents
 
-## Responsibilities
+## Workflow Orchestrator
 
-- Start daily briefing workflow
-- Load executive profile
-- Load personalization settings
-- Initialize workflow state
-- Track execution timing
-
-### Inputs
-
-- Date
-- Time
-- Configuration
-
-### Outputs
-
-- Workflow context
-
----
-
-# Agent 2 — Collection Agents
-
-Collection is divided into specialized intelligence domains.
-
-Examples include:
-
-- National News
-- California Government
-- Cybersecurity
-- Artificial Intelligence
-- Financial Markets
-- Weather
-- Calendar
-- Personal Dashboard
-- Technology
-- Leadership
-
-Each collector operates independently.
-
-Outputs are merged into a common intelligence pool.
-
----
-
-# Agent 3 — Validation Agent
+Coordinates execution of all agents.
 
 Responsibilities:
 
-- Remove duplicates
-- Verify sources
-- Cross-reference major stories
-- Assign confidence
-- Detect conflicting reports
-
-Output:
-
-Validated intelligence objects.
+- Schedule workflow
+- Manage dependencies
+- Handle retries
+- Aggregate results
+- Monitor execution
 
 ---
 
-# Agent 4 — Normalization Agent
+## Collection Agent
+
+Collects information from configured sources.
 
 Responsibilities:
 
-Convert collected information into a canonical format.
-
-Required fields include:
-
-- Identifier
-- Category
-- Source
-- Timestamp
-- Headline
-- Executive Summary
-- Confidence
-- Geographic Scope
-- Topic Tags
+- Execute connectors
+- Acquire source data
+- Validate responses
+- Record metadata
 
 ---
 
-# Agent 5 — Scoring Agent
+## Validation Agent
+
+Evaluates collected information.
 
 Responsibilities:
 
-Calculate Executive Intelligence Score.
-
-Uses:
-
-- Importance
-- Urgency
-- Decision Value
-- Executive Impact
-- Operational Impact
-- Organizational Relevance
-- Personal Relevance
-- Confidence
-
-Produces ranked intelligence.
+- Verify completeness
+- Detect duplicates
+- Assess confidence
+- Reject invalid content
 
 ---
 
-# Agent 6 — Personalization Agent
+## Enrichment Agent
+
+Adds context to validated information.
 
 Responsibilities:
 
-Adjust rankings using:
-
-- Executive role
-- Organization
-- Calendar
-- Active projects
-- Geographic location
-- Standing interests
-- Historical preferences
-
-Personalization affects priority—not facts.
+- Entity recognition
+- Business mapping
+- Regulatory context
+- Historical relationships
 
 ---
 
-# Agent 7 — Executive Analysis Agents
+## Correlation Agent
 
-These domain experts generate executive commentary.
-
-Examples include:
-
-## Cyber Analyst
-
-Explains:
-
-- Threat
-- Business impact
-- Executive concern
-- Recommended awareness
-
----
-
-## Government Analyst
-
-Explains:
-
-- Legislative significance
-- Regulatory implications
-- Funding impacts
-- Agency effects
-
----
-
-## Market Analyst
-
-Explains:
-
-- Economic implications
-- Investor sentiment
-- Business relevance
-
----
-
-## Technology Analyst
-
-Explains:
-
-- Innovation
-- Industry movement
-- Adoption implications
-
----
-
-## Weather Analyst
-
-Explains:
-
-- Operational impacts
-- Travel risks
-- Outdoor considerations
-
----
-
-# Agent 8 — Recommendation Agent
-
-Produces executive actions.
-
-Possible outputs:
-
-- Act
-- Prepare
-- Delegate
-- Monitor
-- Escalate
-- Inform
-
-Recommendations remain clearly separate from factual reporting.
-
----
-
-# Agent 9 — Editorial Agent
-
-Produces the final briefing.
+Identifies relationships across sources.
 
 Responsibilities:
 
-- Assemble sections
-- Improve readability
-- Remove redundancy
-- Maintain executive tone
-- Enforce report specification
-
-The Editorial Agent never invents facts.
+- Merge duplicate events
+- Detect patterns
+- Associate related intelligence
+- Reduce redundancy
 
 ---
 
-# Agent 10 — Quality Assurance Agent
+## Scoring Agent
 
-Performs publication review.
+Applies the executive scoring model.
 
-Checklist includes:
+Responsibilities:
 
-- Coverage Assurance
-- Missing stories
-- Duplicate detection
-- Reading time
-- Confidence review
-- Formatting
-- Executive relevance
-- Personalization validation
-- Source attribution
-- Recommendation quality
-
-Publication is blocked until all quality checks pass.
+- Calculate priority
+- Evaluate urgency
+- Assess business impact
+- Produce explainable rankings
 
 ---
 
-# Publisher
+## Personalization Agent
 
-Produces deliverables including:
+Tailors intelligence for the intended executive.
 
-- Morning Executive Briefing
-- Executive Summary
-- Executive Actions
-- Watch List
+Responsibilities:
 
-Future outputs may include:
-
-- Mobile
-- Email
-- Voice
-- Dashboard
-- PDF
-- Calendar integration
+- Apply executive profile
+- Adjust presentation
+- Respect organizational boundaries
+- Preserve enterprise priorities
 
 ---
 
-# Agent Independence
+## Briefing Assembly Agent
 
-Each agent should be independently:
+Builds the final executive briefing.
 
-- Developed
-- Tested
-- Improved
-- Replaced
-- Monitored
+Responsibilities:
 
-without requiring changes to unrelated agents.
+- Organize report sections
+- Format output
+- Generate summaries
+- Maintain report consistency
+
+---
+
+## Knowledge Agent
+
+Maintains persistent organizational knowledge.
+
+Responsibilities:
+
+- Store historical intelligence
+- Maintain relationships
+- Support trend analysis
+- Preserve metadata
+
+---
+
+## Quality Assurance Agent
+
+Evaluates the generated briefing before delivery.
+
+Responsibilities:
+
+- Verify completeness
+- Detect formatting issues
+- Confirm traceability
+- Measure quality metrics
+
+---
+
+# Agent Communication
+
+Agents exchange structured intelligence objects rather than free-form text.
+
+Each agent should:
+
+- Accept standardized inputs.
+- Produce standardized outputs.
+- Report execution status.
+- Emit diagnostic metrics.
+
+Communication should be asynchronous whenever practical.
+
+---
+
+# Agent Lifecycle
+
+Each execution follows this sequence:
+
+```
+Collect
+   │
+Validate
+   │
+Enrich
+   │
+Correlate
+   │
+Score
+   │
+Personalize
+   │
+Assemble
+   │
+Validate Output
+   │
+Deliver
+```
+
+---
+
+# Fault Tolerance
+
+The architecture should tolerate:
+
+- Connector failures
+- Partial data
+- Missing optional sources
+- Individual agent retries
+- Graceful degradation
+
+A failure in one agent should not necessarily terminate the entire briefing workflow.
 
 ---
 
 # Observability
 
-Each workflow execution should record:
+Every agent should emit:
 
 - Start time
 - End time
-- Execution duration
-- Input count
-- Output count
-- Warnings
+- Duration
+- Success/failure
+- Items processed
 - Errors
-- Coverage status
-- Publication status
+- Warnings
+
+This information supports operational monitoring and future optimization.
 
 ---
 
-# Guiding Principle
+# Extensibility
 
-No single agent is responsible for producing the Executive Intelligence Briefing.
+New agents should:
 
-The quality of the briefing emerges from the disciplined collaboration of specialized agents, each optimized for a specific responsibility.
+- Own one responsibility.
+- Use standard interfaces.
+- Require minimal orchestration changes.
+- Avoid direct dependencies on unrelated agents.
+
+The preferred extension model is to add specialized agents rather than expanding existing ones.
 
 ---
 
-# Related Documents
+# Relationship to Other Documents
 
-- IMPLEMENTATION_ARCHITECTURE
+| Document | Relationship |
+|-----------|--------------|
+| IMPLEMENTATION_ARCHITECTURE.md | Overall implementation blueprint |
+| WORKFLOW_ORCHESTRATION.md | Coordinates agent execution |
+| INTELLIGENCE_PIPELINE_SPECIFICATION.md | Defines processing stages |
+| BRIEFING_ASSEMBLY_ENGINE.md | Generates the final briefing |
+| KNOWLEDGE_MODEL.md | Defines persistent knowledge structures |
+| OBSERVABILITY_AND_TELEMETRY.md | Operational monitoring |
+
+---
+
+# Success Criteria
+
+The agent architecture succeeds when:
+
+- Each agent has a clearly defined responsibility.
+- Agents communicate through stable interfaces.
+- New agents can be added without disrupting existing workflows.
+- Processing remains explainable, observable, and resilient.
+- The architecture supports future AI capabilities while remaining understandable to developers and architects.
