@@ -1,255 +1,177 @@
 ---
-title: Executive Intelligence Data Source Strategy
-document_id: PA-0004
-version: 1.0
+title: Data Source Strategy
+document_id: PA-006
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - ../VISION.md
   - PRODUCT_ARCHITECTURE.md
   - INTELLIGENCE_ARCHITECTURE.md
+  - SCORING_MODEL.md
 ---
 
-# Executive Intelligence Data Source Strategy
+# Executive Intelligence Briefing
+# Data Source Strategy
 
 ## Purpose
 
-This document defines the information source strategy for the Executive Intelligence Briefing (EIB).
+This document defines the strategy for acquiring, governing, evaluating, and maintaining the information sources that feed the Executive Intelligence Briefing (EIB).
 
-The objective is to maximize trust, completeness, timeliness, and executive relevance while minimizing misinformation, duplication, and high-impact omissions.
+The objective is to ensure that executive intelligence is timely, trustworthy, relevant, and scalable while remaining independent of any single vendor, API, or technology.
 
 ---
 
-# Guiding Principles
+# Philosophy
+
+Information is the raw material of intelligence.
+
+The value of the Executive Intelligence Briefing depends upon the quality, diversity, reliability, and timeliness of its data sources.
+
+The architecture favors multiple corroborating sources over dependence on any single provider.
+
+---
+
+# Strategic Objectives
 
 The data source strategy shall:
 
-- Prefer primary sources whenever possible.
-- Verify important information through multiple trusted sources.
-- Prioritize completeness of executive-impact events.
-- Clearly distinguish facts from interpretation.
-- Continuously improve source quality.
-- Maintain transparency regarding confidence.
+- Maximize source diversity.
+- Minimize vendor lock-in.
+- Prefer authoritative sources.
+- Support automated collection.
+- Enable traceability.
+- Preserve historical information.
+- Continuously evaluate source quality.
 
 ---
 
-# Information Quality Goals
+# Source Categories
 
-Every briefing should strive to be:
+## Internal Sources
 
-- Complete
-- Accurate
-- Timely
+Examples include:
+
+- Email
+- Calendar
+- Corporate announcements
+- Service management systems
+- Security platforms
+- Project management systems
+- Operational dashboards
+- Business metrics
+
+---
+
+## External Sources
+
+Examples include:
+
+- Government publications
+- Regulatory agencies
+- Industry associations
+- Vendor advisories
+- Threat intelligence feeds
+- Financial markets
+- News organizations
+- Research publications
+
+---
+
+## Public Sources
+
+Examples include:
+
+- RSS feeds
+- Public APIs
+- Official websites
+- Legislative portals
+- Open datasets
+- Public repositories
+
+---
+
+## User-Contributed Sources
+
+Examples include:
+
+- Uploaded documents
+- Reports
+- Meeting notes
+- Strategic plans
+- Policies
+- Presentations
+
+---
+
+# Source Quality Attributes
+
+Each source should be evaluated using multiple dimensions.
+
+| Attribute | Description |
+|-----------|-------------|
+| Authority | Is the source authoritative? |
+| Accuracy | Is the information reliable? |
+| Timeliness | How quickly is it updated? |
+| Completeness | Does it provide sufficient detail? |
+| Availability | Is it consistently accessible? |
+| Stability | Does the format remain consistent? |
+| Traceability | Can information be traced back to the source? |
+
+---
+
+# Source Classification
+
+Sources may be classified as:
+
 - Trusted
-- Explainable
-- Actionable
+- Preferred
+- Standard
+- Supplemental
+- Experimental
+- Deprecated
 
-Coverage is equally important as accuracy.
-
----
-
-# Source Hierarchy
-
-## Tier 1 – Primary Sources
-
-Preferred whenever available.
-
-Examples:
-
-- Federal Government
-- California Government
-- State Agencies
-- Local Governments
-- SEC Filings
-- Company Press Releases
-- Vendor Security Advisories
-- CISA
-- FBI
-- NIST
-- NOAA
-- National Weather Service
-- Cal OES
-
-Characteristics:
-
-- Highest trust
-- Original source
-- Lowest interpretation
+Classification may change over time.
 
 ---
 
-## Tier 2 – Professional Journalism
+# Collection Principles
 
-Examples:
+Collection should be:
 
-- Reuters
-- Associated Press
-- Bloomberg
-- Wall Street Journal
-- Financial Times
+- Automated where practical.
+- Incremental whenever possible.
+- Resilient to failures.
+- Observable and measurable.
+- Respectful of source limitations.
 
-Characteristics:
-
-- High editorial standards
-- Independent verification
-- Strong executive relevance
+The platform should avoid unnecessary duplication of collected data.
 
 ---
 
-## Tier 3 – Industry Publications
+# Source Evaluation
 
-Examples:
+Each source should undergo periodic review.
 
-- Krebs on Security
-- BleepingComputer
-- Dark Reading
-- The Record
-- CyberScoop
-- Government Technology
+Evaluation criteria include:
 
-Characteristics:
+- Reliability
+- Executive value
+- Historical usefulness
+- Collection cost
+- Maintenance effort
+- Licensing restrictions
+- Performance
+- Data freshness
 
-- Domain expertise
-- Specialized reporting
-- Technical depth
-
----
-
-## Tier 4 – Vendor Intelligence
-
-Examples:
-
-- Microsoft
-- Google
-- Amazon
-- Palo Alto Networks
-- Cisco
-- CrowdStrike
-- Mandiant
-- OpenAI
-
-Characteristics:
-
-- Technical insight
-- Product-specific intelligence
-- Operational guidance
-
-Vendor information should be independently validated whenever practical.
+Sources that no longer provide sufficient value should be retired.
 
 ---
 
-## Tier 5 – Community Sources
+# Source Governance
 
-Examples:
+Every source should have documented:
 
-- Security researchers
-- Industry blogs
-- Public discussion forums
-
-Characteristics:
-
-- Early visibility
-- Emerging intelligence
-- Lower confidence
-
-Community information should not appear in executive reporting without validation.
-
----
-
-# Source Diversity
-
-No major executive-impact story should rely upon a single source when corroboration is reasonably available.
-
-Multiple independent confirmations increase confidence.
-
----
-
-# Coverage Domains
-
-The system shall continuously monitor:
-
-- Executive Calendar
-- Weather
-- Financial Markets
-- National Security
-- California Government
-- Cybersecurity
-- Artificial Intelligence
-- Enterprise Technology
-- Regulatory Developments
-- Privacy
-- Infrastructure
-- Public Safety
-
----
-
-# Cybersecurity Strategy
-
-Cybersecurity shall receive enhanced monitoring due to its executive importance.
-
-Coverage includes:
-
-- Major breaches
-- Nation-state operations
-- Critical vulnerabilities
-- Zero-day exploits
-- Identity security
-- Cloud security
-- Ransomware
-- Supply chain attacks
-- AI security
-- Regulatory developments
-
-High-impact cyber events should never depend upon a single publication.
-
----
-
-# Coverage Assurance
-
-Before publication the platform shall verify that every monitored domain has been evaluated.
-
-Coverage Assurance should identify:
-
-- Missing major stories
-- Missing cyber events
-- Missing California developments
-- Missing executive-impact technology announcements
-- Missing financial events
-
-Coverage completeness is a measurable product objective.
-
----
-
-# Source Confidence
-
-Every source shall receive an internal confidence rating based upon:
-
-- Historical accuracy
-- Editorial quality
-- Timeliness
-- Independence
-- Transparency
-- Verification history
-
-Confidence scores should evolve over time.
-
----
-
-# Source Redundancy
-
-Multiple trusted sources improve:
-
-- Accuracy
-- Completeness
-- Confidence
-- Explainability
-
-Redundancy is encouraged for high-impact events.
-
----
-
-# Source Conflicts
-
-When trusted sources disagree:
+- Name
+-
