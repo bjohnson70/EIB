@@ -1,307 +1,288 @@
 ---
-title: Executive Intelligence Briefing Backup and Recovery
-document_id: IA-0029
-version: 1.0
+title: Backup and Recovery
+document_id: OPS-003
+version: 2.0
 status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - OPERATIONS/DEPLOYMENT_ARCHITECTURE.md
-  - OPERATIONS/SECURITY_MODEL.md
-  - DATA/STORAGE_ARCHITECTURE.md
-  - DATA/RETENTION_POLICY.md
+  - DEPLOYMENT_ARCHITECTURE.md
+  - SECURITY_MODEL.md
+  - ../IMPLEMENTATION/EXECUTION_STATE_MODEL.md
 ---
 
-# Executive Intelligence Briefing Backup and Recovery
+# Executive Intelligence Briefing (EIB)
+# Backup and Recovery
 
 ## Purpose
 
-This document defines the backup, restoration, disaster recovery, and business continuity strategy for the Executive Intelligence Briefing (EIB) platform.
+This document defines the backup, recovery, and operational resilience strategy for the Executive Intelligence Briefing (EIB) platform.
 
-The objective is to ensure that executive intelligence, historical knowledge, platform configuration, and operational capability can be restored following accidental loss, infrastructure failure, security incidents, or other disruptive events.
-
----
-
-# Philosophy
-
-Hope is not a recovery strategy.
-
-The platform should assume that failures will occur and be designed so that no single failure permanently destroys organizational knowledge or interrupts executive operations beyond acceptable limits.
+The objective is to ensure that critical platform data, configuration, and operational state can be restored following accidental deletion, infrastructure failure, security incidents, or disaster events while minimizing disruption to executive briefing services.
 
 ---
 
-# Objectives
+# Design Principles
 
-The Backup and Recovery strategy shall:
+The backup and recovery strategy shall be:
 
-- Protect institutional knowledge
-- Minimize data loss
-- Reduce recovery time
-- Preserve platform integrity
-- Support business continuity
-- Enable disaster recovery
-- Maintain executive confidence
+- Reliable
+- Repeatable
+- Secure
+- Tested
+- Automated
+- Auditable
+- Technology independent
 
----
-
-# Recovery Priorities
-
-Platform recovery should prioritize:
-
-1. Platform configuration
-2. Executive profiles
-3. Intelligence Objects
-4. Knowledge Graph
-5. Historical Intelligence
-6. Published Executive Briefings
-7. Operational telemetry
-8. Temporary operational data
-
-Recovery priority reflects business value rather than storage size.
-
----
-
-# Protected Assets
-
-The following information should be included in backup planning.
-
-## Platform Configuration
-
-Examples:
-
-- Runtime configuration
-- Connector configuration
-- Feature flags
-- Scheduling configuration
-- Security policies
-
----
-
-## Knowledge Assets
-
-Examples:
-
-- Intelligence Objects
-- Entity relationships
-- Executive recommendations
-- Executive scores
-- Historical intelligence
-
-These assets represent the platform's accumulated knowledge.
-
----
-
-## Published Reports
-
-Examples:
-
-- Daily briefings
-- Weekly reports
-- Executive summaries
-- Alert history
-
-Published reports should remain immutable after backup.
-
----
-
-## Repository Assets
-
-Examples:
-
-- Architecture documents
-- Prompt definitions
-- Schemas
-- Templates
-- Workflow definitions
-
-Source control provides one layer of protection but should not be the sole recovery mechanism.
-
----
-
-## Operational Information
-
-Examples:
-
-- Audit logs
-- Execution history
-- Workflow history
-- Health metrics
-
-Operational information supports troubleshooting and forensic analysis.
-
----
-
-# Backup Types
-
-The platform should support multiple backup methods.
-
-## Full Backup
-
-Captures all protected assets.
-
-Recommended for:
-
-- Initial deployment
-- Major releases
-- Long-term archival
-
----
-
-## Incremental Backup
-
-Captures changes since the previous backup.
-
-Benefits:
-
-- Faster execution
-- Reduced storage
-- Lower operational overhead
-
----
-
-## Differential Backup
-
-Captures changes since the most recent full backup.
-
-Provides a balance between recovery speed and storage efficiency.
-
----
-
-# Backup Schedule
-
-Organizations should establish schedules appropriate for operational needs.
-
-Typical cadence:
-
-- Daily incremental backups
-- Weekly differential backups
-- Monthly full backups
-
-Schedules may vary based on deployment environment and organizational policy.
+Recovery procedures should be documented, regularly exercised, and continuously improved.
 
 ---
 
 # Recovery Objectives
 
-Every deployment should define:
+Recovery planning should define measurable objectives for:
 
-## Recovery Time Objective (RTO)
+- Recovery Time Objective (RTO)
+- Recovery Point Objective (RPO)
+- Service restoration priority
+- Data integrity
+- Operational continuity
 
-Maximum acceptable time to restore platform functionality.
+Target values should be established by each deploying organization.
 
 ---
 
-## Recovery Point Objective (RPO)
+# Protected Assets
 
-Maximum acceptable amount of information that may be lost.
+The following assets shall be considered for backup.
 
-These objectives should align with business requirements.
+## Critical Assets
+
+- Executive profiles
+- Configuration
+- Knowledge repository
+- Intelligence Objects
+- Execution state
+- Audit records
+- Workflow history
+
+---
+
+## Operational Assets
+
+- Telemetry
+- Logs
+- Connector configuration
+- Scheduling configuration
+- Quality metrics
+
+---
+
+## Rebuildable Assets
+
+The following may be regenerated rather than backed up:
+
+- Temporary cache
+- Derived indexes
+- Processing queues
+- Intermediate workflow artifacts
+
+Recovery plans should clearly distinguish rebuildable from non-rebuildable assets.
+
+---
+
+# Backup Classification
+
+Backups should support:
+
+## Full Backup
+
+Complete protected dataset.
+
+---
+
+## Incremental Backup
+
+Changes since the previous backup.
+
+---
+
+## Differential Backup
+
+Changes since the last full backup.
+
+Organizations may choose the most appropriate strategy based on operational requirements.
+
+---
+
+# Backup Schedule
+
+Recommended schedules include:
+
+- Daily incremental backups
+- Weekly full backups
+- Monthly archival backups
+
+Schedules should balance recovery objectives, storage consumption, and operational impact.
+
+---
+
+# Retention
+
+Backup retention should follow organizational policy.
+
+Typical categories include:
+
+- Operational backups
+- Short-term recovery
+- Long-term archival
+- Compliance retention
+
+Expired backups should be securely destroyed.
+
+---
+
+# Encryption
+
+All backup data shall be protected by:
+
+- Encryption in transit
+- Encryption at rest
+- Managed encryption keys
+- Access controls
+
+Backup media shall receive the same protection as production data.
 
 ---
 
 # Recovery Levels
 
-Recovery may occur at several levels.
+Recovery procedures should support:
 
-## Object Recovery
+## File Recovery
 
-Restore a single Intelligence Object or configuration item.
+Restore individual configuration or document files.
 
 ---
 
-## Component Recovery
+## Workflow Recovery
 
-Restore a connector, workflow, or subsystem.
+Restore interrupted workflow execution using saved checkpoints.
+
+---
+
+## Repository Recovery
+
+Restore the knowledge repository and Intelligence Objects.
 
 ---
 
 ## Platform Recovery
 
-Restore the complete EIB platform.
+Restore all operational services and supporting infrastructure.
 
 ---
 
 ## Disaster Recovery
 
-Restore platform operations following catastrophic failure.
+Restore the complete EIB platform in an alternate environment following a major outage.
 
 ---
 
-# Backup Verification
+# Recovery Validation
 
-Backups should not be assumed valid.
+Recovery activities should verify:
 
-Verification should include:
+- Data integrity
+- Configuration integrity
+- Workflow continuity
+- Connector functionality
+- Report generation
+- Security controls
 
-- Integrity validation
-- Restore testing
-- Metadata verification
-- Version verification
-
-An untested backup should not be considered reliable.
-
----
-
-# Restoration Process
-
-The logical restoration sequence is:
-
-```
-Infrastructure
-
-↓
-
-Configuration
-
-↓
-
-Security
-
-↓
-
-Knowledge Store
-
-↓
-
-Historical Intelligence
-
-↓
-
-Operational Services
-
-↓
-
-Workflow Engine
-
-↓
-
-Validation
-
-↓
-
-Resume Operations
-```
-
-Recovery should preserve referential integrity across all platform components.
+Recovery is not complete until the platform successfully produces validated Executive Intelligence Briefings.
 
 ---
 
-# Geographic Resilience
+# Recovery Testing
 
-Where appropriate, organizations should maintain backup copies in separate physical or cloud locations.
+Recovery procedures should be exercised regularly.
 
-Geographic diversity reduces the risk of localized failures.
+Recommended testing includes:
+
+- Configuration restore
+- Knowledge repository restore
+- Workflow recovery
+- Complete platform recovery
+- Disaster recovery exercises
+
+Testing should be documented and reviewed for improvement opportunities.
+
+---
+
+# Auditability
+
+Backup and recovery activities shall record:
+
+- Timestamp
+- Operator
+- Assets protected
+- Assets restored
+- Recovery duration
+- Validation outcome
+- Exceptions encountered
+
+Audit records should be retained according to organizational policy.
 
 ---
 
 # Security
 
-Backups shall receive security protections equivalent to production data.
+Backup operations shall implement:
 
-Requirements include:
+- Role-based access
+- Multi-factor administrative access
+- Immutable backup storage where available
+- Separation of duties
+- Monitoring for unauthorized access
 
-- Encryption
-- Access controls
-- Audit logging
-- Integrity
+Recovery media shall be protected against tampering and unauthorized disclosure.
+
+---
+
+# Continuous Improvement
+
+Recovery performance should be reviewed after:
+
+- Recovery exercises
+- Production incidents
+- Security events
+- Platform upgrades
+
+Lessons learned should drive updates to procedures, tooling, and recovery objectives.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| DEPLOYMENT_ARCHITECTURE.md | Defines deployment topology |
+| SECURITY_MODEL.md | Protects backup assets |
+| EXECUTION_STATE_MODEL.md | Enables workflow recovery |
+| OBSERVABILITY_AND_TELEMETRY.md | Monitors backup and recovery operations |
+| CHANGE_MANAGEMENT.md | Governs changes affecting recoverability |
+
+---
+
+# Success Criteria
+
+The Backup and Recovery strategy succeeds when:
+
+- Critical platform assets are recoverable within defined objectives.
+- Backup operations are automated, monitored, and auditable.
+- Recovery procedures are documented and regularly tested.
+- Platform integrity is verified following restoration.
+- Recovery minimizes executive service disruption.
+- Lessons learned continuously improve organizational resilience.
