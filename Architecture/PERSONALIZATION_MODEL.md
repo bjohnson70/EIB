@@ -1,242 +1,286 @@
 ---
-title: Executive Intelligence Personalization Model
-document_id: PA-0006
-version: 1.0
+title: Executive Personalization Model
+document_id: PA-008
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - ../VISION.md
-  - PRODUCT_ARCHITECTURE.md
-  - REPORT_SPECIFICATION.md
+  - INTELLIGENCE_ARCHITECTURE.md
   - SCORING_MODEL.md
+  - REPORT_SPECIFICATION.md
 ---
 
-# Executive Intelligence Personalization Model
+# Executive Personalization Model
 
 ## Purpose
 
-This document defines how the Executive Intelligence Briefing (EIB) personalizes intelligence while maintaining consistent quality, objectivity, and trust.
+This document defines how the Executive Intelligence Briefing (EIB) personalizes intelligence for each executive while preserving a consistent, explainable, and repeatable briefing experience.
 
-Personalization influences **priority**, **presentation**, and **recommendations**. It never changes factual content.
-
----
-
-# Personalization Philosophy
-
-Every executive is different.
-
-Different roles, organizations, geographic locations, objectives, and responsibilities require different intelligence priorities.
-
-The objective of personalization is to deliver the right intelligence to the right executive at the right time.
+Personalization occurs **after intelligence has been collected, validated, enriched, and scored**. It determines **who should receive which intelligence, how it should be presented, and what level of detail is appropriate**.
 
 ---
 
-# Personalization Layers
+# Design Philosophy
+
+Every executive should receive the same truth, but not necessarily the same briefing.
+
+Personalization improves relevance without altering the underlying facts.
+
+The system should answer:
+
+- What matters most to this executive?
+- What level of detail should they receive?
+- What actions are appropriate for their role?
+- What information can safely be omitted?
+- What context should accompany the intelligence?
+
+---
+
+# Personalization Objectives
+
+The personalization model should:
+
+- Increase relevance.
+- Reduce information overload.
+- Preserve consistency.
+- Remain explainable.
+- Adapt over time.
+- Support multiple executive personas.
+- Respect organizational boundaries.
+
+---
+
+# Personalization Pipeline
 
 ```
-Global Standards
-
-↓
-
-Organization
-
-↓
-
-Executive Role
-
-↓
-
-Geographic Context
-
-↓
-
-Projects
-
-↓
-
-Calendar
-
-↓
-
-Personal Preferences
-
-↓
-
-Current Situation
+Scored Intelligence
+        │
+        ▼
+Executive Profile
+        │
+        ▼
+Role Mapping
+        │
+        ▼
+Interest Matching
+        │
+        ▼
+Priority Adjustment
+        │
+        ▼
+Presentation Rules
+        │
+        ▼
+Executive Briefing
 ```
 
-Each layer progressively increases briefing relevance.
+---
+
+# Executive Profile
+
+Each executive profile may include:
+
+- Name
+- Role
+- Organization
+- Business Unit
+- Areas of Responsibility
+- Geographic Scope
+- Strategic Priorities
+- Preferred Topics
+- Notification Preferences
+- Reading Preferences
+- Historical Interests
+
+Profiles should be configurable without requiring software changes.
 
 ---
 
-# Global Standards
+# Personalization Dimensions
 
-Applied to every briefing.
+## Role-Based Personalization
+
+Different leadership roles require different perspectives.
 
 Examples:
 
-- Executive Summary
-- Coverage Assurance
-- Trusted Sources
-- Explainability
-- Decision Support
-- Consistent formatting
+### CIO
 
-These standards are never overridden.
+Focus on:
 
----
-
-# Organization Profile
-
-Defines organizational context.
-
-Examples:
-
-- Industry
-- Government
-- Private Sector
-- Healthcare
-- Financial Services
-- Technology
-
-Organizational context influences:
-
-- Regulatory news
-- Cybersecurity priorities
-- Legislative reporting
-- Operational impacts
+- Enterprise technology
+- Digital transformation
+- Major initiatives
+- IT operations
+- Strategic investments
 
 ---
 
-# Executive Role
+### CISO
 
-Role determines briefing emphasis.
+Focus on:
 
-Examples:
-
-- CEO
-- CIO
-- CISO
-- COO
-- CFO
-- Board Member
-
-Example:
-
-A CISO receives more cybersecurity intelligence than a CFO.
+- Cybersecurity
+- Privacy
+- Risk
+- Threat intelligence
+- Compliance
+- Incident trends
 
 ---
 
-# Geographic Context
+### Executive Director
 
-Location affects prioritization.
+Focus on:
 
-Examples:
-
-- Local
-- State
-- National
-- International
-
-Local weather receives greater weight than weather in unrelated regions.
-
-California executives receive greater emphasis on California government activities.
+- Enterprise risk
+- Organizational performance
+- Legislative activity
+- Public perception
+- Strategic initiatives
 
 ---
 
-# Calendar Awareness
+### Division Chief
 
-The briefing shall adapt based upon today's calendar.
+Focus on:
 
-Examples:
-
-- Executive meetings
-- Travel
-- Deadlines
-- Presentations
-- Public appearances
-- Project milestones
-
-Preparation guidance should be generated whenever practical.
+- Operational performance
+- Staffing
+- Budget
+- Projects
+- Service delivery
 
 ---
 
-# Active Projects
+# Organizational Context
 
-Projects increase the relevance of related information.
+The same event may affect different organizations differently.
 
-Examples:
+Personalization considers:
 
-- Cyber initiatives
-- Budget planning
-- Strategic planning
-- Legislative projects
-- Technology implementations
-
-Related news receives higher ranking.
+- Agency
+- Division
+- Program
+- Geographic region
+- Regulatory environment
 
 ---
 
-# Standing Interests
+# Interest Profiles
 
-Executives may identify standing interests.
+Executives may identify preferred subjects.
 
 Examples:
 
 - Artificial Intelligence
-- Cybersecurity
+- Healthcare
 - Privacy
-- Investing
-- Retirement
-- Leadership
-- Aviation
-- Amateur Radio
+- Cloud
+- Budget
+- Workforce
+- Infrastructure
+- Legislation
 
-Standing interests increase relevance without overwhelming the briefing.
-
----
-
-# Personal Preferences
-
-Examples include:
-
-- Reading length
-- Preferred writing style
-- Metric preferences
-- Weather detail
-- Market detail
-- Leadership principles
-- Briefing order
-- Notification preferences
-
-Preferences affect presentation rather than content accuracy.
+Preferred topics influence ranking but do not suppress critical intelligence.
 
 ---
 
-# Executive Memory
+# Reading Preferences
 
-Future versions shall maintain executive memory.
+Executives consume information differently.
 
-Examples:
+Supported preferences include:
 
-- Long-term goals
-- Previous decisions
-- Frequently referenced topics
-- Preferred sources
+- Executive summary only
+- Standard briefing
+- Detailed briefing
+- Mobile-first
+- Email-first
+- Dashboard-first
+
+The underlying intelligence remains identical.
+
+---
+
+# Priority Adjustment
+
+Personalization may adjust—but never replace—the base priority score.
+
+Adjustments consider:
+
+- Executive responsibilities
+- Strategic initiatives
+- Organizational priorities
+- Historical engagement
+- Explicit preferences
+
+Critical enterprise risks remain visible regardless of personalization.
+
+---
+
+# Learning Model
+
+The personalization engine may improve over time using:
+
 - Reading behavior
-- Historical interests
+- User feedback
+- Frequently selected topics
+- Dismissed topics
+- Search history
+- Executive configuration changes
 
-Executive Memory enables continuous improvement.
+Learning should enhance relevance while maintaining transparency.
 
 ---
 
-# Adaptive Prioritization
+# Explainability
 
-Personalization influences:
+The platform should be able to explain why an intelligence item appears.
 
-- Story ranking
-- Commentary
-- Recommended actions
-- Watch
+Example:
+
+> "Included because it is highly relevant to your responsibilities as CISO, relates to enterprise cybersecurity strategy, and is rated High Priority."
+
+This supports executive trust and simplifies model refinement.
+
+---
+
+# Privacy Principles
+
+Personalization must respect privacy.
+
+The system should:
+
+- Collect only necessary preference data.
+- Avoid unnecessary behavioral profiling.
+- Allow manual preference overrides.
+- Preserve executive confidentiality.
+- Maintain auditable personalization decisions.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| PRODUCT_ARCHITECTURE.md | Defines the product vision |
+| INTELLIGENCE_ARCHITECTURE.md | Produces scored intelligence |
+| SCORING_MODEL.md | Determines baseline priority |
+| REPORT_SPECIFICATION.md | Defines briefing format |
+| IMPLEMENTATION/CONFIGURATION_AND_PROFILE_MODEL.md | Implements executive profiles |
+
+---
+
+# Success Criteria
+
+The personalization model succeeds when:
+
+- Executives consistently receive relevant intelligence.
+- Critical enterprise information is never hidden.
+- Personalization reduces cognitive load without introducing bias.
+- Users understand why information was included.
+- Profiles remain configurable and maintainable.
+- Personalization improves over time while preserving trust and consistency.
