@@ -1,339 +1,298 @@
 ---
-title: Executive Intelligence Briefing Knowledge Model
-document_id: IA-0010
-version: 1.0
+title: Knowledge Model
+document_id: IA-0007
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - IMPLEMENTATION_ARCHITECTURE.md
-  - CONFIGURATION_AND_PROFILE_MODEL.md
-  - EXECUTION_STATE_MODEL.md
+  - IMPLEMENTATION/INTELLIGENCE_OBJECT_MODEL.md
+  - IMPLEMENTATION/BRIEFING_ASSEMBLY_ENGINE.md
+  - ../DATA/KNOWLEDGE_GRAPH.md
 ---
 
-# Executive Intelligence Briefing Knowledge Model
+# Executive Intelligence Briefing (EIB)
+# Knowledge Model
 
 ## Purpose
 
-This document defines the canonical knowledge model used throughout the Executive Intelligence Briefing (EIB) platform.
+The Knowledge Model defines how the Executive Intelligence Briefing (EIB) platform stores, relates, preserves, and retrieves organizational knowledge.
 
-The knowledge model establishes a common vocabulary and structure for every piece of information processed by the system. Every agent exchanges information using these shared objects.
-
----
-
-# Philosophy
-
-Information should exist only once.
-
-Every agent should enrich knowledge rather than transform it into proprietary formats.
-
-The knowledge model serves as the common language of the platform.
+Unlike transient workflow data, the Knowledge Model represents persistent information that accumulates over time and supports historical analysis, trend detection, executive context, and organizational learning.
 
 ---
 
-# Core Knowledge Objects
+# Design Principles
 
-The platform defines the following primary object types:
+The Knowledge Model shall be:
 
-- Executive
-- Organization
-- Intelligence Item
-- Source
-- Recommendation
-- Event
-- Project
-- Calendar Entry
-- Execution
-- Briefing
+- Persistent
+- Traceable
+- Immutable where appropriate
+- Explainable
+- Extensible
+- Technology independent
+- Relationship-centric
 
-Each object has a unique identifier.
+Knowledge should accumulate rather than be repeatedly rediscovered.
 
 ---
 
-# Executive Object
+# Core Concepts
 
-Represents the briefing recipient.
+The platform distinguishes three related but different concepts.
 
-Typical attributes include:
+## Intelligence
 
-- Executive ID
-- Name
-- Role
-- Organization
-- Location
-- Time Zone
-- Personalization Profile
-- Standing Interests
-- Reporting Relationships
-
----
-
-# Organization Object
-
-Represents the executive's organization.
-
-Typical attributes include:
-
-- Organization ID
-- Name
-- Industry
-- Regulatory Environment
-- Geographic Footprint
-- Strategic Priorities
-
----
-
-# Intelligence Item
-
-The Intelligence Item is the central knowledge object within EIB.
-
-Required attributes include:
-
-- Intelligence ID
-- Title
-- Executive Summary
-- Category
-- Source References
-- Timestamp
-- Confidence
-- Geographic Scope
-- Executive Intelligence Score
-- Keywords
-- Status
-
-Every significant story is represented as an Intelligence Item.
-
----
-
-# Source Object
-
-Represents an information source.
-
-Attributes include:
-
-- Source ID
-- Name
-- Type
-- Trust Level
-- Authority
-- Publication Time
-- Original Reference
-
-Multiple Intelligence Items may reference the same Source.
-
----
-
-# Recommendation Object
-
-Represents an executive recommendation.
-
-Attributes include:
-
-- Recommendation ID
-- Recommendation Type
-- Supporting Intelligence
-- Priority
-- Rationale
-- Recommended Timeframe
-- Status
-
-Recommendations shall always reference supporting Intelligence Items.
-
----
-
-# Event Object
-
-Represents time-sensitive occurrences.
+Information about a specific event or observation.
 
 Examples:
 
-- Legislative actions
-- Security incidents
-- Market events
-- Weather events
-- Executive meetings
+- New cybersecurity advisory
+- Vendor announcement
+- Legislative update
+- Executive calendar event
 
-Events may generate Intelligence Items.
+Intelligence is time-bound.
 
 ---
 
-# Project Object
+## Knowledge
 
-Represents active executive initiatives.
+Persistent facts derived from intelligence.
 
-Typical attributes:
+Examples:
 
-- Project Name
+- Organization structure
+- Executive profiles
+- Business capabilities
+- Critical systems
+- Vendor inventory
+
+Knowledge changes slowly over time.
+
+---
+
+## Insight
+
+Conclusions derived from accumulated intelligence and knowledge.
+
+Examples:
+
+- Increasing ransomware activity
+- Vendor reliability trends
+- Regulatory risk trajectory
+- Recurring operational issues
+
+Insights represent analytical value added by the platform.
+
+---
+
+# Knowledge Domains
+
+Knowledge is organized into domains.
+
+Examples include:
+
+- Organizations
+- People
+- Systems
+- Applications
+- Vendors
+- Projects
+- Regulations
+- Technologies
+- Risks
+- Business Capabilities
+- Strategic Initiatives
+- Geographic Locations
+
+Domains may expand over time.
+
+---
+
+# Entity Model
+
+Each knowledge entity includes:
+
+- Entity ID
+- Entity Type
+- Name
+- Description
+- Metadata
 - Status
-- Owner
-- Strategic Priority
-- Related Intelligence
-- Milestones
+- Source References
+- Confidence
+- Last Updated
 
-Projects increase the relevance of related intelligence.
-
----
-
-# Calendar Entry
-
-Represents scheduled activities.
-
-Typical attributes:
-
-- Meeting
-- Appointment
-- Travel
-- Deadline
-- Reminder
-
-Calendar information supports personalization and recommendation generation.
+Entities remain independent of implementation technology.
 
 ---
 
-# Briefing Object
+# Relationship Model
 
-Represents a published Executive Intelligence Briefing.
+Entities are connected through explicit relationships.
 
-Attributes include:
+Relationship examples:
 
-- Briefing ID
-- Executive
-- Publication Time
-- Executive Summary
-- Sections
+- Reports To
+- Owns
+- Depends On
+- Supports
+- Mitigates
+- Impacts
+- Regulates
+- Uses
+- Replaces
+- Related To
+
+Relationships may include direction, confidence, and effective dates.
+
+---
+
+# Knowledge Graph
+
+The platform maintains a logical knowledge graph linking:
+
+- Entities
+- Intelligence Objects
+- Historical events
+- Insights
 - Recommendations
-- Watch List
-- Version
-- Execution ID
 
-The Briefing Object is immutable after publication.
+The graph enables context-aware intelligence and historical navigation.
 
 ---
 
-# Execution Object
+# Historical Memory
 
-Represents one workflow execution.
+The model preserves:
 
-Attributes include:
+- Entity history
+- Previous relationships
+- Organizational changes
+- Historical intelligence
+- Trend measurements
+- Executive decisions
 
-- Execution ID
-- Workflow Version
-- Prompt Version
-- Start Time
-- End Time
-- Quality Status
-- Publication Status
-- Metrics
-
-Execution Objects support auditing and observability.
+Historical information is retained according to platform retention policies.
 
 ---
 
-# Relationships
+# Trend Analysis
 
-Examples of object relationships:
+The Knowledge Model supports trend identification by comparing information over time.
 
-- Executive → Organization
-- Executive → Calendar Entries
-- Executive → Projects
-- Intelligence Item → Source
-- Recommendation → Intelligence Item
-- Briefing → Intelligence Items
-- Briefing → Recommendations
-- Execution → Briefing
+Examples include:
 
-These relationships enable traceability across the platform.
+- Incident frequency
+- Emerging technologies
+- Regulatory activity
+- Vendor performance
+- Workforce changes
+- Operational metrics
 
----
-
-# Object Lifecycle
-
-Knowledge objects generally progress through the following lifecycle:
-
-```
-Created
-
-↓
-
-Validated
-
-↓
-
-Enriched
-
-↓
-
-Referenced
-
-↓
-
-Published
-
-↓
-
-Archived
-```
-
-Objects are never silently discarded. Their lifecycle remains observable.
+Trend generation should be reproducible and traceable to supporting intelligence.
 
 ---
 
-# Metadata Standards
+# Confidence
 
-Every knowledge object shall include:
+Knowledge confidence is determined using factors such as:
 
-- Unique Identifier
-- Version
-- Creation Timestamp
-- Last Updated Timestamp
-- Source Attribution
-- Confidence (where applicable)
-- Owner
-- Status
+- Source credibility
+- Corroboration
+- Recency
+- Historical consistency
+- Expert validation
 
-Metadata supports governance, traceability, and auditing.
+Confidence values should accompany significant derived knowledge.
 
 ---
 
-# Extensibility
+# Search and Retrieval
 
-New object types shall:
+The platform should support retrieval by:
 
-- Reuse existing relationships where possible
-- Follow established metadata standards
-- Preserve backward compatibility
-- Avoid duplication of information
+- Entity
+- Topic
+- Time period
+- Organization
+- Executive
+- Risk category
+- Strategic initiative
+- Relationship
+- Free text
 
-The knowledge model is expected to evolve without requiring redesign.
+Search behavior should remain independent of storage technology.
+
+---
+
+# Governance
+
+Knowledge must be governed through:
+
+- Provenance tracking
+- Version history
+- Audit logging
+- Data ownership
+- Access control
+- Retention policies
+
+Every knowledge item should remain traceable to its originating intelligence.
+
+---
+
+# Integration
+
+The Knowledge Model integrates with:
+
+- Intelligence Pipeline
+- Workflow Orchestration
+- Briefing Assembly
+- Personalization Engine
+- Scoring Engine
+- Knowledge Graph
+
+These integrations enrich processing without tightly coupling implementation components.
+
+---
+
+# Future Evolution
+
+The architecture should support future capabilities including:
+
+- Semantic search
+- AI-assisted reasoning
+- Predictive analytics
+- Knowledge summarization
+- Cross-domain correlation
+- Recommendation generation
+
+These capabilities should build upon the existing Knowledge Model rather than replace it.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| INTELLIGENCE_OBJECT_MODEL.md | Defines the canonical intelligence contract |
+| BRIEFING_ASSEMBLY_ENGINE.md | Consumes historical knowledge for context |
+| Architecture/INTELLIGENCE_ARCHITECTURE.md | Defines the intelligence lifecycle |
+| DATA/KNOWLEDGE_GRAPH.md | Defines logical graph structures |
+| DATA/HISTORICAL_INTELLIGENCE.md | Defines historical storage strategy |
 
 ---
 
 # Success Criteria
 
-The knowledge model succeeds when:
+The Knowledge Model succeeds when:
 
-- All agents exchange a common set of objects.
-- Data duplication is minimized.
-- Relationships remain traceable.
-- New capabilities can be added with minimal impact.
-- Knowledge remains consistent throughout the workflow.
-
----
-
-# Guiding Principle
-
-A shared knowledge model is the foundation of an intelligent system. Agents may specialize in different tasks, but they must all reason about the same underlying reality using a common language.
-
----
-
-# Related Documents
-
-- IMPLEMENTATION_ARCHITECTURE.md
-- AGENT_ARCHITECTURE.md
-- WORKFLOW_ORCHESTRATION.md
-- CONFIGURATION_AND_PROFILE_MODEL.md
-- EXECUTION_STATE_MODEL.md
-- OBSERVABILITY_AND_TELEMETRY.md
-- ../Architecture/INTELLIGENCE_ARCHITECTURE.md
-- ../Architecture/PERSONALIZATION_MODEL.md
+- Organizational knowledge persists beyond individual workflow executions.
+- Every knowledge item remains traceable to supporting intelligence.
+- Historical trends can be reproduced and explained.
+- Relationships provide meaningful executive context.
+- Insights are derived transparently from accumulated knowledge.
+- The model supports future AI capabilities without requiring architectural redesign.
