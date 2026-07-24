@@ -1,319 +1,152 @@
 ---
-title: Executive Intelligence Briefing Implementation Plan
-document_id: IA-0031
+title: Implementation Plan
+document_id: ROADMAP-002
 version: 1.0
 status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-07-24
 depends_on:
-  - PRODUCT_REQUIREMENTS.md
+  - ROADMAP/MVP_DEFINITION.md
+  - Architecture/PRODUCT_ARCHITECTURE.md
   - IMPLEMENTATION/IMPLEMENTATION_ARCHITECTURE.md
-  - OPERATIONS/DEPLOYMENT_ARCHITECTURE.md
 ---
 
-# Executive Intelligence Briefing Implementation Plan
+# Executive Intelligence Briefing (EIB)
+# Implementation Plan
 
 ## Purpose
 
-This document defines the recommended implementation strategy for the Executive Intelligence Briefing (EIB) platform.
+This document defines the phased implementation strategy for building the Executive Intelligence Briefing (EIB).
 
-While the architecture describes *what* the platform should become, this roadmap describes *how* it should be built in manageable, measurable increments that continually deliver value.
-
-The objective is to reach a production-quality platform through a series of successful milestones rather than one large implementation effort.
-
----
-
-# Philosophy
-
-Build small.
-
-Deliver often.
-
-Learn continuously.
-
-Each implementation phase should produce a working system that improves upon the previous one.
-
-Architecture provides direction.
-
-Implementation provides momentum.
-
----
-
-# Objectives
-
-The Implementation Plan shall:
-
-- Deliver value early
-- Reduce implementation risk
-- Support iterative development
-- Validate architectural assumptions
-- Encourage continuous improvement
-- Produce a usable platform at every phase
+Rather than attempting to deliver every capability at once, EIB will be developed through incremental milestones. Each phase must produce a working, demonstrable improvement while building toward the long-term vision.
 
 ---
 
 # Guiding Principles
 
-Implementation should emphasize:
+The implementation strategy follows these principles:
 
-- Working software over perfect software
-- Incremental delivery
-- Measurable progress
-- Quality at every stage
-- Simplicity before optimization
-- Automation wherever practical
-
----
-
-# Delivery Strategy
-
-The platform will evolve through progressive capability maturity.
-
-```
-Concept
-
-↓
-
-Prototype
-
-↓
-
-Minimum Viable Product
-
-↓
-
-Operational Platform
-
-↓
-
-Enterprise Platform
-
-↓
-
-Continuous Evolution
-```
-
-Each phase should conclude with a usable system.
+- Build the smallest useful solution first.
+- Deliver working software at the end of every phase.
+- Validate assumptions early.
+- Keep the architecture modular.
+- Automate repetitive work.
+- Preserve source traceability.
+- Favor maintainability over premature optimization.
 
 ---
 
-# Phase 1 — Foundation
+# Phase 1 — Minimum Viable Product (MVP)
 
 ## Goal
 
-Establish the core platform.
-
-### Deliverables
-
-- Repository
-- Architecture
-- Documentation
-- Development standards
-- Initial configuration
-- Version control
-- Basic execution framework
+Produce a reliable executive briefing from a small set of trusted information sources.
 
 ### Success Criteria
 
-The project can be built consistently by a new contributor.
+- Manual execution using **Run EIB**.
+- Single executive profile.
+- Markdown briefing output.
+- Source citations included.
+- Reading time approximately five to seven minutes.
+- Repeatable execution.
 
 ---
 
-# Phase 2 — Core Platform
+# Phase 2 — Automation
 
 ## Goal
 
-Create the first working execution engine.
+Reduce manual effort while increasing consistency.
 
-### Deliverables
+### Planned Features
 
-- Workflow Engine
-- Scheduler
-- Configuration
-- Logging
-- Basic storage
-- Initial connectors
-
-### Success Criteria
-
-A workflow can execute from beginning to end.
+- Scheduled execution.
+- Incremental source refresh.
+- Briefing history.
+- Execution logging.
+- Error reporting.
+- Health monitoring.
 
 ---
 
-# Phase 3 — Minimum Viable Product
+# Phase 3 — Intelligence Expansion
 
 ## Goal
 
-Produce the first Executive Intelligence Briefing.
+Increase the breadth and quality of intelligence.
 
-### Deliverables
+### Planned Features
 
-- Weather intelligence
-- Calendar intelligence
-- News intelligence
-- Cyber intelligence
-- Assembly Engine
-- Report generation
-
-### Success Criteria
-
-A complete daily briefing can be generated automatically.
+- Additional source connectors.
+- Domain-specific intelligence agents.
+- Trend analysis.
+- Risk scoring.
+- Opportunity scoring.
+- Confidence scoring.
 
 ---
 
-# Phase 4 — Intelligence Expansion
+# Phase 4 — Personalization
 
 ## Goal
 
-Increase briefing quality.
+Tailor briefings to individual executives.
 
-### Deliverables
+### Planned Features
 
-- Executive scoring
-- Historical trends
-- Recommendation engine
-- Knowledge Graph
-- Improved source validation
-- Coverage assurance
-
-### Success Criteria
-
-Briefings become increasingly personalized and insightful.
+- Multiple executive profiles.
+- Reading preferences.
+- Topic prioritization.
+- Personalized scoring.
+- Executive dashboards.
 
 ---
 
-# Phase 5 — Operational Maturity
-
-## Goal
-
-Prepare for dependable production use.
-
-### Deliverables
-
-- Monitoring
-- Health dashboards
-- Backup
-- Recovery
-- Security hardening
-- Operational automation
-
-### Success Criteria
-
-The platform operates reliably with minimal manual intervention.
-
----
-
-# Phase 6 — Enterprise Readiness
+# Phase 5 — Enterprise Readiness
 
 ## Goal
 
 Support organizational deployment.
 
-### Deliverables
+### Planned Features
 
-- Multi-user support
-- Role-based access
-- Additional connectors
-- Administrative tools
-- High availability
-- Scalability improvements
-
-### Success Criteria
-
-The platform supports enterprise-scale operations.
+- Multi-user support.
+- Role-based access.
+- Team briefings.
+- Department briefings.
+- Administrative tools.
+- Operational monitoring.
 
 ---
 
-# Phase 7 — Continuous Improvement
+# Cross-Cutting Activities
 
-The platform enters an ongoing improvement cycle.
+The following activities continue throughout every phase:
 
-Focus areas include:
-
-- New intelligence domains
-- AI improvements
-- Connector expansion
-- Performance optimization
-- Executive feedback
-- Operational refinement
-
-The platform should never be considered "finished."
+- Documentation updates.
+- Repository validation.
+- Metadata consistency.
+- Testing.
+- Security review.
+- Performance improvements.
+- Prompt refinement.
 
 ---
 
-# Milestones
+# Exit Criteria
 
-Major milestones include:
+A phase is considered complete when:
 
-- Architecture Complete
-- First Successful Workflow
-- First Published Briefing
-- First Automated Daily Run
-- First Historical Trend Analysis
-- First Executive Recommendation Engine
-- Production Deployment
-- Enterprise Deployment
-
-Each milestone should be demonstrable.
+- Objectives have been met.
+- Documentation has been updated.
+- Tests pass.
+- Repository status has been updated.
+- Remaining work has been added to the backlog.
 
 ---
 
-# Prioritization
+# Long-Term Vision
 
-Implementation priority should always favor capabilities that increase executive value.
-
-Preferred order:
-
-1. Reliability
-2. Accuracy
-3. Executive usefulness
-4. Automation
-5. Performance
-6. Optimization
-
-Optimization should never delay delivering usable capability.
-
----
-
-# Quality Gates
-
-A phase should not be considered complete until:
-
-- Documentation is updated
-- Testing passes
-- Architecture remains consistent
-- Security requirements are met
-- Operational procedures exist
-- Lessons learned are recorded
-
----
-
-# Risks
-
-Potential implementation risks include:
-
-- Connector instability
-- External API changes
-- Prompt drift
-- Scope expansion
-- Technical debt
-- Operational complexity
-
-Risks should be identified early and reviewed regularly.
-
----
-
-# Success Metrics
-
-Implementation progress should measure:
-
-- Working capabilities delivered
-- Automation percentage
-- Workflow reliability
-- Test coverage
-- Documentation completeness
-- Executive satisfaction
-- Platform stability
-
-Progress is
+The Executive Intelligence Briefing will evolve into a modular intelligence platform capable of producing concise, trustworthy, and personalized executive briefings from diverse information sources with minimal manual effort.
