@@ -1,293 +1,376 @@
 ---
-title: Executive Intelligence Briefing Domain Agent Specifications
+title: Domain Agent Specifications
 document_id: IA-0014
-version: 1.0
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
   - AGENT_ARCHITECTURE.md
-  - SOURCE_CONNECTOR_FRAMEWORK.md
+  - INTELLIGENCE_PIPELINE_SPECIFICATION.md
   - KNOWLEDGE_MODEL.md
-  - INTELLIGENCE_OBJECT_MODEL.md
 ---
 
-# Executive Intelligence Briefing Domain Agent Specifications
+# Executive Intelligence Briefing (EIB)
+# Domain Agent Specifications
 
 ## Purpose
 
-This document defines the responsibilities, inputs, outputs, and success criteria for each Domain Intelligence Agent within the Executive Intelligence Briefing (EIB) platform.
+This document defines the specialized intelligence agents that analyze information within specific business domains.
 
-Each Domain Agent is responsible for becoming an expert within a single intelligence domain while remaining interoperable with the broader intelligence pipeline.
+Where the Agent Architecture defines *how* agents behave, this document defines *what* each agent is responsible for.
 
----
-
-# Philosophy
-
-Each agent should know one domain exceptionally well.
-
-No agent should attempt to become an expert in every subject.
-
-Specialization improves:
-
-- Quality
-- Accuracy
-- Explainability
-- Maintainability
-- Testability
+Each domain agent transforms normalized Intelligence Objects into domain-specific executive intelligence while adhering to the common agent contract.
 
 ---
 
-# Standard Agent Contract
+# Design Principles
 
-Every Domain Agent shall implement the following responsibilities:
+Domain agents shall be:
 
-- Collect relevant intelligence
-- Evaluate executive significance
-- Detect important changes
-- Generate executive analysis
-- Recommend actions when appropriate
-- Produce standardized Intelligence Objects
-- Report execution telemetry
+- Independent
+- Explainable
+- Deterministic
+- Configuration-driven
+- Observable
+- Extensible
+- Domain focused
 
----
-
-# National Security Agent
-
-## Scope
-
-- Geopolitical developments
-- Military operations
-- Intelligence community updates
-- Terrorism
-- Homeland security
-- International conflict
-
-### Outputs
-
-- Executive impact assessment
-- Risk level
-- Recommended awareness
+Each agent owns one domain of expertise.
 
 ---
 
-# California Government Agent
+# Common Responsibilities
 
-## Scope
+Every domain agent shall:
 
-- Governor's Office
-- Legislature
-- Budget
-- Executive Orders
-- Regulatory actions
-- State agencies
+- Consume normalized Intelligence Objects.
+- Evaluate domain relevance.
+- Enrich domain context.
+- Produce domain-specific insights.
+- Recommend follow-up actions when appropriate.
+- Record processing decisions.
+- Emit operational telemetry.
 
-### Outputs
+---
 
-- Policy implications
-- Regulatory impact
-- Executive recommendations
+# Standard Processing Model
+
+```
+Intelligence Objects
+        │
+        ▼
+Domain Evaluation
+        │
+        ▼
+Context Enrichment
+        │
+        ▼
+Risk & Opportunity Analysis
+        │
+        ▼
+Executive Insight Generation
+        │
+        ▼
+Updated Intelligence Objects
+```
 
 ---
 
 # Cybersecurity Agent
 
-## Scope
+Mission
 
-- Major cyber incidents
-- Vulnerabilities
-- Ransomware
-- Threat actors
-- CISA advisories
-- Vendor security bulletins
+Identify cyber threats that may require executive awareness or action.
 
-### Outputs
+Primary Responsibilities
 
-- Threat assessment
-- Organizational impact
-- Required executive awareness
+- Threat intelligence analysis
+- Vulnerability prioritization
+- Ransomware monitoring
+- Vendor security advisories
+- Incident trend analysis
+- Executive cyber risk summaries
+
+Typical Sources
+
+- CISA
+- NIST
+- Vendor advisories
+- Security platforms
+- Threat feeds
+
+Outputs
+
+- Executive cyber summary
+- Risk rating
 - Recommended actions
-
-Coverage Assurance applies with elevated priority.
+- Supporting references
 
 ---
 
-# Artificial Intelligence Agent
+# Privacy Agent
 
-## Scope
+Mission
 
-- Major AI announcements
-- Foundation models
-- Government AI policy
-- AI regulation
-- Enterprise AI adoption
-- Responsible AI
+Monitor developments affecting privacy, compliance, and regulated information.
 
-### Outputs
+Responsibilities
 
-- Strategic implications
-- Adoption opportunities
-- Executive considerations
+- Privacy regulations
+- OCR guidance
+- HIPAA developments
+- Data protection trends
+- Privacy incidents
+
+Outputs
+
+- Compliance summaries
+- Privacy impact
+- Executive recommendations
 
 ---
 
 # Technology Agent
 
-## Scope
+Mission
 
-- Enterprise technology
-- Cloud
-- Microsoft
-- Google
-- Apple
+Identify technology developments that may influence enterprise strategy.
+
+Responsibilities
+
+- Cloud services
+- Artificial Intelligence
 - Infrastructure
+- Enterprise software
 - Emerging technologies
 
-### Outputs
+Outputs
 
-- Business impact
-- Technology trends
-- Strategic recommendations
-
----
-
-# Financial Markets Agent
-
-## Scope
-
-- Markets
-- Treasury rates
-- Inflation
-- Employment
-- Major earnings
-- Federal Reserve
-
-### Outputs
-
-- Economic outlook
-- Executive impact
-- Market summary
+- Technology opportunities
+- Strategic implications
+- Adoption considerations
 
 ---
 
-# Weather Agent
+# Legislative Agent
 
-## Scope
+Mission
 
-- Forecast
-- Severe weather
-- Air Quality Index
-- UV Index
-- Sunrise/Sunset
-- Travel impacts
+Monitor legislative and regulatory activity.
 
-### Outputs
+Responsibilities
 
-- Operational impacts
-- Travel considerations
-- Daily planning guidance
+- Federal legislation
+- State legislation
+- Budget actions
+- Regulatory rulemaking
+- Executive orders
+
+Outputs
+
+- Legislative summaries
+- Organizational impact
+- Required monitoring
 
 ---
 
-# Calendar Intelligence Agent
+# Operational Intelligence Agent
 
-## Scope
+Mission
 
-- Meetings
+Summarize operational performance and organizational health.
+
+Responsibilities
+
+- Service availability
+- Major projects
+- Business continuity
+- Staffing trends
+- Operational metrics
+
+Outputs
+
+- Operational highlights
+- Emerging issues
+- Executive dashboard updates
+
+---
+
+# Financial Intelligence Agent
+
+Mission
+
+Identify financial developments that affect organizational planning.
+
+Responsibilities
+
+- Budget developments
+- Procurement trends
+- Market conditions
+- Vendor financial health
+- Cost drivers
+
+Outputs
+
+- Financial summary
+- Budget implications
+- Risk indicators
+
+---
+
+# Calendar & Executive Activities Agent
+
+Mission
+
+Provide executive awareness of upcoming commitments and scheduling context.
+
+Responsibilities
+
+- Calendar analysis
+- Upcoming meetings
 - Travel
 - Deadlines
-- Preparation reminders
-- Scheduling conflicts
+- Significant anniversaries
+- Time conflicts
 
-### Outputs
+Outputs
 
-- Executive preparation
-- Scheduling concerns
-- Action reminders
-
----
-
-# Personal Dashboard Agent
-
-## Scope
-
-- Personal metrics
-- Long-term goals
-- Active initiatives
-- Health indicators (optional)
-- Retirement milestones
-- Financial snapshots
-
-### Outputs
-
-- Executive dashboard
-- Progress highlights
-- Goal reminders
+- Executive agenda
+- Scheduling insights
+- Time-sensitive reminders
 
 ---
 
-# Leadership Agent
+# Weather & Environmental Agent
 
-## Scope
+Mission
 
-- Leadership principles
-- Executive development
-- Decision making
-- Organizational effectiveness
+Provide environmental context that may influence executive planning.
 
-### Outputs
+Responsibilities
 
-- Daily leadership insight
-- Reflection question
-- Practical application
+- Weather forecasts
+- Sunrise and sunset
+- Natural hazards
+- Travel disruptions
+- Seasonal events
 
----
+Outputs
 
-# Agent Collaboration
-
-Domain Agents should not directly communicate with one another.
-
-Instead:
-
-```
-Domain Agent
-
-↓
-
-Intelligence Object
-
-↓
-
-Knowledge Model
-
-↓
-
-Assembly Engine
-```
-
-This architecture minimizes coupling and improves scalability.
+- Daily weather summary
+- Environmental alerts
+- Planning considerations
 
 ---
 
-# Shared Responsibilities
+# Organizational Intelligence Agent
 
-Every Domain Agent shall:
+Mission
 
-- Assign confidence
-- Detect duplicates
-- Record source attribution
-- Produce executive summaries
-- Identify recommended actions
-- Generate telemetry
+Monitor developments affecting the organization itself.
+
+Responsibilities
+
+- Organizational announcements
+- Leadership changes
+- Strategic initiatives
+- Internal communications
+- Workforce developments
+
+Outputs
+
+- Organizational updates
+- Leadership impacts
+- Strategic context
 
 ---
 
-# Quality Expectations
+# Personal Intelligence Agent
 
-Every Domain Agent should produce intelligence that is:
+Mission
 
-- Accurate
-- Current
-- Relevant
-- Conc
+Incorporate executive-specific context into the briefing.
+
+Responsibilities
+
+- Personal priorities
+- Recurring interests
+- Long-term initiatives
+- Historical preferences
+- Personal reminders
+
+This agent never overrides enterprise-critical intelligence.
+
+---
+
+# Agent Coordination
+
+Domain agents operate independently but may collaborate through shared Intelligence Objects.
+
+Examples include:
+
+- Cybersecurity ↔ Privacy
+- Legislative ↔ Privacy
+- Technology ↔ Cybersecurity
+- Operational ↔ Financial
+
+Collaboration enriches intelligence without creating direct dependencies.
+
+---
+
+# Future Agents
+
+The architecture supports adding specialized agents such as:
+
+- Healthcare
+- Supply Chain
+- Geopolitical
+- Energy
+- Transportation
+- Research
+- Human Resources
+- Facilities
+- Public Relations
+
+Future agents should implement the standard agent contract.
+
+---
+
+# Governance
+
+Each domain agent should have:
+
+- Defined owner
+- Scope statement
+- Supported sources
+- Quality metrics
+- Configuration profile
+- Version history
+
+Governance ensures consistency across all domain agents.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| AGENT_ARCHITECTURE.md | Defines the common agent framework |
+| INTELLIGENCE_PIPELINE_SPECIFICATION.md | Defines where domain agents participate |
+| KNOWLEDGE_MODEL.md | Provides historical context |
+| SOURCE_CONNECTOR_FRAMEWORK.md | Supplies normalized intelligence |
+| QUALITY_ASSURANCE_FRAMEWORK.md | Defines quality expectations |
+
+---
+
+# Success Criteria
+
+The Domain Agent Specifications succeed when:
+
+- Each intelligence domain has a clearly defined responsibility.
+- Domain agents consistently enrich Intelligence Objects with specialized expertise.
+- New domains can be added without architectural changes.
+- Domain analysis remains explainable, traceable, and measurable.
+- Executive briefings benefit from specialized intelligence while preserving a unified platform architecture.
