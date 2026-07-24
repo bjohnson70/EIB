@@ -1,381 +1,317 @@
 ---
-title: Executive Intelligence Briefing Deployment Architecture
-document_id: IA-0026
-version: 1.0
+title: Deployment Architecture
+document_id: OPS-001
+version: 2.0
 status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - IMPLEMENTATION/IMPLEMENTATION_ARCHITECTURE.md
-  - IMPLEMENTATION/WORKFLOW_ORCHESTRATION.md
-  - DEVELOPMENT/API_SPECIFICATION.md
+  - ../IMPLEMENTATION/IMPLEMENTATION_ARCHITECTURE.md
+  - ../IMPLEMENTATION/OBSERVABILITY_AND_TELEMETRY.md
+  - ../IMPLEMENTATION/SOURCE_CONNECTOR_FRAMEWORK.md
 ---
 
-# Executive Intelligence Briefing Deployment Architecture
+# Executive Intelligence Briefing (EIB)
+# Deployment Architecture
 
 ## Purpose
 
-This document defines the logical deployment architecture for the Executive Intelligence Briefing (EIB) platform.
+This document defines the deployment architecture for the Executive Intelligence Briefing (EIB) platform.
 
-The Deployment Architecture specifies how platform components execute together as a complete operational system while remaining independent of any specific cloud provider, operating system, or hosting technology.
+It describes how platform components are deployed, secured, scaled, monitored, and operated across development, testing, and production environments.
 
----
-
-# Philosophy
-
-Deployment should be simple.
-
-Operations should be predictable.
-
-The platform should be portable.
-
-The same logical architecture should support execution on:
-
-- A developer workstation
-- A home lab
-- A cloud platform
-- A government data center
-- A managed enterprise environment
-
-Deployment technology may change.
-
-Architecture should not.
+The deployment architecture is intentionally cloud-neutral and technology-independent.
 
 ---
 
-# Objectives
+# Design Principles
 
-The Deployment Architecture shall:
+The deployment architecture shall be:
 
-- Support multiple deployment models
-- Enable automated execution
-- Maximize reliability
-- Minimize operational complexity
-- Support horizontal growth
-- Remain vendor neutral
-- Enable disaster recovery
+- Cloud neutral
+- Secure by default
+- Highly observable
+- Resilient
+- Horizontally scalable
+- Fault tolerant
+- Automatable
+
+Deployment decisions should not alter business functionality.
 
 ---
 
-# Logical Architecture
+# Logical Deployment
 
 ```
 Users
 
 ↓
 
-Executive Intelligence Platform
+Presentation Layer
 
 ↓
 
-Workflow Engine
+Workflow Services
 
 ↓
 
-Domain Agents
+Agent Services
 
 ↓
 
-Connector Framework
+Pipeline Services
 
 ↓
 
-Knowledge Layer
+Knowledge Services
 
 ↓
 
-Storage Layer
+Connector Services
 
 ↓
 
-Monitoring & Operations
+External & Internal Sources
 ```
 
-Each layer has clearly defined responsibilities and communicates through published interfaces.
+Each layer communicates through well-defined interfaces.
 
 ---
 
-# Deployment Models
+# Deployment Environments
 
-The platform supports several deployment models.
+The platform supports multiple environments.
 
-## Local Development
+## Development
 
 Purpose:
 
 - Feature development
-- Testing
-- Prompt engineering
-- Debugging
+- Unit testing
+- Connector development
 
 Characteristics:
 
-- Single user
-- Local storage
-- Simplified configuration
+- Small scale
+- Rapid deployment
+- Test data
 
 ---
 
-## Single Server
+## Test
 
 Purpose:
 
-- Personal production
-- Small organizations
-- Pilot implementations
+- Integration testing
+- Workflow validation
+- Regression testing
 
 Characteristics:
 
-- One runtime environment
-- Automated scheduling
-- Local or cloud storage
+- Production-like configuration
+- Sanitized data
+- Automated testing
 
 ---
 
-## Enterprise Deployment
+## Staging
 
 Purpose:
 
-- Organizational production
+- Final validation
+- Performance testing
+- User acceptance
+
+Characteristics:
+
+- Mirrors production
+- Release candidate deployments
+
+---
+
+## Production
+
+Purpose:
+
+- Executive briefing generation
+- Operational monitoring
 - High availability
-- Multiple users
 
 Characteristics:
 
-- Redundant services
-- Centralized monitoring
-- Managed storage
-- Automated recovery
+- Hardened security
+- Continuous monitoring
+- Backup and recovery
+- Change control
 
 ---
 
-## Cloud Deployment
+# Deployment Components
 
-The architecture supports deployment to public or private cloud environments.
+Primary deployable components include:
 
-Cloud-specific services should remain implementation details rather than architectural requirements.
-
----
-
-# Runtime Components
-
-A production deployment typically includes:
-
-- Workflow Engine
-- Domain Agents
-- Connector Framework
-- Knowledge Layer
-- Storage Layer
-- Scheduler
-- Monitoring
-- Logging
+- Workflow Orchestrator
+- Agent Services
+- Connector Services
+- Knowledge Repository
+- Briefing Assembly Engine
+- Scheduling Service
 - Configuration Service
+- Monitoring Services
 
-Each component should be independently replaceable.
-
----
-
-# Execution Flow
-
-```
-Scheduler
-
-↓
-
-Workflow Engine
-
-↓
-
-Connectors
-
-↓
-
-Knowledge Processing
-
-↓
-
-Domain Agents
-
-↓
-
-Assembly Engine
-
-↓
-
-Quality Assurance
-
-↓
-
-Publication
-
-↓
-
-Archive
-```
-
-This represents the logical execution sequence rather than physical deployment.
-
----
-
-# Configuration
-
-Deployment configuration should be externalized.
-
-Examples include:
-
-- Environment variables
-- Configuration files
-- Secret management systems
-- Feature flags
-
-Platform behavior should be configurable without modifying source code.
-
----
-
-# Secrets Management
-
-Sensitive information shall be stored outside the repository.
-
-Examples:
-
-- API keys
-- Authentication tokens
-- Database credentials
-- Encryption keys
-
-Secrets should support rotation without service interruption.
+Each component should be independently deployable.
 
 ---
 
 # Scalability
 
-The architecture should support scaling through:
+The platform supports horizontal scaling for:
 
-- Additional agents
-- Parallel workflows
-- Distributed connectors
-- Independent storage services
-- Horizontal processing
+- Connector processing
+- Agent execution
+- Workflow orchestration
+- Report generation
 
-Scaling should require configuration changes rather than architectural redesign.
+Stateful components should minimize coupling to compute resources.
 
 ---
 
-# Availability
+# High Availability
 
-The deployment architecture should tolerate:
+The platform should support:
 
-- Connector failures
-- Individual agent failures
-- Temporary network interruptions
-- Partial workflow retries
+- Redundant services
+- Health checks
+- Automatic restart
+- Load balancing
+- Graceful failover
 
-Failures should degrade capability gracefully rather than stop the entire platform.
+No single service failure should prevent platform operation where recovery is possible.
+
+---
+
+# Storage
+
+Operational storage may include:
+
+- Configuration
+- Execution state
+- Intelligence objects
+- Knowledge repository
+- Audit records
+- Telemetry
+- Logs
+
+Storage technology is implementation-specific.
+
+---
+
+# Networking
+
+Deployment should support:
+
+- Private networking
+- Secure APIs
+- Encrypted communications
+- Service authentication
+- Network segmentation
+
+All external communication shall use encrypted protocols.
+
+---
+
+# Secrets Management
+
+Sensitive information includes:
+
+- API keys
+- OAuth credentials
+- Service accounts
+- Certificates
+- Encryption keys
+
+Secrets shall be stored using an approved secrets management solution and never embedded in source code or configuration files.
+
+---
+
+# Backup and Recovery
+
+Operational backups should include:
+
+- Configuration
+- Knowledge repository
+- Execution state
+- Audit history
+
+Recovery objectives should align with organizational continuity requirements.
 
 ---
 
 # Monitoring
 
-Operational monitoring should include:
+Every deployment shall support:
 
-- System health
-- Workflow execution
-- Connector availability
-- Agent performance
-- Storage utilization
-- Publication success
-- Error rates
+- Health monitoring
+- Metrics collection
+- Structured logging
+- Distributed tracing
+- Alerting
 
-Monitoring enables proactive operations.
+Operational telemetry integrates with the Observability framework.
 
 ---
 
-# Logging
+# Release Strategy
 
-Deployment logs should capture:
+Recommended deployment approaches include:
 
-- Startup
-- Shutdown
-- Configuration loading
-- Workflow execution
-- Errors
-- Recovery actions
+- Rolling deployments
+- Blue/green deployments
+- Canary releases
 
-Logs should support troubleshooting without exposing sensitive information.
-
----
-
-# Security
-
-Deployment environments shall support:
-
-- Authentication
-- Authorization
-- Encryption in transit
-- Encryption at rest
-- Audit logging
-- Least privilege
-
-Security requirements apply consistently regardless of deployment model.
-
----
-
-# Backup Integration
-
-Deployment shall integrate with the platform backup strategy.
-
-Critical assets include:
-
-- Configuration
-- Knowledge store
-- Published briefings
-- Historical intelligence
-- Platform metadata
-
-Backup procedures are defined separately.
-
----
-
-# Upgrades
-
-Platform upgrades should:
-
-- Preserve existing data
-- Maintain configuration
-- Support rollback
-- Minimize downtime
-
-Deployment processes should favor repeatability over manual intervention.
+The chosen strategy should minimize service disruption and support rapid rollback.
 
 ---
 
 # Disaster Recovery
 
-Deployment planning should support:
+The deployment architecture should support:
 
-- Infrastructure failure
-- Data restoration
-- Configuration recovery
-- Workflow resumption
-- Publication continuity
+- Infrastructure restoration
+- Data recovery
+- Configuration restoration
+- Workflow recovery
+- Controlled failover
 
-Recovery procedures should be documented and periodically tested.
+Disaster recovery procedures are documented separately.
 
 ---
 
-# Portability
+# Security
 
-The logical architecture should remain portable across:
+Production deployments shall implement:
 
-- Windows
-- Linux
-- macOS
-- Virtual machines
-- Containers
-- Cloud-native environments
+- Least privilege
+- Multi-factor administrative access
+- Encryption in transit
+- Encryption at rest
+- Audit logging
+- Regular security updates
 
-Platform capabilities should not depend upon any single infrastructure provider.
+Security controls should be reviewed periodically.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| IMPLEMENTATION_ARCHITECTURE.md | Defines logical implementation |
+| SOURCE_CONNECTOR_FRAMEWORK.md | Deployable connector services |
+| OBSERVABILITY_AND_TELEMETRY.md | Operational monitoring |
+| BACKUP_AND_RECOVERY.md | Recovery procedures |
+| SECURITY_MODEL.md | Operational security controls |
 
 ---
 
@@ -383,29 +319,9 @@ Platform capabilities should not depend upon any single infrastructure provider.
 
 The Deployment Architecture succeeds when:
 
-- The platform can be deployed consistently across environments.
-- Operational complexity remains manageable.
-- Scaling does not require redesign.
-- Failures are isolated and recoverable.
-- Platform availability supports reliable executive briefings.
-
----
-
-# Guiding Principle
-
-Deployment is the bridge between architecture and operations.
-
-A well-designed deployment architecture allows the Executive Intelligence Briefing platform to run reliably in any environment while preserving the flexibility to evolve with changing technologies and organizational needs.
-
----
-
-# Related Documents
-
-- IMPLEMENTATION/IMPLEMENTATION_ARCHITECTURE.md
-- IMPLEMENTATION/WORKFLOW_ORCHESTRATION.md
-- IMPLEMENTATION/OBSERVABILITY_AND_TELEMETRY.md
-- DEVELOPMENT/API_SPECIFICATION.md
-- OPERATIONS/SCHEDULING.md
-- OPERATIONS/SECURITY_MODEL.md
-- OPERATIONS/BACKUP_AND_RECOVERY.md
-- ROADMAP/IMPLEMENTATION_PLAN.md
+- The platform can be deployed consistently across supported environments.
+- Components scale independently.
+- Production deployments are secure, observable, and resilient.
+- Recovery from infrastructure failures is well defined.
+- Operational complexity is minimized through automation.
+- The architecture remains portable across cloud and on-premises environments.
