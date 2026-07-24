@@ -1,335 +1,293 @@
 ---
-title: Executive Intelligence Briefing Scheduling
-document_id: IA-0027
-version: 1.0
+title: Scheduling
+document_id: OPS-005
+version: 2.0
 status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - OPERATIONS/DEPLOYMENT_ARCHITECTURE.md
-  - IMPLEMENTATION/WORKFLOW_ORCHESTRATION.md
-  - IMPLEMENTATION/EXECUTION_STATE_MODEL.md
+  - DEPLOYMENT_ARCHITECTURE.md
+  - CHANGE_MANAGEMENT.md
+  - ../IMPLEMENTATION/WORKFLOW_ORCHESTRATION.md
 ---
 
-# Executive Intelligence Briefing Scheduling
+# Executive Intelligence Briefing (EIB)
+# Scheduling
 
 ## Purpose
 
-This document defines how the Executive Intelligence Briefing (EIB) platform schedules, prioritizes, executes, monitors, and recovers workflows.
+This document defines the scheduling and execution framework for the Executive Intelligence Briefing (EIB) platform.
 
-The Scheduling subsystem ensures that intelligence is collected, analyzed, assembled, and delivered at the correct time with predictable execution and reliable recovery from failures.
+Scheduling determines when workflows execute, what conditions initiate execution, how concurrent executions are managed, and how execution reliability is maintained.
 
----
-
-# Philosophy
-
-A briefing delivered late has diminished value.
-
-Scheduling is responsible for ensuring that the right workflow executes at the right time with the right information.
-
-Execution should be dependable, repeatable, and observable.
+The framework supports scheduled, event-driven, and manually initiated briefings.
 
 ---
 
-# Objectives
+# Design Principles
 
-The Scheduling subsystem shall:
+The scheduling framework shall be:
 
-- Execute workflows automatically
-- Support manual execution
-- Recover from failures
-- Prevent duplicate execution
-- Prioritize competing workloads
-- Record execution history
-- Support future expansion
+- Reliable
+- Deterministic
+- Observable
+- Configurable
+- Time-zone aware
+- Resilient
+- Extensible
 
----
-
-# Scheduling Model
-
-The scheduler manages execution—not business logic.
-
-Responsibilities include:
-
-- Starting workflows
-- Managing execution windows
-- Tracking status
-- Handling retries
-- Preventing duplicate jobs
-- Recording execution history
-
-Business decisions remain within the Workflow Engine.
+Execution timing shall be driven by configuration rather than application code.
 
 ---
 
-# Workflow Types
+# Execution Modes
 
-The scheduler supports several workflow categories.
+The platform supports three execution modes.
 
-## Scheduled
+## Scheduled Execution
+
+Runs automatically according to a defined schedule.
 
 Examples:
 
-- Daily Executive Briefing
-- Weekly Review
-- Monthly Summary
-
-Executed automatically according to a predefined schedule.
+- Daily executive briefing
+- Weekly summary
+- Monthly trend analysis
 
 ---
 
-## Manual
+## Event-Driven Execution
+
+Runs when predefined conditions occur.
 
 Examples:
 
-- Run Now
-- Executive Request
-- Development Testing
-
-Executed immediately by user request.
+- Critical cybersecurity advisory
+- Major legislative action
+- High-impact weather alert
+- Enterprise service outage
 
 ---
 
-## Event-Driven
+## Manual Execution
+
+Runs upon explicit user request.
 
 Examples:
 
-- Critical Cyber Alert
-- Breaking News
-- Major Market Movement
-- Severe Weather Warning
-
-Executed in response to qualifying events.
+- "Run EIB"
+- Ad hoc executive briefing
+- Testing
+- Validation
 
 ---
 
-## Maintenance
+# Scheduling Components
 
-Examples:
+The scheduling framework consists of:
 
-- Backup
-- Index Optimization
-- Historical Archive
-- Cache Cleanup
+- Schedule Manager
+- Execution Queue
+- Workflow Dispatcher
+- Retry Manager
+- Notification Service
+- Execution History
 
-Supports ongoing platform health.
-
----
-
-# Execution Lifecycle
-
-```
-Scheduled
-
-↓
-
-Queued
-
-↓
-
-Running
-
-↓
-
-Completed
-
-↓
-
-Archived
-```
-
-If execution fails:
-
-```
-Running
-
-↓
-
-Failed
-
-↓
-
-Retry
-
-↓
-
-Completed
-
-or
-
-Escalated
-```
-
-Every state transition shall be recorded.
+These components coordinate the timely execution of workflows.
 
 ---
 
-# Execution Windows
+# Schedule Configuration
 
-Each workflow should define:
+Schedules should define:
 
-- Earliest start time
-- Preferred execution window
-- Latest acceptable completion time
+- Workflow identifier
+- Frequency
+- Start time
+- Time zone
+- Execution window
+- Priority
+- Retry policy
+- Enable/disable status
 
-Execution outside the preferred window should generate operational warnings when appropriate.
-
----
-
-# Prioritization
-
-When multiple workflows compete for resources, execution priority should consider:
-
-1. Executive Alerts
-2. Daily Executive Briefing
-3. Scheduled Operational Workflows
-4. Maintenance Tasks
-5. Background Optimization
-
-Higher-priority workflows may preempt lower-priority work where supported by the implementation.
+Configuration should be stored centrally and version controlled.
 
 ---
 
-# Retry Strategy
+# Time Zone Support
 
-Recoverable failures should support automatic retries.
+The scheduling engine shall support:
 
-Retry policies should define:
+- Local time zones
+- Daylight Saving Time adjustments
+- UTC normalization
+- Region-specific execution windows
 
-- Maximum attempts
-- Delay strategy
-- Timeout limits
-- Escalation threshold
-
-Retries should not produce duplicate publications.
+Time calculations should be deterministic and auditable.
 
 ---
 
-# Duplicate Prevention
+# Holiday Awareness
 
-The scheduler shall prevent duplicate execution by using:
+Organizations may configure:
 
-- Workflow identifiers
-- Execution timestamps
-- Correlation IDs
-- Active execution tracking
+- Business holidays
+- Organizational closures
+- Weekend policies
+- Special event schedules
 
-A workflow should not execute concurrently unless explicitly designed to do so.
+Holiday rules should not require workflow modification.
+
+---
+
+# Execution Priorities
+
+Typical priorities include:
+
+1. Emergency
+2. High
+3. Normal
+4. Low
+
+Higher-priority workflows may preempt queued lower-priority work where supported by the deployment environment.
+
+---
+
+# Concurrency
+
+The scheduler should support:
+
+- Parallel execution
+- Execution isolation
+- Resource limits
+- Queue management
+- Duplicate execution prevention
+
+Each workflow instance shall have a unique execution identifier.
+
+---
+
+# Retry Policy
+
+Recoverable failures may trigger automatic retries.
+
+Typical retry configuration includes:
+
+- Maximum retry count
+- Exponential backoff
+- Retry delay
+- Failure thresholds
+
+Retries should be observable and auditable.
+
+---
+
+# Missed Executions
+
+The platform should define behavior for missed schedules.
+
+Options include:
+
+- Skip execution
+- Run immediately
+- Reschedule
+- Notify administrator
+
+Behavior should be configurable by workflow.
 
 ---
 
 # Dependencies
 
-Workflows may depend upon successful completion of other workflows.
+Workflows may declare dependencies such as:
 
-Example:
+- Connector completion
+- Knowledge repository updates
+- External data availability
 
-```
-Collect Intelligence
-
-↓
-
-Validate Intelligence
-
-↓
-
-Executive Analysis
-
-↓
-
-Briefing Assembly
-
-↓
-
-Quality Assurance
-
-↓
-
-Publication
-```
-
-Dependent workflows should not execute until prerequisites complete successfully.
-
----
-
-# Monitoring
-
-The scheduler should record:
-
-- Start time
-- Completion time
-- Duration
-- Status
-- Retry count
-- Failure reason
-- Resource utilization
-
-Scheduling metrics contribute to operational dashboards.
-
----
-
-# Failure Handling
-
-Failures should be classified as:
-
-- Recoverable
-- Non-recoverable
-- Dependency failures
-- Infrastructure failures
-
-The scheduler should respond appropriately to each category.
+Dependent workflows should not execute until prerequisite conditions are satisfied.
 
 ---
 
 # Notifications
 
-Operational notifications may be generated for:
+Execution notifications may include:
 
-- Repeated failures
-- Missed execution windows
-- Successful publication
-- Critical execution errors
-- Scheduler startup failures
+- Successful completion
+- Failure
+- Retry initiated
+- Execution skipped
+- Schedule disabled
 
-Notifications should support operational awareness without creating unnecessary noise.
-
----
-
-# Time Management
-
-All scheduling should use:
-
-- ISO-8601 timestamps
-- Explicit time zones
-- Daylight Saving Time awareness
-- Consistent system clocks
-
-Time calculations should remain deterministic.
+Notification destinations are configurable.
 
 ---
 
-# Scalability
+# Monitoring
 
-The scheduler should support:
+Scheduling metrics should include:
 
-- Multiple concurrent workflows
-- Additional workflow types
-- Increased execution frequency
-- Distributed execution
-- Future workload expansion
+- Scheduled executions
+- Successful executions
+- Failed executions
+- Retry count
+- Average execution duration
+- Queue depth
+- Missed schedules
 
-Scheduling should remain predictable as the platform grows.
+Metrics integrate with the Observability framework.
 
 ---
 
 # Security
 
-Scheduling operations shall respect:
+Only authorized users or services may:
 
-- Authorization policies
-- Administrative permissions
-- Audit logging
-- Configuration controls
+- Create schedules
+- Modify schedules
+- Disable schedules
+- Trigger manual executions
+- View execution history
 
-Only authorized users or services
+Administrative actions shall be audited.
+
+---
+
+# Future Capabilities
+
+The scheduling architecture supports future enhancements including:
+
+- Adaptive scheduling
+- AI-based execution optimization
+- Load-aware scheduling
+- Geographic scheduling
+- Continuous monitoring workflows
+- Event stream processing
+
+Future enhancements should not require architectural redesign.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| WORKFLOW_ORCHESTRATION.md | Executes scheduled workflows |
+| EXECUTION_STATE_MODEL.md | Tracks workflow execution |
+| OBSERVABILITY_AND_TELEMETRY.md | Monitors scheduler health |
+| DEPLOYMENT_ARCHITECTURE.md | Hosts scheduling services |
+| CHANGE_MANAGEMENT.md | Governs schedule modifications |
+
+---
+
+# Success Criteria
+
+The Scheduling framework succeeds when:
+
+- Workflows execute at the correct time and under the correct conditions.
+- Scheduled, event-driven, and manual executions share a common execution model.
+- Execution failures are detected, retried, and reported appropriately.
+- Scheduling remains configurable without code changes.
+- The framework scales to support additional workflows and execution patterns.
+- Executive briefings are delivered consistently, reliably, and on time.
