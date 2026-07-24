@@ -1,223 +1,344 @@
 ---
-title: Executive Intelligence Briefing Observability and Telemetry
-document_id: IA-0006
-version: 1.0
+title: Observability and Telemetry
+document_id: IA-0010
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
   - IMPLEMENTATION_ARCHITECTURE.md
-  - AGENT_ARCHITECTURE.md
+  - EXECUTION_STATE_MODEL.md
   - WORKFLOW_ORCHESTRATION.md
-  - QUALITY_ASSURANCE_FRAMEWORK.md
 ---
 
-# Executive Intelligence Briefing Observability and Telemetry
+# Executive Intelligence Briefing (EIB)
+# Observability and Telemetry
 
 ## Purpose
 
-This document defines the observability strategy for the Executive Intelligence Briefing (EIB).
+This document defines the observability architecture for the Executive Intelligence Briefing (EIB) platform.
 
-Observability enables operators and future automated agents to understand what happened during every briefing generation, diagnose failures, measure quality, and continuously improve the platform.
+Observability enables operators, developers, and administrators to understand system behavior through telemetry, diagnostics, metrics, logs, traces, and health monitoring.
 
----
-
-# Philosophy
-
-Every briefing should leave behind an execution history.
-
-The system should never require guessing why a briefing succeeded, failed, or changed.
-
-Every important decision should be observable.
+The objective is to detect issues early, explain platform behavior, support troubleshooting, and continuously improve reliability and performance.
 
 ---
 
-# Objectives
+# Design Principles
 
-The observability framework shall provide:
+The observability framework shall be:
 
-- Operational visibility
-- Quality metrics
-- Performance metrics
-- Auditability
-- Troubleshooting support
-- Historical trend analysis
-- Continuous improvement data
+- Comprehensive
+- Explainable
+- Low overhead
+- Secure
+- Actionable
+- Auditable
+- Technology independent
+
+Operational data should help explain both system behavior and business outcomes.
 
 ---
 
 # Observability Pillars
 
-The platform shall collect:
+The platform collects information across five pillars.
 
-1. Logs
-2. Metrics
-3. Events
-4. Execution Traces
-5. Quality Results
+```
+Metrics
 
-Together these provide complete execution visibility.
+Logs
+
+Traces
+
+Events
+
+Health Signals
+```
+
+Together they provide complete operational visibility.
 
 ---
 
-# Execution Metadata
+# Metrics
 
-Every execution shall generate:
+Metrics provide quantitative measurements.
 
+Examples include:
+
+- Workflow executions
+- Briefings generated
+- Agent execution duration
+- Pipeline throughput
+- Connector latency
+- Error rates
+- Retry counts
+- Queue depth
+- Intelligence objects processed
+
+Metrics should support aggregation over time.
+
+---
+
+# Logs
+
+Structured logs capture detailed execution information.
+
+Each log entry should include:
+
+- Timestamp
+- Severity
+- Component
+- Agent
+- Workflow ID
 - Execution ID
-- Workflow Version
-- Prompt Version
-- Start Time
-- End Time
-- Duration
-- Publication Status
-- Overall Result
+- Correlation ID
+- Message
+- Exception details (when applicable)
 
-Execution metadata uniquely identifies every briefing.
+Sensitive information must be excluded or masked.
 
 ---
 
-# Agent Telemetry
+# Distributed Tracing
 
-Each agent shall report:
+Tracing follows requests through the platform.
 
-- Agent Name
-- Version
-- Start Time
-- End Time
-- Duration
-- Inputs Processed
-- Outputs Produced
-- Warnings
-- Errors
-- Completion Status
+A trace may include:
 
-Agent performance shall be independently measurable.
+```
+Workflow
 
----
+↓
 
-# Collection Metrics
+Connector
 
-Track:
+↓
 
-- Sources queried
-- Sources responding
-- Collection duration
-- Collection failures
-- Duplicate stories detected
-- Stories collected
-- Stories discarded
+Collection Agent
 
-These metrics identify collection reliability.
+↓
 
----
+Validation Agent
 
-# Scoring Metrics
+↓
 
-Track:
+Scoring Agent
 
-- Number of items scored
-- Score distribution
-- Critical items
-- High-priority items
-- Low-priority items
-- Personalization adjustments
+↓
 
-Scoring metrics support ranking evaluation.
+Assembly Engine
+
+↓
+
+Delivery
+```
+
+Every execution should have a unique correlation identifier.
 
 ---
 
-# Coverage Metrics
+# Events
 
-Record:
+Operational events describe meaningful system activity.
 
-- Required domains evaluated
-- Missing domains
-- Coverage Assurance result
-- Coverage exceptions
-- Publication blockers
+Examples:
 
-Coverage metrics directly support executive trust.
+- Workflow started
+- Workflow completed
+- Connector failure
+- Configuration deployed
+- New executive profile
+- Retry initiated
+- Quality review failed
 
----
-
-# Quality Metrics
-
-Capture:
-
-- QA score
-- Failed quality gates
-- Warning count
-- Reading time estimate
-- Recommendation count
-- Explainability compliance
-
-These metrics demonstrate briefing quality over time.
+Events may trigger alerts or automated workflows.
 
 ---
 
-# Performance Metrics
+# Health Monitoring
 
-Monitor:
+Every major component publishes health status.
 
-- Total execution time
-- Collection latency
-- Analysis latency
-- Editorial latency
-- QA duration
-- Publication duration
+Health categories include:
 
-Performance trends support optimization.
+- Healthy
+- Degraded
+- Unavailable
+- Maintenance
+
+Health should be evaluated independently for:
+
+- Connectors
+- Agents
+- Pipeline
+- Knowledge repository
+- Assembly engine
+- Scheduling services
 
 ---
 
-# Error Classification
+# Service Level Indicators (SLIs)
 
-Errors should be classified as:
+Recommended SLIs include:
+
+- Briefing generation success rate
+- Connector availability
+- Pipeline completion rate
+- Average execution duration
+- Data freshness
+- Report delivery latency
+
+SLIs provide objective measures of platform performance.
+
+---
+
+# Service Level Objectives (SLOs)
+
+Organizations may define SLOs such as:
+
+- 99.9% workflow completion
+- 95% briefings generated within target duration
+- Connector availability greater than 99%
+- Critical alerts processed within defined time limits
+
+SLOs should be configurable.
+
+---
+
+# Alerting
+
+Alerts should be prioritized.
 
 ## Critical
 
-Publication impossible.
-
 Examples:
 
-- Missing mandatory domain
-- Workflow failure
+- Workflow failures
 - Data corruption
+- Persistent connector outages
+- Failed briefing delivery
 
 ---
 
-## Major
-
-Publication possible but degraded.
+## Warning
 
 Examples:
 
-- Single intelligence source unavailable
-- Recommendation generation failure
+- Increased latency
+- High retry rates
+- Reduced confidence scores
+- Pipeline slowdowns
 
 ---
 
-## Minor
+## Informational
 
 Examples:
 
-- Formatting issue
-- Retry success
-- Slow response
+- Configuration changes
+- New connector activation
+- Successful deployments
+- Scheduled maintenance
+
+Alert routing should be configurable by severity and responsibility.
 
 ---
 
-# Audit Log
+# Dashboards
 
-Each briefing shall retain an immutable audit record containing:
+Operational dashboards may include:
 
-- Execution metadata
-- Agent activity
-- Quality results
-- Publication decision
-- Warnings
-- Errors
+- Workflow status
+- Pipeline throughput
+- Connector health
+- Agent performance
+- Briefing generation statistics
+- Executive delivery metrics
+- Historical trends
 
-Audit records support
+Dashboards should provide both real-time and historical views.
+
+---
+
+# Diagnostic Data
+
+Diagnostic information should support:
+
+- Root cause analysis
+- Replay of workflow execution
+- Performance tuning
+- Capacity planning
+- Continuous improvement
+
+Diagnostic retention should follow organizational policy.
+
+---
+
+# Security
+
+Telemetry must be protected.
+
+Requirements include:
+
+- Role-based access
+- Encryption in transit
+- Encryption at rest
+- Sensitive data masking
+- Audit logging
+
+Operational data should never expose secrets or credentials.
+
+---
+
+# Integration
+
+Observability integrates with:
+
+- Workflow Orchestration
+- Execution State Model
+- Agent Architecture
+- Configuration Model
+- Quality Assurance Framework
+
+Operational telemetry should enrich—not interfere with—business processing.
+
+---
+
+# Future Evolution
+
+Future enhancements may include:
+
+- AI-assisted anomaly detection
+- Predictive capacity planning
+- Automated root cause analysis
+- Self-healing workflows
+- Executive operational scorecards
+
+These capabilities build upon the telemetry collected by the platform.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| IMPLEMENTATION_ARCHITECTURE.md | Overall implementation design |
+| WORKFLOW_ORCHESTRATION.md | Workflow execution telemetry |
+| EXECUTION_STATE_MODEL.md | Execution lifecycle monitoring |
+| AGENT_ARCHITECTURE.md | Agent-level metrics |
+| QUALITY_ASSURANCE_FRAMEWORK.md | Uses telemetry to assess platform quality |
+
+---
+
+# Success Criteria
+
+The Observability and Telemetry framework succeeds when:
+
+- Every workflow can be traced end-to-end.
+- Operational issues are detected before they significantly impact users.
+- Telemetry supports rapid diagnosis and recovery.
+- Metrics accurately reflect platform health and performance.
+- Alerts are actionable and appropriately prioritized.
+- Observability continuously improves platform reliability, scalability, and operational excellence.
