@@ -1,414 +1,209 @@
 ---
-title: Executive Intelligence Briefing Execution State Model
+title: Execution State Model
 document_id: IA-0009
-version: 1.0
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - IMPLEMENTATION_ARCHITECTURE.md
-  - AGENT_ARCHITECTURE.md
   - WORKFLOW_ORCHESTRATION.md
-  - OBSERVABILITY_AND_TELEMETRY.md
+  - AGENT_ARCHITECTURE.md
+  - INTELLIGENCE_OBJECT_MODEL.md
 ---
 
-# Executive Intelligence Briefing Execution State Model
+# Executive Intelligence Briefing (EIB)
+# Execution State Model
 
 ## Purpose
 
-This document defines the execution state model for the Executive Intelligence Briefing (EIB).
+This document defines how workflow execution state is represented, persisted, recovered, and audited throughout the Executive Intelligence Briefing (EIB) platform.
 
-The execution state model provides a common lifecycle for every briefing, allowing all agents, workflows, quality controls, and telemetry to operate against the same execution state.
-
----
-
-# Philosophy
-
-At any moment, every briefing should have one—and only one—well-defined execution state.
-
-The current state determines:
-
-- Which activities are allowed
-- Which activities are complete
-- Which activities remain
-- Whether publication is permitted
+Execution state enables reliable processing of long-running workflows, graceful recovery from failures, complete auditability, and operational observability.
 
 ---
 
-# State Machine
+# Design Principles
+
+The execution state model shall be:
+
+- Durable
+- Recoverable
+- Deterministic
+- Auditable
+- Observable
+- Technology independent
+- Extensible
+
+Execution state represents the progress of a workflow—not the business intelligence being processed.
+
+---
+
+# Execution Lifecycle
+
+A workflow progresses through the following logical lifecycle:
 
 ```
 Created
-
-↓
-
+    │
+Queued
+    │
 Initializing
-
-↓
-
-Collecting
-
-↓
-
-Validating
-
-↓
-
-Normalizing
-
-↓
-
-Coverage Assurance
-
-↓
-
-Scoring
-
-↓
-
-Personalizing
-
-↓
-
-Analyzing
-
-↓
-
-Generating Recommendations
-
-↓
-
-Editorial Review
-
-↓
-
-Quality Assurance
-
-↓
-
-Ready for Publication
-
-↓
-
-Published
-
-↓
-
+    │
+Running
+    │
+Waiting
+    │
+Retrying
+    │
+Completed
+    │
 Archived
 ```
 
-Failure transitions may occur from any active state.
+Alternative terminal states include:
+
+- Failed
+- Cancelled
+- Expired
 
 ---
 
-# State Definitions
+# Execution Context
 
-## Created
+Each workflow instance records:
 
-Execution record exists but processing has not begun.
+- Execution ID
+- Workflow ID
+- Parent Execution (optional)
+- Trigger Type
+- Start Time
+- End Time
+- Current State
+- Current Stage
+- Current Agent
+- Configuration Version
 
-Entry Criteria
-
-- Scheduler invoked
-- Execution ID assigned
-
-Exit Criteria
-
-- Initialization begins
-
----
-
-## Initializing
-
-System loads:
-
-- Executive profile
-- Configuration
-- Prompt versions
-- Workflow version
-
-Exit Criteria
-
-Initialization complete.
+This context uniquely identifies every execution.
 
 ---
 
-## Collecting
+# State Categories
 
-Collection agents execute.
+## Pending
 
-Completion requires:
-
-- All mandatory collection agents complete
-- Source failures recorded
-- Collection metrics generated
+Execution has been created but not started.
 
 ---
 
-## Validating
+## Active
 
-Source validation begins.
-
-Activities include:
-
-- Duplicate removal
-- Confidence assignment
-- Source verification
-- Conflict detection
+Execution is currently progressing through one or more workflow stages.
 
 ---
 
-## Normalizing
+## Waiting
 
-Collected intelligence is converted into canonical objects.
+Execution is paused while awaiting:
 
-Completion requires:
-
-- Required metadata present
-- Canonical schema validated
-
----
-
-## Coverage Assurance
-
-Coverage validation executes before prioritization.
-
-Checks include:
-
-- Required domains evaluated
-- Mandatory sources queried
-- Critical intelligence domains represented
-
-Failure prevents continuation.
+- External response
+- Scheduled retry
+- Human approval
+- Dependency completion
 
 ---
 
-## Scoring
+## Recovering
 
-Executive Intelligence Scores are calculated.
-
-Outputs:
-
-- Ranked intelligence
-- Priority bands
-- Initial briefing order
+Execution is restoring state following interruption or failure.
 
 ---
 
-## Personalizing
+## Completed
 
-Executive-specific adjustments are applied.
-
-Inputs include:
-
-- Calendar
-- Projects
-- Organization
-- Geographic context
-- Standing interests
-
-Facts remain unchanged.
-
----
-
-## Analyzing
-
-Domain agents produce executive commentary.
-
-Outputs include:
-
-- Executive summaries
-- Context
-- Implications
-- Future outlook
-
----
-
-## Generating Recommendations
-
-Action recommendations are created.
-
-Each recommendation must reference supporting intelligence.
-
----
-
-## Editorial Review
-
-Editorial Agent assembles the briefing.
-
-Responsibilities include:
-
-- Ordering
-- Formatting
-- Consistency
-- Readability
-- Executive tone
-
----
-
-## Quality Assurance
-
-Independent validation executes.
-
-Publication is blocked until all required quality gates succeed.
-
----
-
-## Ready for Publication
-
-The briefing satisfies all mandatory requirements.
-
-Await publication.
-
----
-
-## Published
-
-Official briefing released.
-
-Publication metadata recorded.
-
-Execution becomes immutable except for audit annotations.
-
----
-
-## Archived
-
-Execution retained for:
-
-- Audit
-- Metrics
-- Trend analysis
-- Historical comparison
-
----
-
-# Failure States
-
-## Warning
-
-Execution completed with recoverable issues.
-
-Examples:
-
-- Optional source unavailable
-- Minor formatting correction
-
-Publication may continue.
+Execution finished successfully.
 
 ---
 
 ## Failed
 
-Execution cannot continue.
-
-Examples:
-
-- Configuration error
-- Coverage failure
-- Workflow interruption
-- Critical source validation failure
-
-Publication prohibited.
+Execution terminated because recovery was not possible.
 
 ---
 
 ## Cancelled
 
-Execution intentionally stopped.
-
-Examples:
-
-- Manual cancellation
-- Superseded execution
-- Platform maintenance
+Execution was intentionally stopped.
 
 ---
 
-# State Transition Rules
+# Stage Progress
 
-Transitions shall:
+Each processing stage records:
 
-- Be deterministic
-- Be recorded in telemetry
-- Include timestamps
-- Record responsible agent
-- Record transition reason
-
-No state shall be skipped unless explicitly permitted by workflow rules.
-
----
-
-# Execution Metadata
-
-Each state transition records:
-
-- Execution ID
-- Previous state
-- New state
-- Timestamp
-- Responsible agent
+- Stage Name
+- Start Time
+- Completion Time
 - Duration
 - Status
-- Warnings
-- Errors
+- Executing Agent
+- Input Count
+- Output Count
+
+Stages may complete independently.
 
 ---
 
-# Recovery
+# Agent State
 
-Recoverable states may resume from the most recently completed successful state.
+Each participating agent records:
 
-Examples:
+- Agent Name
+- Version
+- Invocation Time
+- Completion Time
+- Execution Duration
+- Result
+- Retry Count
+- Error Details
 
-- Retry Collection
-- Retry Validation
-- Retry Editorial Assembly
-
-Quality Assurance shall always execute after recovery.
-
----
-
-# Observability Integration
-
-Execution states shall be visible through telemetry dashboards.
-
-Operational views should include:
-
-- Current state
-- State duration
-- Queue depth
-- Failed executions
-- Average completion time
-- Publication success rate
+This information supports diagnostics and performance analysis.
 
 ---
 
-# Success Criteria
+# Checkpoints
 
-The execution state model succeeds when:
+Persistent checkpoints should be created after major pipeline stages.
 
-- Every execution is fully traceable.
-- State transitions are deterministic.
-- Recovery is predictable.
-- Publication decisions are auditable.
-- Operational troubleshooting is straightforward.
+Each checkpoint includes:
+
+- Checkpoint ID
+- Stage
+- Timestamp
+- Associated Intelligence Object Versions
+- Configuration Version
+- Validation Status
+
+Checkpoint restoration should not require restarting completed stages.
 
 ---
 
-# Guiding Principle
+# Retry Tracking
 
-A disciplined execution state model transforms a collection of intelligent agents into a coordinated, reliable, and auditable intelligence production system.
+Each retry records:
+
+- Retry Number
+- Triggering Error
+- Retry Delay
+- Retry Outcome
+- Retry Policy Applied
+
+Retries remain part of the permanent execution history.
 
 ---
 
-# Related Documents
+# Error Recording
 
-- IMPLEMENTATION_ARCHITECTURE.md
-- AGENT_ARCHITECTURE.md
-- WORKFLOW_ORCHESTRATION.md
-- OBSERVABILITY_AND_TELEMETRY.md
-- QUALITY_ASSURANCE_FRAMEWORK.md
-- TESTING_STRATEGY.md
-- CONFIGURATION_AND_PROFILE_MODEL.md
+Execution errors include:
+
+- Error
