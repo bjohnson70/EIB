@@ -1,286 +1,320 @@
 ---
-title: Executive Intelligence Briefing Quality Assurance Framework
-document_id: IA-0005
-version: 1.0
+title: Quality Assurance Framework
+document_id: IA-0011
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
   - IMPLEMENTATION_ARCHITECTURE.md
-  - AGENT_ARCHITECTURE.md
-  - WORKFLOW_ORCHESTRATION.md
-  - PROMPT_ARCHITECTURE.md
+  - OBSERVABILITY_AND_TELEMETRY.md
+  - INTELLIGENCE_PIPELINE_SPECIFICATION.md
 ---
 
-# Executive Intelligence Briefing Quality Assurance Framework
+# Executive Intelligence Briefing (EIB)
+# Quality Assurance Framework
 
 ## Purpose
 
-This document defines the quality assurance (QA) framework for the Executive Intelligence Briefing (EIB).
+This document defines the quality assurance framework for the Executive Intelligence Briefing (EIB) platform.
 
-Its purpose is to ensure every published briefing meets the standards established by the Product Architecture, Executive Principles, and Report Specification before delivery to the executive.
+Quality assurance encompasses more than software correctness. It ensures that executive intelligence is accurate, complete, timely, traceable, explainable, and suitable for executive decision-making.
+
+Quality is evaluated continuously throughout the intelligence lifecycle rather than only at the end of report generation.
 
 ---
 
-# Philosophy
+# Quality Principles
 
-Quality Assurance is not a final proofreading step.
+The EIB platform shall produce intelligence that is:
 
-It is an independent validation process that determines whether the briefing is complete, accurate, explainable, actionable, and trustworthy.
+- Accurate
+- Complete
+- Timely
+- Relevant
+- Consistent
+- Explainable
+- Traceable
+- Actionable
+- Repeatable
 
-A briefing that fails QA is **not published**.
+Quality is everyone's responsibility—from source collection through final delivery.
 
 ---
 
 # Quality Objectives
 
-The QA process shall ensure:
+The framework seeks to:
 
-- Executive value
-- Completeness
-- Accuracy
-- Consistency
-- Explainability
-- Actionability
-- Readability
-- Trustworthiness
-
----
-
-# Quality Categories
-
-Every briefing shall be evaluated across the following categories.
-
-## 1. Coverage Quality
-
-Verify every required intelligence domain was evaluated.
-
-Required domains include:
-
-- Executive Summary
-- Personal Dashboard
-- Calendar
-- Weather
-- Markets
-- National Security
-- California Government
-- Cybersecurity
-- Artificial Intelligence
-- Enterprise Technology
-- Leadership
-- Executive Actions
-
-Missing a required domain is a publication blocker.
-
----
-
-## 2. Source Quality
-
-Verify:
-
-- Trusted sources used
-- Primary sources preferred
-- Significant stories validated
-- Sources properly attributed
-
-Confidence shall match available evidence.
-
----
-
-## 3. Content Quality
-
-Review for:
-
-- Accuracy
-- Clarity
-- Completeness
-- Executive relevance
-- Logical organization
-
-No unsupported assertions shall remain.
-
----
-
-## 4. Recommendation Quality
-
-Each recommendation shall be:
-
-- Supported by intelligence
-- Clearly written
-- Actionable
-- Prioritized
-- Appropriate for the executive
-
-Recommendations shall never be speculative.
-
----
-
-## 5. Editorial Quality
-
-Verify:
-
-- Grammar
-- Formatting
-- Consistent terminology
-- Heading structure
-- Executive writing style
-- Reading flow
-
----
-
-## 6. Personalization Quality
-
-Confirm personalization correctly reflects:
-
-- Executive role
-- Calendar
-- Projects
-- Geographic context
-- Standing interests
-
-Personalization shall never modify factual reporting.
-
----
-
-## 7. Explainability
-
-Every major item should answer:
-
-- Why included?
-- Why ranked?
-- Why today?
-- Why recommended?
-
-If these questions cannot be answered, quality is insufficient.
+- Prevent incorrect intelligence.
+- Detect incomplete information.
+- Identify conflicting sources.
+- Measure confidence.
+- Ensure report consistency.
+- Continuously improve platform quality.
 
 ---
 
 # Quality Gates
 
-Publication requires successful completion of every mandatory gate.
+Every workflow passes through defined quality gates.
 
-| Gate | Required |
-|-------|----------|
-| Coverage Assurance | Yes |
-| Source Validation | Yes |
-| Story Ranking | Yes |
-| Personalization | Yes |
-| Editorial Review | Yes |
-| Recommendation Review | Yes |
-| Explainability | Yes |
-| Report Formatting | Yes |
+```
+Collection
 
-Failure of any required gate blocks publication.
+↓
 
----
+Validation
 
-# Publication Checklist
+↓
 
-Before publication verify:
+Normalization
 
-✓ Executive Summary present
+↓
 
-✓ Required domains complete
+Enrichment
 
-✓ No duplicate stories
+↓
 
-✓ Confidence assigned
+Correlation
 
-✓ Reading time within target
+↓
 
-✓ Executive Actions included
+Scoring
 
-✓ Watch List included
+↓
 
-✓ Recommendations supported
+Assembly
 
-✓ Formatting compliant
+↓
 
-✓ Version metadata complete
+Final Review
 
----
+↓
 
-# Defect Classification
+Publication
+```
 
-## Critical
-
-Examples:
-
-- Missing major story
-- Incorrect facts
-- Failed Coverage Assurance
-- Unsupported recommendation
-
-Publication prohibited.
+Each stage must satisfy its quality requirements before progressing.
 
 ---
 
-## Major
+# Quality Dimensions
 
-Examples:
+## Data Quality
 
-- Incorrect ranking
-- Missing recommendation
-- Weak executive analysis
+Evaluates:
 
-Should be corrected before publication.
+- Completeness
+- Correctness
+- Freshness
+- Consistency
+- Valid formatting
 
 ---
 
-## Minor
+## Intelligence Quality
 
-Examples:
+Evaluates:
 
-- Grammar
+- Business relevance
+- Executive value
+- Confidence
+- Corroboration
+- Source credibility
+
+---
+
+## Report Quality
+
+Evaluates:
+
+- Structure
 - Formatting
-- Minor wording improvements
+- Narrative consistency
+- Citation completeness
+- Recommendation clarity
 
-May be corrected in routine revisions.
+---
+
+## Operational Quality
+
+Evaluates:
+
+- Workflow success
+- Processing time
+- Error rates
+- Retry frequency
+- Delivery reliability
+
+---
+
+# Validation Rules
+
+Examples include:
+
+- Required metadata present
+- Valid source attribution
+- Confidence calculated
+- Duplicate detection complete
+- Mandatory sections populated
+- Required citations included
+- Output formatting valid
+
+Validation failures are classified by severity.
+
+---
+
+# Confidence Assessment
+
+Confidence should consider:
+
+- Number of corroborating sources
+- Source authority
+- Data freshness
+- Historical reliability
+- Internal consistency
+
+Confidence scores must remain explainable.
+
+---
+
+# Explainability
+
+Every significant decision should be explainable.
+
+Examples include:
+
+- Why an item received a high priority
+- Why an item was excluded
+- Why a recommendation was generated
+- Why confidence changed
+- Why duplicate intelligence was merged
+
+The platform should provide sufficient context for review and audit.
 
 ---
 
 # Quality Metrics
 
-Track:
+Recommended quality metrics include:
 
-- Coverage completeness
-- Publication success rate
-- Average reading time
-- Missed-story count
-- Recommendation acceptance
-- Executive satisfaction
-- Confidence distribution
-- Source diversity
+- Workflow success rate
+- Validation pass rate
+- Citation completeness
+- Average confidence score
+- Duplicate detection accuracy
+- Executive relevance score
+- Report generation success rate
+- Average report quality score
 
-Metrics support continuous improvement.
+Metrics should support trend analysis and continuous improvement.
 
 ---
 
-# Audit Trail
+# Review Levels
 
-Each briefing shall record:
+Quality review occurs at multiple levels.
 
-- Execution ID
-- QA completion time
-- Reviewer (agent)
-- Quality score
-- Failed checks
-- Warnings
-- Publication status
+### Automated Review
 
-Audit records support traceability and governance.
+Verifies:
+
+- Data integrity
+- Formatting
+- Schema compliance
+- Required fields
+- Rule validation
+
+---
+
+### Analytical Review
+
+Evaluates:
+
+- Correlation quality
+- Scoring consistency
+- Narrative coherence
+- Recommendation quality
+
+---
+
+### Governance Review
+
+Ensures:
+
+- Policy compliance
+- Regulatory alignment
+- Organizational standards
+- Audit readiness
+
+---
+
+# Exception Management
+
+Quality exceptions should be categorized.
+
+Examples:
+
+- Missing metadata
+- Low confidence
+- Conflicting sources
+- Formatting errors
+- Connector anomalies
+
+Each exception should include:
+
+- Severity
+- Impact
+- Recommended action
+- Resolution status
 
 ---
 
 # Continuous Improvement
 
-QA findings should drive:
+Quality measurements should be reviewed regularly.
 
-- Prompt improvements
-- Agent enhancements
-- Scoring adjustments
-- Source refinement
-- Workflow optimization
+Improvement activities may include:
 
-Every defect should improve future brief
+- Refining scoring models
+- Improving source quality
+- Updating validation rules
+- Adjusting personalization
+- Enhancing report templates
+
+Quality improvements should be evidence-based.
+
+---
+
+# Governance
+
+Quality standards should be versioned and governed.
+
+Changes to validation rules, scoring thresholds, or quality metrics should follow the platform's documented change management process.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| IMPLEMENTATION_ARCHITECTURE.md | Overall implementation blueprint |
+| INTELLIGENCE_PIPELINE_SPECIFICATION.md | Pipeline quality gates |
+| OBSERVABILITY_AND_TELEMETRY.md | Operational quality metrics |
+| EXECUTION_STATE_MODEL.md | Workflow auditability |
+| TESTING_STRATEGY.md | Verification and validation activities |
+
+---
+
+# Success Criteria
+
+The Quality Assurance Framework succeeds when:
+
+- Every Executive Intelligence Briefing meets defined quality standards.
+- Intelligence is traceable to authoritative sources.
+- Confidence and prioritization are explainable.
+- Quality issues are detected before executive delivery.
+- Metrics support continuous improvement.
+- Executives consistently trust the information presented.
