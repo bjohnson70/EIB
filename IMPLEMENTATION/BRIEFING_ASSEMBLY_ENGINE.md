@@ -1,338 +1,272 @@
 ---
-title: Executive Intelligence Briefing Assembly Engine
-document_id: IA-0012
-version: 1.0
+title: Briefing Assembly Engine
+document_id: IA-0006
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - IMPLEMENTATION_ARCHITECTURE.md
-  - AGENT_ARCHITECTURE.md
-  - WORKFLOW_ORCHESTRATION.md
-  - KNOWLEDGE_MODEL.md
-  - INTELLIGENCE_OBJECT_MODEL.md
+  - IMPLEMENTATION/INTELLIGENCE_OBJECT_MODEL.md
+  - IMPLEMENTATION/INTELLIGENCE_PIPELINE_SPECIFICATION.md
   - ../Architecture/REPORT_SPECIFICATION.md
 ---
 
-# Executive Intelligence Briefing Assembly Engine
+# Executive Intelligence Briefing (EIB)
+# Briefing Assembly Engine
 
 ## Purpose
 
-This document defines the component responsible for transforming a collection of validated Intelligence Objects into the final Executive Intelligence Briefing.
+The Briefing Assembly Engine transforms finalized Intelligence Objects into a coherent Executive Intelligence Briefing.
 
-The Assembly Engine is the final stage of intelligence production before publication.
+Rather than producing a static report, the engine composes the briefing from configurable sections using standardized templates, personalization rules, and presentation policies.
 
-It is responsible for producing a coherent executive narrative—not simply concatenating independently generated sections.
-
----
-
-# Philosophy
-
-A briefing is more than a collection of stories.
-
-It should read as though it were written by a trusted Chief of Staff who understands:
-
-- Executive priorities
-- Business context
-- Operational significance
-- Decision timing
-
-The Assembly Engine creates that narrative.
+The engine separates intelligence processing from presentation, allowing the briefing format to evolve without changing the underlying pipeline.
 
 ---
 
-# Responsibilities
+# Design Principles
 
-The Assembly Engine shall:
+The assembly engine shall be:
 
-- Build the Executive Summary
-- Organize report sections
-- Eliminate duplication
-- Maintain consistent tone
-- Preserve logical flow
-- Respect reading-time objectives
-- Integrate recommendations
-- Produce the final publication artifact
-
----
-
-# Inputs
-
-Primary inputs include:
-
-- Ranked Intelligence Objects
-- Executive Profile
-- Personalization Profile
-- Calendar Context
-- Active Projects
-- Recommendations
-- Report Specification
-- Publication Configuration
-
----
-
-# Outputs
-
-The Assembly Engine produces:
-
-- Executive Briefing
-- Executive Summary
-- Executive Actions
-- Watch List
-- Publication Metadata
-
-Future outputs may include:
-
-- PDF
-- HTML
-- Mobile View
-- Voice Briefing
-- Dashboard Cards
+- Deterministic
+- Template-driven
+- Configuration-driven
+- Explainable
+- Extensible
+- Role-aware
+- Output-format independent
 
 ---
 
 # Assembly Workflow
 
 ```
-Load Report Template
-
-↓
-
-Load Intelligence Objects
-
-↓
-
-Prioritize Sections
-
-↓
-
-Generate Executive Summary
-
-↓
-
-Assemble Sections
-
-↓
-
-Insert Recommendations
-
-↓
-
-Optimize Readability
-
-↓
-
-Validate Report
-
-↓
-
-Publish
+Final Intelligence Objects
+            │
+            ▼
+     Section Selection
+            │
+            ▼
+     Priority Ordering
+            │
+            ▼
+     Narrative Generation
+            │
+            ▼
+     Citation Assembly
+            │
+            ▼
+     Formatting
+            │
+            ▼
+     Output Rendering
+            │
+            ▼
+     Executive Briefing
 ```
 
-Each stage shall complete successfully before publication.
+---
+
+# Inputs
+
+The assembly engine consumes:
+
+- Finalized Intelligence Objects
+- Executive Profile
+- Report Specification
+- Personalization Rules
+- Configuration Settings
+- Organizational Branding
 
 ---
 
-# Executive Summary Generation
+# Outputs
 
-The Executive Summary should answer:
+Supported output formats include:
 
-- What requires immediate attention?
-- What changed since yesterday?
-- What should the executive do today?
-- What should be monitored next?
+- Markdown
+- HTML
+- PDF
+- Email
+- Mobile
+- API Response
 
-Target length:
-
-Three to five concise paragraphs.
+Additional formats may be added without modifying the assembly process.
 
 ---
 
-# Section Assembly
+# Briefing Structure
 
-Sections shall follow the canonical Report Specification.
-
-Typical order:
+A standard Executive Intelligence Briefing may contain:
 
 1. Executive Summary
-2. Personal Dashboard
-3. Calendar
-4. Weather
-5. Markets
-6. National Security
-7. California Government
-8. Cybersecurity
-9. Artificial Intelligence
-10. Technology
-11. Leadership Principle
-12. Executive Actions
-13. Tomorrow Watch
+2. Priority Dashboard
+3. Critical Risks
+4. Strategic Opportunities
+5. Operational Highlights
+6. Regulatory & Legislative Updates
+7. Cybersecurity & Privacy
+8. Technology & Innovation
+9. Business Metrics
+10. Calendar & Upcoming Events
+11. Recommended Actions
+12. Supporting Intelligence
 
-The Assembly Engine shall not alter the canonical order without explicit configuration.
-
----
-
-# Story Selection
-
-For each section, the Assembly Engine shall:
-
-- Select the highest-ranked Intelligence Objects
-- Remove duplicates
-- Merge related stories
-- Preserve important context
-- Respect section length targets
-
-Coverage always takes precedence over volume.
+Sections may be enabled, disabled, or reordered through configuration.
 
 ---
 
-# Narrative Flow
+# Section Selection
 
-Adjacent sections should transition naturally.
+The engine determines which sections appear based on:
 
-Examples:
+- Executive role
+- Organizational scope
+- Briefing type
+- Available intelligence
+- Configuration policy
 
-- Weather → Travel impacts
-- Markets → Business implications
-- Cybersecurity → Executive actions
-
-The briefing should read as one integrated document.
-
----
-
-# Redundancy Management
-
-The Assembly Engine shall identify:
-
-- Duplicate headlines
-- Repeated analysis
-- Repeated recommendations
-- Overlapping summaries
-
-Information should appear once unless repetition improves clarity.
+Empty sections should be omitted unless explicitly required.
 
 ---
 
-# Reading Time Optimization
+# Priority Ordering
 
-Target reading time:
+Within each section, intelligence is ordered using:
 
-Five to seven minutes.
+1. Mandatory enterprise items
+2. Critical priority
+3. High priority
+4. Medium priority
+5. Low priority
 
-If necessary, the engine should:
-
-- Shorten lower-priority stories
-- Collapse repetitive content
-- Reduce detail while preserving executive value
-
-Critical information shall never be removed solely to meet the reading-time target.
+Items with identical priority are ordered by recency and confidence.
 
 ---
 
-# Recommendation Integration
+# Narrative Generation
 
-Recommendations shall appear:
+Narrative generation summarizes Intelligence Objects while preserving factual accuracy.
 
-- Within relevant sections when appropriate
-- In the Executive Actions section
-- In the Executive Summary when critical
+Guidelines include:
 
-Recommendations must always reference supporting intelligence.
+- Executive-first language
+- Clear and concise writing
+- Consistent terminology
+- Action-oriented summaries
+- No unsupported conclusions
 
----
-
-# Formatting Standards
-
-The Assembly Engine enforces:
-
-- Consistent headings
-- Uniform terminology
-- Executive writing style
-- Proper spacing
-- Standard callout formatting
-- Numbering consistency
-
-Formatting rules are independent of content generation.
+Narratives should reference source intelligence without altering meaning.
 
 ---
 
-# Publication Validation
+# Recommendations
 
-Before publication, verify:
+When appropriate, the engine generates recommendations that include:
 
-- Executive Summary present
-- Required sections present
-- Recommendations included
-- Watch List included
-- Reading time acceptable
-- No duplicate stories
-- Metadata complete
-- Quality Assurance passed
+- Suggested action
+- Responsible owner
+- Recommended timeline
+- Business rationale
+- Confidence level
 
-Publication shall not proceed if validation fails.
+Recommendations remain advisory and distinguishable from factual reporting.
 
 ---
 
-# Assembly Metrics
+# Citation Management
 
-Record:
+Every briefing item shall include traceable references to its originating Intelligence Objects.
 
-- Stories assembled
-- Stories omitted
-- Duplicate reductions
-- Estimated reading time
-- Recommendation count
-- Section lengths
-- Publication size
+The engine shall preserve:
 
-These metrics support continuous improvement.
+- Source attribution
+- Publication dates
+- Confidence indicators
+- Supporting references
+
+This ensures transparency and auditability.
 
 ---
 
-# Future Enhancements
+# Formatting Rules
 
-Future versions may support:
+Formatting should:
 
-- Adaptive section ordering
-- Interactive briefings
-- Voice-first formatting
-- Executive-specific layouts
-- Multi-language publication
-- Real-time briefing updates
+- Emphasize priority
+- Maintain visual consistency
+- Support accessibility
+- Minimize cognitive load
+- Optimize readability across devices
 
-These capabilities shall build upon the same Assembly Engine.
+Presentation choices must not alter the underlying intelligence.
+
+---
+
+# Branding
+
+Presentation elements may include:
+
+- Organization logo
+- Color palette
+- Typography
+- Header and footer
+- Confidentiality markings
+- Document version
+
+Branding is configurable and independent of briefing content.
+
+---
+
+# Quality Checks
+
+Before publication, the engine verifies:
+
+- Required sections
+- Valid citations
+- No duplicate entries
+- Correct ordering
+- Consistent formatting
+- Successful rendering
+
+Failures are returned to the Quality Assurance Agent for review.
+
+---
+
+# Extensibility
+
+The assembly engine supports:
+
+- New report sections
+- Additional templates
+- New rendering formats
+- Organization-specific branding
+- Future AI-assisted narrative generation
+
+Extensions should be additive and not require redesign of the engine.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| IMPLEMENTATION_ARCHITECTURE.md | Overall implementation design |
+| INTELLIGENCE_OBJECT_MODEL.md | Source intelligence contract |
+| INTELLIGENCE_PIPELINE_SPECIFICATION.md | Produces finalized intelligence |
+| WORKFLOW_ORCHESTRATION.md | Coordinates assembly execution |
+| Architecture/REPORT_SPECIFICATION.md | Defines logical briefing structure |
 
 ---
 
 # Success Criteria
 
-The Assembly Engine succeeds when:
+The Briefing Assembly Engine succeeds when:
 
-- The briefing reads as a single, cohesive document.
-- Executive priorities are immediately clear.
-- Redundancy is minimized.
-- Reading time remains within target.
-- Every recommendation is traceable to supporting intelligence.
-- Publication is consistent regardless of workflow complexity.
-
----
-
-# Guiding Principle
-
-The Assembly Engine transforms intelligence into understanding.
-
-Its purpose is not merely to assemble information, but to produce a briefing that enables faster comprehension, stronger situational awareness, and better executive decisions.
-
----
-
-# Related Documents
-
-- IMPLEMENTATION_ARCHITECTURE.md
-- AGENT_ARCHITECTURE.md
-- WORKFLOW_ORCHESTRATION.md
-- KNOWLEDGE_MODEL.md
-- INTELLIGENCE_OBJECT_MODEL.md
-- QUALITY_ASSURANCE_FRAMEWORK.md
-- ../Architecture/REPORT_SPECIFICATION.md
-- ../EXECUTIVE_PRINCIPLES.md
+- Final Intelligence Objects are transformed into a clear, actionable Executive Intelligence Briefing.
+- Presentation remains consistent across supported output formats.
+- Every briefing item is traceable to its source intelligence.
+- Report composition is configurable without code changes.
+- New sections, templates, and formats can be introduced with minimal implementation effort.
+- Executives receive concise, accurate, and role-appropriate briefings that support timely decision-making.
