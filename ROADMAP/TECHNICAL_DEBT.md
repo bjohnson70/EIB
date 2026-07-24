@@ -1,253 +1,220 @@
 ---
-title: Executive Intelligence Briefing Technical Debt
-document_id: IA-0035
+title: Technical Debt Register
+document_id: ROADMAP-005
 version: 1.0
 status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-07-24
 depends_on:
   - ROADMAP/IMPLEMENTATION_PLAN.md
+  - ROADMAP/RELEASE_PLAN.md
   - ROADMAP/FEATURE_BACKLOG.md
-  - OPERATIONS/CHANGE_MANAGEMENT.md
-  - DEVELOPMENT/VERSIONING_STRATEGY.md
 ---
 
-# Executive Intelligence Briefing Technical Debt
+# Executive Intelligence Briefing (EIB)
+# Technical Debt Register
 
 ## Purpose
 
-This document defines how technical debt is identified, documented, evaluated, prioritized, and managed throughout the lifecycle of the Executive Intelligence Briefing (EIB) platform.
+This document tracks known technical debt within the Executive Intelligence Briefing (EIB) project.
 
-Technical debt is an inevitable consequence of delivering software. Properly managed, it accelerates delivery. Poorly managed, it erodes reliability, maintainability, and executive trust.
-
----
-
-# Philosophy
-
-Technical debt is not failure.
-
-Undocumented technical debt is.
-
-Every intentional compromise should be visible, understood, and periodically re-evaluated.
-
-The goal is not to eliminate technical debt—it is to prevent it from becoming technical bankruptcy.
+Technical debt represents conscious trade-offs made to deliver value sooner. Recording these decisions ensures they remain visible and can be addressed through future planning rather than being forgotten.
 
 ---
 
-# Objectives
+# Guiding Philosophy
 
-The Technical Debt strategy shall:
-
-- Document architectural compromises
-- Make debt visible
-- Prioritize remediation
-- Reduce long-term operational cost
-- Preserve architectural integrity
-- Support informed executive decisions
-
----
-
-# Definition
-
-Technical debt is any implementation decision that intentionally favors short-term delivery over the ideal long-term architectural solution.
-
-Examples include:
-
-- Temporary implementations
-- Deferred refactoring
-- Simplified workflows
-- Manual operational processes
-- Legacy compatibility
-- Connector workarounds
-
----
-
-# Guiding Principles
-
-Technical debt should always be:
+Technical debt is acceptable when it is:
 
 - Intentional
 - Documented
-- Measurable
-- Reviewable
-- Prioritized
-- Temporary whenever practical
+- Understood
+- Reviewed regularly
+
+Undocumented technical debt becomes technical risk.
 
 ---
 
 # Debt Categories
 
-## Architectural Debt
-
-Examples:
-
-- Simplified system design
-- Incomplete abstractions
-- Temporary interfaces
-- Monolithic components
-
----
-
-## Implementation Debt
-
-Examples:
-
-- Duplicate logic
-- Incomplete automation
-- Temporary code paths
-- Limited error handling
+| Category | Description |
+|-----------|-------------|
+| Architecture | Design decisions requiring future refinement |
+| Implementation | Temporary coding or implementation shortcuts |
+| Documentation | Missing or incomplete documentation |
+| Operations | Manual processes intended for future automation |
+| Performance | Known scalability or efficiency limitations |
+| Security | Security improvements planned for future releases |
 
 ---
 
-## Operational Debt
+# Current Technical Debt
 
-Examples:
+## TD-001
 
-- Manual deployment
-- Manual report validation
-- Manual connector monitoring
-- Manual recovery procedures
+### Title
 
----
+Manual Execution
 
-## Documentation Debt
+### Category
 
-Examples:
+Operations
 
-- Missing diagrams
-- Incomplete specifications
-- Outdated procedures
-- Undocumented workflows
+### Description
 
----
+The MVP relies on manual execution using **Run EIB**.
 
-## Security Debt
+### Planned Resolution
 
-Examples:
+Implement scheduled execution with monitoring.
 
-- Temporary credentials
-- Incomplete hardening
-- Deferred security improvements
-- Legacy authentication mechanisms
+### Target Release
 
-Security debt should receive elevated review due to potential organizational risk.
+0.3
 
 ---
 
-# Debt Register
+## TD-002
 
-Each debt item should include:
+### Title
 
-- Identifier
-- Description
-- Category
-- Date Identified
-- Business Justification
-- Risk Assessment
-- Estimated Resolution Effort
-- Target Resolution Release
-- Current Status
-- Owner
+Limited Source Connectors
 
-The Debt Register should become part of normal project governance.
+### Category
 
----
+Architecture
 
-# Evaluation Criteria
+### Description
 
-Technical debt should be evaluated according to:
+The MVP intentionally supports a limited number of trusted information sources.
 
-- Executive impact
-- Operational impact
-- Security risk
-- Architectural impact
-- Maintenance cost
-- User experience
-- Probability of future failure
+### Planned Resolution
 
-Priority should reflect total organizational impact rather than engineering preference.
+Expand connector framework after MVP validation.
+
+### Target Release
+
+0.4
 
 ---
 
-# Acceptable Debt
+## TD-003
 
-Examples of acceptable debt include:
+### Title
 
-- Temporary prototype implementations
-- Limited MVP functionality
-- Manual processes awaiting automation
-- Low-risk optimization deferrals
+Single Executive Profile
 
-These decisions should remain documented and scheduled for future review.
+### Category
 
----
+Architecture
 
-# Unacceptable Debt
+### Description
 
-Examples include:
+The MVP supports only one executive profile.
 
-- Undocumented security weaknesses
-- Permanent temporary solutions
-- Unsupported production dependencies
-- Unknown architectural shortcuts
-- Repeated operational failures caused by deferred remediation
+### Planned Resolution
 
-These issues should receive immediate attention.
+Introduce configurable multi-profile support.
+
+### Target Release
+
+0.5
 
 ---
 
-# Debt Review
+## TD-004
 
-Technical debt should be reviewed:
+### Title
 
-- During release planning
-- During architecture reviews
-- Following major incidents
-- During annual roadmap planning
+Manual Repository Validation
 
-Regular review prevents debt from accumulating unnoticed.
+### Category
 
----
+Operations
 
-# Debt Resolution
+### Description
 
-When resolving debt:
+Repository consistency is verified manually.
 
-1. Confirm the original business justification.
-2. Validate the current architectural approach.
-3. Remove obsolete workarounds.
-4. Update documentation.
-5. Verify operational behavior.
-6. Close the debt record.
+### Planned Resolution
 
-Resolution should simplify the platform rather than increase complexity.
+Develop automated validation for metadata, links, and document structure.
+
+### Target Release
+
+1.0
 
 ---
 
-# Measuring Debt
+## TD-005
 
-Useful indicators include:
+### Title
 
-- Number of open debt items
-- Average debt age
-- Security-related debt
-- Operational debt
-- Deferred architectural decisions
-- Refactoring backlog
+Limited Historical Intelligence
 
-Metrics should inform planning rather than drive behavior.
+### Category
+
+Implementation
+
+### Description
+
+Early releases emphasize current intelligence rather than long-term trend analysis.
+
+### Planned Resolution
+
+Implement historical storage and longitudinal analytics.
+
+### Target Release
+
+1.0
 
 ---
 
-# Governance
+# Debt Management Process
 
-Architectural principles defined throughout this repository supersede temporary implementation shortcuts.
+When new technical debt is identified:
 
-Any long-lived debt should receive formal architectural review.
+1. Assign a unique identifier.
+2. Describe the trade-off.
+3. Explain why the decision was made.
+4. Estimate the impact.
+5. Assign a target release.
+6. Review the item during release planning.
+
+Resolved items should remain documented for historical reference.
 
 ---
 
-# Continuous Improvement
+# Review Schedule
 
-The healthiest platforms
+Review this register:
+
+- Before each planned release.
+- During major architectural reviews.
+- Whenever significant implementation shortcuts are introduced.
+
+---
+
+# Success Criteria
+
+The project maintains healthy technical debt when:
+
+- All known debt is documented.
+- Debt is reviewed regularly.
+- High-impact items are prioritized.
+- Temporary solutions do not become permanent through neglect.
+
+---
+
+# Relationship to Other Roadmap Documents
+
+This document complements the roadmap by identifying areas where implementation intentionally falls short of the long-term architecture.
+
+- **MVP Definition** describes the minimum acceptable product.
+- **Implementation Plan** describes how the product will be built.
+- **Release Plan** defines delivery milestones.
+- **Feature Backlog** identifies future capabilities.
+- **Technical Debt Register** records the compromises made along the way.
+
+Together, these documents provide a complete strategic roadmap for the Executive Intelligence Briefing project.
