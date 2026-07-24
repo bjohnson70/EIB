@@ -1,23 +1,26 @@
 ---
-title: Executive Intelligence Briefing Workflow Orchestration
+title: Workflow Orchestration
 document_id: IA-0003
-version: 1.0
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
   - IMPLEMENTATION_ARCHITECTURE.md
   - AGENT_ARCHITECTURE.md
 ---
 
-# Executive Intelligence Briefing Workflow Orchestration
+# Executive Intelligence Briefing (EIB)
+# Workflow Orchestration
 
 ## Purpose
 
-This document defines how the Executive Intelligence Briefing (EIB) workflow is orchestrated from beginning to end.
+This document defines how the Executive Intelligence Briefing (EIB) coordinates execution of its agents and processing stages.
 
-Where the Agent Architecture defines **who** performs the work, this document defines **when**, **in what order**, and **under what conditions** each activity occurs.
+Rather than viewing execution as a simple sequence of tasks, the platform models execution as a managed workflow with explicit states, transitions, checkpoints, retries, and completion criteria.
+
+This enables resilient, observable, and scalable execution.
 
 ---
 
@@ -25,251 +28,260 @@ Where the Agent Architecture defines **who** performs the work, this document de
 
 The orchestration layer shall:
 
-- Coordinate all agents
-- Maintain execution state
-- Recover from failures
-- Prevent duplicate execution
-- Enforce quality gates
-- Produce deterministic results
-- Support future parallel execution
+- Coordinate agent execution.
+- Respect dependencies.
+- Support parallel execution where appropriate.
+- Recover from failures.
+- Resume interrupted workflows.
+- Emit execution telemetry.
+- Preserve deterministic execution.
 
 ---
 
 # Workflow Overview
 
 ```
+Trigger
+    │
+    ▼
 Initialize
-
-↓
-
-Collect Intelligence
-
-↓
-
-Validate Sources
-
-↓
-
-Normalize Data
-
-↓
-
-Coverage Assurance
-
-↓
-
-Executive Scoring
-
-↓
-
-Personalization
-
-↓
-
-Executive Analysis
-
-↓
-
-Recommendation Generation
-
-↓
-
-Editorial Assembly
-
-↓
-
-Quality Assurance
-
-↓
-
-Publish
-
-↓
-
-Archive Execution
+    │
+    ▼
+Collect
+    │
+    ▼
+Validate
+    │
+    ▼
+Enrich
+    │
+    ▼
+Correlate
+    │
+    ▼
+Score
+    │
+    ▼
+Personalize
+    │
+    ▼
+Assemble
+    │
+    ▼
+Quality Review
+    │
+    ▼
+Deliver
+    │
+    ▼
+Complete
 ```
 
-Each phase must complete successfully before the next phase begins unless explicitly designed for parallel execution.
+---
+
+# Workflow States
+
+Every workflow instance transitions through managed states.
+
+| State | Description |
+|---------|-------------|
+| Pending | Awaiting execution |
+| Initializing | Preparing execution context |
+| Collecting | Gathering source data |
+| Validating | Evaluating collected information |
+| Enriching | Adding business context |
+| Correlating | Merging related intelligence |
+| Scoring | Calculating executive priority |
+| Personalizing | Tailoring briefing content |
+| Assembling | Building the report |
+| Reviewing | Performing quality checks |
+| Delivering | Publishing the briefing |
+| Completed | Successful completion |
+| Failed | Execution terminated |
+| Cancelled | Execution intentionally stopped |
+| Retrying | Recovering from failure |
 
 ---
 
-# Phase 1 — Initialize
+# Execution Context
 
-## Objectives
+Each workflow instance maintains:
 
-Initialize the execution environment.
+- Workflow ID
+- Execution timestamp
+- Executive profile
+- Requested briefing type
+- Active configuration
+- Processing metrics
+- Agent status
+- Current state
 
-Tasks include:
-
-- Load configuration
-- Load executive profile
-- Load personalization settings
-- Load report template
-- Start execution timer
-- Create execution identifier
-
-Outputs:
-
-- Workflow Context
-- Execution ID
+This context travels with the workflow throughout execution.
 
 ---
 
-# Phase 2 — Intelligence Collection
+# Dependency Model
 
-Execute all collection agents.
+Execution proceeds only when prerequisites are satisfied.
 
-Current collection domains include:
+Examples:
 
-- Calendar
-- Weather
-- Financial Markets
-- National Security
-- California Government
-- Cybersecurity
-- Artificial Intelligence
-- Enterprise Technology
-- Leadership
-- Personal Dashboard
+Collection → Validation
 
-Collection agents operate independently whenever possible.
+Validation → Enrichment
 
-Outputs are merged into a common intelligence pool.
+Enrichment → Correlation
 
----
+Correlation → Scoring
 
-# Phase 3 — Validation
+Scoring → Personalization
 
-Validate collected intelligence.
+Personalization → Assembly
 
-Activities include:
+Assembly → Quality Review
 
-- Duplicate detection
-- Source verification
-- Confidence assignment
-- Cross-source comparison
-- Conflict detection
+Quality Review → Delivery
 
-Outputs:
-
-Validated Intelligence Objects
+The orchestrator prevents invalid state transitions.
 
 ---
 
-# Phase 4 — Normalization
+# Parallel Execution
 
-Convert all intelligence into a canonical structure.
+Independent work should execute concurrently whenever practical.
 
-Each object shall include:
+Examples include:
 
-- Identifier
-- Category
-- Timestamp
-- Source
-- Summary
-- Confidence
-- Geographic Scope
-- Keywords
-- Metadata
+- Multiple source connectors
+- Independent enrichment tasks
+- Source validation
+- Intelligence classification
+
+Synchronization occurs before dependent stages begin.
 
 ---
 
-# Phase 5 — Coverage Assurance
+# Retry Strategy
 
-Coverage Assurance executes before ranking.
+Recoverable failures should be retried automatically.
 
-Validation includes:
+Examples:
 
-- Every required domain evaluated
-- Required collection agents completed
-- No missing mandatory sections
-- No blocked intelligence feeds
+- Temporary network failures
+- Rate limiting
+- Connector timeouts
+- Service interruptions
 
-Failure of this phase blocks publication.
+Retries should use exponential backoff with configurable limits.
 
----
-
-# Phase 6 — Executive Scoring
-
-Calculate Executive Intelligence Score (EIS).
-
-Evaluation includes:
-
-- Importance
-- Urgency
-- Decision Value
-- Executive Impact
-- Organizational Impact
-- Operational Impact
-- Personal Relevance
-- Confidence
-
-Outputs:
-
-Ranked intelligence objects.
+Permanent failures transition to the Failed state.
 
 ---
 
-# Phase 7 — Personalization
+# Checkpoints
 
-Apply executive-specific adjustments.
+Workflow checkpoints are created after major processing stages.
 
-Inputs include:
+Checkpointing enables:
 
-- Role
-- Organization
-- Calendar
-- Active initiatives
-- Geographic context
-- Standing interests
-- Historical preferences
-
-Personalization adjusts ranking only.
-
-Facts remain unchanged.
+- Resume after interruption
+- Incremental execution
+- Faster recovery
+- Auditability
 
 ---
 
-# Phase 8 — Executive Analysis
+# Error Handling
 
-Domain analysts generate executive context.
+Errors are categorized as:
 
-Each significant item should answer:
+## Recoverable
 
-- What happened?
-- Why does it matter?
-- Why today?
-- Why does this matter to this executive?
-- What should be monitored next?
+- Temporary API failure
+- Connector timeout
+- Authentication refresh
+- Resource contention
 
----
-
-# Phase 9 — Recommendation Generation
-
-Generate executive recommendations.
-
-Recommendation categories include:
-
-- Act Today
-- Prepare
-- Delegate
-- Monitor
-- Escalate
-- Inform
-
-Recommendations must reference supporting intelligence.
+Recoverable errors may retry.
 
 ---
 
-# Phase 10 — Editorial Assembly
+## Non-Recoverable
 
-Construct the briefing according to the Report Specification.
+- Invalid configuration
+- Missing executive profile
+- Unsupported workflow
+- Corrupted execution state
 
-Responsibilities include:
+These terminate execution.
 
-- Section ordering
-- Formatting
-- Executive tone
-- Readability
-- Redundancy reduction
-- Cross-reference validation
+---
+
+# Observability
+
+Every workflow emits telemetry.
+
+Metrics include:
+
+- Start time
+- Completion time
+- Duration
+- State transitions
+- Retry count
+- Agent execution times
+- Errors
+- Warnings
+- Intelligence items processed
+- Final briefing size
+
+---
+
+# Scheduling
+
+Workflows may be initiated by:
+
+- Scheduled execution
+- Manual execution
+- Event-driven trigger
+- API request
+- Future automated policies
+
+Scheduling logic remains independent of workflow execution.
+
+---
+
+# Security
+
+The orchestration engine shall:
+
+- Authenticate execution requests.
+- Enforce authorization.
+- Protect execution metadata.
+- Preserve audit logs.
+- Prevent unauthorized state manipulation.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| AGENT_ARCHITECTURE.md | Defines participating agents |
+| IMPLEMENTATION_ARCHITECTURE.md | Overall technical architecture |
+| EXECUTION_STATE_MODEL.md | Defines state persistence |
+| INTELLIGENCE_PIPELINE_SPECIFICATION.md | Defines processing logic |
+| BRIEFING_ASSEMBLY_ENGINE.md | Final report generation |
+| OBSERVABILITY_AND_TELEMETRY.md | Runtime monitoring |
+
+---
+
+# Success Criteria
+
+The workflow orchestration succeeds when:
+
+- Workflows execute deterministically.
+- Failures recover gracefully where possible.
+- Execution can resume from checkpoints.
+- Agent coordination remains predictable.
+- Parallel execution improves throughput without compromising correctness.
+- Every workflow is observable, auditable, and repeatable.
