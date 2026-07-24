@@ -1,0 +1,106 @@
+# ==========================================================
+# Executive Intelligence Briefing (EIB)
+# Global Application Configuration
+# ==========================================================
+
+metadata:
+  version: "1.0"
+  last_updated: "2026-07-24"
+
+application:
+
+  name: "Executive Intelligence Briefing"
+
+  short_name: "EIB"
+
+  environment: "development"
+
+  timezone: "America/Los_Angeles"
+
+  default_profile: "bryan_johnson"
+
+execution:
+
+  mode: "manual"
+
+  command: "Run EIB"
+
+  timeout_seconds: 300
+
+  retry_attempts: 2
+
+  continue_on_source_failure: true
+
+output:
+
+  format: "markdown"
+
+  save_history: true
+
+  history_directory: "history/"
+
+  generate_summary: true
+
+  include_execution_metrics: true
+
+sources:
+
+  github: true
+
+  gmail: true
+
+  google_calendar: true
+
+  web: true
+
+  rss: true
+
+  local_documents: true
+
+processing:
+
+  deduplicate: true
+
+  summarize: true
+
+  score_risk: true
+
+  score_opportunities: true
+
+  classify_topics: true
+
+  generate_action_items: true
+
+quality:
+
+  minimum_confidence: 0.70
+
+  require_citations: true
+
+  maximum_hallucination_risk: "low"
+
+logging:
+
+  level: "INFO"
+
+  save_execution_log: true
+
+  retain_days: 90
+
+security:
+
+  redact_sensitive_information: true
+
+  encrypt_local_cache: false
+
+  verify_source_identity: true
+
+future:
+
+  scheduled_execution: false
+
+  multi_profile: false
+
+  plugin_support: true
+
+  api_mode: false
