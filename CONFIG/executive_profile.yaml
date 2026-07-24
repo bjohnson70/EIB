@@ -1,0 +1,107 @@
+# ==========================================================
+# Executive Intelligence Briefing (EIB)
+# Executive Profile Configuration
+# ==========================================================
+
+metadata:
+  version: "1.0"
+  profile_id: "default"
+  owner: "Bryan Johnson"
+  last_updated: "2026-07-24"
+  status: "active"
+
+executive:
+
+  name: "Bryan Johnson"
+
+  title: "Chief Information Security Officer"
+
+  organization: "California Department of Developmental Services"
+
+  location: "California"
+
+preferences:
+
+  reading_time_minutes: 7
+
+  output_format: "markdown"
+
+  tone: "executive"
+
+  detail_level: "medium"
+
+  citation_style: "inline"
+
+  include_confidence_scores: true
+
+  include_action_items: true
+
+  include_trend_analysis: true
+
+  include_calendar_summary: true
+
+  include_weather: false
+
+priorities:
+
+  - cybersecurity
+  - privacy
+  - artificial intelligence
+  - governance
+  - enterprise risk
+  - technology
+  - state government
+  - healthcare
+  - leadership
+
+sources:
+
+  github:
+    enabled: true
+
+  gmail:
+    enabled: true
+
+  google_calendar:
+    enabled: true
+
+  web_news:
+    enabled: true
+
+  rss:
+    enabled: true
+
+sections:
+
+  - executive_summary
+  - today's_priorities
+  - calendar
+  - email
+  - cybersecurity
+  - technology
+  - leadership
+  - action_items
+
+briefing:
+
+  maximum_length_words: 1800
+
+  minimum_length_words: 900
+
+  target_reading_time_minutes: 7
+
+quality:
+
+  require_source_citations: true
+
+  deduplicate_content: true
+
+  summarize_duplicates: true
+
+  minimum_confidence: 0.70
+
+future:
+
+  allow_multiple_profiles: false
+
+  profile_versioning: true
