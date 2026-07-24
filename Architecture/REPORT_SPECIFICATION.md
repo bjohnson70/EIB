@@ -1,304 +1,259 @@
 ---
 title: Executive Briefing Report Specification
-document_id: PA-0002
-version: 1.0
+document_id: PA-004
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - ../VISION.md
   - PRODUCT_ARCHITECTURE.md
+  - INTELLIGENCE_ARCHITECTURE.md
+  - SCORING_MODEL.md
+  - PERSONALIZATION_MODEL.md
 ---
 
 # Executive Briefing Report Specification
 
 ## Purpose
 
-This document defines the canonical structure of the Executive Intelligence Briefing (EIB).
+This document defines the standard structure, content, and quality expectations for the Executive Intelligence Briefing (EIB).
 
-Every generated briefing shall follow this specification unless a future product variant explicitly overrides it.
-
-The objective is consistency, predictability, and rapid executive consumption.
+It specifies what information is presented to executives, how it is organized, and the principles governing report generation.
 
 ---
 
-# Executive Design Goals
+# Design Objectives
 
-Every briefing shall:
+Every briefing should be:
 
-- Be readable in approximately 5–7 minutes.
-- Present the most important information first.
-- Reduce cognitive load.
-- Highlight changes from previous briefings.
-- Prioritize executive decisions over information volume.
-- End with recommended actions.
+- Concise
+- Actionable
+- Personalized
+- Evidence-based
+- Consistent
+- Easy to scan
+- Easy to archive
 
----
-
-# Canonical Briefing Structure
-
-1. Executive Summary
-2. Personal Dashboard
-3. Calendar Intelligence
-4. Weather Intelligence
-5. Financial & Market Intelligence
-6. National Security
-7. California Government
-8. Cybersecurity
-9. Technology & Artificial Intelligence
-10. Leadership Principle
-11. Executive Actions
-12. Tomorrow Watch List
+The objective is not to maximize information—it is to maximize executive understanding.
 
 ---
 
-# Section Standards
+# Executive Design Principles
 
-Every section should answer four questions.
+The report should answer five questions:
 
-## What happened?
+1. What happened?
+2. Why does it matter?
+3. What should I pay attention to?
+4. What should I do next?
+5. What changed since yesterday?
 
-Objective facts.
-
-## Why does it matter?
-
-Executive interpretation.
-
-## Why does it matter to me?
-
-Personalized context.
-
-## Recommended action
-
-Preparation, monitoring, or decision.
+Every section should contribute to answering one or more of these questions.
 
 ---
 
-# Executive Summary
+# Standard Report Structure
 
-Purpose:
+## Cover
 
-Summarize the entire briefing in less than one minute.
-
-Maximum:
-
-Five bullet points.
-
-Must include:
-
-- Highest priority event
-- Greatest executive risk
-- Greatest opportunity
-- One required action
-- One watch item
+- Date
+- Executive Profile
+- Briefing Version
+- Classification (optional)
 
 ---
 
-# Personal Dashboard
+## Executive Summary
 
-Purpose:
+A one-page overview highlighting:
 
-Present information unique to the executive.
+- Major developments
+- Critical risks
+- Emerging opportunities
+- Significant changes
 
-Examples:
+Target reading time:
 
-- Calendar summary
-- Travel
-- Upcoming deadlines
-- Personal reminders
-- Organizational priorities
-- Health metrics (when enabled)
-- Standing projects
+2–3 minutes.
 
 ---
 
-# Calendar Intelligence
+## Top Priorities
 
-Include:
+Ranked list of the most important items requiring executive attention.
 
-- Today's meetings
-- Meeting preparation
-- Travel requirements
-- Scheduling conflicts
-- Focus blocks
-- Recommended preparation
+Each item includes:
 
----
-
-# Weather Intelligence
-
-Required metrics:
-
-- Current conditions
-- High temperature
-- Low temperature
-- Sunrise
-- Sunset
-- AQI
-- UV Index
-- Rain probability
-
-Executive commentary shall explain operational impacts where appropriate.
+- Title
+- Summary
+- Business Impact
+- Recommended Action
+- Confidence Level
 
 ---
 
-# Financial & Market Intelligence
+## Risk Dashboard
 
-Required:
+Summarizes:
 
-- Dow Jones
-- S&P 500
-- NASDAQ
-- Treasury Yield
-- Oil
-- Gold
-
-Optional:
-
-- VIX
-- Dollar Index
-- Major economic releases
-
-Include executive interpretation rather than raw market data alone.
-
----
-
-# National Security
-
-Summarize significant developments affecting:
-
-- United States
-- Allies
-- Military
-- Intelligence
-- Homeland Security
-
-Focus on executive relevance.
-
----
-
-# California Government
-
-Include:
-
-- Governor
-- Legislature
-- Budget
-- State technology
 - Cybersecurity
-- Privacy
-- Public sector operations
-- Significant regulatory developments
+- Operational
+- Financial
+- Compliance
+- Strategic
+- Reputational
+
+Each risk includes:
+
+- Severity
+- Trend
+- Supporting rationale
 
 ---
 
-# Cybersecurity
+## Opportunity Dashboard
 
-Coverage shall include evaluation of:
+Highlights:
 
-- Major breaches
-- Nation-state activity
-- Critical vulnerabilities
-- Cloud security
-- Identity security
-- AI security
-- Ransomware
-- Federal guidance
-- California cyber developments
-
-Coverage Assurance shall verify that no major executive-impact cyber story has been omitted.
+- Efficiency gains
+- Cost savings
+- Strategic opportunities
+- Innovation
+- Partnership opportunities
 
 ---
 
-# Technology & Artificial Intelligence
+## Intelligence Highlights
 
-Summarize developments in:
+Categorized by topic:
 
-- Artificial Intelligence
-- Cloud Computing
-- Microsoft
-- Google
-- Amazon
-- Apple
-- OpenAI
-- Enterprise technology
-
-Prioritize stories with executive or strategic impact.
+- Technology
+- Security
+- Government
+- Industry
+- Organization
+- Workforce
+- Finance
 
 ---
 
-# Leadership Principle
+## Calendar and Upcoming Events
 
-Present one leadership principle.
-
-Requirements:
-
-- Rotate principles.
-- Avoid unnecessary repetition.
-- Explain executive application.
-- Keep concise.
-
----
-
-# Executive Actions
-
-Provide prioritized actions.
-
-Categories:
-
-- Act Today
-- Prepare
-- Monitor
-- Delegate
-
-Every action should identify the reason it appears.
-
----
-
-# Tomorrow Watch List
-
-Highlight events expected within the next 24–72 hours.
+Upcoming activities relevant to the executive.
 
 Examples:
 
-- Economic releases
-- Legislative activity
-- Product launches
-- Security advisories
-- Weather
-- Organizational events
+- Meetings
+- Conferences
+- Deadlines
+- Legislative milestones
 
 ---
 
-# Writing Standards
+## Recommended Actions
 
-The briefing shall:
+A prioritized action list including:
 
-- Use plain English.
-- Avoid jargon unless necessary.
-- Prefer bullets over long paragraphs.
-- Highlight important changes.
-- Explain acronyms.
-- Maintain consistent formatting.
+- Description
+- Suggested owner
+- Recommended timeframe
+- Supporting context
 
 ---
 
-# Information Priority
+## Trend Analysis
 
-Information should be prioritized according to:
+Shows meaningful changes over time.
 
-1. Executive impact
-2. Personal relevance
-3. Organizational relevance
-4. Time sensitivity
-5. Confidence
-6. Actionability
+Examples include:
+
+- Risk movement
+- Topic frequency
+- Emerging patterns
+- Recurring issues
 
 ---
 
-# Coverage Assurance
+## Supporting Intelligence
 
-Before publication, verify that every report section has been evaluated.
+Provides additional detail for readers wishing to explore a topic more deeply.
 
-High-impact
+This section should not overwhelm the executive summary.
+
+---
+
+# Report Quality Standards
+
+Every report should be:
+
+- Accurate
+- Relevant
+- Timely
+- Traceable
+- Personalized
+- Free from duplication
+
+---
+
+# Personalization
+
+Report content should adapt based on:
+
+- Executive role
+- Organizational priorities
+- User preferences
+- Historical behavior
+- Configured interests
+
+The structure remains consistent while the content changes.
+
+---
+
+# Output Formats
+
+The platform should support:
+
+- Markdown
+- HTML
+- PDF
+- Mobile-friendly presentation
+- Email delivery
+- Future interactive dashboards
+
+---
+
+# Success Metrics
+
+The report succeeds when:
+
+- It can be reviewed in less than ten minutes.
+- The executive immediately understands current priorities.
+- Important risks are clearly communicated.
+- Recommendations are actionable.
+- Supporting detail is available without distracting from the summary.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| PRODUCT_ARCHITECTURE.md | Defines the overall product |
+| INTELLIGENCE_ARCHITECTURE.md | Produces report content |
+| PERSONALIZATION_MODEL.md | Tailors report content |
+| SCORING_MODEL.md | Determines item priority |
+| IMPLEMENTATION/BRIEFING_ASSEMBLY_ENGINE.md | Generates the final report |
+
+---
+
+# Future Enhancements
+
+Potential future capabilities include:
+
+- Interactive dashboards
+- Voice briefing generation
+- Executive question-and-answer mode
+- Multi-language support
+- Comparative briefings across organizations
+- AI-generated executive summaries
