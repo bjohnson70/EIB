@@ -1,0 +1,129 @@
+# ==========================================================
+# Executive Intelligence Briefing (EIB)
+# Gmail Connector Definition
+# ==========================================================
+
+metadata:
+  connector_id: "gmail"
+  version: "1.0"
+  status: "active"
+  last_updated: "2026-07-24"
+
+connector:
+
+  name: "Gmail"
+
+  description: >
+    Retrieves executive email information for inclusion in the
+    Executive Intelligence Briefing.
+
+authentication:
+
+  required: true
+
+  method: "ChatGPT Gmail Connector"
+
+configuration:
+
+  enabled: true
+
+  timeout_seconds: 30
+
+  retry_attempts: 2
+
+  continue_on_failure: true
+
+collection:
+
+  inbox:
+    enabled: true
+
+  unread_only: false
+
+  include_starred: true
+
+  include_important: true
+
+  include_flagged: true
+
+  maximum_messages: 100
+
+classification:
+
+  priority_levels:
+
+    critical:
+      - urgent
+      - action required
+      - deadline
+
+    high:
+      - executive
+      - management
+      - security
+      - incident
+
+    normal:
+      - informational
+
+filters:
+
+  exclude_promotions: true
+
+  exclude_social: true
+
+  exclude_spam: true
+
+  exclude_trash: true
+
+analysis:
+
+  summarize_threads: true
+
+  detect_followups: true
+
+  identify_deadlines: true
+
+  identify_meetings: true
+
+  identify_action_items: true
+
+normalization:
+
+  source: "Gmail"
+
+  confidence: 1.00
+
+  citation_required: false
+
+output:
+
+  include_sender: true
+
+  include_subject: true
+
+  include_received_time: true
+
+  include_summary: true
+
+  redact_sensitive_content: false
+
+error_handling:
+
+  continue_on_failure: true
+
+  retry_failed_requests: true
+
+  log_errors: true
+
+future:
+
+  draft_generation: true
+
+  email_response_assistance: true
+
+  smart_thread_grouping: true
+
+  sentiment_analysis: true
+
+  executive_priority_learning: true
