@@ -1,372 +1,288 @@
 ---
-title: Executive Intelligence Briefing Implementation Architecture
+title: Implementation Architecture
 document_id: IA-0001
-version: 1.0
+version: 2.0
 status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - VISION.md
-  - PRODUCT_REQUIREMENTS.md
-  - Architecture/PRODUCT_ARCHITECTURE.md
-  - Architecture/INTELLIGENCE_ARCHITECTURE.md
+  - ../Architecture/ARCHITECTURE.md
+  - ../Architecture/PRODUCT_ARCHITECTURE.md
+  - ../Architecture/INTELLIGENCE_ARCHITECTURE.md
 ---
 
-# Executive Intelligence Briefing Implementation Architecture
+# Executive Intelligence Briefing (EIB)
+# Implementation Architecture
 
 ## Purpose
 
-This document defines the implementation architecture of the Executive Intelligence Briefing (EIB).
+This document defines the implementation architecture for the Executive Intelligence Briefing (EIB) platform.
 
-It translates product architecture into an executable workflow that consistently produces high-quality executive intelligence.
+While the Architecture documents describe **what** the platform must accomplish, this document describes **how** the platform is organized into executable components, services, workflows, and data models.
 
-Implementation details may evolve while maintaining compliance with the Product Architecture.
-
----
-
-# Design Objectives
-
-The implementation shall be:
-
-- Modular
-- Repeatable
-- Explainable
-- Testable
-- Extensible
-- Observable
-- Fault tolerant
+It serves as the primary technical design reference for developers, solution architects, and AI implementation agents.
 
 ---
 
-# High-Level Workflow
+# Architectural Objectives
+
+The implementation architecture is designed to:
+
+- Maintain strict separation of concerns.
+- Enable modular development.
+- Support independent component evolution.
+- Simplify testing.
+- Maximize automation.
+- Encourage reuse.
+- Enable AI-assisted development.
+- Scale horizontally as new capabilities are introduced.
+
+---
+
+# Architectural Layers
 
 ```
-Collect
+                Executive User
+                      │
+                      ▼
+             Executive Briefing
+                      │
+                      ▼
+          Briefing Assembly Engine
+                      │
+      ┌───────────────┼───────────────┐
+      ▼               ▼               ▼
 
-↓
+ Personalization   Intelligence   Reporting
 
-Validate
+      │               │               │
+      ▼               ▼               ▼
 
-↓
+ Scoring Engine   Domain Agents   Formatting
 
-Normalize
+      │
+      ▼
 
-↓
+ Intelligence Pipeline
 
-Score
+      │
+      ▼
 
-↓
+ Source Connectors
 
-Personalize
+      │
+      ▼
 
-↓
-
-Analyze
-
-↓
-
-Recommend
-
-↓
-
-Quality Review
-
-↓
-
-Publish
+ External / Internal Data Sources
 ```
 
-Each stage has clearly defined inputs, outputs, and quality gates.
+---
+
+# Core Components
+
+## Source Connector Framework
+
+Responsible for:
+
+- Collecting data
+- Authenticating with sources
+- Normalizing responses
+- Monitoring connector health
+
+Defined in:
+
+`SOURCE_CONNECTOR_FRAMEWORK.md`
 
 ---
 
-# Stage 1 – Collection
+## Intelligence Pipeline
 
-Objective
+Responsible for:
 
-Acquire information from trusted sources.
+- Validation
+- Enrichment
+- Correlation
+- Classification
+- Scoring preparation
 
-Responsibilities
+Defined in:
 
-- Gather data
-- Timestamp collection
-- Record source
-- Preserve original information
-
-Output
-
-Normalized source candidates.
+`INTELLIGENCE_PIPELINE_SPECIFICATION.md`
 
 ---
 
-# Stage 2 – Validation
+## Scoring Engine
 
-Objective
+Responsible for:
 
-Determine confidence.
+- Applying scoring factors
+- Ranking intelligence
+- Producing priority values
 
-Responsibilities
+Uses the architecture defined within:
 
-- Verify source
-- Cross-reference information
-- Detect misinformation
-- Identify developing stories
-
-Output
-
-Validated intelligence candidates.
+`Architecture/SCORING_MODEL.md`
 
 ---
 
-# Stage 3 – Normalization
+## Personalization Engine
 
-Objective
+Responsible for:
 
-Convert all collected information into a common structure.
+- Executive profiles
+- Role mapping
+- Preference evaluation
+- Priority adjustment
 
-Standard fields include:
+Configuration is defined within:
 
-- Title
-- Summary
-- Source
-- Timestamp
-- Category
-- Geography
-- Confidence
-- Topic
-- Keywords
+`CONFIGURATION_AND_PROFILE_MODEL.md`
 
 ---
 
-# Stage 4 – Scoring
+## Briefing Assembly Engine
 
-Objective
+Responsible for:
 
-Calculate Executive Intelligence Score.
-
-Inputs
-
-- Importance
-- Urgency
-- Executive Impact
-- Organizational Impact
-- Decision Value
-- Operational Impact
-- Personal Relevance
-- Confidence
-
-Output
-
-Ranked intelligence.
-
----
-
-# Stage 5 – Personalization
-
-Objective
-
-Adapt briefing priorities.
-
-Uses
-
-- Executive profile
-- Calendar
-- Projects
-- Organization
-- Geography
-- Preferences
-
-Output
-
-Executive-specific ranking.
-
----
-
-# Stage 6 – Executive Analysis
-
-Objective
-
-Generate executive context.
-
-Every major story answers:
-
-- What happened?
-- Why does it matter?
-- Why today?
-- Why to this executive?
-- What happens next?
-
----
-
-# Stage 7 – Recommendation Engine
-
-Objective
-
-Generate executive actions.
-
-Possible recommendations
-
-- Act
-- Prepare
-- Monitor
-- Delegate
-- Escalate
-- Inform
-
-Recommendations must be clearly separated from facts.
-
----
-
-# Stage 8 – Quality Review
-
-Quality review occurs before publication.
-
-Validation includes:
-
-- Coverage Assurance
-- Missing story detection
-- Duplicate detection
-- Reading time
+- Section generation
+- Report composition
 - Formatting
-- Confidence review
-- Executive relevance
-- Personalization review
+- Output generation
 
-Publication does not occur until all quality gates pass.
+Defined within:
 
----
-
-# Stage 9 – Publication
-
-Generate:
-
-- Executive Briefing
-- Executive Summary
-- Action List
-- Watch List
-
-Future outputs
-
-- PDF
-- HTML
-- Mobile
-- Voice
-- Email
-- Dashboard
+`BRIEFING_ASSEMBLY_ENGINE.md`
 
 ---
 
-# Coverage Assurance
+## Knowledge Repository
 
-Coverage Assurance verifies evaluation of:
+Responsible for:
 
-- Calendar
-- Weather
-- Markets
-- National Security
-- California Government
-- Cybersecurity
-- Technology
-- Artificial Intelligence
-- Leadership
-- Executive Actions
+- Historical intelligence
+- Entity relationships
+- Metadata
+- Trend analysis
 
-Failure to evaluate a domain blocks publication.
+Logical model defined within:
+
+`KNOWLEDGE_MODEL.md`
 
 ---
 
-# Quality Gates
+# Cross-Cutting Services
 
-Every briefing must satisfy:
+Every implementation component should support:
 
-✓ Trusted sources
+- Logging
+- Observability
+- Error handling
+- Configuration
+- Security
+- Metrics
+- Versioning
+- Testing
 
-✓ Coverage complete
-
-✓ Reading time
-
-✓ Explainability
-
-✓ Executive recommendations
-
-✓ Personalization
-
-✓ Consistent formatting
-
-✓ Confidence evaluated
+These capabilities are considered platform services rather than business functionality.
 
 ---
 
-# Failure Handling
+# Component Interaction
 
-When quality standards are not met:
+The implementation follows a unidirectional processing flow.
 
-- Report deficiencies
-- Identify affected domains
-- Request additional collection
-- Recalculate scores
-- Repeat quality review
+```
+Connectors
+      │
+      ▼
+Pipeline
+      │
+      ▼
+Scoring
+      │
+      ▼
+Personalization
+      │
+      ▼
+Assembly
+      │
+      ▼
+Output
+```
 
-Publication should not proceed until deficiencies are resolved.
-
----
-
-# Future Architecture
-
-Future implementation may separate responsibilities into independent agents.
-
-Examples:
-
-- Collection Agent
-- Validation Agent
-- Cyber Intelligence Agent
-- California Intelligence Agent
-- Market Intelligence Agent
-- Weather Agent
-- Executive Analysis Agent
-- Recommendation Agent
-- Quality Assurance Agent
-- Publication Agent
-
-Each agent should be independently testable.
+Components communicate through well-defined interfaces and should avoid unnecessary coupling.
 
 ---
 
-# Implementation Principles
+# Configuration Strategy
 
-Implementation should emphasize:
+Behavior should be driven by configuration wherever practical.
 
-- Reliability
-- Transparency
-- Traceability
-- Modularity
-- Automation
-- Explainability
-- Maintainability
+Configuration includes:
+
+- Executive profiles
+- Source definitions
+- Collection schedules
+- Scoring weights
+- Output preferences
+- Feature flags
+
+Implementation logic should remain independent of configuration values.
+
+---
+
+# Error Handling
+
+The platform should degrade gracefully.
+
+Examples include:
+
+- Connector failures
+- Missing sources
+- Partial data
+- Low-confidence intelligence
+- Processing timeouts
+
+Failures in one component should not prevent generation of a briefing whenever meaningful output can still be produced.
+
+---
+
+# Scalability
+
+The architecture should support:
+
+- Additional connectors
+- Additional executive profiles
+- New domain agents
+- Expanded scoring models
+- New briefing formats
+- Future AI capabilities
+
+without requiring architectural redesign.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|----------|--------------|
+| AGENT_ARCHITECTURE.md | Defines AI agent responsibilities |
+| WORKFLOW_ORCHESTRATION.md | Defines execution flow |
+| INTELLIGENCE_PIPELINE_SPECIFICATION.md | Defines processing pipeline |
+| BRIEFING_ASSEMBLY_ENGINE.md | Defines report generation |
+| CONFIGURATION_AND_PROFILE_MODEL.md | Defines runtime configuration |
+| KNOWLEDGE_MODEL.md | Defines persistent knowledge |
+| SOURCE_CONNECTOR_FRAMEWORK.md | Defines connector architecture |
 
 ---
 
 # Success Criteria
 
-Implementation succeeds when:
+The implementation architecture succeeds when:
 
-- High-impact omissions become rare.
-- Executive trust increases.
-- Quality becomes repeatable.
-- New capabilities are easily integrated.
-- Every briefing meets product standards.
-
----
-
-# Related Documents
-
-- VISION.md
-- PRODUCT_REQUIREMENTS.md
-- Architecture/PRODUCT_ARCHITECTURE.md
-- Architecture/REPORT_SPECIFICATION.md
-- Architecture/INTELLIGENCE_ARCHITECTURE.md
-- Architecture/DATA_SOURCE_STRATEGY.md
-- Architecture/SCORING_MODEL.md
-- Architecture/PERSONALIZATION_MODEL.md
-- EXECUTIVE_PRINCIPLES.md
+- Every architectural capability maps to one or more implementation components.
+- Components remain loosely coupled and independently testable.
+- New functionality can be added with minimal impact to existing components.
+- Configuration drives behavior without requiring code changes.
+- AI agents and developers can understand, extend, and implement the platform using this document as the primary technical blueprint.
