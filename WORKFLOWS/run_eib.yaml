@@ -1,0 +1,101 @@
+# ==========================================================
+# Executive Intelligence Briefing (EIB)
+# Run EIB Workflow
+# ==========================================================
+
+metadata:
+  workflow_id: "run_eib"
+  version: "1.0"
+  status: "active"
+  last_updated: "2026-07-24"
+
+workflow:
+
+  name: "Run Executive Intelligence Briefing"
+
+  description: >
+    Generates a personalized Executive Intelligence Briefing by
+    collecting, processing, prioritizing, and summarizing information
+    from configured data sources.
+
+trigger:
+
+  type: manual
+
+  command: "Run EIB"
+
+profile:
+
+  load_default_profile: true
+
+  profile_source: "CONFIG/application.yaml"
+
+steps:
+
+  - id: load_configuration
+    description: Load application configuration.
+
+  - id: load_profile
+    description: Load executive profile.
+
+  - id: initialize_execution
+    description: Create runtime execution context.
+
+  - id: collect_sources
+    description: Retrieve data from enabled connectors.
+
+  - id: normalize_data
+    description: Normalize collected information into a common model.
+
+  - id: deduplicate
+    description: Remove duplicate information.
+
+  - id: classify
+    description: Classify information by topic.
+
+  - id: prioritize
+    description: Rank information based on executive priorities.
+
+  - id: summarize
+    description: Produce concise summaries.
+
+  - id: score_confidence
+    description: Assign confidence values.
+
+  - id: generate_action_items
+    description: Identify recommended actions.
+
+  - id: assemble_briefing
+    description: Build the final briefing.
+
+  - id: validate
+    description: Validate citations and completeness.
+
+  - id: publish
+    description: Write briefing output.
+
+output:
+
+  format: markdown
+
+  include_metadata: true
+
+  include_sources: true
+
+  include_execution_metrics: true
+
+error_handling:
+
+  continue_on_source_failure: true
+
+  log_failures: true
+
+  retry_failed_connectors: true
+
+success:
+
+  update_runtime_history: true
+
+  archive_briefing: true
+
+  record_execution_metrics: true
