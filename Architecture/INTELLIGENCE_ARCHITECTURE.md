@@ -1,294 +1,249 @@
 ---
-title: Executive Intelligence Architecture
-document_id: PA-0003
-version: 1.0
+title: Intelligence Architecture
+document_id: PA-005
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
-  - ../VISION.md
   - PRODUCT_ARCHITECTURE.md
   - REPORT_SPECIFICATION.md
+  - DATA_SOURCE_STRATEGY.md
+  - SCORING_MODEL.md
+  - PERSONALIZATION_MODEL.md
 ---
 
 # Executive Intelligence Architecture
 
 ## Purpose
 
-This document defines how raw information is transformed into Executive Intelligence.
+The Intelligence Architecture defines how raw information becomes executive intelligence.
 
-Unlike traditional news aggregation systems, EIB is designed to improve executive decision-making through a structured intelligence pipeline that emphasizes completeness, context, personalization, and actionability.
+It establishes the conceptual processing pipeline that transforms diverse information sources into trusted, prioritized, personalized, and actionable executive briefings.
 
----
-
-# Architectural Objective
-
-Transform trusted information into prioritized, personalized, actionable executive intelligence while minimizing executive cognitive load.
+This document describes *what* the intelligence system must accomplish. Implementation details are documented separately within the Implementation Architecture.
 
 ---
 
-# Intelligence Pipeline
+# Architectural Philosophy
 
-Every piece of information shall progress through the following stages.
+Data alone does not create value.
+
+Information becomes intelligence only after it has been:
+
+- Collected
+- Validated
+- Normalized
+- Correlated
+- Prioritized
+- Personalized
+- Explained
+
+Each stage increases the usefulness of the information while reducing executive cognitive load.
+
+---
+
+# Intelligence Lifecycle
 
 ```
-Information Collection
-
-↓
-
-Normalization
-
-↓
-
+Data Sources
+      │
+      ▼
+Collection
+      │
+      ▼
 Validation
-
-↓
-
-Deduplication
-
-↓
-
-Coverage Assurance
-
-↓
-
-Executive Relevance Scoring
-
-↓
-
+      │
+      ▼
+Normalization
+      │
+      ▼
+Enrichment
+      │
+      ▼
+Correlation
+      │
+      ▼
+Scoring
+      │
+      ▼
+Prioritization
+      │
+      ▼
 Personalization
-
-↓
-
-Context Generation
-
-↓
-
-Decision Support
-
-↓
-
-Executive Briefing
+      │
+      ▼
+Briefing Assembly
+      │
+      ▼
+Executive Intelligence
 ```
 
-No information should bypass the pipeline.
+---
+
+# Intelligence Processing Stages
+
+## 1. Collection
+
+Acquire information from internal and external sources.
+
+Examples include:
+
+- News
+- Threat intelligence
+- Government publications
+- Financial markets
+- Calendar systems
+- Email
+- Internal metrics
+- Organizational reports
+- Public data feeds
+
+Output:
+
+Raw information.
 
 ---
 
-# Stage 1 – Information Collection
+## 2. Validation
 
-Collect information from multiple trusted sources.
+Determine whether information is:
 
-Objectives:
+- Authentic
+- Current
+- Relevant
+- Complete
+- Suitable for executive consumption
 
-- Broad coverage
-- Timely updates
-- Source diversity
-- Redundancy for validation
-
-Coverage includes:
-
-- World Events
-- National Security
-- California Government
-- Cybersecurity
-- Technology
-- Artificial Intelligence
-- Financial Markets
-- Weather
-- Calendar
-- Personal Information
+Invalid or low-confidence information is excluded or downgraded.
 
 ---
 
-# Stage 2 – Normalization
+## 3. Normalization
 
-Normalize collected information into a consistent internal format.
+Convert collected information into a consistent internal representation.
 
-Tasks include:
+Examples include:
 
-- Timestamp normalization
-- Source identification
-- Topic classification
-- Geographic tagging
-- Organizational tagging
-- Duplicate detection metadata
-
----
-
-# Stage 3 – Validation
-
-Every item receives an initial confidence assessment.
-
-Validation considers:
-
-- Source credibility
-- Independent confirmation
-- Official statements
-- Publication quality
-- Recency
-- Known misinformation indicators
+- Standard timestamps
+- Unified entities
+- Common categories
+- Standard metadata
+- Source attribution
 
 ---
 
-# Stage 4 – Deduplication
+## 4. Enrichment
 
-Multiple reports describing the same event shall be merged into a single intelligence item.
+Increase the value of information by adding context.
 
-Benefits include:
+Examples:
 
-- Reduced redundancy
-- Improved confidence
-- Richer context
-- Cleaner briefing
-
----
-
-# Stage 5 – Coverage Assurance
-
-Coverage Assurance exists to minimize false negatives.
-
-The system shall verify that all intelligence domains have been evaluated before publication.
-
-Required domains:
-
-- Cybersecurity
-- National Security
-- California Government
-- Technology
-- Artificial Intelligence
-- Financial Markets
-- Weather
-- Calendar
-- Personal Dashboard
-
-Coverage validation shall specifically look for high-impact omissions.
-
-Missing a major executive-relevant story is considered a higher-severity defect than including a low-priority story.
+- Organization impact
+- Business function
+- Technology mapping
+- Geographic relevance
+- Historical comparisons
+- Regulatory implications
 
 ---
 
-# Stage 6 – Executive Relevance Scoring
+## 5. Correlation
 
-Each intelligence item receives a multidimensional score.
+Combine related information from multiple sources.
 
-Dimensions include:
+Objectives include:
 
-- Importance
+- Eliminating duplication
+- Identifying emerging patterns
+- Linking related events
+- Building richer context
+
+---
+
+## 6. Scoring
+
+Evaluate intelligence according to multiple dimensions.
+
+Typical factors include:
+
+- Executive relevance
 - Urgency
 - Confidence
-- Executive Impact
-- Organizational Impact
-- Personal Relevance
-- Operational Impact
-- Decision Value
-- Geographic Relevance
-- Time Sensitivity
+- Business impact
+- Strategic importance
+- Timeliness
+- Source credibility
 
-Scoring is defined in SCORING_MODEL.md.
+Detailed scoring algorithms are defined within SCORING_MODEL.md.
 
 ---
 
-# Stage 7 – Personalization
+## 7. Prioritization
 
-The same event may have different relevance depending upon the executive.
+Sort intelligence according to executive importance.
 
-Personalization considers:
+Not all high-scoring items appear in every briefing.
 
+Selection considers:
+
+- Briefing size
+- Executive profile
+- Topic diversity
+- Information freshness
+- Organizational priorities
+
+---
+
+## 8. Personalization
+
+Adapt intelligence to the intended executive.
+
+Inputs include:
+
+- Role
+- Responsibilities
 - Organization
-- Executive role
-- Geographic location
-- Standing interests
-- Active projects
-- Calendar
-- Personal preferences
-
-Personalization influences ranking—not factual accuracy.
+- Preferred topics
+- Historical interactions
+- Explicit preferences
 
 ---
 
-# Stage 8 – Context Generation
+## 9. Briefing Assembly
 
-Every major intelligence item shall answer:
+Organize selected intelligence into the standard executive briefing format.
 
-- Why does this matter?
-- Why today?
-- Why to this executive?
-- What should be monitored?
-- What could happen next?
+The assembly engine ensures:
 
-Context transforms information into intelligence.
-
----
-
-# Stage 9 – Decision Support
-
-Whenever practical, EIB should provide:
-
-- Recommended action
-- Preparation
-- Monitoring guidance
-- Delegation opportunities
-- Follow-up considerations
-
-Recommendations should be clearly distinguished from factual reporting.
+- Logical flow
+- Consistent formatting
+- Executive readability
+- Traceability to supporting evidence
 
 ---
 
-# Stage 10 – Executive Briefing
+# Intelligence Quality Attributes
 
-The final briefing shall prioritize intelligence according to executive value rather than publication order.
-
-The briefing should feel as though it were prepared overnight by a trusted Chief of Staff.
-
----
-
-# Intelligence Categories
-
-Each item shall be classified into one of the following:
-
-- Informational
-- Advisory
-- Operational
-- Strategic
-- Critical
-
-Classification assists prioritization.
-
----
-
-# Information Confidence Levels
-
-Each intelligence item shall receive a confidence designation.
-
-| Level | Meaning |
-|--------|---------|
-| Verified | Confirmed by trusted sources |
-| High Confidence | Strong corroboration |
-| Moderate Confidence | Credible but developing |
-| Low Confidence | Limited confirmation |
-| Unverified | Awaiting validation |
-
-Confidence shall be visible when appropriate.
-
----
-
-# Executive Intelligence Principles
-
-Executive Intelligence shall be:
+Every intelligence item should be:
 
 - Accurate
 - Timely
 - Relevant
-- Personalized
-- Explainable
 - Actionable
-- Trusted
+- Explainable
+- Traceable
 - Concise
+
+Items failing these standards should be excluded or downgraded.
 
 ---
 
-# Explainability
+# Conceptual Intelligence Object
 
-The platform should be able to explain why a
+Each intelligence item contains:
+
+- Identifier
+- Title
+- Executive
