@@ -1,63 +1,61 @@
 ---
-title: Executive Intelligence Briefing Source Connector Framework
+title: Source Connector Framework
 document_id: IA-0013
-version: 1.0
+version: 2.0
 status: Approved
-owner: Bryan Johnson
-author: Bryan Johnson & ChatGPT
+owner: BSJ
+author: BSJ & ChatGPT
 last_updated: 2026-07-23
 depends_on:
   - IMPLEMENTATION_ARCHITECTURE.md
-  - AGENT_ARCHITECTURE.md
-  - KNOWLEDGE_MODEL.md
   - INTELLIGENCE_OBJECT_MODEL.md
+  - ../Architecture/DATA_SOURCE_STRATEGY.md
 ---
 
-# Executive Intelligence Briefing Source Connector Framework
+# Executive Intelligence Briefing (EIB)
+# Source Connector Framework
 
 ## Purpose
 
-This document defines the Source Connector Framework responsible for acquiring intelligence from external systems.
+This document defines the standard architecture for all data source connectors used by the Executive Intelligence Briefing (EIB) platform.
 
-The framework standardizes how information is collected regardless of its origin, allowing new sources to be added without modifying downstream agents or workflows.
+Connectors provide a consistent mechanism for acquiring information from internal and external systems while insulating the remainder of the platform from source-specific implementation details.
 
----
-
-# Philosophy
-
-The platform should collect intelligence—not scrape websites.
-
-Every external information source shall be represented by a connector that exposes a consistent interface to the remainder of the platform.
-
-Collection complexity belongs inside the connector, not throughout the workflow.
+Every connector ultimately produces standardized Intelligence Objects for downstream processing.
 
 ---
 
-# Design Objectives
+# Design Principles
 
-The framework shall be:
+The connector framework shall be:
 
 - Modular
-- Replaceable
-- Observable
+- Stateless where practical
 - Secure
+- Observable
 - Fault tolerant
-- Independently testable
-- Source agnostic
+- Configuration-driven
+- Extensible
+- Source independent
+
+No downstream component should require knowledge of the originating source.
 
 ---
 
 # Connector Responsibilities
 
-Each connector shall:
+Every connector is responsible for:
 
-- Authenticate if required
-- Retrieve information
-- Normalize raw responses
-- Record collection metadata
-- Detect collection failures
-- Report telemetry
-- Return standardized Intelligence Objects
+- Authentication
+- Data acquisition
+- Incremental collection
+- Basic validation
+- Metadata capture
+- Error reporting
+- Rate limiting
+- Conversion to canonical Intelligence Objects
+
+Connectors do **not** perform enrichment, scoring, personalization, or report generation.
 
 ---
 
@@ -65,240 +63,200 @@ Each connector shall:
 
 ```
 Initialize
-
-↓
-
+      │
 Authenticate
-
-↓
-
+      │
 Collect
-
-↓
-
-Validate Response
-
-↓
-
+      │
+Validate
+      │
 Normalize
-
-↓
-
-Return Intelligence Objects
-
-↓
-
-Record Telemetry
-
-↓
-
-Close Session
+      │
+Publish Intelligence Objects
+      │
+Report Metrics
+      │
+Complete
 ```
 
-Every execution shall be observable.
+---
+
+# Supported Source Types
+
+The framework supports connectors for:
+
+## Internal Systems
+
+- Microsoft 365
+- Google Workspace
+- Exchange
+- ServiceNow
+- Jira
+- SharePoint
+- Teams
+- Slack
+- Enterprise databases
 
 ---
 
-# Connector Categories
+## External Services
 
-## News Connectors
-
-Examples:
-
-- Reuters
-- Associated Press
-- Major newspapers
-- Government press releases
-
----
-
-## Government Connectors
-
-Examples:
-
-- White House
 - CISA
-- FBI
-- NSA
-- California Governor
-- California Legislature
-
----
-
-## Cyber Intelligence Connectors
-
-Examples:
-
-- CISA KEV
-- NVD
-- Microsoft Security
-- Google Security
+- NIST
 - Vendor advisories
+- Government agencies
+- Threat intelligence providers
+- Financial data providers
+- Weather services
+- Public APIs
 
 ---
 
-## Market Connectors
+## Content Sources
 
-Examples:
-
-- Market indices
-- Treasury yields
-- Commodity prices
-- Currency exchange
-- Economic indicators
-
----
-
-## Weather Connectors
-
-Examples:
-
-- National Weather Service
-- NOAA
-- Air Quality
-- UV Index
-- Sunrise/Sunset
+- RSS
+- News feeds
+- Research publications
+- Blogs
+- Technical documentation
+- GitHub repositories
+- Knowledge bases
 
 ---
 
-## Personal Connectors
+## User Sources
 
-Examples:
-
-- Calendar
-- Tasks
-- Email summaries
-- Travel
-- Personal dashboard
+- Uploaded documents
+- PDFs
+- Office documents
+- Markdown
+- Images
+- Manual intelligence submissions
 
 ---
 
 # Connector Interface
 
-Every connector shall expose a common interface.
+Each connector shall implement a common logical interface.
 
-Minimum operations include:
+Required capabilities include:
 
 - Initialize
 - Authenticate
-- Collect
-- Validate
-- Normalize
-- Report Status
+- Test connectivity
+- Collect data
+- Validate response
+- Normalize output
+- Publish Intelligence Objects
+- Report health
 - Shutdown
 
-Implementation technology is intentionally unspecified.
-
----
-
-# Connector Metadata
-
-Every connector reports:
-
-- Connector ID
-- Name
-- Version
-- Data Source
-- Collection Time
-- Response Time
-- Success Status
-- Error Count
-- Retry Count
+Implementation technology may vary provided the interface contract is preserved.
 
 ---
 
 # Authentication
 
-Connectors should support:
+Supported authentication methods include:
 
-- Anonymous access
+- OAuth 2.0
 - API Keys
-- OAuth
-- Service Accounts
-- Future authentication methods
+- Client certificates
+- Service accounts
+- Managed identities
+- Username/password (legacy only)
 
-Credentials shall never be embedded in prompts or workflow definitions.
-
----
-
-# Retry Strategy
-
-Recoverable failures should support:
-
-- Exponential backoff
-- Configurable retry limits
-- Timeout thresholds
-- Circuit breaking for persistent failures
-
-Failures shall be reported to telemetry.
+Credentials shall be managed through the platform's approved secrets management solution.
 
 ---
 
-# Rate Limiting
+# Collection Models
 
-Connectors shall respect provider limitations.
+Supported collection strategies include:
 
-Where appropriate they should support:
-
-- Request throttling
-- Cached responses
-- Incremental updates
 - Scheduled polling
+- Event-driven triggers
+- Webhooks
+- Manual execution
+- Batch synchronization
+- Incremental synchronization
 
-The platform should be a good citizen of every external service.
+The collection strategy is determined by source capabilities rather than connector implementation.
 
 ---
 
-# Normalization
+# Incremental Collection
 
-Connectors return raw information in many formats.
+Where supported, connectors should collect only new or changed information using mechanisms such as:
 
-Before downstream processing every response shall be normalized into canonical Intelligence Objects defined by the Knowledge Model.
+- Last modified timestamps
+- Change tokens
+- Event identifiers
+- Sequence numbers
+- Watermarks
 
-No downstream agent should require source-specific parsing.
+This minimizes unnecessary processing and improves scalability.
 
 ---
 
 # Error Handling
 
-Errors shall be classified as:
+Connectors shall distinguish between:
 
-## Recoverable
+## Recoverable Errors
 
 Examples:
 
-- Temporary timeout
-- Network interruption
+- Network timeout
+- Temporary API failure
 - Rate limiting
+- Authentication refresh
 
-Retry permitted.
+These errors should trigger retry policies.
 
 ---
 
-## Non-Recoverable
+## Non-Recoverable Errors
 
 Examples:
 
 - Invalid credentials
-- Unsupported API
-- Malformed configuration
+- Unsupported API version
+- Schema incompatibility
+- Permanent authorization failure
 
-Retry not attempted until corrected.
+These errors require administrative intervention.
 
 ---
 
-# Connector Health
+# Rate Limiting
 
-Track:
+Connectors shall respect provider limits by supporting:
 
-- Availability
-- Average response time
-- Success rate
-- Error rate
+- Configurable request rates
+- Exponential backoff
+- Retry-after headers
+- Concurrent request limits
+- Request batching
+
+Rate limiting should protect both the platform and upstream providers.
+
+---
+
+# Observability
+
+Each connector shall publish telemetry including:
+
+- Collection duration
+- Records processed
+- Intelligence Objects produced
+- Error count
+- Retry count
+- Authentication status
 - Data freshness
-- Authentication failures
+- Health status
 
-Connector health contributes to operational dashboards.
+Telemetry integrates with the platform observability framework.
 
 ---
 
@@ -306,26 +264,56 @@ Connector health contributes to operational dashboards.
 
 Connectors shall:
 
+- Use encrypted communication
 - Protect credentials
-- Validate certificates
-- Encrypt communications
-- Log security failures
-- Support credential rotation
+- Validate server identities
+- Log securely
+- Avoid unnecessary privilege
+- Mask sensitive information
 
-Security failures shall never expose sensitive information.
+Security requirements apply regardless of connector type.
 
 ---
 
-# Extensibility
+# Versioning
 
-Adding a new connector should require:
+Every connector should maintain:
 
-1. Connector implementation
-2. Connector registration
-3. Configuration
-4. Testing
+- Connector identifier
+- Connector version
+- Supported API versions
+- Configuration version
+- Compatibility information
 
-No workflow redesign should be necessary.
+Versioning supports lifecycle management and troubleshooting.
+
+---
+
+# Onboarding a New Connector
+
+The recommended onboarding process is:
+
+1. Define source requirements.
+2. Configure authentication.
+3. Implement the connector interface.
+4. Validate connectivity.
+5. Normalize source data.
+6. Verify Intelligence Object output.
+7. Execute integration tests.
+8. Enable in the target environment.
+9. Monitor operational health.
+
+---
+
+# Relationship to Other Documents
+
+| Document | Relationship |
+|-----------|--------------|
+| IMPLEMENTATION_ARCHITECTURE.md | Overall implementation blueprint |
+| INTELLIGENCE_OBJECT_MODEL.md | Canonical output produced by every connector |
+| INTELLIGENCE_PIPELINE_SPECIFICATION.md | Consumes connector output |
+| Architecture/DATA_SOURCE_STRATEGY.md | Defines source selection and governance |
+| OBSERVABILITY_AND_TELEMETRY.md | Defines connector monitoring and health |
 
 ---
 
@@ -333,4 +321,9 @@ No workflow redesign should be necessary.
 
 The Source Connector Framework succeeds when:
 
-- New intelligence sources can be integrated with
+- New data sources can be integrated without modifying the intelligence pipeline.
+- Every connector produces standardized Intelligence Objects.
+- Authentication, retries, and telemetry are implemented consistently.
+- Connectors remain independently deployable and maintainable.
+- Operational health is measurable and observable.
+- The platform can expand to new information sources through implementation rather than architectural redesign.
