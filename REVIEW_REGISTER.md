@@ -1,172 +1,247 @@
 ---
-title: Architecture Review Register
-document_id: GOV-003
-version: 1.2
-status: Accepted
-review_id: AR-0010
-review_status: Accepted
-governance_framework: 1.2
-repository_release: Governance Framework v1.2
-owner: Bryan Johnson
-role: Product Owner
-steward: ChatGPT
-steward_role: Chief Architect
-last_reviewed: 2026-07-22
-next_review: TBD
+title: Repository Review Register
+document_id: GOV-010
+version: 2.0
+status: Active
+owner: BSJ
+last_updated: 2026-08-07
+---
+
+# Executive Intelligence Briefing (EIB)
+
+# Repository Review Register
+
+## Purpose
+
+The Review Register records the formal review status of governed documents within the EIB repository.
+
+Its purpose is to provide visibility into:
+
+- Documents reviewed
+- Review completion status
+- Outstanding work
+- Repository health
+- Next review priorities
+
+Unlike Git history, this document reflects the **current review state** of the repository.
+
+---
+
+# Review Status Values
+
+| Status | Meaning |
+|----------|---------|
+| Pending | Not yet reviewed |
+| In Progress | Currently under review |
+| Reviewed | Content reviewed |
+| Migrated | Successfully modernized |
+| Verified | Repository version confirmed |
+| Complete | No additional work currently planned |
+
+---
+
+# Repository Foundation Summary
+
+## Completed
+
+- Repository Standards
+- Repository Migration Plan
+- Repository Inventory
+- Canonical `ARCHITECTURE/` directory
+- Legacy `Architecture/` retirement
+- ADR-0001
+- ADR-0002
+- ADR-0003
+- ADR-0004
+- ADR-0005
+- Enterprise Architecture
+- Product Architecture
+- Intelligence Architecture
+- Personalization Model
+- Scoring Model
+- Report Specification
+- Data Source Strategy
+- Architecture Governance
+- Architecture Overview
+
 ---
 
 # Architecture Review Register
 
-## Purpose
-
-The Architecture Review Register is the authoritative audit log for all Architecture Reviews performed within the Executive Intelligence Briefing (EIB) repository.
-
-Every governed document must undergo an Architecture Review before acceptance.
-
-This register provides complete traceability for repository evolution.
-
----
-
-# Review Status Definitions
-
-| Status | Meaning |
-|---------|---------|
-| Planned | Review has been scheduled. |
-| In Progress | Review is actively underway. |
-| Accepted | Review completed and accepted by the Product Owner. |
-| Superseded | Review replaced by a later Architecture Review. |
-| Archived | Historical record retained for reference. |
+| Document | Status |
+|----------|--------|
+| ADR-0001 | Complete |
+| ADR-0002 | Complete |
+| ADR-0003 | Complete |
+| ADR-0004 | Complete |
+| ADR-0005 | Complete |
+| ENTERPRISE_ARCHITECTURE.md | Complete |
+| PRODUCT_ARCHITECTURE.md | Complete |
+| INTELLIGENCE_ARCHITECTURE.md | Complete |
+| REPORT_SPECIFICATION.md | Complete |
+| SCORING_MODEL.md | Complete |
+| PERSONALIZATION_MODEL.md | Complete |
+| DATA_SOURCE_STRATEGY.md | Complete |
+| GOVERNANCE.md | Complete |
+| README.md | Complete |
 
 ---
 
-# Architecture Review Log
+# Existing Canonical Architecture Documents
 
-| Review ID | Document | GOV ID | Status | Date |
-|-----------|----------|--------|--------|------------|
-| AR-0001 | README.md | — | Accepted | 2026-07-22 |
-| AR-0002 | MANIFESTO.md | — | Accepted | 2026-07-22 |
-| AR-0003 | CONSTITUTION.md | — | Accepted | 2026-07-22 |
-| AR-0004 | ROADMAP.md | — | Accepted | 2026-07-22 |
-| AR-0005 | CONTRIBUTING.md | — | Accepted | 2026-07-22 |
-| AR-0006 | Architecture/ARCHITECTURE.md | GOV-001 | Accepted | 2026-07-22 |
-| AR-0007 | Architecture/GOVERNANCE.md | GOV-002 | Accepted | 2026-07-22 |
-| AR-0008 | REPOSITORY_WORKFLOW.md | GOV-004 | Accepted | 2026-07-22 |
-| AR-0009 | DOCUMENT_CATALOG.md | GOV-005 | Accepted | 2026-07-22 |
-| AR-0010 | REVIEW_REGISTER.md | GOV-003 | Accepted | 2026-07-22 |
+These still require review.
+
+| Document | Status |
+|----------|--------|
+| DESIGN_PHILOSOPHY.md | Pending |
+| EDITORIAL_GUIDELINES.md | Pending |
+| INTELLIGENCE_ENGINE.md | Pending |
+| PRODUCT_VISION.md | Pending |
+| QUALITY_STANDARDS.md | Pending |
+| SYSTEM_ARCHITECTURE.md | Pending |
 
 ---
 
-# Review Process
+# Root Repository Documents
 
-Every review follows the repository workflow.
+| Document | Status |
+|----------|--------|
+| README.md | In Progress |
+| PRODUCT_REQUIREMENTS.md | Complete |
+| ROADMAP.md | Complete |
+| REPOSITORY_WORKFLOW.md | Complete |
+| REPOSITORY_CHARTER.md | Pending |
+| REFERENCE_ARCHITECTURE.md | Pending |
+| REVIEW_REGISTER.md | Current |
+| CHANGELOG.md | Pending |
+| DECISIONS.md | Pending |
+| DOCUMENT_CATALOG.md | Pending |
+| CONTRIBUTING.md | Pending |
+| EXECUTIVE_PRINCIPLES.md | Pending |
+| VISION.md | Review Recommended |
+| MANIFESTO.md | Review Recommended |
+| CONSTITUTION.md | Review Recommended |
+
+---
+
+# Documentation Review
+
+| Document | Status |
+|----------|--------|
+| REPOSITORY_STANDARDS.md | Complete |
+| REPOSITORY_MIGRATION_PLAN.md | Complete |
+| REPOSITORY_INVENTORY.md | Complete |
+| DOCUMENT_CATALOG.md | Pending |
+| DECISION_LOG.md | Pending |
+| REPOSITORY_STATUS.md | Pending |
+| TRACEABILITY_MATRIX.md | Pending |
+| CHANGELOG.md | Pending |
+
+---
+
+# Implementation Documents
+
+## Status
 
 ```text
-Read Repository Document
-        ↓
-Architecture Review
-        ↓
-Recommendations
-        ↓
-Product Owner Approval
-        ↓
-Generate Complete Replacement
-        ↓
-Commit to GitHub
-        ↓
-Verification
-        ↓
-Register Review
+Pending Repository Foundation completion
+```
+
+Implementation review begins after documentation cleanup is complete.
+
+---
+
+# Repository Health
+
+## Strengths
+
+- Canonical architecture established.
+- Duplicate architecture directory eliminated.
+- Governance documents standardized.
+- Repository structure stabilized.
+- AI-readable documentation significantly improved.
+- Cross-document consistency greatly improved.
+
+---
+
+## Remaining Work
+
+- Complete remaining root document modernization.
+- Refresh Document Catalog.
+- Reconcile duplicate governance documents.
+- Review remaining canonical architecture documents.
+- Validate links.
+- Validate filenames.
+- Complete Windows clean clone verification.
+- Complete Codex integration.
+
+---
+
+# Current Repository Phase
+
+```text
+Repository Modernization
+```
+
+Progress estimate:
+
+```text
+Approximately 70% Complete
 ```
 
 ---
 
-# Architecture Review Checklist
+# Next Review Queue
 
-Every Architecture Review evaluates:
+Priority order:
 
-- Repository metadata
-- Governance compliance
-- Naming consistency
-- Cross-document references
-- Versioning
-- Traceability
-- Maintainability
-- Readability
-- Completeness
-- Future extensibility
+1. REPOSITORY_CHARTER.md
+2. REFERENCE_ARCHITECTURE.md
+3. DOCUMENT_CATALOG.md
+4. CONTRIBUTING.md
+5. EXECUTIVE_PRINCIPLES.md
+6. CHANGELOG.md
+7. DECISIONS.md
 
 ---
 
-# Review Priority Levels
+# Review Philosophy
 
-| Priority | Description |
-|----------|-------------|
-| Critical | Repository integrity or governance issue |
-| High | Architectural improvement |
-| Medium | Documentation improvement |
-| Low | Editorial refinement |
+Repository reviews should always:
 
----
-
-# Review Categories
-
-Architecture Reviews may include:
-
-- Governance
-- Architecture
-- Documentation
-- Automation
-- Intelligence
-- Repository Structure
+- Preserve architectural intent.
+- Improve clarity.
+- Remove duplication.
+- Update references.
+- Preserve document identifiers.
+- Verify repository reality.
 
 ---
 
-# Repository Metrics
+# Success Criteria
 
-Architecture Reviews Completed:
+The Review Register is complete when:
 
-**10**
-
-Accepted Reviews:
-
-**10**
-
-Open Reviews:
-
-**0**
-
-Governed Documents:
-
-**5**
-
-Governance Framework Version:
-
-**1.2**
-
-Repository Maturity:
-
-**Governed Foundation**
-
----
-
-# Repository Principles
-
-Architecture Reviews exist to:
-
-- Improve consistency.
-- Preserve repository quality.
-- Reduce architectural debt.
-- Increase maintainability.
-- Document significant decisions.
-- Provide historical traceability.
+- Every governed document has been reviewed.
+- No duplicate architecture remains.
+- Repository status matches repository reality.
+- AI contributors can identify authoritative documents without ambiguity.
+- Review priorities are always visible.
 
 ---
 
 # Related Documents
 
-- REPOSITORY_WORKFLOW.md
-- DOCUMENT_CATALOG.md
-- Architecture/GOVERNANCE.md
-- Architecture/ARCHITECTURE.md
-- CONSTITUTION.md
-- STATUS.md
+- DOCUMENTATION/REPOSITORY_STANDARDS.md
+- DOCUMENTATION/REPOSITORY_MIGRATION_PLAN.md
+- DOCUMENTATION/REPOSITORY_INVENTORY.md
+- DOCUMENTATION/DOCUMENT_CATALOG.md
+- ARCHITECTURE/GOVERNANCE.md
+
+---
+
+# Guiding Principle
+
+> Review is not about finding mistakes.
+
+> Review is about ensuring today's repository is better than yesterday's.
