@@ -1,224 +1,378 @@
 ---
 title: Repository Workflow
-document_id: GOV-004
-version: 1.0
-status: Accepted
-repository_release: Foundation v1.1
-owner: Bryan Johnson
-role: Product Owner
-steward: ChatGPT
-steward_role: Chief Architect
-last_reviewed: 2026-07-22
-next_review: TBD
+document_id: GOV-009
+version: 2.0
+status: Active
+owner: BSJ
+last_updated: 2026-08-07
 ---
+
+# Executive Intelligence Briefing (EIB)
 
 # Repository Workflow
 
 ## Purpose
 
-This document defines the standard operating procedures used to maintain, evolve, and govern the Executive Intelligence Briefing (EIB) repository.
+This document defines the standard workflow for developing, reviewing, validating, and maintaining the Executive Intelligence Briefing (EIB) repository.
 
-The goal is to ensure that every architectural change is intentional, reviewed, traceable, and verifiable.
+The workflow is designed for both human contributors and AI-assisted development.
 
-GitHub is the authoritative source of truth for all repository content.
+The objectives are:
 
----
-
-# Governance Model
-
-## Product Owner
-
-The Product Owner establishes the vision and priorities for the repository.
-
-Responsibilities include:
-
-- Define strategic direction
-- Approve architectural changes
-- Accept Architecture Reviews
-- Prioritize repository work
-- Make final governance decisions
-
-Current Product Owner:
-
-**Bryan Johnson**
+- Maintain repository quality.
+- Preserve architectural integrity.
+- Support small, verifiable commits.
+- Enable repeatable AI-assisted development.
+- Keep Git history meaningful.
 
 ---
 
-## Chief Architect
+# Core Principles
 
-The Chief Architect is responsible for maintaining architectural consistency throughout the repository.
+Development should always favor:
 
-Responsibilities include:
-
-- Review repository documents
-- Recommend improvements
-- Maintain architectural integrity
-- Reduce architectural debt
-- Ensure consistency across documentation
-- Verify completed work
-
-Current Chief Architect:
-
-**ChatGPT**
+- Small changes
+- One logical objective per commit
+- Verification before completion
+- Documentation alongside implementation
+- One authoritative copy of every concept
 
 ---
 
-# Repository Principles
-
-The repository operates according to the following principles.
-
-1. GitHub is the single source of truth.
-2. Architecture before implementation.
-3. Governance before automation.
-4. Evolution over replacement.
-5. Documentation is part of the product.
-6. Every significant change is reviewed.
-7. Every committed change is verified.
-
----
-
-# Existing Document Workflow
-
-Every modification to an existing document follows the same workflow.
+# Standard Development Workflow
 
 ```text
-Read document from GitHub
-        ↓
-Architecture Review
-        ↓
-Recommendations
-        ↓
-Product Owner Approval
-        ↓
-Generate Complete Replacement
-        ↓
-Product Owner Commits to GitHub
-        ↓
-Read Document from GitHub
-        ↓
-Verification
-        ↓
-Update Review Register
+Identify Work
+      │
+      ▼
+Review Existing Repository
+      │
+      ▼
+Read Governing Documents
+      │
+      ▼
+Implement Change
+      │
+      ▼
+Update Documentation
+      │
+      ▼
+Verify Repository
+      │
+      ▼
+Commit
+      │
+      ▼
+Push
 ```
 
 ---
 
-# New Document Workflow
+# Step 1 — Identify Work
 
-When creating a new document:
+Every task should begin with a clearly defined objective.
+
+Examples:
+
+- Fix documentation
+- Implement feature
+- Update architecture
+- Refactor repository
+- Improve workflow
+- Resolve duplicate content
+
+Large objectives should be divided into smaller logical units.
+
+---
+
+# Step 2 — Review Existing Repository
+
+Before changing anything:
+
+- Search for existing documentation.
+- Search for similar implementations.
+- Identify dependencies.
+- Avoid creating duplicate documents.
+
+The repository is always the primary source of truth.
+
+---
+
+# Step 3 — Read Governing Documents
+
+Depending on the change, review:
 
 ```text
-Verify document does not exist
-        ↓
-Determine repository path
-        ↓
-Generate complete document
-        ↓
-Recommend commit message
-        ↓
-Product Owner creates file
-        ↓
-Commit to GitHub
-        ↓
-Verify document
-        ↓
-Update Review Register
+CONSTITUTION.md
+
+DOCUMENTATION/
+    REPOSITORY_STANDARDS.md
+    REPOSITORY_MIGRATION_PLAN.md
+    DOCUMENT_CATALOG.md
+
+ARCHITECTURE/
+    README.md
+    ENTERPRISE_ARCHITECTURE.md
+    GOVERNANCE.md
+
+Applicable ADRs
 ```
 
----
-
-# Document Replacement Standard
-
-Unless specifically requested otherwise:
-
-- Entire documents are regenerated.
-- Partial patches are avoided.
-- GitHub becomes the authoritative version after commit.
-
-This minimizes merge errors and simplifies repository maintenance.
+Implementation work should also review the relevant implementation specifications.
 
 ---
 
-# Verification Standard
+# Step 4 — Implement
 
-Verification occurs after every repository update.
+Implement only the approved scope.
 
-Verification confirms:
+Prefer:
 
-- Correct file path
-- Successful commit
-- Complete document
-- Proper formatting
-- Expected repository structure
+- Small commits
+- Small pull requests
+- Focused documents
+- Incremental improvements
 
-Repository work is not considered complete until verification succeeds.
+Avoid unrelated edits.
 
 ---
 
-# Commit Message Convention
+# Step 5 — Update Documentation
 
-The repository follows conventional commit messages.
+Implementation and documentation should evolve together.
+
+Possible updates include:
+
+- Architecture
+- Product requirements
+- Decision Log
+- Repository Inventory
+- Document Catalog
+- Roadmap
+- Changelog
+
+---
+
+# Step 6 — Verify
+
+Before committing:
+
+- Verify filenames.
+- Verify links.
+- Verify document identifiers.
+- Verify metadata.
+- Verify repository structure.
+- Verify formatting.
+- Verify references.
+- Verify Git status.
+
+Verification is part of the Definition of Done.
+
+---
+
+# Step 7 — Commit
+
+Every commit should represent one logical change.
+
+Good examples:
+
+```text
+docs(architecture): modernize report specification
+
+docs(repo): update repository inventory
+
+feat(engine): implement confidence scoring
+
+refactor(repo): retire legacy architecture directory
+```
+
+Avoid combining unrelated work into one commit.
+
+---
+
+# Step 8 — Push
+
+After verification:
+
+```text
+git add .
+git commit -m "<message>"
+git push
+```
+
+The repository should remain buildable and understandable after every push.
+
+---
+
+# AI-Assisted Workflow
+
+AI contributors should:
+
+1. Inspect repository state.
+2. Read governing documents.
+3. Reuse existing architecture.
+4. Avoid duplicate content.
+5. Preserve document identifiers.
+6. Update related documents.
+7. Verify changes.
+8. Recommend follow-up work.
+
+AI should never assume historical chat context is more authoritative than the repository itself.
+
+---
+
+# Repository Foundation Workflow
+
+During Repository Foundation:
+
+```text
+Inventory
+    ↓
+Compare
+    ↓
+Preserve
+    ↓
+Standardize
+    ↓
+Verify
+    ↓
+Retire Legacy
+```
+
+Never delete a document before its replacement has been verified.
+
+---
+
+# Commit Philosophy
+
+Commits should answer one question:
+
+> What changed?
 
 Examples:
 
 ```text
-docs(governance): establish repository workflow
-docs(architecture): modernize architecture document
-feat(intelligence): add executive briefing generator
-refactor(governance): simplify review process
-fix(documentation): correct governance metadata
+docs(product): update roadmap
+
+docs(repo): modernize README
+
+docs(architecture): migrate governance
+
+refactor(repo): remove duplicate architecture directory
 ```
+
+Good commit history tells the story of the repository.
 
 ---
 
-# Architecture Reviews
+# Branch Strategy
 
-Every governed document receives an Architecture Review.
+Current workflow:
 
-Reviews are recorded in:
-
-```
-REVIEW_REGISTER.md
+```text
+main
 ```
 
-Review identifiers are sequential.
+Future workflow may include:
 
-Example:
+```text
+main
+develop
+feature/*
+release/*
+hotfix/*
+```
 
-```
-AR-0008
-```
+The branching strategy should remain simple until project complexity requires expansion.
 
 ---
 
-# Repository Philosophy
+# Document Workflow
 
-The repository evolves continuously.
+Governed documents generally follow:
 
-Rather than periodically rebuilding the repository, improvements are made incrementally through governed architectural reviews.
+```text
+Draft
+Review
+Approved
+Active
+Deprecated
+Archived
+```
 
-The objective is continuous improvement while preserving consistency and traceability.
+Git maintains historical versions.
+
+Repository copies should represent the current authoritative version.
+
+---
+
+# Verification Checklist
+
+Before every significant commit:
+
+- [ ] Repository standards followed.
+- [ ] Metadata updated.
+- [ ] Links verified.
+- [ ] Document identifiers preserved.
+- [ ] Duplicate content avoided.
+- [ ] Related documentation updated.
+- [ ] Repository builds conceptually.
+- [ ] Git status understood.
+- [ ] Commit message reflects actual work.
+
+---
+
+# Codex Workflow
+
+Codex-assisted development should follow this pattern:
+
+```text
+Repository
+      ↓
+Inspect
+      ↓
+Modify
+      ↓
+Verify
+      ↓
+Commit
+      ↓
+Push
+      ↓
+Review
+```
+
+Codex should always work against the current repository rather than recreated content from chat history.
 
 ---
 
 # Success Criteria
 
-The workflow is successful when:
+The workflow succeeds when:
 
-- Every document is traceable.
-- Every architectural decision is documented.
-- Every significant change is reviewed.
-- Every repository update is verified.
-- GitHub remains the authoritative source.
-- The repository becomes easier to understand over time.
+- Changes are easy to review.
+- Git history is meaningful.
+- Repository quality steadily improves.
+- AI and humans follow the same governance model.
+- New contributors can understand how work is performed.
 
 ---
 
 # Related Documents
 
+- README.md
 - CONSTITUTION.md
-- Architecture/ARCHITECTURE.md
-- Architecture/GOVERNANCE.md
-- REVIEW_REGISTER.md
-- DOCUMENT_CATALOG.md
-- STATUS.md
+- DOCUMENTATION/REPOSITORY_STANDARDS.md
+- DOCUMENTATION/REPOSITORY_MIGRATION_PLAN.md
+- DOCUMENTATION/REPOSITORY_INVENTORY.md
+- DOCUMENTATION/DOCUMENT_CATALOG.md
+- DOCUMENTATION/DECISION_LOG.md
+- ARCHITECTURE/GOVERNANCE.md
+- ARCHITECTURE/ADR-0004-Definition-of-Done.md
+- ARCHITECTURE/ADR-0005-Versioning-Strategy.md
+
+---
+
+# Guiding Principle
+
+> Small, verified improvements made consistently are more valuable than large, unverified changes made occasionally.
