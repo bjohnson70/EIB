@@ -769,6 +769,6 @@ During Repository Foundation migration:
 
 ---
 
-# Guiding Principle
+# Guiding Principle.
 
 > The briefing should be short enough to read every day, useful enough to influence decisions, and human enough that the user actually wants to read it.
