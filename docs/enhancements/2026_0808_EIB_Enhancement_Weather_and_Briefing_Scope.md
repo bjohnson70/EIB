@@ -1,90 +1,59 @@
-# EIB Enhancement — Weather and Daily Briefing Scope
+EIB Enhancement — Morning Briefing Scope, Weather, and Freshness
 
-**Date:** 2026-08-08  
-**Status:** Approved Enhancement  
-**Target:** EIB v8  
-**Applies To:** Daily Executive Intelligence Brief (EIB)
-
----
-
-## Purpose
-
-Capture approved enhancements identified during review of the EIB v7 daily report so they can be incorporated into the next EIB master prompt revision.
-
-The EIB should function as a broad personal morning intelligence briefing while continuing to provide executive and professional decision support.
-
-The guiding question is:
-
-> **What do I need to know this morning?**
-
-Professional relevance is an important part of the briefing, but it must not become the sole criterion for determining what information is included.
+Date: 2026-08-08
+Last Updated: 2026-08-21
+Status: Approved Enhancement
+Target: EIB v8
+Applies To: Daily Executive Intelligence Brief (EIB)
 
 ---
 
-# Enhancement 1 — Daily Weather
+Purpose
 
-The EIB must contain a dedicated weather section based on the user's current or expected location.
+This document codifies approved enhancements to the Daily Executive Intelligence Brief identified through operational use and review of EIB v7.
 
-The daily weather section should include:
+The EIB must provide a broad, current morning intelligence picture while retaining its executive decision-support capabilities.
 
-- Current conditions
-- Current temperature
-- Today's forecast high
-- Today's forecast low
-- Sunrise
-- Sunset
-- Significant weather advisories or risks
-- Short outlook for the next 1–3 days when useful
-- Visual hourly weather graph for the current day
+The primary question answered by the morning briefing is:
 
----
+«What do I need to know this morning?»
 
-## Daily Weather Graph
+The EIB is therefore a:
 
-The visual hourly weather graph is a preferred and expected component of the EIB.
+«Broad personal executive morning intelligence briefing first and a professional decision-support briefing second.»
 
-When supported by the ChatGPT reporting interface, display the interactive hourly weather visualization directly within the briefing.
-
-The graph should normally emphasize:
-
-- Hourly temperature
-- Temperature progression throughout the day
-- Important changes in conditions
-
-When precipitation is significant, the visualization should instead emphasize precipitation probability and timing where appropriate.
-
-The weather graph should appear within or immediately adjacent to the Weather section.
-
-### Fallback
-
-If the reporting environment cannot render the visual weather graph, provide a concise hourly weather table or text summary.
-
-Do not omit the hourly weather outlook simply because the graphical interface is unavailable.
+Professional responsibilities provide an important analytical lens, but they must not define the entire information universe considered by the briefing.
 
 ---
 
-# Enhancement 2 — Personal Briefing First
+Requirement 1 — Morning Intelligence Baseline
 
-The EIB is a:
+The morning EIB establishes the intelligence baseline for the user's day.
 
-> **Broad personal executive morning intelligence briefing first and a professional decision-support briefing second.**
+It should provide sufficient awareness of significant events that the user does not need to consult multiple general news, weather, technology, cybersecurity, financial, and government sources simply to understand the major developments of the morning.
 
-The EIB should not be limited to information directly related to the user's employment or professional responsibilities.
+The briefing should prioritize:
 
-Professional responsibilities provide an important analytical lens, but they do not define the entire information universe of the briefing.
+- What changed
+- What matters
+- Why it matters
+- What may affect the user's day
+- What requires awareness
+- What requires action
+- What should continue to be watched
 
 ---
 
-# Enhancement 3 — Daily Information Funnel
+Requirement 2 — Daily Information Funnel
 
-The EIB should deliberately scan the following information areas each day:
+Before determining what belongs in the final briefing, the EIB should deliberately scan the following information areas:
 
 1. Today's Calendar / My Day
-2. My Location / Weather
-3. Local News
+2. Current Location / Weather
+3. Local and Regional News
 4. California News
 5. United States / National News
-6. International News
+6. International / Geopolitical News
 7. Economy / Financial Markets
 8. Technology / Artificial Intelligence
 9. Cybersecurity
@@ -94,72 +63,46 @@ The EIB should deliberately scan the following information areas each day:
 
 Not every category requires a lengthy section every day.
 
-The purpose of the information funnel is to ensure important developments are considered before determining what deserves space in the final briefing.
+The information funnel exists to ensure categories are considered before being omitted.
+
+Absence from the final briefing should result from prioritization, not from failure to look.
 
 ---
 
-# Enhancement 4 — Local News
+Requirement 3 — Personal Briefing First
 
-The EIB must deliberately review news relevant to the user's current location.
+Professional relevance must not become the sole story-selection criterion.
 
-Local coverage should consider:
+The EIB must not omit a major local, California, national, or international development merely because it lacks a direct connection to the user's employment or professional responsibilities.
 
-- Major breaking news
-- Public safety
-- Transportation
-- Significant weather
-- Utilities
-- Regional government
-- Major business or economic developments
-- Events or developments likely to affect the user's day
+Examples of important non-work information may include:
 
-Routine local stories that have little practical significance may be omitted to preserve briefing length.
+- Major national events
+- Significant geopolitical developments
+- Major economic changes
+- Natural disasters
+- Public-safety events
+- Transportation disruptions
+- Significant local developments
+- Major technology outages
+- Important financial developments
+- Significant weather conditions
 
----
-
-# Enhancement 5 — National News
-
-The EIB must include significant United States news even when the development does not directly affect the user's professional responsibilities.
-
-Examples include:
-
-- Major federal government developments
-- Significant economic developments
-- Major court decisions
-- National emergencies
-- Significant political developments
-- Major infrastructure or transportation disruptions
-- Important societal developments
-
-The EIB should provide enough information that the user does not need a separate general-news briefing simply to understand the major events of the day.
+Some events belong in the EIB simply because an informed person should reasonably know about them.
 
 ---
 
-# Enhancement 6 — International News
+Requirement 4 — Professional Relevance as an Analytical Lens
 
-Major international developments should be included when they are significant enough to reasonably belong in a general executive morning briefing.
-
-International coverage should prioritize developments involving:
-
-- National security
-- Armed conflicts
-- Major geopolitical changes
-- International economic developments
-- Major disasters
-- Significant diplomatic actions
-- Developments with substantial United States or California implications
-
----
-
-# Enhancement 7 — Professional Relevance Is an Analytical Lens
-
-Professional relevance remains important, particularly for:
+Professional relevance remains an important analytical lens, particularly for:
 
 - Information technology
 - Cybersecurity
 - Privacy
 - Risk management
 - Business continuity
+- Artificial intelligence
+- Technology governance
 - California government
 - State workforce
 - Budget
@@ -168,62 +111,276 @@ Professional relevance remains important, particularly for:
 
 However:
 
-> **Professional relevance is an interpretive lens, not the sole story-selection criterion.**
+«Professional relevance is an interpretive lens, not the sole story-selection criterion.»
 
-Never omit a major local, California, national, or international story merely because it lacks a direct connection to the user's professional responsibilities.
+The EIB should explain professional implications when they genuinely exist.
 
----
-
-# Enhancement 8 — Why This Matters to Me
-
-The existing "Why This Matters to Me" analysis should remain.
-
-However, it should be applied intelligently.
-
-For professional stories, explain relevant executive or operational consequences.
-
-For personal, local, national, or major general-news stories, explain practical relevance when meaningful.
-
-Do not manufacture a cybersecurity, information technology, or California-government connection merely to justify including an otherwise important news story.
-
-Some stories are important simply because an informed person should know about them.
+It should not manufacture an information-technology, cybersecurity, or California-government connection merely to justify including an otherwise important story.
 
 ---
 
-# Enhancement 9 — Preserve Briefing Length
+Requirement 5 — Location-Aware Weather
 
-The EIB should remain approximately a:
+The morning EIB must contain a dedicated weather section based on the user's current or expected location, when that information is available.
 
-> **5–7 minute read**
+Do not automatically assume the user's normal home location when travel or calendar context indicates that the user is somewhere else.
 
-Broader coverage should not turn the EIB into a long-form morning newspaper.
+The weather section should include:
 
-Achieve breadth through:
+- Current conditions
+- Current temperature
+- Today's forecast high
+- Today's forecast low
+- Sunrise
+- Sunset
+- Significant weather advisories
+- Significant weather risks
+- Short 1–3 day outlook when useful
+- Hourly weather outlook
+- Visual hourly weather graph when supported
+
+Weather information should be practical rather than merely descriptive.
+
+Examples of practical relevance include:
+
+- Heat
+- Rain
+- Snow
+- Severe storms
+- Air quality
+- Wildfire smoke
+- High winds
+- Travel impacts
+- Outdoor-activity impacts
+- Significant temperature changes
+
+---
+
+Requirement 6 — Daily Weather Graph
+
+The visual hourly weather graph is a preferred and expected component of the morning EIB.
+
+When the ChatGPT reporting environment supports an interactive weather visualization, display it directly within or immediately adjacent to the Weather section.
+
+The graph should normally make it easy to understand:
+
+- Hourly temperature
+- Temperature progression
+- Changes in weather conditions
+- Significant precipitation timing when applicable
+
+When precipitation, storms, snow, or another weather hazard is more important than temperature, emphasize the most operationally useful weather information.
+
+Fallback
+
+If the reporting environment cannot render the visual graph, provide a concise hourly weather table or text outlook.
+
+Do not omit the hourly outlook merely because graphical rendering is unavailable.
+
+---
+
+Requirement 7 — Local and Regional Awareness
+
+The EIB must deliberately review significant news relevant to the user's current location.
+
+Local/regional coverage should consider:
+
+- Breaking news
+- Public safety
+- Transportation
+- Utilities
+- Weather
+- Wildfires
+- Air quality
+- Regional government
+- Major business/economic developments
+- Significant events likely to affect the user's day
+
+Routine local-interest stories may be omitted when they do not materially improve situational awareness.
+
+---
+
+Requirement 8 — National Awareness
+
+The EIB must include significant United States news even when it does not directly affect the user's professional responsibilities.
+
+Coverage should consider:
+
+- Federal government developments
+- Significant economic developments
+- Major court decisions
+- National emergencies
+- Significant political developments
+- Infrastructure disruptions
+- Major public-safety developments
+- Important societal developments
+
+The user should not require a separate general-news briefing merely to understand the major national events of the day.
+
+---
+
+Requirement 9 — International Awareness
+
+Major international developments should be included when significant enough to belong in a general executive morning briefing.
+
+Prioritize developments involving:
+
+- National security
+- Armed conflict
+- Major geopolitical changes
+- International economic developments
+- Major disasters
+- Significant diplomatic actions
+- Energy markets
+- Global trade
+- Developments with meaningful U.S. or California implications
+
+---
+
+Requirement 10 — Technology, AI, and Cybersecurity
+
+The morning EIB should deliberately scan for significant developments involving:
+
+- Major technology companies
+- Artificial intelligence
+- AI governance
+- Major service outages
+- Cloud platforms
+- Developer platforms
+- Cybersecurity incidents
+- Significant vulnerabilities
+- Ransomware
+- Critical infrastructure
+- Major federal cybersecurity guidance
+
+Routine technical vulnerabilities should not overwhelm the general briefing.
+
+Detailed vulnerability-management information belongs in specialist operational reporting unless the issue reaches an executive-awareness threshold.
+
+---
+
+Requirement 11 — Freshness and Information Aging
+
+The EIB should favor new information and meaningful change.
+
+A story should not remain prominent merely because it was important several days ago.
+
+The general rule is:
+
+«New information earns attention. Persistent risk retains appropriate awareness. Stale repetition drops out.»
+
+Previously reported developments should remain in the briefing only when:
+
+- New facts have emerged
+- Risk materially changed
+- Operational impact changed
+- A decision is approaching
+- The event remains actively consequential
+- Resolution or outcome is important
+
+Avoid repeating essentially identical summaries day after day.
+
+---
+
+Requirement 12 — Morning Continuity From Breaking Updates
+
+Significant EIB Breaking Updates from the previous briefing cycle should be considered when preparing the next morning EIB.
+
+Do not automatically reproduce the entire prior alert.
+
+Instead, report meaningful status changes or outcomes.
+
+Example:
+
+«GitHub Outage — Resolved: Yesterday's service disruption has been resolved. No continuing broad operational impact is currently reported.»
+
+If nothing meaningful has changed and the issue is no longer relevant, it may be dropped from the morning report.
+
+---
+
+Requirement 13 — Why This Matters
+
+The EIB should retain concise Why This Matters analysis.
+
+The analysis should be proportional to the story.
+
+For professional developments, explain legitimate executive, operational, cybersecurity, technology, financial, government, or workforce implications.
+
+For personal/local/general-news developments, explain practical relevance when useful.
+
+Do not force every story into a professional context.
+
+---
+
+Requirement 14 — Action Versus Awareness
+
+The EIB should distinguish between:
+
+- Action Required
+- Executive / Personal Awareness
+- Continue Monitoring
+- No Action Required
+
+Do not manufacture an action merely because a story appears in the briefing.
+
+Sometimes awareness is the correct outcome.
+
+---
+
+Requirement 15 — Preserve the 5–7 Minute Read
+
+The EIB remains an executive briefing, not a morning newspaper.
+
+Target reading time:
+
+«Approximately 5–7 minutes»
+
+Broader coverage should be achieved through:
 
 - Prioritization
-- Concise summaries
-- Short executive analysis
+- Concise writing
+- Short executive summaries
 - Removal of repetitive information
-- Links to deeper reading when appropriate
+- Strong information hierarchy
+- Links to deeper material when useful
 
-Important categories should not be eliminated merely to reduce length.
+Do not achieve brevity by simply eliminating entire categories of relevant information.
 
 ---
 
-# EIB v8 Incorporation Requirements
+Requirement 16 — Relationship to Continuous Awareness
 
-When the existing EIB v7 master prompt is revised to EIB v8, incorporate the requirements in this enhancement directly into the master prompt.
+The morning EIB and the EIB Breaking Update capability serve different purposes.
+
+Morning EIB
+
+«Comprehensive daily intelligence baseline»
+
+EIB Breaking Update
+
+«Exception-based situational awareness during the day»
+
+The morning briefing should not become longer simply because Breaking Updates exist.
+
+Likewise, Breaking Updates should not become miniature morning EIBs.
+
+The Continuous Awareness and Breaking Update requirements are maintained separately in:
+
+"docs/enhancements/2026_0817_EIB_Enhancement_Continuous_Awareness_and_Breaking_Updates.md"
+
+---
+
+EIB v8 Incorporation Requirements
+
+When EIB v7 is revised to EIB v8, the master prompt must incorporate these approved requirements directly.
 
 At minimum, EIB v8 must explicitly include:
 
-- Local weather as a standard daily section
-- Visual hourly weather graph
-- Current conditions
-- Daily high and low
-- Sunrise
-- Sunset
-- Significant weather risks
-- Local news
+- Personal/executive briefing first
+- Professional decision support second
+- Daily information funnel
+- Current-location awareness
+- Local/regional news
 - California news
 - National news
 - International news
@@ -231,21 +388,30 @@ At minimum, EIB v8 must explicitly include:
 - Technology and artificial intelligence
 - Cybersecurity
 - California government and workforce
-- Personal-briefing-first operating principle
-- Professional relevance as an analytical lens rather than the sole selection criterion
-- Existing executive decision-support capabilities
-- Existing 5–7 minute read target
+- Location-aware weather
+- Current conditions
+- Daily high and low
+- Sunrise
+- Sunset
+- Hourly weather outlook
+- Visual hourly weather graph when supported
+- Freshness and information-aging rules
+- Continuity from Breaking Updates
+- Action-versus-awareness distinction
+- Approximately 5–7 minute read target
 
 ---
 
-# Implementation Status
+Implementation Status
 
-**Current Master Prompt:** EIB v7
+Current Master Prompt: EIB v7
+Target Master Prompt: EIB v8
+Enhancement Status: Approved for incorporation
+Morning Briefing Model: Approved
+Weather Visualization: Approved
+Freshness Rules: Approved
+5–7 Minute Target: Retained
 
-**Target Master Prompt:** EIB v8
+This enhancement should remain in the repository after EIB v8 is implemented as the historical record of the requirements and operational experience that led to the changes.
 
-**Enhancement Status:** Approved for incorporation
-
-This document should remain in the repository after EIB v8 is created as a historical record of the requirements and rationale that led to the change.
-
-Once EIB v8 incorporates these requirements, the master prompt becomes the authoritative operational instruction for generating the daily briefing.
+Once incorporated, the EIB v8 master prompt becomes the authoritative operational instruction, while this document remains the requirements and design record.
