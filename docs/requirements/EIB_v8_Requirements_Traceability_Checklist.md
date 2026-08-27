@@ -1,17 +1,18 @@
-EIB v8 — Requirements Traceability Checklist
+# EIB v8 — Requirements Traceability Checklist
 
-Created: 2026-08-21
-Status: Active Requirements Control
-Target: EIB v8
-Purpose: Requirements traceability and implementation verification
+**Created:** 2026-08-21  
+**Last Updated:** 2026-08-27  
+**Status:** Active Requirements Control  
+**Target:** EIB v8  
+**Purpose:** Requirements traceability and implementation verification
 
 ---
 
-Purpose
+## Purpose
 
-This document provides a single implementation checklist for the approved requirements that must be incorporated into EIB v8.
+This document provides the implementation and acceptance checklist for requirements that must be incorporated into EIB v8.
 
-It exists to prevent approved enhancements from being lost between:
+It prevents approved enhancements from being lost between:
 
 1. Operational experience
 2. Design discussions
@@ -21,51 +22,47 @@ It exists to prevent approved enhancements from being lost between:
 6. Testing
 7. Production use
 
-This document does not replace the underlying enhancement documents.
+This checklist does not replace the underlying enhancement documents.
 
-It provides a traceability and acceptance checklist for determining whether EIB v8 actually implements them.
+It verifies whether EIB v8 actually implements them.
 
 ---
 
-Authoritative Enhancement Sources
+# Authoritative Enhancement Sources
 
-The following approved enhancement documents are requirements inputs to EIB v8:
+## Morning Briefing
 
-Morning Briefing
+`docs/enhancements/2026_0808_EIB_Enhancement_Weather_and_Briefing_Scope.md`
 
-"docs/enhancements/2026_0808_EIB_Enhancement_Weather_and_Briefing_Scope.md"
+## Continuous Awareness
 
-Continuous Awareness
+`docs/enhancements/2026_0817_EIB_Enhancement_Continuous_Awareness_and_Breaking_Updates.md`
 
-"docs/enhancements/2026_0817_EIB_Enhancement_Continuous_Awareness_and_Breaking_Updates.md"
-
-These documents explain the requirements and rationale.
+These documents define the requirements and rationale.
 
 This checklist verifies implementation.
 
 ---
 
-A — Morning EIB Requirements
+# A — Morning EIB
 
-A1 — Mission
+## A1 — Mission
 
-- [ ] EIB answers: What do I need to know this morning?
-- [ ] EIB operates as a broad personal executive briefing first.
+- [ ] Answers: **What do I need to know this morning?**
+- [ ] Operates as a broad personal executive briefing first.
 - [ ] Professional decision support remains an important secondary function.
 - [ ] Professional relevance is an analytical lens rather than the sole story-selection criterion.
 
----
+## A2 — Information Funnel
 
-A2 — Daily Information Funnel
-
-Before final story selection, EIB considers:
+Before final story selection, consider:
 
 - [ ] Calendar / My Day
 - [ ] Current location
 - [ ] Weather
 - [ ] Local / regional news
 - [ ] California news
-- [ ] United States / national news
+- [ ] United States news
 - [ ] International / geopolitical news
 - [ ] Economy
 - [ ] Financial markets
@@ -83,19 +80,17 @@ Before final story selection, EIB considers:
 
 ---
 
-B — Location and Weather
+# B — Location and Weather
 
-B1 — Location Awareness
+## B1 — Location
 
 - [ ] Determine current or expected location when available.
 - [ ] Travel context can override normal home location.
-- [ ] Weather uses the appropriate current location.
-- [ ] Local news uses the appropriate current location.
+- [ ] Weather uses appropriate current location.
+- [ ] Local news uses appropriate current location.
 - [ ] Breaking-event monitoring considers current location.
 
----
-
-B2 — Weather Content
+## B2 — Weather
 
 Morning weather includes:
 
@@ -106,28 +101,26 @@ Morning weather includes:
 - [ ] Sunrise
 - [ ] Sunset
 - [ ] Significant advisories
-- [ ] Significant weather risks
+- [ ] Significant risks
 - [ ] Useful short-term outlook
 - [ ] Hourly outlook
 
----
-
-B3 — Weather Visualization
+## B3 — Weather Visualization
 
 - [ ] Visual hourly weather graph displayed when supported.
-- [ ] Graph appears in or adjacent to Weather section.
+- [ ] Graph appears in or adjacent to Weather.
 - [ ] Temperature progression is easy to understand.
-- [ ] Significant precipitation is emphasized when appropriate.
-- [ ] Significant weather hazards are emphasized when appropriate.
-- [ ] Text/table hourly fallback exists when graphical rendering is unavailable.
+- [ ] Significant precipitation emphasized when appropriate.
+- [ ] Significant hazards emphasized when appropriate.
+- [ ] Text/table fallback exists when graphical rendering is unavailable.
 
 ---
 
-C — News Coverage
+# C — News Coverage
 
-C1 — Local / Regional
+Morning EIB deliberately considers:
 
-EIB deliberately considers:
+## C1 — Local / Regional
 
 - [ ] Breaking local news
 - [ ] Public safety
@@ -140,11 +133,7 @@ EIB deliberately considers:
 - [ ] Major regional economic developments
 - [ ] Events likely to affect the user's day
 
----
-
-C2 — California
-
-EIB deliberately considers:
+## C2 — California
 
 - [ ] Major California news
 - [ ] State government
@@ -153,13 +142,9 @@ EIB deliberately considers:
 - [ ] Economy
 - [ ] Emergencies
 - [ ] Major regulatory developments
-- [ ] State workforce developments when relevant
+- [ ] State workforce when relevant
 
----
-
-C3 — National
-
-EIB deliberately considers:
+## C3 — National
 
 - [ ] Federal government
 - [ ] Economy
@@ -170,11 +155,7 @@ EIB deliberately considers:
 - [ ] Public safety
 - [ ] Major societal developments
 
----
-
-C4 — International
-
-EIB deliberately considers:
+## C4 — International
 
 - [ ] National security
 - [ ] Armed conflicts
@@ -189,7 +170,7 @@ EIB deliberately considers:
 
 ---
 
-D — Technology, AI, and Cybersecurity
+# D — Technology, AI and Cybersecurity
 
 Morning EIB deliberately considers:
 
@@ -203,18 +184,19 @@ Morning EIB deliberately considers:
 - [ ] Significant vulnerabilities
 - [ ] Active exploitation
 - [ ] Ransomware
-- [ ] Critical infrastructure threats
+- [ ] Critical-infrastructure threats
 - [ ] Significant federal cybersecurity guidance
 
-Technical detail is filtered appropriately:
+Technical filtering:
 
-- [ ] Routine vulnerabilities do not overwhelm the EIB.
+- [ ] Routine vulnerabilities do not overwhelm EIB.
 - [ ] Specialist technical reporting remains separate when appropriate.
 - [ ] Executive-impacting technical events are elevated appropriately.
+- [ ] Known human cyber dispositions are considered before presenting previously evaluated issues.
 
 ---
 
-E — Freshness and Information Aging
+# E — Freshness and Aging
 
 - [ ] New information receives appropriate priority.
 - [ ] Persistent active risk retains appropriate awareness.
@@ -222,125 +204,243 @@ E — Freshness and Information Aging
 - [ ] Repetitive summaries are avoided.
 - [ ] Previously reported stories remain only when materially relevant.
 - [ ] New facts can re-elevate a story.
-- [ ] Material status changes can re-elevate a story.
-- [ ] Resolution can be reported when useful.
+- [ ] Material status changes can re-elevate a story when relevant.
+- [ ] Resolution is reported only when useful.
 
 Operating principle:
 
-«New information earns attention. Persistent risk retains appropriate awareness. Stale repetition drops out.»
+> **New information earns attention. Persistent risk retains appropriate awareness. Stale repetition drops out.**
 
 ---
 
-F — Executive Presentation
+# F — Executive Presentation
 
-F1 — Why This Matters
+## F1 — Relevance
 
 - [ ] Important stories receive concise relevance analysis.
-- [ ] Professional implications are identified when genuine.
-- [ ] Personal implications are identified when useful.
+- [ ] Professional implications identified when genuine.
+- [ ] Personal implications identified when useful.
 - [ ] Professional connections are not artificially manufactured.
 
----
+## F2 — Classification
 
-F2 — Action Classification
-
-Stories can appropriately result in:
+Stories may result in:
 
 - [ ] Action Required
-
 - [ ] Executive / Personal Awareness
-
 - [ ] Continue Monitoring
-
 - [ ] No Action Required
+- [ ] EIB does not manufacture an action.
 
-- [ ] EIB does not manufacture an action for every story.
+## F3 — Read Time
 
----
-
-F3 — Read Time
-
-- [ ] Target remains approximately 5–7 minutes.
-- [ ] Breadth is achieved through prioritization.
+- [ ] Approximately 5–7 minutes.
+- [ ] Breadth achieved through prioritization.
 - [ ] Summaries remain concise.
-- [ ] Repetition is minimized.
-- [ ] Important categories are not simply eliminated to reduce length.
+- [ ] Repetition minimized.
+- [ ] Important categories are not eliminated simply to reduce length.
 
 ---
 
-G — Continuous Awareness
+# G — Continuous Awareness
 
-G1 — Monitoring Cycle
+## G1 — Monitoring
 
-- [ ] Continuous Awareness begins after morning EIB.
-- [ ] Target check interval is approximately every two hours.
-- [ ] Monitoring continues through the active day.
-- [ ] Each check compares against the morning EIB and prior Breaking Updates.
-- [ ] Complete EIB is not regenerated every two hours.
+- [ ] Begins after Morning EIB.
+- [ ] Target interval approximately every two hours.
+- [ ] Continues through active day.
+- [ ] Compares against Morning EIB and previous Breaking Updates.
+- [ ] Does not regenerate complete EIB every two hours.
 
----
+## G2 — Purpose
 
-G2 — Silence by Default
+Every cycle asks:
+
+> **Has something happened that may reasonably require the user to take action or make a decision now?**
+
+- [ ] Monitoring searches broadly.
+- [ ] Notification remains narrowly filtered.
+- [ ] Discovery of important news does not itself require notification.
+
+## G3 — Silence
 
 When nothing qualifies:
 
-- [ ] No Breaking Update generated.
-- [ ] No ChatGPT notification generated.
-- [ ] No email generated.
-- [ ] No "nothing happened" alert generated.
+- [ ] No Breaking Update.
+- [ ] No ChatGPT notification.
+- [ ] No email.
+- [ ] No "nothing happened" alert.
 
-Silence is an intentional system behavior.
+> **Silence is successful system behavior.**
 
 ---
 
-H — Breaking Update Threshold
+# H — Breaking Update Right-Now Action Gate
 
-Before interrupting the user, determine:
+Before interrupting the user:
 
-- [ ] Is the development important?
+- [ ] Is this materially relevant to the user?
+- [ ] Could it reasonably cause action or a decision **RIGHT NOW**?
 - [ ] Is it genuinely new or materially changed?
-- [ ] Is it time-sensitive?
-- [ ] Would the user reasonably want to know before tomorrow morning?
-- [ ] Would waiting reduce the ability to protect an important interest?
+- [ ] Has a prior human disposition already closed or excluded it?
+- [ ] Would waiting until the Morning EIB materially reduce response value?
 
-Relevant interests include:
+If the Right-Now Action test fails:
+
+> **Morning EIB is the default destination.**
+
+Possible immediate interests include:
 
 - [ ] Health
 - [ ] Safety
+- [ ] Family
+- [ ] Current location
+- [ ] Travel
 - [ ] Financial exposure
-- [ ] Markets
 - [ ] Network availability
 - [ ] Cybersecurity
 - [ ] Technology operations
 - [ ] Business operations
-- [ ] Travel
+- [ ] DDS responsibilities
 - [ ] Emergency response
 - [ ] Critical infrastructure
 
 Operating principle:
 
-«Important intelligence belongs in the EIB. Time-sensitive intelligence belongs in a Breaking Update.»
+> **Important does not equal Breaking.**
+
+> **Breaking means immediate awareness may reasonably change what the user does now.**
 
 ---
 
-I — Alert-Fatigue Protection
+# I — Alert-Fatigue Protection
 
-- [ ] Major media attention alone does not trigger an alert.
-- [ ] Historical significance alone does not trigger an alert.
-- [ ] Political significance alone does not trigger an alert.
-- [ ] Routine vulnerability disclosure does not trigger an alert.
-- [ ] Routine market movement does not trigger an alert.
-- [ ] Important-but-nonurgent information waits for morning EIB.
+The following alone do not trigger Breaking Updates:
 
-Reference lesson:
+- [ ] Major media attention
+- [ ] Historical significance
+- [ ] Political significance
+- [ ] International significance
+- [ ] Large numbers of people affected
+- [ ] Routine vulnerability disclosure
+- [ ] CVSS severity alone
+- [ ] CISA KEV inclusion alone
+- [ ] Active exploitation alone
+- [ ] Routine market movement
+- [ ] Government announcement alone
+- [ ] Corporate announcement alone
+- [ ] Material-but-nonactionable incident lifecycle change
 
-- [ ] A major U.S. national-debt milestone, absent an immediate actionable consequence, is treated as morning-EIB intelligence rather than an automatic Breaking Update.
+Important but nonurgent information waits for the Morning EIB.
+
+When uncertain:
+
+> **Hold for morning.**
 
 ---
 
-J — Breaking Categories
+# J — Operational Examples
 
-Continuous Awareness considers:
+Acceptance behavior must reproduce these decisions.
+
+## J1 — Remote Major Wildfire
+
+Example: major Texas wildfire without current-location, family, travel, work, infrastructure, or immediate safety impact.
+
+Expected:
+
+- [ ] Event recognized as important.
+- [ ] Breaking Update suppressed.
+- [ ] Event considered for Morning EIB.
+
+## J2 — Major Geopolitical / Economic Announcement
+
+Example: expanded U.S. sanctions on Iran without immediate financial, travel, operational, or governmental action requirement.
+
+Expected:
+
+- [ ] Event recognized.
+- [ ] Breaking Update suppressed.
+- [ ] Event considered for Morning EIB.
+
+## J3 — Relevant Technology Outage
+
+Example: significant GitHub outage during active GitHub/EIB work.
+
+Expected:
+
+- [ ] Official status checked.
+- [ ] Operational relevance identified.
+- [ ] Right-Now Action Gate passes when outage affects current activity.
+- [ ] Breaking Update generated when appropriate.
+
+---
+
+# K — Cybersecurity Applicability
+
+## K1 — Initial Evaluation
+
+For newly relevant cybersecurity issues:
+
+- [ ] Determine whether affected technology is known or plausibly present.
+- [ ] Absence from approved-software inventory alone does not establish N/A.
+- [ ] Human SecOps evaluation is requested when required.
+- [ ] Evidence source is retained.
+
+## K2 — Human Disposition
+
+Recognized states include:
+
+- [ ] Applicable
+- [ ] Potentially Applicable
+- [ ] Investigating
+- [ ] Not Applicable / N/A
+- [ ] Closed
+- [ ] Reopened
+
+Once authorized SecOps determines N/A or Closed:
+
+- [ ] Determination is retained.
+- [ ] Determination is honored by Breaking monitoring.
+- [ ] Routine new reporting about the same issue does not reopen it.
+- [ ] Repeated Breaking Updates are suppressed.
+
+## K3 — Reopening
+
+A closed/N/A issue may be reopened only when materially new evidence plausibly changes applicability.
+
+Examples:
+
+- [ ] Newly discovered deployment
+- [ ] Newly affected product
+- [ ] New supply-chain dependency
+- [ ] New third-party exposure
+- [ ] New evidence of compromise
+- [ ] Material expansion of affected versions
+- [ ] Human SecOps reopens issue
+
+## K4 — Zimbra Acceptance Case
+
+Given:
+
+> DDS has provided a human-validated N/A determination for Zimbra.
+
+When:
+
+> Additional reporting states Zimbra exploitation has expanded.
+
+Expected:
+
+- [ ] Prior DDS disposition retrieved.
+- [ ] N/A determination honored.
+- [ ] No Breaking Update generated.
+- [ ] Issue remains closed unless new evidence plausibly changes DDS applicability.
+
+---
+
+# L — Breaking Categories
+
+Continuous Awareness may monitor:
 
 - [ ] Local / regional emergencies
 - [ ] California emergencies
@@ -362,15 +462,16 @@ Continuous Awareness considers:
 - [ ] Transportation disruptions
 - [ ] Public-safety events
 
-Category membership alone does not satisfy the Breaking threshold.
+> **Category membership alone never satisfies the Breaking threshold.**
 
 ---
 
-K — Operational Status Monitoring
+# M — Operational Status Monitoring
 
-Explicit monitoring includes, when relevant:
+Explicit monitoring includes when relevant:
 
 - [ ] GitHub
+- [ ] GitHub Actions
 - [ ] GitHub Copilot
 - [ ] Microsoft
 - [ ] Microsoft 365
@@ -380,13 +481,15 @@ Explicit monitoring includes, when relevant:
 - [ ] Major AI platforms
 - [ ] Other platforms relevant to current activity
 
+Minor degradation does not automatically require interruption.
+
 ---
 
-L — Source Quality
+# N — Source Quality
 
-L1 — Tier 1
+## N1 — Tier 1
 
-Prefer authoritative sources:
+Prefer:
 
 - [ ] Vendor status pages
 - [ ] Vendor security advisories
@@ -396,43 +499,39 @@ Prefer authoritative sources:
 - [ ] Emergency-management agencies
 - [ ] Official government announcements
 
-L2 — Tier 2
+## N2 — Tier 2
 
-Use reputable independent reporting for:
+Use reputable reporting for:
 
 - [ ] Corroboration
 - [ ] Context
 - [ ] Scope
 - [ ] Consequences
 
-L3 — Tier 3
+## N3 — Tier 3
 
 Supporting indicators may include:
 
 - [ ] Downdetector
-
 - [ ] Credible community reporting
-
 - [ ] Other outage aggregators
-
-- [ ] Supporting indicators are not treated as authoritative root-cause sources.
+- [ ] Supporting indicators are not authoritative root-cause sources.
 
 ---
 
-M — Deduplication and Incident Lifecycle
+# O — Deduplication and Lifecycle
 
-- [ ] Already-reported events are tracked.
-- [ ] Identical information is not re-alerted.
-- [ ] Severity increase may trigger an update.
-- [ ] Scope expansion may trigger an update.
-- [ ] New affected services may trigger an update.
-- [ ] Confirmed root cause may trigger an update when useful.
-- [ ] New security implications may trigger an update.
-- [ ] Significant mitigation may trigger an update.
-- [ ] Recovery may trigger an update when operationally useful.
-- [ ] Resolution may trigger an update when useful.
+- [ ] Already-reported events tracked.
+- [ ] Identical information not re-alerted.
+- [ ] A material change alone does not automatically trigger another alert.
+- [ ] Changed status must itself pass the Right-Now Action Gate.
+- [ ] Severity increase may trigger only when immediate relevance changes.
+- [ ] Scope expansion may trigger only when immediate relevance changes.
+- [ ] New security implications may trigger when actionable.
+- [ ] Recovery may trigger when knowing now changes behavior.
+- [ ] Resolution may trigger when knowing now changes behavior.
 
-Possible lifecycle states include:
+Possible states:
 
 - [ ] Emerging
 - [ ] Investigating
@@ -443,124 +542,147 @@ Possible lifecycle states include:
 - [ ] Monitoring
 - [ ] Resolved
 
-Not every lifecycle transition requires notification.
+> **Not every lifecycle transition requires notification.**
 
 ---
 
-N — Breaking Update Presentation
+# P — Breaking Update Presentation
 
-A qualifying alert should contain:
+A qualifying alert contains:
 
 - [ ] What happened
-
 - [ ] When
-
 - [ ] Current status
+- [ ] **Why it matters now**
+- [ ] Immediate action when appropriate
+- [ ] Authoritative sources
+- [ ] Significantly shorter than Morning EIB
 
-- [ ] Why it matters
+If no plausible immediate action or decision can be identified:
 
-- [ ] Action when appropriate
+- [ ] Reconsider whether the event qualifies as Breaking.
 
-- [ ] Authoritative source links
-
-- [ ] Breaking Update is significantly shorter than Morning EIB.
+Do not manufacture an action merely to justify an alert.
 
 ---
 
-O — Alert Delivery
+# Q — Alert Delivery
 
 For every qualifying Breaking Update:
 
-- [ ] Display alert in ChatGPT.
-- [ ] Send email to designated personal account.
-- [ ] Send email to designated work account.
-- [ ] Mark email IMPORTANT / High Priority when technically supported.
+- [ ] Display in ChatGPT.
+- [ ] Send to designated personal email.
+- [ ] Send to designated work email.
+- [ ] Mark IMPORTANT / High Priority when technically supported.
 
-Recommended subject convention:
+Recommended subject:
 
-«IMPORTANT — EIB Breaking Update — [Event]»
+> **IMPORTANT — EIB Breaking Update — [Event]**
 
 Email contains:
 
 - [ ] What happened
 - [ ] When
 - [ ] Current status
-- [ ] Why it matters
-- [ ] Action when appropriate
-- [ ] Source links
+- [ ] Why it matters now
+- [ ] Immediate action when appropriate
+- [ ] Sources
 
 ---
 
-P — Delivery Integrity
+# R — Delivery Integrity
 
-The system must distinguish between:
+System distinguishes:
 
 - [ ] Delivered
-
 - [ ] Delivered and marked Important
-
 - [ ] Delivery attempt failed
-
 - [ ] Delivery capability unavailable
-
-- [ ] Never claim email delivery without successful execution.
-
+- [ ] Never claim delivery without successful execution.
 - [ ] ChatGPT alert still displays if email delivery fails.
-
-- [ ] Email failure is disclosed concisely.
+- [ ] Failure disclosed concisely.
 
 ---
 
-Q — Following-Morning Continuity
+# S — Following-Morning Continuity
 
-- [ ] Previous Breaking Updates are considered.
-- [ ] Entire prior alerts are not automatically repeated.
-- [ ] Continuing incidents receive useful status updates.
-- [ ] Resolved incidents receive concise resolution when relevant.
+- [ ] Important events suppressed from Breaking remain eligible for Morning EIB.
+- [ ] Previous Breaking Updates considered.
+- [ ] Entire prior alerts not automatically repeated.
+- [ ] Continuing incidents receive useful status when appropriate.
+- [ ] Resolved incidents included only when still relevant.
 - [ ] No-longer-relevant incidents drop out.
 
+> **Suppressed from Breaking does not mean unimportant. It means it can wait until morning.**
+
 ---
 
-R — Acceptance Testing
+# T — Acceptance Testing
 
-Before EIB v8 is declared complete, test at least the following scenarios.
+Before EIB v8 is complete, test:
 
-Scenario 1 — Normal Morning
-
-Expected:
-
-- [ ] Weather graph appears.
-- [ ] Sunrise/sunset appear.
-- [ ] Local through international news considered.
-- [ ] Briefing remains 5–7 minutes.
-
-Scenario 2 — User Traveling
+## Scenario 1 — Normal Morning
 
 Expected:
 
-- [ ] Current travel location drives weather.
-- [ ] Current travel location drives local awareness.
-- [ ] Normal home location does not incorrectly dominate.
+- [ ] Weather graph.
+- [ ] Sunrise/sunset.
+- [ ] Local through international news.
+- [ ] 5–7 minute read.
 
-Scenario 3 — Major Technology Outage
+## Scenario 2 — Traveling
 
 Expected:
 
-- [ ] Official status source detected.
-- [ ] Outage passes urgency threshold when appropriate.
-- [ ] Breaking Update generated.
-- [ ] IMPORTANT email generated.
-- [ ] Event tracked through material lifecycle changes.
+- [ ] Travel location drives weather.
+- [ ] Travel location drives local awareness.
+- [ ] Home location does not incorrectly dominate.
 
-Scenario 4 — Important but Nonurgent News
+## Scenario 3 — Relevant Major Technology Outage
+
+Expected:
+
+- [ ] Official status detected.
+- [ ] Relevance determined.
+- [ ] Right-Now Action Gate evaluated.
+- [ ] Breaking Update generated only when current action/decision may change.
+- [ ] IMPORTANT email generated when alert qualifies.
+
+## Scenario 4 — Remote Major Emergency
 
 Expected:
 
 - [ ] Event recognized.
-- [ ] Breaking Update suppressed.
-- [ ] Event retained for next morning EIB when appropriate.
+- [ ] No Breaking Update absent direct impact.
+- [ ] Event retained for Morning EIB when important.
 
-Scenario 5 — No Material Change
+## Scenario 5 — Important Geopolitical Development
+
+Expected:
+
+- [ ] Event recognized.
+- [ ] No Breaking Update absent immediate actionable consequence.
+- [ ] Morning EIB consideration retained.
+
+## Scenario 6 — New Relevant Cyber Vulnerability
+
+Expected:
+
+- [ ] Applicability evaluated.
+- [ ] Approved-software inventory treated as evidence, not sole proof.
+- [ ] Human disposition obtained when required.
+- [ ] Breaking alert only when plausible relevance and immediate action threshold both exist.
+
+## Scenario 7 — Previously N/A Cyber Issue
+
+Expected:
+
+- [ ] Prior human disposition retrieved.
+- [ ] N/A/Closed status honored.
+- [ ] New reporting alone does not generate another alert.
+- [ ] Reopen only with materially new applicability evidence.
+
+## Scenario 8 — No Qualifying Change
 
 Expected:
 
@@ -568,52 +690,67 @@ Expected:
 - [ ] No notification.
 - [ ] No email.
 
-Scenario 6 — Repeated Incident
+## Scenario 9 — Repeated Incident Lifecycle Change
 
 Expected:
 
-- [ ] Duplicate information suppressed.
-- [ ] Material status change may generate concise update.
+- [ ] Duplicate suppressed.
+- [ ] Status change evaluated against Right-Now Action Gate.
+- [ ] No alert merely because incident moved from one lifecycle state to another.
 
-Scenario 7 — Email Failure
+## Scenario 10 — Meaningful Service Restoration
+
+Expected:
+
+- [ ] Restoration evaluated for immediate practical value.
+- [ ] Resolution alert generated only when knowing now changes what the user should do.
+
+## Scenario 11 — Email Failure
 
 Expected:
 
 - [ ] ChatGPT alert still displays.
-- [ ] Failed delivery is not represented as successful.
-- [ ] User is informed concisely.
+- [ ] Failed delivery not represented as successful.
+- [ ] User informed concisely.
 
 ---
 
-S — v8 Release Gate
+# U — v8 Release Gate
 
-EIB v8 should not be considered fully implemented until:
+EIB v8 is not fully implemented until:
 
-- [ ] Morning enhancement requirements are incorporated.
-- [ ] Continuous Awareness requirements are incorporated.
-- [ ] Requirements in this checklist are reviewed.
-- [ ] Acceptance scenarios are tested.
-- [ ] Material failures are corrected.
+- [ ] Morning enhancement incorporated.
+- [ ] Continuous Awareness enhancement incorporated.
+- [ ] Right-Now Action Gate incorporated.
+- [ ] Human cyber disposition logic incorporated.
+- [ ] N/A/closed suppression incorporated.
+- [ ] Deduplication incorporated.
+- [ ] Lifecycle action gate incorporated.
+- [ ] Requirements reviewed.
+- [ ] Acceptance scenarios tested.
+- [ ] Material failures corrected.
 - [ ] Master prompt reflects approved requirements.
-- [ ] Automation configuration reflects approved requirements.
+- [ ] Automation reflects approved requirements.
 - [ ] Notification implementation reflects approved requirements.
-- [ ] Documentation reflects actual implemented behavior.
+- [ ] Documentation reflects actual behavior.
 
 ---
 
-Final Acceptance Principle
+# Final Acceptance Principle
 
-EIB v8 should satisfy three questions:
+EIB v8 must consistently answer:
 
-«Did the morning briefing tell me what I needed to know?»
+> **Did the Morning EIB tell me what I needed to know?**
 
-«Did the system alert me when something happened that should not wait until tomorrow?»
+> **Did Breaking interrupt me only when something happened that may require me to do something now?**
 
-«Did it remain quiet when there was nothing worth interrupting me about?»
+> **Did important information that could wait get held for the Morning EIB instead?**
 
-If all three are consistently true, the EIB is operating as intended.
+> **Did the system remain quiet when there was nothing worth interrupting me about?**
+
+If all four are consistently true, EIB is operating as intended.
 
 ---
 
-Status: Active
-Next Step: Use this checklist during EIB v8 implementation and validation.
+**Status:** Active  
+**Next Step:** Use this checklist during EIB v8 implementation and validation.
