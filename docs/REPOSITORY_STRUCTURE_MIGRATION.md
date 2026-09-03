@@ -2,57 +2,33 @@
 
 ## 1. Purpose
 
-This document defines the planned migration of the Executive Intelligence
-Briefing (EIB) repository from its legacy directory naming conventions to the
-shared repository naming standards established by the Common Operation Guide
-(COG).
+This document defines the planned migration of the Executive Intelligence Briefing (EIB) repository from legacy directory conventions to the shared repository standards established by the Common Operation Guide (COG).
 
-The migration is intended to improve:
+The migration is intended to improve consistency, portability, contributor usability, navigation, maintainability, and reuse of shared standards.
 
-- Consistency across EIB and related projects
-- Compatibility with common Git and GitHub practices
-- Cross-platform portability
-- Contributor usability
-- Repository navigation
-- Long-term maintainability
-- Reuse of shared standards across projects
-
-This document defines a migration plan only.
-
-It does not authorize or perform directory renaming by itself.
+This document defines a migration plan only. It does not authorize or perform directory renaming by itself.
 
 ---
 
 ## 2. Governing Standard
 
-EIB follows the reusable development and repository standards maintained in
-the Common Operation Guide (COG).
+EIB follows reusable development and repository standards maintained in COG.
 
 The governing naming standard is:
 
 `COG/standards/NAMING_STANDARD.md`
 
-The COG standard establishes that functional repository directories SHOULD
-use lowercase names by default.
-
-The governing principle is:
+Functional repository directories SHOULD use lowercase names by default.
 
 > Define the convention once in COG. Reference it everywhere else.
 
-EIB SHOULD reference COG standards rather than independently maintaining
-competing cross-project naming conventions.
+EIB SHOULD reference COG standards rather than independently maintaining competing cross-project conventions.
 
 ---
 
 ## 3. Background
 
-EIB was created before the COG cross-project standards repository was fully
-established.
-
-As the project evolved, many EIB functional directories were created using
-uppercase names.
-
-Examples include:
+EIB predates the mature COG cross-project standards repository. Many EIB functional directories therefore use uppercase names, including:
 
 ```text
 AI/
