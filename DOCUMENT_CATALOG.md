@@ -114,6 +114,7 @@ Retired
 | REPOSITORY_STANDARDS.md | Active |
 | REPOSITORY_MIGRATION_PLAN.md | Active |
 | REPOSITORY_INVENTORY.md | Active |
+| COG_ADOPTION_PROFILE.md (GOV-015) | Approved |
 | DOCUMENT_CATALOG.md | Active |
 | DECISION_LOG.md | Pending Review |
 | REPOSITORY_STATUS.md | Pending Review |
