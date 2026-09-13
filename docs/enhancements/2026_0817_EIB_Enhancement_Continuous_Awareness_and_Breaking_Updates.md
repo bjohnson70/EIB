@@ -1,3 +1,12 @@
+---
+title: EIB Enhancement - Continuous Awareness and Breaking Updates
+document_id: REQ-002
+version: 1.0
+lifecycle_status: Active
+owner: BSJ
+last_updated: 2026-09-12
+---
+
 # EIB Enhancement — Continuous Awareness and Breaking Updates
 
 **Date:** 2026-08-17  

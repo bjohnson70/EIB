@@ -1,3 +1,12 @@
+---
+title: EIB GitHub Access and Verification
+document_id: DEV-003
+version: 1.0
+lifecycle_status: Active
+owner: BSJ
+last_updated: 2026-09-12
+---
+
 # EIB GitHub Access and Verification
 
 **Created:** 2026-08-22  

@@ -1,3 +1,12 @@
+---
+title: EIB v8 Requirements Traceability Checklist
+document_id: REQ-004
+version: 1.0
+lifecycle_status: Active
+owner: BSJ
+last_updated: 2026-09-12
+---
+
 # EIB v8 — Requirements Traceability Checklist
 
 **Created:** 2026-08-21  

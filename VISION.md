@@ -1,5 +1,6 @@
 ---
 title: Executive Intelligence Briefing (EIB) Vision
+document_id: ROOT-002
 version: 1.0
 status: Approved
 owner: Bryan Johnson

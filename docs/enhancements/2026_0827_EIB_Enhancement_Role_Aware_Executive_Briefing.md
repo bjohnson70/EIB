@@ -1,3 +1,12 @@
+---
+title: EIB Enhancement - Role-Aware Executive Briefing
+document_id: REQ-003
+version: 1.0
+lifecycle_status: Active
+owner: BSJ
+last_updated: 2026-09-12
+---
+
 # EIB Enhancement — Role-Aware Executive Briefing
 
 **Date:** 2026-08-27  

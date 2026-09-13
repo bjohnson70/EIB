@@ -1,3 +1,12 @@
+---
+title: EIB Enhancement - Morning Briefing Scope, Weather, and Freshness
+document_id: REQ-001
+version: 1.0
+lifecycle_status: Active
+owner: BSJ
+last_updated: 2026-09-12
+---
+
 EIB Enhancement — Morning Briefing Scope, Weather, and Freshness
 
 Date: 2026-08-08

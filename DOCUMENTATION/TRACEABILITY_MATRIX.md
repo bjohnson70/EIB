@@ -1,3 +1,12 @@
+---
+title: Traceability Matrix
+document_id: REQ-005
+version: 1.0
+lifecycle_status: Active
+owner: BSJ
+last_updated: 2026-09-12
+---
+
 Purpose
 Every major capability should map from concept to implementation.
 Example:

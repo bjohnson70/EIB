@@ -1,3 +1,12 @@
+---
+title: Executive Intelligence Briefing Manifesto
+document_id: ROOT-003
+version: 1.0
+lifecycle_status: Active
+owner: BSJ
+last_updated: 2026-09-12
+---
+
 # Executive Intelligence Briefing (EIB)
 
 ## Our Guiding Principle

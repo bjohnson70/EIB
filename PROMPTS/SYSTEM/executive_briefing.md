@@ -1,5 +1,6 @@
 ---
 title: Executive Intelligence Briefing System Prompt
+document_id: PROMPT-001
 prompt_id: SYS-001
 version: 1.0
 status: Production

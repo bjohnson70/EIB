@@ -1,3 +1,12 @@
+---
+title: EIB Repository Structure Migration Plan
+document_id: DEV-004
+version: 1.0
+lifecycle_status: Active
+owner: BSJ
+last_updated: 2026-09-12
+---
+
 # EIB Repository Structure Migration Plan
 
 ## 1. Purpose

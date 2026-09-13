@@ -1,5 +1,6 @@
 ---
 title: Run EIB Workflow Prompt
+document_id: PROMPT-002
 prompt_id: WF-001
 version: 1.0
 status: Production

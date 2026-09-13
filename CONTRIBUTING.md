@@ -1,5 +1,6 @@
 ---
 Title: Contributing Guide
+document_id: GOV-013
 Version: Foundation (v1.0)
 Status: Active
 Date: 2026-07-22

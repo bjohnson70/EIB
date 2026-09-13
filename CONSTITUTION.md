@@ -1,3 +1,12 @@
+---
+title: Constitution of the Executive Intelligence Briefing (EIB)
+document_id: GOV-016
+version: 1.0
+lifecycle_status: Active
+owner: BSJ
+last_updated: 2026-09-12
+---
+
 # Constitution of the Executive Intelligence Briefing (EIB)
 
 > Every solution should leave behind a better starting point for the next person.

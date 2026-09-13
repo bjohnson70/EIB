@@ -1,5 +1,6 @@
 ---
 title: Executive Balanced Personality
+document_id: PROFILE-002
 profile_id: PERSONALITY-001
 version: 1.0
 status: Approved
