@@ -58,6 +58,26 @@ Retired
 
 ---
 
+# Controlled Identity Registry
+
+This foundation records identity decisions that must remain stable during later
+catalog reconciliation. It does not replace the future individual registration
+of every controlled artifact.
+
+| Identity | Registry disposition | Canonical artifact |
+|----------|---------------------|--------------------|
+| DEV-001 | Active | DEVELOPMENT/REPOSITORY_STRUCTURE.md |
+| DEV-002 | Active | DEVELOPMENT/ENGINEERING_STANDARDS.md |
+| IA-0036 | Active | REFERENCE_ARCHITECTURE.md |
+| MODEL-SCHEMA-001 | Active | MODELS/SCHEMA/model_schema.md |
+| MODEL-007 | Reserved / Never Assigned | None |
+
+Controlled identities are never reused. Historical, retired, decontrolled, and
+removed identities remain unavailable. Identity-affecting changes and their
+catalog changes must occur in the same atomic commit.
+
+---
+
 # Root Documents
 
 | Document | ID | Status |
@@ -76,7 +96,7 @@ Retired
 | DECISIONS.md | GOV-012 | Pending Review |
 | CONTRIBUTING.md | GOV-013 | Pending Review |
 | EXECUTIVE_PRINCIPLES.md | PA-0007 | Active |
-| REFERENCE_ARCHITECTURE.md | ARCH-009 | Pending Review |
+| REFERENCE_ARCHITECTURE.md | IA-0036 | Pending Review |
 
 ---
 

@@ -38,6 +38,16 @@ Unlike Git history, this document reflects the **current review state** of the r
 | Verified | Repository version confirmed |
 | Complete | No additional work currently planned |
 
+Review status is a workflow and history concern, not a controlled-document
+lifecycle or decision-disposition field. In particular, `Pending Review` and
+`Planned Review` do not change an artifact's lifecycle, authority, or identity.
+
+Lifecycle and disposition changes identified through review require an
+authorized change to the controlled artifact and the corresponding catalog
+record. The Review Register records the queue, review activity, and review
+history; it does not independently approve, activate, retire, decontrol, or
+supersede an artifact.
+
 ---
 
 # Repository Foundation Summary

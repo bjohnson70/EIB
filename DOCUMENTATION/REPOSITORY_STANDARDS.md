@@ -213,15 +213,34 @@ Standard fields are:
 ```yaml
 ---
 title:
-document_id:
+document_id: # exactly one of document_id, component_id, or model_id
+# component_id:
+# model_id:
 version:
-status:
+lifecycle_status:
 owner:
 last_updated:
 ---
 ```
 
-Additional metadata may be added where appropriate.
+Controlled artifacts must use exactly one type-appropriate identity field.
+Component and model specifications may use `component_id` or `model_id` rather
+than adding a redundant `document_id`.
+
+The following fields are optional when applicable:
+
+```yaml
+effective_date:
+decision_status:
+operational_state:
+review_status:
+supersedes:
+superseded_by:
+```
+
+Generic ambiguous `status` fields should be phased out during reconciliation;
+they must not silently override lifecycle, decision, operational, or review
+semantics. Dates use `YYYY-MM-DD`.
 
 ---
 
@@ -232,7 +251,8 @@ Document identifiers must be:
 - Unique
 - Stable
 - Human readable
-- Never reused for unrelated documents
+- Never reused for another controlled identity, including after retirement,
+  decontrol, or removal
 
 Examples include:
 
@@ -245,6 +265,17 @@ GOV-006
 ```
 
 Moving or renaming a document does not change its identifier.
+
+Approved identity assignments and reservations include:
+
+- `DEV-001` - `DEVELOPMENT/REPOSITORY_STRUCTURE.md`
+- `DEV-002` - `DEVELOPMENT/ENGINEERING_STANDARDS.md`
+- `IA-0036` - `REFERENCE_ARCHITECTURE.md`
+- `MODEL-007` - Reserved / Never Assigned
+
+Implementation engines use `component_id`; model specifications use `model_id`.
+No identity gap may be reused without checking current and historical registry
+evidence.
 
 ---
 
@@ -305,6 +336,13 @@ Case-only renames must be handled carefully because Windows filesystems are comm
 
 `DOCUMENT_CATALOG.md` or its approved successor serves as the repository configuration-management inventory.
 
+`DOCUMENT_CATALOG.md` is the authoritative registry for controlled-artifact
+identity allocation, canonical paths, registration, and disposition, including
+active, reserved, retired, and historical identities. Artifact metadata is
+authoritative for intrinsic attributes such as title, version, lifecycle, owner,
+and effective date. A mismatch is a governance error and must not be silently
+resolved by automation.
+
 The catalog should record:
 
 - Document identifier
@@ -314,6 +352,59 @@ The catalog should record:
 - Purpose or category
 
 The catalog must be updated when governed documents are created, moved, renamed, deprecated, or removed.
+
+Identity-affecting artifact and catalog changes must be made in the same atomic
+commit. Routine content edits do not require catalog changes unless a cataloged
+attribute or disposition changes. Directory inventory rows do not replace
+individual controlled-artifact registration.
+
+`MODEL-007` must remain recorded as `Reserved / Never Assigned`. Controlled IDs
+must never be reused.
+
+---
+
+# Lifecycle and Authority Semantics
+
+Lifecycle states are:
+
+- Draft
+- Review
+- Approved
+- Active
+- Revised
+- Deprecated
+- Archived
+- Removed
+
+ADR decision disposition is separate and uses `Proposed`, `Accepted`,
+`Rejected`, or `Superseded`. `Accepted` is not lifecycle `Active`.
+
+Operational state is separate from lifecycle; `Production` is not lifecycle
+`Active`. Review workflow values such as `Pending Review` and `Planned Review`
+belong to the review register or `review_status`, not lifecycle.
+
+`Approved` means formally approved but not necessarily in force. `Active` means
+current authoritative/in-force. `Revised` is transitional and returns to
+`Active` when the approved revision becomes authoritative. `Deprecated`,
+`Archived`, and `Removed` are distinct. Supersession requires bidirectional
+traceability, and a removed or retired identity remains permanently unavailable.
+
+The owner is accountable for stewardship, accuracy, maintenance, and initiating
+review. Ownership does not by itself confer approval authority; lifecycle,
+identity, and disposition decisions remain with BSJ or explicitly delegated
+governance authority.
+
+---
+
+# Classification and Automation Boundaries
+
+Control is determined by authoritative function. Directory location, filename,
+extension, inventory presence, historical metadata, README naming, template
+naming, or an existing ID does not by itself make an artifact controlled.
+
+Automation may validate and report repository conditions. It may not independently
+assign, reserve, renumber, retire, decontrol, approve, supersede, or change the
+lifecycle of a controlled artifact, nor resolve governance conflicts.
 
 ---
 

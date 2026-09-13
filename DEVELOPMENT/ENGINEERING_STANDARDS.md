@@ -1,10 +1,10 @@
 ---
 title: Engineering Standards
-document_id: DEV-001
+document_id: DEV-002
 version: 1.0
 status: Active
 owner: BSJ
-last_updated: 2026-08-07
+last_updated: 2026-09-12
 ---
 
 # Executive Intelligence Briefing (EIB)

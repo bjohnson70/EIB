@@ -4,7 +4,7 @@ document_id: MODEL-SCHEMA-001
 version: 1.0
 status: Approved
 owner: BSJ
-last_updated: 2026-07-24
+last_updated: 2026-09-12
 ---
 
 # Executive Intelligence Briefing Model Schema
@@ -93,8 +93,8 @@ Example:
 
 ```yaml
 ---
-title: Action Item Data Model
-model_id: MODEL-002
+title: Example Model
+model_id: MODEL-###
 version: 1.0
 status: Approved
 owner: BSJ
@@ -250,8 +250,8 @@ Examples:
 
 ```text
 MODEL-001
-MODEL-002
 MODEL-003
+MODEL-###
 ```
 
 Schema documents may use:

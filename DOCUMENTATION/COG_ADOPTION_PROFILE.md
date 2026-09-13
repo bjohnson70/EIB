@@ -1,10 +1,10 @@
 ---
 title: COG Adoption Profile
 document_id: GOV-015
-version: 1.0
+version: 1.1
 status: Approved
 owner: BSJ
-last_updated: 2026-09-10
+last_updated: 2026-09-12
 ---
 
 # Executive Intelligence Briefing (EIB)
@@ -110,10 +110,9 @@ modernization needs:
   establish a competing authoritative location.
 - No directory is to be moved, renamed, consolidated, or deleted solely to
   match COG naming or layout preferences.
-- The known duplicate `DEV-001` identifier is not resolved by this profile.
-  Its eventual resolution must determine the stronger historical and
-  authoritative claim through Git history, catalog history, document metadata,
-  and repository references.
+- `DEV-001` remains assigned to `DEVELOPMENT/REPOSITORY_STRUCTURE.md` based on
+  its stronger historical and authoritative claim. `DEV-002` is assigned to
+  `DEVELOPMENT/ENGINEERING_STANDARDS.md`.
 - [REPOSITORY_STANDARDS.md](REPOSITORY_STANDARDS.md) remains in place during
   this adoption step. It may later be narrowed to retain EIB-specific
   requirements while referencing adopted COG authorities for shared rules.
@@ -164,12 +163,74 @@ EIB remains the sole authority for its:
 4. **Retain and map the EIB extended lifecycle:** EIB retains richer lifecycle
    states where useful and maps them to the COG baseline rather than removing
    them for conformity.
-5. **Resolve `DEV-001` by document history:** Neither document is renumbered by
-   this decision. The stronger historical and authoritative claim retains the
-   identifier after the required evidence review.
+5. **Resolve `DEV-001` by document history:**
+  `DEVELOPMENT/REPOSITORY_STRUCTURE.md` retains `DEV-001` based on its
+  stronger historical and authoritative claim. `DEV-002` is assigned to
+  `DEVELOPMENT/ENGINEERING_STANDARDS.md`.
 6. **Formal, selective COG adoption:** EIB adopts COG authorities individually.
    This profile distinguishes adopted authorities, EIB extensions, EIB
    exceptions, non-applicability, and EIB-only authority.
+
+---
+
+## Governance Foundation
+
+The following rules operationalize the approved EIB governance model. Detailed
+repository implementation rules are maintained in
+[REPOSITORY_STANDARDS.md](REPOSITORY_STANDARDS.md); the catalog and review
+register own their stated registry and review functions.
+
+### Authority and Control
+
+- An artifact is controlled because of its authoritative function, not its
+  directory, filename, extension, or historical metadata.
+- Controlled artifacts require exactly one type-appropriate identity field:
+  `document_id`, `component_id`, or `model_id`.
+- Controlled identity is stable and permanently non-reusable. Moves, renames,
+  retirement, decontrol, and historical removal do not make an identity
+  available for reuse.
+- `DOCUMENT_CATALOG.md` is the authoritative controlled-artifact inventory,
+  identity registry, canonical-path registry, and disposition registry.
+- `REVIEW_REGISTER.md` records review workflow and history; it does not control
+  lifecycle or disposition.
+- `DOCUMENTATION/REPOSITORY_INVENTORY.md` records repository structure and
+  content; inventory presence does not confer controlled status.
+
+### Identity Decisions
+
+- `DEV-001` belongs to `DEVELOPMENT/REPOSITORY_STRUCTURE.md`.
+- `DEV-002` belongs to `DEVELOPMENT/ENGINEERING_STANDARDS.md`.
+- `REFERENCE_ARCHITECTURE.md` has identity `IA-0036`; `ARCH-009` was a stale
+  catalog assignment and was never a valid document identity.
+- Implementation engines retain `ENGINE-001` through `ENGINE-004` through
+  `component_id`.
+- Models retain `MODEL-001` through `MODEL-006` and `MODEL-008` through
+  `model_id`.
+- `MODEL-007` is reserved as `Reserved / Never Assigned` and is unavailable.
+
+### Status, Version, and Change Control
+
+- Lifecycle, ADR decision disposition, operational state, and review workflow
+  are separate concepts. `Accepted` is not lifecycle `Active`; `Production`
+  is not lifecycle `Active`; and `Pending Review` and `Planned Review` are not
+  lifecycle states.
+- Controlled metadata uses `MAJOR.MINOR` versions and requires title, exactly
+  one identity field, version, lifecycle status, owner, and last-updated date.
+- `Approved` means formally approved but not necessarily in force. `Active`
+  means current authoritative/in-force. `Revised` is transitional and returns
+  to `Active` when the approved revision becomes authoritative.
+- `Deprecated`, `Archived`, and `Removed` are distinct dispositions. Controlled
+  identities are never reused.
+- Supersession is bidirectional: a predecessor identifies its successor and the
+  successor identifies its predecessor.
+- Identity-affecting changes and corresponding catalog changes occur in one
+  atomic commit. Routine content edits do not require catalog changes unless a
+  cataloged attribute or disposition changes.
+- Material changes to authoritative meaning, requirements, behavior,
+  architecture, governance, or disposition require approved provenance.
+- Automation may validate and report, but may not assign, reserve, retire,
+  decontrol, supersede, approve, or otherwise resolve governance identities or
+  lifecycle conflicts.
 
 ---
 
