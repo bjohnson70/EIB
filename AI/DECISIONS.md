@@ -1,15 +1,3 @@
----
-title: Architectural Decisions
-document_id: AI-004
-version: 1.0
-status: Approved
-owner: BSJ
-author: BSJ & ChatGPT
-last_updated: 2026-07-24
-depends_on:
-  - AI/README.md
-  - AI/AI_RULES.md
----
 
 # Architectural Decisions
 

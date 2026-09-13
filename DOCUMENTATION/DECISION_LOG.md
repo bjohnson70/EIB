@@ -1,11 +1,3 @@
----
-title: Architectural Decision Log
-document_id: GOV-001
-version: 1.0
-status: Approved
-owner: BSJ
-last_updated: 2026-07-24
----
 
 # Executive Intelligence Briefing (EIB)
 

@@ -1,16 +1,3 @@
----
-title: Technical Debt Register
-document_id: ROADMAP-005
-version: 1.0
-status: Approved
-owner: BSJ
-author: BSJ & ChatGPT
-last_updated: 2026-07-24
-depends_on:
-  - ROADMAP/IMPLEMENTATION_PLAN.md
-  - ROADMAP/RELEASE_PLAN.md
-  - ROADMAP/FEATURE_BACKLOG.md
----
 
 # Executive Intelligence Briefing (EIB)
 # Technical Debt Register

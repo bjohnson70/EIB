@@ -1,16 +1,3 @@
----
-title: Repository Status
-document_id: AI-003
-version: 1.0
-status: Approved
-owner: BSJ
-author: BSJ & ChatGPT
-last_updated: 2026-07-24
-depends_on:
-  - AI/README.md
-  - AI/AI_RULES.md
-  - AI/NEXT_TASK.md
----
 
 # Repository Status
 

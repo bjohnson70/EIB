@@ -1,11 +1,3 @@
----
-title: Tests Directory
-document_id: TESTS-001
-version: 1.0
-status: Active
-owner: BSJ
-last_updated: 2026-08-07
----
 
 # TESTS
 

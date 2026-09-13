@@ -1,12 +1,3 @@
----
-title: AI Workspace
-document_id: AI-000
-version: 1.0
-status: Approved
-owner: BSJ
-author: BSJ & ChatGPT
-last_updated: 2026-07-24
----
 
 # Executive Intelligence Briefing (EIB)
 # AI Workspace

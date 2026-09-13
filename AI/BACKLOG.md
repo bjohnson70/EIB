@@ -1,16 +1,3 @@
----
-title: AI Backlog
-document_id: AI-006
-version: 1.0
-status: Approved
-owner: BSJ
-author: BSJ & ChatGPT
-last_updated: 2026-07-24
-depends_on:
-  - AI/README.md
-  - AI/NEXT_TASK.md
-  - AI/REPOSITORY_STATUS.md
----
 
 # AI Backlog
 

@@ -1,11 +1,3 @@
----
-title: Tools Directory
-document_id: TOOLS-001
-version: 1.0
-status: Active
-owner: BSJ
-last_updated: 2026-08-07
----
 
 # TOOLS
 
