@@ -2,10 +2,10 @@
 title: Executive Intelligence Briefing Embedding Strategy
 document_id: IA-0023
 version: 1.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 depends_on:
   - DATA/STORAGE_ARCHITECTURE.md
   - DATA/KNOWLEDGE_GRAPH.md

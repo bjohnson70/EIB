@@ -2,10 +2,10 @@
 title: Observability and Telemetry
 document_id: IA-0010
 version: 2.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 depends_on:
   - IMPLEMENTATION_ARCHITECTURE.md
   - EXECUTION_STATE_MODEL.md

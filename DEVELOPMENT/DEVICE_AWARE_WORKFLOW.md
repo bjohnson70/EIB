@@ -2,9 +2,9 @@
 title: Device-Aware Development Workflow
 document_id: DEV-DEVICE-001
 version: 1.0
-status: Active
+lifecycle_status: Active
 owner: BSJ
-last_updated: 2026-08-09
+last_updated: 2026-09-12
 ---
 
 # Device-Aware Development Workflow

@@ -3,9 +3,10 @@ title: Executive Intelligence Briefing System Prompt
 document_id: PROMPT-001
 prompt_id: SYS-001
 version: 1.0
-status: Production
+lifecycle_status: Active
+operational_state: Production
 owner: BSJ
-last_updated: 2026-07-24
+last_updated: 2026-09-12
 ---
 
 # Executive Intelligence Briefing (EIB)

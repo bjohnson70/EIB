@@ -2,10 +2,10 @@
 title: Knowledge Model
 document_id: IA-0007
 version: 2.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 depends_on:
   - IMPLEMENTATION/INTELLIGENCE_OBJECT_MODEL.md
   - IMPLEMENTATION/BRIEFING_ASSEMBLY_ENGINE.md

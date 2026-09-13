@@ -2,10 +2,10 @@
 title: Intelligence Object Model
 document_id: IA-0005
 version: 2.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 depends_on:
   - IMPLEMENTATION/INTELLIGENCE_PIPELINE_SPECIFICATION.md
   - IMPLEMENTATION/AGENT_ARCHITECTURE.md

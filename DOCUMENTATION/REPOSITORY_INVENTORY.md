@@ -2,9 +2,9 @@
 title: Repository Inventory
 document_id: GOV-008
 version: 1.1
-status: Active
+lifecycle_status: Active
 owner: BSJ
-last_updated: 2026-08-07
+last_updated: 2026-09-12
 ---
 
 # Executive Intelligence Briefing (EIB)

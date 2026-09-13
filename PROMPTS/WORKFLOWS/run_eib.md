@@ -3,9 +3,10 @@ title: Run EIB Workflow Prompt
 document_id: PROMPT-002
 prompt_id: WF-001
 version: 1.0
-status: Production
+lifecycle_status: Active
+operational_state: Production
 owner: BSJ
-last_updated: 2026-07-24
+last_updated: 2026-09-12
 system_prompt: SYS-001
 ---
 

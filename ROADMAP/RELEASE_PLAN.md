@@ -2,10 +2,10 @@
 title: Release Plan
 document_id: ROADMAP-003
 version: 1.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-24
+last_updated: 2026-09-12
 depends_on:
   - ROADMAP/IMPLEMENTATION_PLAN.md
   - ROADMAP/MVP_DEFINITION.md

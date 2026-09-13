@@ -2,10 +2,10 @@
 title: Versioning Strategy
 document_id: IA-0020
 version: 1.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 depends_on:
   - DEVELOPMENT/REPOSITORY_STRUCTURE.md
   - PRODUCT_REQUIREMENTS.md

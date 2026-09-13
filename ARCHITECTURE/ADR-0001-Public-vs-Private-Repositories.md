@@ -2,9 +2,10 @@
 title: ADR-0001 - Public vs. Private Repository Strategy
 document_id: ADR-0001
 version: 2.0
-status: Accepted
+lifecycle_status: Active
+decision_status: Accepted
 owner: BSJ
-last_updated: 2026-08-06
+last_updated: 2026-09-12
 ---
 
 # ADR-0001 — Public vs. Private Repository Strategy

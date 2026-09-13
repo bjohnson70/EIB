@@ -2,9 +2,9 @@
 title: Repository Migration Plan
 document_id: GOV-007
 version: 1.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
-last_updated: 2026-08-06
+last_updated: 2026-09-12
 ---
 
 # Executive Intelligence Briefing (EIB)

@@ -2,7 +2,7 @@
 title: COG Adoption Profile
 document_id: GOV-015
 version: 1.1
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 last_updated: 2026-09-12
 ---

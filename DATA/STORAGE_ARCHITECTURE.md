@@ -2,10 +2,10 @@
 title: Executive Intelligence Briefing Storage Architecture
 document_id: IA-0021
 version: 1.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 depends_on:
   - IMPLEMENTATION/KNOWLEDGE_MODEL.md
   - IMPLEMENTATION/INTELLIGENCE_OBJECT_MODEL.md

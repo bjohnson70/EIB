@@ -2,9 +2,9 @@
 title: Executive Briefing Report Specification
 document_id: PA-004
 version: 3.1
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
-last_updated: 2026-08-09
+last_updated: 2026-09-12
 depends_on:
   - ARCHITECTURE/PRODUCT_ARCHITECTURE.md
   - ARCHITECTURE/INTELLIGENCE_ARCHITECTURE.md

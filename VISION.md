@@ -2,10 +2,10 @@
 title: Executive Intelligence Briefing (EIB) Vision
 document_id: ROOT-002
 version: 1.0
-status: Approved
-owner: Bryan Johnson
+lifecycle_status: Approved
+owner: BSJ
 author: Bryan Johnson & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 ---
 
 # Executive Intelligence Briefing (EIB) Vision

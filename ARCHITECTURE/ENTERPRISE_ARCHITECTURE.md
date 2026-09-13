@@ -2,9 +2,9 @@
 title: Enterprise Architecture
 document_id: ARCH-007
 version: 3.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
-last_updated: 2026-08-07
+last_updated: 2026-09-12
 depends_on:
   - CONSTITUTION.md
   - DOCUMENTATION/DOCUMENT_CATALOG.md

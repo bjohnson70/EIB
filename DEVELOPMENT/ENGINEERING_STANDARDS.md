@@ -2,7 +2,7 @@
 title: Engineering Standards
 document_id: DEV-002
 version: 1.0
-status: Active
+lifecycle_status: Active
 owner: BSJ
 last_updated: 2026-09-12
 ---

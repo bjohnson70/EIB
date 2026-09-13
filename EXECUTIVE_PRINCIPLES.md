@@ -2,10 +2,10 @@
 title: Executive Intelligence Briefing Principles
 document_id: PA-0007
 version: 1.0
-status: Approved
-owner: Bryan Johnson
+lifecycle_status: Approved
+owner: BSJ
 author: Bryan Johnson & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 depends_on:
   - VISION.md
   - Architecture/PRODUCT_ARCHITECTURE.md

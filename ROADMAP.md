@@ -2,9 +2,9 @@
 title: Executive Intelligence Briefing Roadmap
 document_id: PM-001
 version: 2.0
-status: Active
+lifecycle_status: Active
 owner: BSJ
-last_updated: 2026-08-07
+last_updated: 2026-09-12
 ---
 
 # Executive Intelligence Briefing (EIB)

@@ -2,9 +2,9 @@
 title: Executive Priority Engine
 component_id: ENGINE-001
 version: 1.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
-last_updated: 2026-07-24
+last_updated: 2026-09-12
 ---
 
 # Executive Priority Engine

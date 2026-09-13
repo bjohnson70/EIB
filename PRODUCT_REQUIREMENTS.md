@@ -2,9 +2,9 @@
 title: Executive Intelligence Briefing Product Requirements
 document_id: PRD-0001
 version: 2.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
-last_updated: 2026-08-07
+last_updated: 2026-09-12
 depends_on:
   - VISION.md
   - ARCHITECTURE/PRODUCT_ARCHITECTURE.md

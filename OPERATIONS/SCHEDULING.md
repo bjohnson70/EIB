@@ -2,10 +2,10 @@
 title: Scheduling
 document_id: OPS-005
 version: 2.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 depends_on:
   - DEPLOYMENT_ARCHITECTURE.md
   - CHANGE_MANAGEMENT.md

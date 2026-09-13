@@ -2,9 +2,9 @@
 title: Repository Document Catalog
 document_id: GOV-005
 version: 2.0
-status: Active
+lifecycle_status: Active
 owner: BSJ
-last_updated: 2026-08-07
+last_updated: 2026-09-12
 ---
 
 # Executive Intelligence Briefing (EIB)
@@ -177,6 +177,7 @@ does not make its associated artifact active or controlled.
 | AI-005 | Historical / Decontrolled | AI/SESSION_NOTES.md | No |
 | AI-006 | Historical / Decontrolled | AI/BACKLOG.md | No |
 | ARCH-008 | Historical / Decontrolled | ARCHITECTURE/README.md | No |
+| IA-0016 | Historical / Superseded / Permanently Non-Reusable | REPOSITORY_STRUCTURE.md; successor DEV-001 at DEVELOPMENT/REPOSITORY_STRUCTURE.md | No |
 | GOV-001 | Historical / Decontrolled | DOCUMENTATION/DECISION_LOG.md | No |
 | GOV-011 | Historical / Decontrolled | CHANGELOG.md | No |
 | GOV-012 | Historical / Decontrolled | DECISIONS.md | No |

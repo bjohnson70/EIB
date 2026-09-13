@@ -2,7 +2,7 @@
 title: EIB Model Schema
 document_id: MODEL-SCHEMA-001
 version: 1.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 last_updated: 2026-09-12
 ---

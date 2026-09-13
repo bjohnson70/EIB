@@ -2,9 +2,9 @@
 title: Executive Personalization Model
 document_id: PA-008
 version: 3.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
-last_updated: 2026-08-07
+last_updated: 2026-09-12
 depends_on:
   - ARCHITECTURE/INTELLIGENCE_ARCHITECTURE.md
   - ARCHITECTURE/SCORING_MODEL.md

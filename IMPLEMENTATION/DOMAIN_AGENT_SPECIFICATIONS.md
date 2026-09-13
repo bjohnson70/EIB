@@ -2,10 +2,10 @@
 title: Domain Agent Specifications
 document_id: IA-0014
 version: 2.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-23
+last_updated: 2026-09-12
 depends_on:
   - AGENT_ARCHITECTURE.md
   - INTELLIGENCE_PIPELINE_SPECIFICATION.md

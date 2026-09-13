@@ -2,9 +2,9 @@
 title: Enterprise Architecture Governance
 document_id: GOV-002
 version: 3.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
-last_updated: 2026-08-07
+last_updated: 2026-09-12
 depends_on:
   - ARCHITECTURE/ENTERPRISE_ARCHITECTURE.md
   - CONSTITUTION.md

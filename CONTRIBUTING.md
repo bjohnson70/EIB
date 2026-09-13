@@ -1,9 +1,10 @@
 ---
-Title: Contributing Guide
+title: Contributing Guide
 document_id: GOV-013
-Version: Foundation (v1.0)
-Status: Active
-Date: 2026-07-22
+version: 1.0
+owner: BSJ
+last_updated: 2026-09-12
+lifecycle_status: Active
 ---
 
 # Contributing to the Executive Intelligence Briefing (EIB)

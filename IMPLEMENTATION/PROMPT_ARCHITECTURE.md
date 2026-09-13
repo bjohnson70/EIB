@@ -2,10 +2,10 @@
 title: Prompt Architecture
 document_id: IMP-014
 version: 1.0
-status: Approved
+lifecycle_status: Approved
 owner: BSJ
 author: BSJ & ChatGPT
-last_updated: 2026-07-24
+last_updated: 2026-09-12
 depends_on:
   - IMPLEMENTATION/AGENT_ARCHITECTURE.md
   - IMPLEMENTATION/WORKFLOW_ORCHESTRATION.md

@@ -2,9 +2,10 @@
 title: ADR-0003 - Document Lifecycle
 document_id: ADR-0003
 version: 1.0
-status: Accepted
+lifecycle_status: Active
+decision_status: Accepted
 owner: BSJ
-last_updated: 2026-08-06
+last_updated: 2026-09-12
 ---
 
 # ADR-0003 — Document Lifecycle
