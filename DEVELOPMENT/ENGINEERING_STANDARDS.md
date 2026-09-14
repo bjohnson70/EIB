@@ -4,7 +4,7 @@ document_id: DEV-002
 version: 1.0
 lifecycle_status: Active
 owner: BSJ
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 ---
 
 # Executive Intelligence Briefing (EIB)
@@ -21,31 +21,17 @@ Its purpose is to ensure that code remains understandable, testable, maintainabl
 
 # Core Principles
 
-Engineering work should favor:
+Engineering work should follow the reusable repository, naming, workflow, and validation hygiene defined by the pinned COG authorities identified in the [COG Adoption Profile](../DOCUMENTATION/COG_ADOPTION_PROFILE.md), especially the COG Repository Standard and GitHub Development Workflow. EIB-specific engineering requirements remain in this document and in the EIB repository standards and workflow.
 
-- Clarity over cleverness.
-- Small changes over large uncontrolled changes.
-- Reuse over duplication.
-- Verification over assumption.
-- Portability over environment-specific behavior.
-- Explicit behavior over hidden behavior.
-- Simple designs before complex frameworks.
-- Automated validation where practical.
+This document does not duplicate the reusable COG baseline. It governs EIB-specific engineering choices, implementation constraints, quality gates, and AI-assisted development obligations.
 
 ---
 
 # Repository as Source of Truth
 
-The repository is the authoritative development source.
+The repository is the authoritative development source for EIB.
 
-Before making changes, contributors should inspect:
-
-- Existing architecture.
-- Existing implementation specifications.
-- Existing code.
-- Repository standards.
-- Applicable ADRs.
-- Current Git status.
+Before making changes, contributors should inspect the current repository state and the relevant EIB architecture, governance, implementation, and documentation requirements. Generic repository inspection, focused-change discipline, and workflow hygiene are governed by the pinned COG standards; EIB-specific engineering, model, schema, security, validation, human approval boundaries, and AI-assisted development boundaries remain defined here.
 
 Historical chat context may provide useful background but should not override current repository content.
 
