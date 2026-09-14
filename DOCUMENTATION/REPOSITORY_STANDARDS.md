@@ -4,7 +4,7 @@ document_id: GOV-006
 version: 1.0
 lifecycle_status: Approved
 owner: BSJ
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 ---
 
 # Executive Intelligence Briefing (EIB)
@@ -33,7 +33,7 @@ These standards apply to all future repository changes unless superseded by an a
 
 The repository is the authoritative source of truth for the EIB project.
 
-Repository structure should be predictable enough that a human contributor, ChatGPT, Codex, GitHub Copilot, or another AI system can locate and understand project content without relying on prior chat history.
+Reusable repository organization, repository hygiene, reference stability, and workflow execution are governed by the pinned COG Repository Standard and GitHub Development Workflow identified in the [COG Adoption Profile](COG_ADOPTION_PROFILE.md). This EIB standard retains the project-specific repository authority, platform compatibility, identity, lifecycle, catalog, migration, and AI governance requirements that are not generic COG baselines.
 
 ---
 
@@ -410,16 +410,7 @@ lifecycle of a controlled artifact, nor resolve governance conflicts.
 
 # Repository Validation
 
-Repository validation should eventually include automated checks for:
-
-- Invalid filenames
-- Duplicate case-sensitive paths
-- Broken internal links
-- Duplicate document identifiers
-- Missing metadata
-- Missing catalog entries
-- Unsupported characters
-- Orphaned documents
+Repository validation should follow the reusable repository hygiene and validation expectations defined by the pinned COG Repository Standard and GitHub Development Workflow. EIB-specific validation obligations remain in this document, including platform compatibility, catalog integrity, controlled identity, migration restrictions, and project-specific repository outcomes.
 
 Validation tools should reside under:
 
@@ -433,24 +424,7 @@ or another approved automation directory.
 
 # Git Practices
 
-Changes should be:
-
-- Focused
-- Reviewable
-- Reversible
-
-Use meaningful commit messages.
-
-Examples:
-
-```text
-docs(repo): establish repository standards
-fix(repo): remove malformed filename
-refactor(repo): consolidate architecture directories
-docs(catalog): refresh document inventory
-```
-
-Do not combine unrelated repository changes into one commit when they can reasonably be separated.
+General Git change discipline, branch hygiene, staged-scope review, and remote publication sequencing are governed by the pinned COG GitHub Development Workflow. EIB retains the repository-specific constraints and authority boundaries defined in this document, including project-specific migration and controlled-artifact governance expectations.
 
 ---
 
