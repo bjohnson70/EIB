@@ -4,7 +4,7 @@ document_id: GOV-009
 version: 2.0
 lifecycle_status: Active
 owner: BSJ
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 ---
 
 # Executive Intelligence Briefing (EIB)
@@ -39,66 +39,20 @@ Development should always favor:
 
 ---
 
-# Standard Development Workflow
+# Shared GitHub Workflow Authority
 
-```text
-Identify Work
-      │
-      ▼
-Review Existing Repository
-      │
-      ▼
-Read Governing Documents
-      │
-      ▼
-Implement Change
-      │
-      ▼
-Update Documentation
-      │
-      ▼
-Verify Repository
-      │
-      ▼
-Commit
-      │
-      ▼
-Push
-```
+Reusable repository inspection, change, staging, commit, branch, push, and
+verification workflow is governed by the pinned COG
+[GitHub Development Workflow](https://github.com/bjohnson70/COG/blob/91fdba4b75df3132338968010bd666666e432abc/development/GITHUB_WORKFLOW.md).
+The EIB adoption and exception boundary is defined by the
+[COG Adoption Profile](DOCUMENTATION/COG_ADOPTION_PROFILE.md).
+
+EIB contributors must apply those authorities together with the EIB-specific
+requirements below. This document does not reproduce the reusable COG workflow.
 
 ---
 
-# Step 1 — Identify Work
-
-Every task should begin with a clearly defined objective.
-
-Examples:
-
-- Fix documentation
-- Implement feature
-- Update architecture
-- Refactor repository
-- Improve workflow
-- Resolve duplicate content
-
-Large objectives should be divided into smaller logical units.
-
----
-
-# Step 2 — Review Existing Repository
-
-Before changing anything:
-
-- Search for existing documentation.
-- Search for similar implementations.
-- Identify dependencies.
-- Avoid creating duplicate documents.
-
-The repository is always the primary source of truth.
-
----
-
-# Step 3 — Read Governing Documents
+# EIB Step 1 — Read Governing Documents
 
 Depending on the change, review:
 
@@ -122,7 +76,7 @@ Implementation work should also review the relevant implementation specification
 
 ---
 
-# Step 4 — Implement
+# EIB Step 2 — Implement
 
 Implement only the approved scope.
 
@@ -137,7 +91,7 @@ Avoid unrelated edits.
 
 ---
 
-# Step 5 — Update Documentation
+# EIB Step 3 — Update Documentation
 
 Implementation and documentation should evolve together.
 
@@ -153,54 +107,14 @@ Possible updates include:
 
 ---
 
-# Step 6 — Verify
+# EIB Step 4 — Verify
 
-Before committing:
+EIB-specific verification includes filenames, links, document identities,
+metadata, repository structure, references, and Git status. Verification is
+part of the EIB Definition of Done.
 
-- Verify filenames.
-- Verify links.
-- Verify document identifiers.
-- Verify metadata.
-- Verify repository structure.
-- Verify formatting.
-- Verify references.
-- Verify Git status.
-
-Verification is part of the Definition of Done.
-
----
-
-# Step 7 — Commit
-
-Every commit should represent one logical change.
-
-Good examples:
-
-```text
-docs(architecture): modernize report specification
-
-docs(repo): update repository inventory
-
-feat(engine): implement confidence scoring
-
-refactor(repo): retire legacy architecture directory
-```
-
-Avoid combining unrelated work into one commit.
-
----
-
-# Step 8 — Push
-
-After verification:
-
-```text
-git add .
-git commit -m "<message>"
-git push
-```
-
-The repository should remain buildable and understandable after every push.
+Commit and push execution follows the pinned COG workflow; EIB work remains
+subject to the approval and scope gates defined below.
 
 ---
 
@@ -245,23 +159,9 @@ Never delete a document before its replacement has been verified.
 
 # Commit Philosophy
 
-Commits should answer one question:
-
-> What changed?
-
-Examples:
-
-```text
-docs(product): update roadmap
-
-docs(repo): modernize README
-
-docs(architecture): migrate governance
-
-refactor(repo): remove duplicate architecture directory
-```
-
-Good commit history tells the story of the repository.
+Commit scope and message discipline follow the pinned COG GitHub Development
+Workflow referenced above. EIB additionally requires that commit history remain
+understandable and tell the story of repository change.
 
 ---
 
