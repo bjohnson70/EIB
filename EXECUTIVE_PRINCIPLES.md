@@ -8,7 +8,7 @@ author: Bryan Johnson & ChatGPT
 last_updated: 2026-09-12
 depends_on:
   - VISION.md
-  - Architecture/PRODUCT_ARCHITECTURE.md
+  - ARCHITECTURE/PRODUCT_ARCHITECTURE.md
 ---
 
 # Executive Intelligence Briefing Principles

@@ -8,7 +8,7 @@ author: BSJ & ChatGPT
 last_updated: 2026-09-12
 depends_on:
   - DOCUMENT_CATALOG.md
-  - Architecture/ARCHITECTURE.md
+  - ARCHITECTURE/ENTERPRISE_ARCHITECTURE.md
 ---
 
 # Repository Structure

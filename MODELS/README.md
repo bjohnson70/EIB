@@ -176,7 +176,7 @@ All models should conform to the approved model schema.
 | CalendarEvent | MODEL-004 | Domain | Planned |
 | SecurityAlert | MODEL-005 | Domain | Planned |
 | Risk | MODEL-006 | Domain | Planned |
-| ProjectUpdate | MODEL-007 | Domain | Planned |
+| ProjectUpdate | Unassigned | Domain | Deferred |
 | ExecutiveDecision | MODEL-008 | Domain | Planned |
 
 Model identifiers should remain stable even when files are renamed or reorganized.
