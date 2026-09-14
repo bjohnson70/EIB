@@ -3,7 +3,7 @@ title: Contributing Guide
 document_id: GOV-013
 version: 1.0
 owner: BSJ
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 lifecycle_status: Active
 ---
 
@@ -40,7 +40,11 @@ When uncertainty exists, follow the highest applicable authority.
 
 # Before You Contribute
 
-Before making changes, ask yourself:
+Before making changes, follow the pinned COG
+[GitHub Development Workflow](https://github.com/bjohnson70/COG/blob/91fdba4b75df3132338968010bd666666e432abc/development/GITHUB_WORKFLOW.md)
+and the EIB-specific requirements in
+[REPOSITORY_WORKFLOW.md](REPOSITORY_WORKFLOW.md). As an EIB contributor, also
+ask yourself:
 
 - Does this improve clarity?
 - Does this reduce duplication?
@@ -55,27 +59,27 @@ If the answer to any question is **No**, consider refining the contribution befo
 
 # Repository Standards
 
-Contributors should:
+EIB contributors should:
 
 - Follow the documented architecture.
 - Respect governance decisions.
 - Read applicable ADRs before changing architectural behavior.
 - Prefer evolving existing content before creating new content.
-- Eliminate duplicate information whenever practical.
-- Keep documentation current.
-- Preserve a single source of truth.
+
+For reusable repository, documentation, naming, identity, and workflow
+requirements, follow the pinned COG authorities identified by the
+[COG Adoption Profile](DOCUMENTATION/COG_ADOPTION_PROFILE.md). EIB-specific
+repository standards, extensions, exceptions, and migration constraints remain
+governed by [REPOSITORY_STANDARDS.md](DOCUMENTATION/REPOSITORY_STANDARDS.md).
 
 ---
 
 # Documentation Standards
 
-Documentation should be:
-
-- Clear
-- Concise
-- Well organized
-- Version controlled
-- Easy for future contributors to understand
+Apply the pinned COG Documentation Standard for reusable documentation
+identity, authority, lifecycle, references, review, and supersession guidance.
+Use the EIB adoption profile and repository standards for EIB-specific
+extensions and exceptions.
 
 Where appropriate, include:
 
@@ -91,47 +95,24 @@ Whenever significant decisions are made, preserve the reasoning behind those dec
 
 ---
 
-# Commit Messages
+# Workflow and Pull Requests
 
-Write concise, descriptive commit messages that clearly communicate intent.
-
-Examples:
-
-- Add ADR-0006 for automation strategy
-- Update roadmap for governance maturity
-- Improve README project overview
-- Refine architecture navigation
-
-Avoid vague commit messages such as:
-
-- Update files
-- Misc changes
-- Fix stuff
-
----
-
-# Pull Requests
-
-When submitting a pull request:
-
-- Explain why the change is needed.
-- Reference related issues or ADRs.
-- Keep changes focused on a single topic whenever practical.
-- Update documentation whenever behavior changes.
-- Ensure the contribution aligns with the repository architecture.
+Follow the EIB-specific workflow in [REPOSITORY_WORKFLOW.md](REPOSITORY_WORKFLOW.md)
+and the pinned COG GitHub Development Workflow for commit, branch, push, and
+verification mechanics. Keep pull requests focused, explain why the change is
+needed, reference related issues or ADRs, and update documentation when behavior
+changes.
 
 ---
 
 # Definition of Done
 
-Work is considered complete when:
+Use the EIB-specific completion expectations below together with the pinned COG
+Repository and Documentation Standards and the EIB workflow:
 
 - Documentation is accurate.
 - Related files have been updated.
-- Naming conventions are followed.
-- Duplicate content has been removed or consolidated.
-- Internal links have been verified.
-- Governance references remain accurate.
+- Internal links and governance references are verified.
 - The repository is easier to understand than before.
 - Long-term maintainability has improved.
 
